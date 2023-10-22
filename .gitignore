@@ -1,0 +1,52 @@
+# A .gitignore file will tell git which files and directories to ignore and
+# not add to version control.
+
+# This template was taken from EECS 485 - we can update this as needed!
+*.pem
+*.db
+var/
+node_modules/
+cookies.txt
+session.json
+bundle.js
+*.js.map
+**/e2e/test_cypress_hello.cy.js
+# Don't include the screenshots and videos that Cypress generates in headless mode.
+**/cypress/videos
+**/cypress/screenshots
+
+# Python
+*.pyc
+__pycache__/
+*.egg-info*
+dist/
+env/
+venv/
+venv3/
+.venv/
+.pytest_cache
+
+# JavaScript
+bundle.js
+*node_modules*
+files_for_autograder_io/
+*/var/*
+
+# Virtual Machines
+.vagrant/
+
+# Text editors and IDEs
+*~
+*.lock
+*.swp
+.vscode
+.ropeproject/
+.vscode/
+.idea
+
+# macOS system files
+*.DS_Store
+
+# Google Drive and Dropbox
+Icon
+.dropbox*
