@@ -5,16 +5,9 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "open-course"
 version = "1.0.0"
+# Update dependencies as needed
 dependencies = [
-    "arrow",
-    "bs4",
     "Flask",
-    "pycodestyle",
-    "pydocstyle",
-    "pylint",
-    "pytest",
-    "pytest-mock",
-    "requests",
 ]
 requires-python = ">=3.10"
 
