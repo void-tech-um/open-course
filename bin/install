@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# This script installs the Open Course project and its dependencies.
+
+# Stop on errors, print commands
+set -Eeuxo pipefail
+
+# Reset and setup virtual environment
+python3 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+pip install -e .
