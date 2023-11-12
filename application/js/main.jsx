@@ -7,4 +7,3 @@ import { createRoot } from "react-dom/client";
 const root = createRoot(document.getElementById("reactEntry"));
 // render application component
 root.render(<App url="/"/>);
-
