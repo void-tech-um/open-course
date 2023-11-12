@@ -10,3 +10,8 @@ python3 -m venv env
 source env/bin/activate
 pip install -r requirements.txt
 pip install -e .
+# Install npm related dependencies to build and include React
+npm install --save-dev babel-loader
+npm install -save-dev @babel/preset-env @babel/preset-react
+npm install -save-dev @babel/plugin-transform-runtime
+npm install react react-dom
