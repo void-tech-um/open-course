@@ -17,11 +17,9 @@ def show_posts():
 def show_class():
     return render_template('class.html')
 
-@application.app.route('/profile/')
+@application.app.route("/profile/", methods=["GET"])
 def show_profile():
     """Display /profile route."""
-    profile_content = application.model.get_users()
-    context = {"username": profile_content[0], 
-               "email": profile_content[1], 
-               "profile_picture": profile_content[2]}
+    users = application.model.get_users()
+    context = {"users": users}
     return flask.render_template("profile.html", **context)

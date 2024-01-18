@@ -8,6 +8,7 @@ import application
 def show_posts():
     """Display /posts/ route."""
     posts_content = application.model.get_posts()
+    # commented out to avoid errors for now
     # context = {"owner": profile_content[0],
     #            "message" : profile_content[1], 
     #            "class": profile_content[2],

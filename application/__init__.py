@@ -20,4 +20,6 @@ app.config.from_envvar('APPLICATION_SETTINGS', silent=True)
 # (Reference http://flask.pocoo.org/docs/patterns/packages/)  We're
 # going to tell pylint and pycodestyle to ignore this coding style violation.
 import application.views  # noqa: E402  pylint: disable=wrong-import-position
+import application.model
+# import application.api
 
