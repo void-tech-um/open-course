@@ -1,6 +1,8 @@
 # A .gitignore file will tell git which files and directories to ignore and
 # not add to version control.
 
+.env
+
 # This template was taken from EECS 485 - we can update this as needed!
 *.pem
 *.db
