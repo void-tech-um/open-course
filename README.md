@@ -7,4 +7,5 @@ Repository for the Open Course project team within VOID Tech at the University o
 ### Running the Application
 #### Start the virtual environment
 ```source env/bin/activate```
+
 ```./bin/ocRun``` to run the application on ```localhost:8000```
