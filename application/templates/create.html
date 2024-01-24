@@ -1,19 +1,82 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
-        <title>Open Course</title>
-    </head>
-    <body>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/events/">Open Events</a>
-            <a href="/posts/">Posts</a>
-            <a href="/profile/">View Profile</a>
-            <a href="/class/">Class</a>
-            <a href="/create/">Create</a>
-        </nav>
-        <h1>Create Page</h1>
-    </body>
-    
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+    <title>Open Course</title>
+</head>
+
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/events/">Open Events</a>
+        <a href="/posts/">Posts</a>
+        <a href="/profile/">View Profile</a>
+        <a href="/class/">Class</a>
+        <a href="/create/">Create</a>
+    </nav>
+
+    <div class="row">
+        <h1>Create Post</h1>
+    </div>
+    <div class="row"><input class="main text box" type="text" placeholder="Group name..." id="myInput"
+            onkeyup="filterFunction()"></div>
+    <div class="row"><input class="desc text box" type="text" placeholder="Description..." id="myInput"
+            onkeyup="filterFunction()"></div>
+
+    <div class="row">
+        <div class="column">
+            <div class="Add Class">
+                <button onclick="classFunction()" class="dropbtn">
+                    <h3>- Add Class</h3>
+                </button>
+                <div id="myDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Search Class" id="myInput" onkeyup="filterFunction()">
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="Add Location">
+                <button onclick="locationFunction()" class="dropbtn">
+                    <h3>- Add Location</h3>
+                </button>
+                <div id="myDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Search Location" id="myInput" onkeyup="filterFunction()">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="column">
+            <h2>+ Add Schedule</h2>
+            <div class="calendar">
+                <!--you will need to import a different link because this links to my google calendar lol-->
+                <iframe
+                    src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FNew_York&showTitle=0&src=Y18wZmIxN2ViODVmMzlkYjZmY2MwNjJlYjU4ODU1NWRkZDg1YTVjMjFjYmJiZjBiMWZiZGNkMzUxY2I1YTY5YjhiQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23E4C441"
+                    style="border:solid 1px #777" width="600" height="350" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </div>
+        <div class="column">
+            <div>
+                <h2>Meeting Times</h2>
+                <p>+ Add Time</p>
+                <h2>Add Tags</h2>
+                <button type="button">Group</button>
+                <button type="button">Material Repository</button>
+                <button type="button"><i>Add Custom Tag</i></button>
+                <h2>Type</h2>
+                <button type="button">Open</button>
+                <button type="button">Closed</button>
+            </div>
+            <div>
+                <button type="button">Publish</button>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
