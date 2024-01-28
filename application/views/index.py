@@ -13,6 +13,10 @@ def show_events():
 def show_posts():
     return render_template('posts.html')
 
+@application.app.route('/otherUsers/')
+def show_otherUsers():
+    return render_template('otherUsers.html')
+
 @application.app.route('/profile/')
 def show_profile():
     return render_template('profile.html')
