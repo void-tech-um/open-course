@@ -20,3 +20,7 @@ def show_profile():
 @application.app.route('/class/')
 def show_class():
     return render_template('class.html')
+
+@application.app.route('/create/')
+def show_create():
+    return render_template('create.html')
