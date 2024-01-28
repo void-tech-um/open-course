@@ -24,3 +24,7 @@ def show_class():
 @application.app.route('/create/')
 def show_create():
     return render_template('create.html')
+
+@application.app.route('/join/')
+def show_join():
+    return render_template('join.html')

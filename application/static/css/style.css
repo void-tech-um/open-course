@@ -39,3 +39,50 @@ nav .icon {
 .column {
   flex: 50%;
 }
+
+/*
+.course p {
+  float: left;
+  padding: 5px 16px;
+}
+
+.course button {
+  float: right;
+  padding: 5px 13px;
+}
+
+.course {
+  display: inline-block;
+}
+*/
+
+.course {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 12px;
+}
+
+.left-content {
+  display: flex;
+}
+
+.course p {
+  margin: 0;
+  /* Remove default margin for paragraphs */
+  padding: 5px 8px;
+  /* Adjust padding as needed */
+}
+
+.course button {
+  padding: 5px 13px;
+}
+
+.department {
+  border-width: 3px;
+  background-color: #ACACAC;
+  /* Slightly grey background color */
+  border-radius: 8px;
+  /* Slight border radius for rounded corners */
+  padding: 5px 10px;
+}
