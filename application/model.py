@@ -47,7 +47,7 @@ def get_users():
     """Get all users."""
     cur = get_db().cursor()
     cur.execute(
-        "SELECT username FROM users"
+        "SELECT * FROM users"
     )
     users = cur.fetchall()
     return users
