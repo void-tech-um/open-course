@@ -13,16 +13,17 @@ def show_events():
 def show_posts():
     return render_template('posts.html')
 
-@application.app.route('/profile/')
-def show_profile():
-    """Show profile page."""
-    user_info = application.model.get_users()
-    context = {"user_info": user_info}
-    return render_template('profile.html', **context)
-
 @application.app.route('/class/')
 def show_class():
     return render_template('class.html')
+
+@application.app.route("/profile/")
+def show_profile():
+    """Display /profile route."""
+    print("hello")
+    users = application.model.get_users()
+    #context = {"users": users}
+    return render_template('profile.html')
 
 @application.app.route('/create/')
 def show_create():
