@@ -15,7 +15,10 @@ def show_posts():
 
 @application.app.route('/profile/')
 def show_profile():
-    return render_template('profile.html')
+    """Show profile page."""
+    user_info = application.model.get_users()
+    context = {"user_info": user_info}
+    return render_template('profile.html', **context)
 
 @application.app.route('/class/')
 def show_class():
