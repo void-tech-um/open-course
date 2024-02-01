@@ -13,6 +13,10 @@ def show_events():
 def show_posts():
     return render_template('posts.html')
 
+@application.app.route('/viewUsers/')
+def show_viewUsers():
+    return render_template('viewUsers.html')
+
 @application.app.route('/class/')
 def show_class():
     return render_template('class.html')
