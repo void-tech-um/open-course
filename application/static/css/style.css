@@ -1,33 +1,88 @@
 /* Add a black background color to the top navigation */
 nav {
-    background-color: #333;
-    overflow: hidden;
+  background-color: #333;
+  overflow: hidden;
 }
 
-  /* Style the links inside the navigation bar */
+/* Style the links inside the navigation bar */
 nav a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
 }
 
-  /* Change the color of links on hover */
+/* Change the color of links on hover */
 nav a:hover {
-    background-color: #ddd;
-    color: black;
+  background-color: #ddd;
+  color: black;
 }
 
-  /* Add an active class to highlight the current page */
+/* Add an active class to highlight the current page */
 nav a.active {
-    background-color: #04AA6D;
-    color: white;
+  background-color: #04AA6D;
+  color: white;
 }
 
-  /* Hide the link that should open and close the topnav on small screens */
+/* Hide the link that should open and close the topnav on small screens */
 nav .icon {
-    display: none;
+  display: none;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+/*
+.course p {
+  float: left;
+  padding: 5px 16px;
+}
+
+.course button {
+  float: right;
+  padding: 5px 13px;
+}
+
+.course {
+  display: inline-block;
+}
+*/
+
+.course {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 12px;
+}
+
+.left-content {
+  display: flex;
+}
+
+.course p {
+  margin: 0;
+  /* Remove default margin for paragraphs */
+  padding: 5px 8px;
+  /* Adjust padding as needed */
+}
+
+.course button {
+  padding: 5px 13px;
+}
+
+.department {
+  border-width: 3px;
+  background-color: #ACACAC;
+  /* Slightly grey background color */
+  border-radius: 8px;
+  /* Slight border radius for rounded corners */
+  padding: 5px 10px;
 }

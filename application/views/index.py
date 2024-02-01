@@ -17,10 +17,22 @@ def show_posts():
 def show_viewUsers():
     return render_template('viewUsers.html')
 
-@application.app.route('/profile/')
-def show_profile():
-    return render_template('profile.html')
-
 @application.app.route('/class/')
 def show_class():
     return render_template('class.html')
+
+@application.app.route("/profile/")
+def show_profile():
+    """Display /profile route."""
+    print("hello")
+    users = application.model.get_users()
+    #context = {"users": users}
+    return render_template('profile.html')
+
+@application.app.route('/create/')
+def show_create():
+    return render_template('create.html')
+
+@application.app.route('/join/')
+def show_join():
+    return render_template('join.html')

@@ -1,18 +1,14 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
-        <title>Open Course</title>
-    </head>
-    <body>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/events/">Open Events</a>
-            <a href="/posts/">Posts</a>
-            <a href="/profile/">View Profile</a>
-            <a href="/class/">Class</a>
-        </nav>
-        <h1>Profile Page</h1>
-    </body>
-    
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<section class="profile">
+    <h1>Profile Page</h1>
+    <div>
+        {% for user in user_info %}
+            <h2>{{ user[0] }}</h2>
+            <h3>{{ user[1] }}</h3>
+            <h3>{{ user[2] }}</h3>
+            <h3>{{ user[3] }}</h3>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
