@@ -1,3 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+body {
+  font-family: "Inter", serif, Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 590;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 590;
+}
+
+button {
+  font-size: 20px;
+  font-weight: 510;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 400;
+}
+
 /* Add a black background color to the top navigation */
 nav {
   background-color: #333;
