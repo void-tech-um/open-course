@@ -1,25 +1,6 @@
-<!DOCTYPE HTML>
-<html>
-
-<!--philip and reiko's code-->
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
-    <title>Open Course</title>
-</head>
-
-<body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/events/">Open Events</a>
-        <a href="/posts/">Posts</a>
-        <a href="/profile/">View Profile</a>
-        <a href="/class/">Class</a>
-        <a href="/create/">Create</a>
-    </nav>
-
+{% extends 'base.html' %}
+{% block content %}
+<section class="create">
     <div class="row">
         <h1>Create Post</h1>
     </div>
@@ -80,6 +61,5 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>
+</section>
+{% endblock %}

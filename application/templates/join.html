@@ -1,23 +1,6 @@
-<!DOCTYPE HTML>
-<html>
-
-<!--philip and reiko's code-->
-
-<head>
-   <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
-   <title>Open Course</title>
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-</head>
-
-<body>
-   <nav>
-      <a href="/">Home</a>
-      <a href="/events/">Open Events</a>
-      <a href="/posts/">Posts</a>
-      <a href="/profile/">View Profile</a>
-      <a href="/class/">Class</a>
-      <a href="/create/">Create</a>
-   </nav>
+{% extends 'base.html' %}
+{% block content %}
+<section class="join">
    <h1>Class Page</h1>
 
    <div class="search-bar">
@@ -96,7 +79,5 @@
          <hr style="width:5;text-align:left;margin-left:0">
       </div>
    </div>
-
-</body>
-
-</html>
+</section>
+{% endblock %}
