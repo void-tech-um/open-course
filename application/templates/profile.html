@@ -1,113 +1,96 @@
 {% extends 'base.html' %}
 {% block content %}
 <section class="profile">
+    <h1>Profile Page</h1>
 
-    <head>
-        <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
-        <title>Open Course</title>
-    </head>
-
-    <body>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/events/">Open Events</a>
-            <a href="/posts/">Posts</a>
-            <a href="/profile/">View Profile</a>
-            <a href="/class/">Class</a>
-            <a href="/create/">Create</a>
-        </nav>
-        <h1>Profile Page</h1>
-
-        <div id="accountSetting">
-            <h2><u>Account setting</u></h2>
-            <div class="row">
-                <div class="column">
-                    <p>Username:</p>
-                    <input type="text" placeholder="Crazysteve12" id="myInput" onkeyup="filterFunction()">
-                    <p>Password:</p>
-                    <input type="text" placeholder="**********" id="myInput" onkeyup="filterFunction()">
-                </div>
-                <div class="column">
-                    <p>profile picture</p>
-                    <button>+</button>
-                </div>
+    <div id="accountSetting">
+        <h2><u>Account setting</u></h2>
+        <div class="row">
+            <div class="column">
+                <p>Username:</p>
+                <input type="text" placeholder="Crazysteve12" id="myInput" onkeyup="filterFunction()">
+                <p>Password:</p>
+                <input type="text" placeholder="**********" id="myInput" onkeyup="filterFunction()">
             </div>
-            <p>Email:</p>
-            <input type="text" placeholder="Username02@gmail.com" id="myInput" onkeyup="filterFunction()">
-            <p>Bio:</p>
-            <input type="text" placeholder="Write a short bio about yourself!" id="myInput" onkeyup="filterFunction()">
-            <p>Phone number:</p>
-            <input type="text" placeholder="(123)-123-1234" id="myInput" onkeyup="filterFunction()">
+            <div class="column">
+                <p>profile picture</p>
+                <button>+</button>
+            </div>
         </div>
+        <p>Email:</p>
+        <input type="text" placeholder="Username02@gmail.com" id="myInput" onkeyup="filterFunction()">
+        <p>Bio:</p>
+        <input type="text" placeholder="Write a short bio about yourself!" id="myInput" onkeyup="filterFunction()">
+        <p>Phone number:</p>
+        <input type="text" placeholder="(123)-123-1234" id="myInput" onkeyup="filterFunction()">
+    </div>
 
-        <div id="nav">
-            <hr style="width:20;text-align:left;margin-right:70px">
-            <a href="#yourPosts" class="btn">Your Posts</a>
-            <hr style="width:20;text-align:left;margin-right:70px">
-            <a href="#accountSetting" class="btn">Account Settings</a>
-            <hr style="width:20;text-align:left;margin-right:70px">
-            <a href="#notification" class="btn">Notification Settings</a>
-            <hr style="width:20;text-align:left;margin-right:70px">
+    <div id="nav">
+        <hr style="width:20;text-align:left;margin-right:70px">
+        <a href="#yourPosts" class="btn">Your Posts</a>
+        <hr style="width:20;text-align:left;margin-right:70px">
+        <a href="#accountSetting" class="btn">Account Settings</a>
+        <hr style="width:20;text-align:left;margin-right:70px">
+        <a href="#notification" class="btn">Notification Settings</a>
+        <hr style="width:20;text-align:left;margin-right:70px">
 
-        </div>
+    </div>
 
-        <div id="yourPosts">
-            <div class="filled_box">
-                <h2>Your Posts</h2>
+    <div id="yourPosts">
+        <div class="filled_box">
+            <h2>Your Posts</h2>
+            <div class="box">
                 <div class="box">
+                    <p style="text-align:left;"><u>Class:
+                            <span style="float:right;">
+                                Time: Monday 3:00pm-4:00pm
+                            </span>
+                        </u></p>
                     <div class="box">
-                        <p style="text-align:left;"><u>Class:
-                                <span style="float:right;">
-                                    Time: Monday 3:00pm-4:00pm
-                                </span>
-                            </u></p>
-                        <div class="box">
-                            <p>Blahhh</p>
-                            <p>#Tag</p>
-                        </div>
+                        <p>Blahhh</p>
+                        <p>#Tag</p>
                     </div>
+                </div>
+                <div class="box">
+                    <p style="text-align:left;"><u>Class:
+                            <span style="float:right;">
+                                Time: MWF 2:00pm-2:30pm
+                            </span>
+                        </u></p>
                     <div class="box">
-                        <p style="text-align:left;"><u>Class:
-                                <span style="float:right;">
-                                    Time: MWF 2:00pm-2:30pm
-                                </span>
-                            </u></p>
-                        <div class="box">
-                            <p>Blahhh</p>
-                            <p>#Tag</p>
-                        </div>
+                        <p>Blahhh</p>
+                        <p>#Tag</p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div id="notification">
-            <h2><u>Notification</u></h2>
-            <p>New member Notification
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-            </p>
+    <div id="notification">
+        <h2><u>Notification</u></h2>
+        <p>New member Notification
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+        </p>
 
-            <p> Alerts
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-            </p>
+        <p> Alerts
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+        </p>
 
-            <p> Allow notification
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-            </p>
+        <p> Allow notification
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+        </p>
 
-        </div>
+    </div>
 
-    </body>
 
-    </html>
 </section>
 {% endblock %}
