@@ -24,7 +24,6 @@ def show_class():
 @application.app.route("/profile/")
 def show_profile():
     """Display /profile route."""
-    print("hello")
     users = application.model.get_users()
     context = {"users": users}
     return render_template('profile.html', **context)
