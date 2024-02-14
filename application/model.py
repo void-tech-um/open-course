@@ -60,7 +60,7 @@ def get_user(username):
         "SELECT * FROM users WHERE username = %s",
         (username,)
     )
-    user = cur.fetchone()
+    user = cur.fetchall()
     return user
 
 def get_posts():

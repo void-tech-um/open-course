@@ -3,11 +3,11 @@
 <section class="profile">
     <h1>Profile Page</h1>
     <div>
-        {% for user in users %}
-            <h2>{{ user[0] }}</h2>
-            <h3>{{ user[1] }}</h3>
-            <h3>{{ user[2] }}</h3>
-            <h3>{{ user[3] }}</h3>
+        {% for user_info in user %}
+            <h2>{{ user_info[0] }}</h2>
+            <h3>{{ user_info[1] }}</h3>
+            <h3>{{ user_info[2] }}</h3>
+            <h3>{{ user_info[3] }}</h3>
         {% endfor %}
     </div>
     <section class="profile">
