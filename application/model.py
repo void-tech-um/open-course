@@ -52,11 +52,12 @@ def get_users():
     users = cur.fetchall()
     return users
 
+# Get all information for a specific user for their profile page
 def get_user(username):
-    """Get user."""
+    """Get all information on a single user."""
     cur = get_db().cursor()
     cur.execute(
-        "SELECT username FROM users WHERE username = ?",
+        "SELECT * FROM users WHERE username = %s",
         (username,)
     )
     user = cur.fetchone()
@@ -72,34 +73,74 @@ def get_posts():
     return posts
 
 def get_post(post_id):
-    """Get post."""
+    """Get all information on post using its post_id."""
     cur = get_db().cursor()
     cur.execute(
-        "SELECT post_id FROM posts WHERE post_id = ?",
+        "SELECT * FROM posts WHERE post_id = %s",
         (post_id,)
     )
     post = cur.fetchone()
     return post
 
-def get_profile_content(username):
-    """Get profile content."""
+def get_condensed_post_info():
+    """Get a condensed version of post information."""
     cur = get_db().cursor()
     cur.execute(
-        "SELECT username, email, profile_picture FROM users WHERE username = ?", 
+        "SELECT title, username, course_code, created FROM posts"
+    )
+    posts = cur.fetchall()
+    return posts
+
+# Get all posts for a specific user for their profile page
+def get_users_posts(username):
+    """Get all posts from a specific user."""
+    cur = get_db().cursor()
+    cur.execute(
+        "SELECT * FROM posts WHERE username = %s",
         (username,)
     )
-    profile_content = cur.fetchall()
-    return profile_content
+    posts = cur.fetchall()
+    return posts
 
-def get_post_user(owner):
-    """Get post from user."""
+def get_all_tags(): 
+    """Get all tags."""
     cur = get_db().cursor()
     cur.execute(
-        "SELECT message,class,created FROM posts WHERE owner = ?",
-        (owner,)
+        "SELECT * FROM tags"
     )
-    posts = cur.fetchone()
-    return posts
+    tags = cur.fetchall()
+    return tags
+
+# Get tags for a specific posts (likely for viewing a post and its associated filters)
+def get_tags_for_post(post_id):
+    """Get all tags for a specific post."""
+    cur = get_db().cursor()
+    cur.execute(
+        "SELECT t.tag_name FROM filters f JOIN tags t ON f.tag_id = t.tag_id WHERE f.post_id = %s",
+        (post_id,)
+    )
+    tags = cur.fetchall()
+    return tags
+
+def get_all_course_codes():
+    """Get all course codes."""
+    cur = get_db().cursor()
+    cur.execute(
+        "SELECT * FROM course_codes"
+    )
+    course_codes = cur.fetchall()
+    return course_codes
+
+def get_courses_of_user(username):
+    """Get all course codes."""
+    cur = get_db().cursor()
+    cur.execute(
+        "SELECT * FROM enrollments WHERE username = %s",
+        (username,)
+    )
+    course_codes = cur.fetchall()
+    return course_codes
+
 
 
 class InvalidUsage(Exception):
