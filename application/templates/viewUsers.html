@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Open course</title>
-        <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
-        <link rel="stylesheet"
-  `         href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    </head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+<section class = "view-users">
     <h1>Username</h1>
     <h2>
         (123)123-1234 <div class="bx bx-phone" id="menu-icon"></div> <br> 
@@ -33,5 +27,6 @@
         est laborum.
     </p>
 
-</body>
-</html>
+</section>
+
+{% endblock %}
