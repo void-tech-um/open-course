@@ -9,5 +9,6 @@ def show_profile(username):
                "email": user[1],
                "phone_num": user[2],
                "profile_picture": user[3],
+               "bio": user[4],
                }
     return render_template('profile.html', **context)

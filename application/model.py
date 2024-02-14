@@ -61,7 +61,6 @@ def get_user(username):
         (username,)
     )
     user = cur.fetchone()
-    
     return user
 
 def get_posts():
