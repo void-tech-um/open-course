@@ -43,6 +43,8 @@ def close_db(error):
     if db is not None:
         db.close()
 
+# USER RELATED DB CALLS --------------------------------------------------------------------------
+
 def get_users():
     """Get all users."""
     cur = get_db().cursor()
@@ -62,6 +64,8 @@ def get_user(username):
     )
     user = cur.fetchone()
     return user
+
+# POST RELATED DB CALLS --------------------------------------------------------------------------
 
 def get_posts():
     """Get all posts."""
@@ -102,6 +106,8 @@ def get_users_posts(username):
     posts = cur.fetchall()
     return posts
 
+# TAG RELATED DB CALLS --------------------------------------------------------------------------
+
 def get_all_tags(): 
     """Get all tags."""
     cur = get_db().cursor()
@@ -121,6 +127,8 @@ def get_tags_for_post(post_id):
     )
     tags = cur.fetchall()
     return tags
+
+# COURSE RELATED DB CALLS ------------------------------------------------------------------------
 
 def get_all_course_codes():
     """Get all course codes."""
