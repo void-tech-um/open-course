@@ -29,6 +29,7 @@ export default function App() {
                 <button onClick={() => setActiveTab('StudyGroupTab')}>Study Groups</button>
                 <button onClick={() => setActiveTab('ResourcesTab')}>Resources</button>
             </div>
+            <hr/>
             <div>
                 {activeTab === 'StudyGroupTab' && <StudyGroupTab />}
                 {activeTab === 'ResourcesTab' && <ResourcesTab />}

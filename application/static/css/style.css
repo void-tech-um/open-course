@@ -74,6 +74,14 @@ nav .icon {
 }
 
 .tabStyling {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+
+.tabStyling button {
+  background-color: white;
   margin: 20px;
   border: none;
   color: black;
