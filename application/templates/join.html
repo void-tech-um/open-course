@@ -10,73 +10,19 @@
    <div class="row">
       <div class="column">
          <h2>Your Courses</h2>
-         <div class="course">
-            <div class="left-content">
-               <p class="department">SI </p>
-               <p> 339</p>
+         {% for course in courses %}
+            <div class="course">
+               <div class="left-content">
+                  <!-- <script>
+                     var letters = course.match(/[a-zA-Z]+/)[0];
+                  </script> -->
+                  <p class="department">{{course[2]}}</p>
+                  <!--<p> 250</p>-->
+               </div>
+               <button type="button">→</button>
             </div>
-            <button type="button">→</button>
-         </div>
-         <hr style="width:5;text-align:left;margin-left:0">
-         <div class="course">
-            <div class="left-content">
-               <p class="department">EECS </p>
-               <p> 183</p>
-            </div>
-            <button type="button">→</button>
-         </div>
-         <hr style="width:5;text-align:left;margin-left:0">
-         <div class="course">
-            <div class="left-content">
-               <p class="department">SI </p>
-               <p> 422</p>
-            </div>
-            <button type="button">→</button>
-         </div>
-         <hr style="width:5;text-align:left;margin-left:0">
-         <div class="course">
-            <div class="left-content">
-               <p class="department">SPANISH </p>
-               <p> 231</p>
-            </div>
-            <button type="button">→</button>
-         </div>
-         <hr style="width:5;text-align:left;margin-left:0">
-         <div class="course">
-            <div class="left-content">
-               <p class="department">STATS </p>
-               <p> 250</p>
-            </div>
-            <button type="button">→</button>
-         </div>
-         <hr style="width:5;text-align:left;margin-left:0">
-      </div>
-      <div class="column">
-         <h2>Recommended</h2>
-         <div class="course">
-            <div class="left-content">
-               <p class="department"> SI </p>
-               <p> 422</p>
-            </div>
-            <button type="button">+</button>
-         </div>
-         <hr style="width:5;text-align:left;margin-left:0">
-         <div class="course">
-            <div class="left-content">
-               <p class="department">SI </p>
-               <p> 422</p>
-            </div>
-            <button type="button">+</button>
-         </div>
-         <hr style="width:5;text-align:left;margin-left:0">
-         <div class="course">
-            <div class="left-content">
-               <p class="department">STATS </p>
-               <p> 205</p>
-            </div>
-            <button type="button">+</button>
-         </div>
-         <hr style="width:5;text-align:left;margin-left:0">
+            <hr style="width:5;text-align:left;margin-left:0">
+         {% endfor %}
       </div>
    </div>
 </section>
