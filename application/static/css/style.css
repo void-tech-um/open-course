@@ -73,14 +73,15 @@ nav .icon {
   font-weight: bold;
 }
 
-.tabStyling {
+.tab-styling {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   margin-top: 2em;
   margin-bottom: 0.5em;
 }
 
-.tabStyling button {
+.tab-styling button {
   background-color: white;
   margin: 20px;
   border: none;
@@ -92,6 +93,11 @@ nav .icon {
   font-size: 28px;
   margin: 4px 2px;
   cursor: pointer;
+}
+
+.active-tab  {
+  border-bottom: 2px;
+  border-bottom-color: #045BC0;
 }
 
 .row {

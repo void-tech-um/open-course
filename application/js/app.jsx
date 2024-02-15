@@ -25,9 +25,9 @@ export default function App() {
                 repeat={Infinity}
                 />
             </div>
-            <div className="tabStyling">
-                <button onClick={() => setActiveTab('StudyGroupTab')}>Study Groups</button>
-                <button onClick={() => setActiveTab('ResourcesTab')}>Resources</button>
+            <div className="tab-styling">
+                <button className={activeTab === 'StudyGroupTab' ? 'active-tab' : ''} onClick={() => setActiveTab('StudyGroupTab')}>Study Groups</button>
+                <button className={activeTab === 'ResourcesTab' ? 'active-tab' : ''} onClick={() => setActiveTab('ResourcesTab')}>Resources</button>
             </div>
             <hr/>
             <div>
