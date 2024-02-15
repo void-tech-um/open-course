@@ -18,6 +18,11 @@ module.exports = {
   module: {
     rules: [
       {
+        // CSS file support
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
         // Test for js or jsx files
         test: /\.jsx?$/,
         // Exclude external modules from loader tests

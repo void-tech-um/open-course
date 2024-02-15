@@ -9,6 +9,7 @@ body {
 h1 {
   font-size: 32px;
   font-weight: bold;
+  margin: 0;
 }
 
 h2 {
@@ -31,38 +32,70 @@ label {
   font-weight: 400;
 }
 
-/* Add a black background color to the top navigation */
 nav {
-  background-color: #333;
-  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-/* Style the links inside the navigation bar */
 nav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
+  color: #045BC0;
   text-align: center;
-  padding: 14px 16px;
+  padding: 1em;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 18px;
+  font-weight: 800;
+  white-space: nowrap;
 }
 
 /* Change the color of links on hover */
 nav a:hover {
-  background-color: #ddd;
-  color: black;
+  text-decoration: underline;
 }
 
-/* Add an active class to highlight the current page */
-nav a.active {
-  background-color: #04AA6D;
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  width: 35px;
+}
+
+.navbar-logo img {
+  margin-right: 5px; /* Adjust as needed */
+}
+
+.feed-banner {
+  background-color: #045BC0;
   color: white;
+  padding: 2em;
+  font-weight: bold;
 }
 
-/* Hide the link that should open and close the topnav on small screens */
-nav .icon {
-  display: none;
+.tab-styling {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+
+.tab-styling button {
+  background-color: white;
+  margin: 20px;
+  border: none;
+  color: black;
+  padding: 10px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 28px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.active-tab  {
+  border-bottom: 2px;
+  border-bottom-color: #045BC0;
 }
 
 .row {
