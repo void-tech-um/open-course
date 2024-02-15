@@ -15,3 +15,4 @@ npm install --save-dev babel-loader
 npm install -save-dev @babel/preset-env @babel/preset-react
 npm install -save-dev @babel/plugin-transform-runtime
 npm install react react-dom
+npm install react-type-animation

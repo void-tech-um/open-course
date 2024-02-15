@@ -1,6 +1,5 @@
 """Views, one for each Insta485 page."""
 from application.views.index import show_index
-from application.views.events import show_events
 from application.views.posts import show_posts
 from application.views.course import show_course
 from application.views.create import show_create

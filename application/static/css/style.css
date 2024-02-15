@@ -65,6 +65,11 @@ nav .icon {
   display: none;
 }
 
+.feed-banner {
+  background-color: #045BC0;
+  color: white;
+}
+
 .row {
   display: flex;
 }
