@@ -140,7 +140,7 @@ def get_all_course_codes():
     return course_codes
 
 def get_courses_of_user(username):
-    """Get all course codes."""
+    """Get all enrollments for a specific user."""
     cur = get_db().cursor()
     cur.execute(
         "SELECT * FROM enrollments WHERE username = %s",
