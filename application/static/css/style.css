@@ -32,22 +32,19 @@ label {
   font-weight: 400;
 }
 
-/* Add a black background color to the top navigation */
 nav {
-  background-color: white;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
-/* Style the links inside the navigation bar */
 nav a {
-  float: left;
-  display: block;
   color: #045BC0;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 800;
+  margin-right: 20px; /* Adjust as needed for spacing between links */
 }
 
 /* Change the color of links on hover */
@@ -55,15 +52,15 @@ nav a:hover {
   text-decoration: underline;
 }
 
-/* Add an active class to highlight the current page */
-nav a.active {
-  background-color: #04AA6D;
-  color: white;
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  width: 35px;
 }
 
-/* Hide the link that should open and close the topnav on small screens */
-nav .icon {
-  display: none;
+.navbar-logo img {
+  margin-right: 5px; /* Adjust as needed */
 }
 
 .feed-banner {
