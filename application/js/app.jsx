@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { TypeAnimation } from 'react-type-animation';
 import '../static/css/style.css';
-import StudyGroupFeed from "./studygroupfeed";
+import GroupFeed from "./groupfeed";
 import ResourceFeed from "./resourcefeed";
 
 export default function App() {
@@ -44,7 +44,7 @@ function StudyGroupTab() {
     <div>
       <h2>Study Groups</h2>
       <p>This is the content for Study Groups.</p>
-      <StudyGroupFeed></StudyGroupFeed>
+      <GroupFeed></GroupFeed>
     </div>
   );
 }

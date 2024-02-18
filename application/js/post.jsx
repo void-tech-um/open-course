@@ -3,9 +3,8 @@ import PropTypes from "prop-types";
 import moment from "moment";
 
 // STUDY GROUP POST COMPONENT
-// TODO: RENAME POST1 TO BETTER NAME
 
-export default function Post1(props) {
+export default function Post(props) {
 const { postid } = props;
 
 const [post, setPost] = useState([]);

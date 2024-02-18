@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Post1 from "./post1";
+import '../static/css/style.css';
+import Post from "./post";
 
-export default function StudyGroupFeed() {
+export default function GroupFeed() {
     const [posts, setPosts] = useState([]);
     const [morePosts, setMorePosts] = useState(false);
     const [url, setUrl] = useState("/api/v1/posts/");
@@ -54,6 +55,7 @@ export default function StudyGroupFeed() {
 
     return (
         <div>
+        <h1>STUDY GROUP FEED</h1>
         <InfiniteScroll
             dataLength={posts.length}
             // provide a fcn to be called to get the new posts
@@ -68,10 +70,10 @@ export default function StudyGroupFeed() {
         >
             <div>
             {posts.map((postid) => (
-                <Post1 key={postid} postid={postid} />
+                <Post key={postid} postid={postid} />
             ))}
             </div>
         </InfiniteScroll>
         </div>
     );
-    }
+}
