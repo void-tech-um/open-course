@@ -43,6 +43,15 @@ def close_db(error):
     if db is not None:
         db.close()
 
+# API RELATED CALLS ------------------------------------------------------------------------------
+def get_services():
+    """Return services."""
+    context = {
+        "posts": "/api/v1/posts/",
+        "url": "/api/v1/"
+    }
+    return flask.jsonify(context)
+
 # USER RELATED DB CALLS --------------------------------------------------------------------------
 
 def get_users():
