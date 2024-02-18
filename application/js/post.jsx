@@ -64,7 +64,7 @@ const handleChange = (event) => {
 if (postHasRendered) {
     return (
     <div>
-        
+        <h1>Post Title</h1>
     </div>
     );
 }
