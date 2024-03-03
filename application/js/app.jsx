@@ -60,8 +60,6 @@ export default function App() {
 function StudyGroupTab() {
   return (
     <div>
-      <h2>Study Groups</h2>
-      <p>This is the content for Study Groups.</p>
       <GroupFeed></GroupFeed>
     </div>
   );
@@ -70,8 +68,6 @@ function StudyGroupTab() {
 function ResourcesTab() {
   return (
     <div>
-      <h2>Class Resources</h2>
-      <p>This is the content for Resources.</p>
       <ResourceFeed></ResourceFeed>
     </div>
   );

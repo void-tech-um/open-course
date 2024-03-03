@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import '../static/css/style.css';
-import Post from "./post";
+import Resource from "./resource";
 
 export default function ResourceFeed() {
     const [posts, setPosts] = useState([]);
@@ -55,8 +55,13 @@ export default function ResourceFeed() {
 
     return (
         <div>
-        <h1>RESOURCE FEED</h1>
-        <InfiniteScroll
+            <div className="feed-container">
+                <Resource></Resource>
+                <Resource></Resource>
+                <Resource></Resource>
+                <Resource></Resource>
+            </div>
+        {/* <InfiniteScroll
             dataLength={posts.length}
             // provide a fcn to be called to get the new posts
             next={() => setBooleanFetch(true)}
@@ -73,7 +78,7 @@ export default function ResourceFeed() {
                 <Post key={postid} postid={postid} />
             ))}
             </div>
-        </InfiniteScroll>
+        </InfiniteScroll> */}
         </div>
     );
 }

@@ -220,21 +220,6 @@ input:checked+.slider:before {
   margin-left: 50px;
 }
 
-
-.post{
-  display: flex;
-  justify-content: space-between;
-  margin-top: 5%;
-  border: 2px;
-  border-style: solid none;
-}
-
-.post-or-group, .tags, .courseid{
-  display: inline;
-  margin-top: 3%;
-  margin-bottom: 3%;
-}
-
 h4{
   margin-top: 3%;
   margin-bottom: 3%;
@@ -283,12 +268,11 @@ h4{
 }
 
 /* Post Component */
-.post-border {
-  width: 382px;
-  height: 585px;
+.post {
+  width: 25%;
   background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow */
-  margin-top: 20px;
+  margin: 2%;
 }
 
 .user_name{
@@ -368,9 +352,9 @@ h4{
 .resource{
   border-radius: 25px;
   border: 1px solid rgba(185, 185, 185, 1);
-  padding: 20px;
-  width: 445px;
-  height: 200px;
+  padding: 10px;
+  margin: 10px;
+  width: 40%;
 }
 
 .resource-title{
@@ -401,6 +385,14 @@ h4{
   margin-left: 0px;
   max-width: 445px;
   line-height: 28px;
+}
+
+.feed-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  justify-content: center;
 }
 
 .check-out-link {

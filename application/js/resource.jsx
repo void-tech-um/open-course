@@ -63,17 +63,17 @@ const handleChange = (event) => {
 
 //if (postHasRendered) {
     return (
-    <div class = "resource"> 
-        <div class = "resource-title">
+    <div class="resource"> 
+        <div class="resource-title">
             <h1>Resource Title</h1>
         </div>
-        <div class ="course-title">
+        <div class="course-title">
             <p>COURSE TITLE</p>
         </div>
-        <div class = "resource-info">
+        <div class="resource-info">
             <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
-        <div class = "check-out-link">
+        <div class="check-out-link">
         <p>
             <a /*LINK TO CHECK IT OUT*/>Check it out</a>
         </p>
