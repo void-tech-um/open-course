@@ -93,11 +93,6 @@ nav a:hover {
   cursor: pointer;
 }
 
-.active-tab  {
-  border-bottom: 2px;
-  border-bottom-color: #045BC0;
-}
-
 .row {
   display: flex;
 }
@@ -416,3 +411,13 @@ h4{
   line-height: 28px;
 }
 
+.active-tab {
+  font-weight: bold;
+  color: #000;
+  border-bottom: 2px solid #045BC0;
+}
+
+/* Add a class for underlining text */
+.underline-title {
+  text-decoration: underline;
+}

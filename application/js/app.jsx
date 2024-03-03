@@ -5,7 +5,17 @@ import GroupFeed from "./groupfeed";
 import ResourceFeed from "./resourcefeed";
 
 export default function App() {
-    const [activeTab, setActiveTab] = useState('StudyGroupTab');
+  const [activeTab, setActiveTab] = useState('StudyGroupTab');
+  const tabs = {
+        StudyGroupTab: {
+            title: "Study Groups",
+            component: <StudyGroupTab />,
+        },
+        ResourcesTab: {
+            title: "Resources",
+            component: <ResourcesTab />,
+        },
+    };
 
     return (
         <div>
@@ -27,13 +37,21 @@ export default function App() {
                 />
             </div>
             <div className="tab-styling">
-                <button className={activeTab === 'StudyGroupTab' ? 'active-tab' : ''} onClick={() => setActiveTab('StudyGroupTab')}>Study Groups</button>
-                <button className={activeTab === 'ResourcesTab' ? 'active-tab' : ''} onClick={() => setActiveTab('ResourcesTab')}>Resources</button>
+                {/* Dynamically render tab buttons */}
+                {Object.keys(tabs).map((tabKey) => (
+                    <button
+                        key={tabKey}
+                        className={activeTab === tabKey ? 'active-tab' : ''}
+                        onClick={() => setActiveTab(tabKey)}
+                    >
+                        {tabs[tabKey].title}
+                    </button>
+                ))}
             </div>
             <hr/>
+            {/* Dynamically render the active tab's content */}
             <div>
-                {activeTab === 'StudyGroupTab' && <StudyGroupTab />}
-                {activeTab === 'ResourcesTab' && <ResourcesTab />}
+                {tabs[activeTab].component}
             </div>
         </div>
     );
