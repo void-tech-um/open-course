@@ -86,7 +86,6 @@ nav a:hover {
   color: black;
   padding: 10px 24px;
   text-align: center;
-  text-decoration: none;
   display: inline-block;
   font-size: 28px;
   margin: 4px 2px;
@@ -411,13 +410,7 @@ h4{
   line-height: 28px;
 }
 
-.active-tab {
-  font-weight: bold;
-  color: #000;
-  border-bottom: 2px solid #045BC0;
+.tab-styling .active-tab {
+  border-bottom: 4px solid #045BC0;
 }
 
-/* Add a class for underlining text */
-.underline-title {
-  text-decoration: underline;
-}
