@@ -41,3 +41,12 @@ CREATE TABLE filters (
     FOREIGN KEY (post_id) REFERENCES posts(post_id) ON DELETE CASCADE,
     FOREIGN KEY (tag_id) REFERENCES tags(tag_id) ON DELETE CASCADE
 );
+
+
+CREATE TABLE study_group_enrollments (
+    study_group_id SERIAL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    post_id INTEGER NOT NULL,
+    FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE,
+    FOREIGN KEY (post_id) REFERENCES posts(post_id) ON DELETE CASCADE
+);
