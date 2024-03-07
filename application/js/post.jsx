@@ -63,7 +63,7 @@ const handleChange = (event) => {
 
 //if (postHasRendered) {
     return (
-    <div class = "post">
+    <div class = "post-border">
         <div class = "user-info">
             <p class = "user_name">UserName</p>
             <p class = "email">UmichEmail</p>
@@ -88,7 +88,6 @@ const handleChange = (event) => {
         <div class = "join-section">
             <h2 class = "join-button">Join</h2>
         </div>
-
     </div>
     );
 //}
