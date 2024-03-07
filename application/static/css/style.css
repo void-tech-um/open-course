@@ -27,6 +27,10 @@ button {
   font-weight: 510;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 label {
   font-size: 14px;
   font-weight: 400;
