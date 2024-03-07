@@ -297,23 +297,35 @@ h4{
   margin-top: 20px;
 }
 
+.circle {
+  width: 70px; /* Specify the width */
+  height: 70px; /* Specify the height */
+  background-color: rgb(160, 157, 157); /* Just for demonstration */
+  border-radius: 50%; /* Make it a circle */
+}
+
 .user_name{
   font-family: Inter;
   color: black;
   font-size: 16px;
+  margin: 0;
+  display: flex; 
+  align-items: center;
 }
 
 .email{
   font-family: Inter; color: gray;
-  font-size: 12px
+  font-size: 12px;
+  clear: both;
 }
 
 .star {
   visibility: hidden;
   font-size: 30px;
   cursor: pointer;
-  margin-left: 350px;
-}
+  margin-left: 300px;
+}   
+
 .star:before {
  content: "\2605";
  position: absolute;
@@ -336,6 +348,18 @@ h4{
   display: inline-block;
 }
 
+.align-with-icon {
+  margin-left: 24px;
+}
+
+.tag-spacing {
+  margin-left: 15px;
+}
+
+.profile-right {
+  margin-left: 30px;
+}
+
 .study-group {
   font-family: Inter; color: gray;
   font-size: 12px;
@@ -350,11 +374,28 @@ h4{
   letter-spacing: 0.2px;
 }
 
+
+.date-room {
+  color: #2D3142;
+  line-height: 14px;
+  letter-spacing: 0.23px;
+  font-size: 16;
+  margin-top: 30px;
+}
+
+.post-time-address {
+  line-height: 17px;
+  letter-spacing: 0.2px;
+  font-size: 14px;
+  color: #9C9EB9;
+}
+
 .add-to-calendar {
   font-family: "Inter";
   color: #045BC0;
   line-height: 4px;
   letter-spacing: 0.2px;
+  font-size: 14px;
 }
 
 .join-button {
@@ -368,8 +409,9 @@ h4{
   cursor: pointer;
   text-align: center;
   line-height: 39px; /* Center the text vertically */
+  margin-top: 35px;
+  margin-left: 200px;
 }
-
 /* Resource Component */
 .resource{
   border-radius: 25px;
