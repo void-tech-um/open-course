@@ -65,7 +65,7 @@ const handleChange = (event) => {
     return (
     <div class="resource"> 
         <div class="resource-title">
-            <h1>Resource Title</h1>
+            <h2>Resource Title</h2>
         </div>
         <div class="course-title">
             <p>COURSE TITLE</p>

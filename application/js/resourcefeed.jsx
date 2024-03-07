@@ -55,14 +55,19 @@ export default function ResourceFeed() {
 
     return (
         <div>
-            <div className="post-box">
+            <div className="resource-box">
                 <img src="/static/assets/logo.png" id="pfp" alt="pfp"></img>
                 <input name="enterTitle" id="enter-title" placeholder="Enter Title" />
                 <input name="tellMore" id="tell-me-more" placeholder="Tell me more about your resource post..." />
                 <div className="icons">
-                    <button>Upload</button>
-                    <button>Tags</button>
-                    <button id="select-course">Select Course</button>
+                    <button><img src="/static/assets/upload.svg" alt="upload filter"></img>Upload</button>
+                    <button><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
+                    <select className="custom-select">
+                        <option value="" selected>Select Course</option>
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                    </select>
                     <button id="post">Post</button>
                 </div>
             </div>

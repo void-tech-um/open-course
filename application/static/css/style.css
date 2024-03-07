@@ -27,7 +27,7 @@ button {
   font-weight: 510;
 }
 
-button:hover {
+a:hover, button:hover {
   cursor: pointer;
 }
 
@@ -364,11 +364,11 @@ h4{
 
 /* Resource Component */
 .resource {
-  border-radius: 25px;
+  border-radius: 12px;
   border: 1px solid rgba(185, 185, 185, 1);
   padding: 20px;
-  width: 445px;
-  height: 200px;
+  margin: 20px;
+  width: 40%;
 }
 
 .resource-title {
@@ -378,7 +378,6 @@ h4{
   font-weight: 400;
   font-size: 24px;
   font-weight: 340;
-  padding-bottom: 10px;
 }
 
 .course-title {
@@ -397,13 +396,13 @@ h4{
   line-height: 28px;
 }
 
-.post-box {
+.resource-box {
   display: grid;
   grid-template-columns: 30% 50% 20%;
 }
 
-.post-box #enter-title,
-.post-box #tell-me-more {
+.resource-box #enter-title,
+.resource-box #tell-me-more {
   grid-column: 2/span 1;
   border-radius: 5px;
   border-color: rgb(220, 220, 220);
@@ -413,7 +412,7 @@ h4{
   margin: 5px;
 }
 
-.post-box #pfp {
+.resource-box #pfp {
   grid-column: 1/span 1;
   align-self: start;
   justify-self: end;
@@ -421,7 +420,7 @@ h4{
   width: 20%;
 }
 
-.post-box #tell-me-more {
+.resource-box #tell-me-more {
   grid-row: 2/span 1;
   height: 80px;
 }
@@ -455,13 +454,13 @@ h4{
   border-bottom: 4px solid #045BC0;
 }
 
-.post-box {
+.resource-box {
   display: grid;
   grid-template-columns: 30% 50% 20%;
 }
 
-.post-box #enter-title,
-.post-box #tell-me-more {
+.resource-box #enter-title,
+.resource-box #tell-me-more {
   grid-column: 2/span 1;
   border-radius: 5px;
   border-color: rgb(220, 220, 220);
@@ -471,7 +470,7 @@ h4{
   margin: 5px;
 }
 
-.post-box #pfp {
+.resource-box #pfp {
   grid-column: 1/span 1;
   align-self: start;
   justify-self: end;
@@ -479,7 +478,7 @@ h4{
   width: 20%;
 }
 
-.post-box #tell-me-more {
+.resource-box #tell-me-more {
   grid-row: 2/span 1;
   height: 80px;
 }
@@ -513,4 +512,10 @@ h4{
   background: #045BC0;
   border-radius: 20px;
   padding: 5px 30px;
+}
+
+.custom-select {
+  color: #045BC0; /* Set the font color to blue */
+  border: none; /* Remove the border */
+  outline: none; /* Remove the outline */
 }
