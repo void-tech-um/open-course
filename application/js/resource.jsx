@@ -4,7 +4,7 @@ import moment from "moment";
 import '../static/css/style.css';
 // STUDY GROUP POST COMPONENT
 
-export default function Post(props) {
+export default function Resource(props) {
 const { postid } = props;
 
 const [post, setPost] = useState([]);
@@ -63,30 +63,20 @@ const handleChange = (event) => {
 
 //if (postHasRendered) {
     return (
-    <div class = "post-border">
-        <div class = "user-info">
-            <p class = "user_name">UserName</p>
-            <p class = "email">UmichEmail</p>
-            <input class="star" type="checkbox" title="bookmark page" checked/><br/>
+    <div class = "resource"> 
+        <div class = "resource-title">
+            <h1>Resource Title</h1>
         </div>
-        <div class = "tags">
-            <button class = "info-tag" type = "button">Tag</button>
-            <button class = "info-tag" type = "button">Tag</button>
-            <button class = "info-tag" type = "button">Tag</button>
-            <button class = "info-tag" type = "button">Tag</button>
+        <div class ="course-title">
+            <p>COURSE TITLE</p>
         </div>
-        <div class = "post-info">
-            <p class = "study-group">STUDY GROUP</p>
-            <h1>TITLE</h1>
-            <p class = "brief-descript">Brief Description</p>
-            <p>Date</p>
-            <p class = "label">time</p>
-            <p class = "add-to-calendar">Add to calendar</p>
-            <p>Room</p>
-            <p>Address</p>
+        <div class = "resource-info">
+            <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
-        <div class = "join-section">
-            <h2 class = "join-button">Join</h2>
+        <div class = "check-out-link">
+        <p>
+            <a /*LINK TO CHECK IT OUT*/>Check it out</a>
+        </p>
         </div>
 
     </div>
@@ -95,6 +85,3 @@ const handleChange = (event) => {
 return <div>Loading...</div>;
 }
 
-Post.propTypes = {
-postid: PropTypes.number.isRequired,
-};
