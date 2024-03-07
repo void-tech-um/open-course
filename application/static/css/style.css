@@ -27,6 +27,16 @@ button {
   font-weight: 510;
 }
 
+input, textarea {
+  font-family: "Inter", serif, Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+a:hover, button:hover {
+  cursor: pointer;
+}
+
 label {
   font-size: 14px;
   font-weight: 400;
@@ -204,11 +214,11 @@ input {
 }
 
 input:checked+.slider {
-  background-color: #2196F3;
+  background-color: #045BC0;
 }
 
 input:focus+.slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #045BC0;
 }
 
 input:checked+.slider:before {
@@ -269,11 +279,13 @@ h4{
 }
 
 /* Post Component */
-.post {
-  width: 25%;
+.post-border {
+  width: 382px;
+  height: 585px;
   background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow */
-  margin: 2%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  /* Shadow */
+  margin: 1%;
 }
 
 .user_name {
@@ -309,7 +321,7 @@ h4{
 .info-tag {
   padding: 5px 13px;
   font-size: 12px;
-  border: 1px solid #008CBA;
+  border: 1px solid #045BC0;
   background-color: white;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -342,14 +354,14 @@ h4{
   letter-spacing: 0.2px;
 }
 
-.join-button {
+.rounded-blue-button {
   width: 115px;
   height: 39px;
-  background-color: #2E64A4;
+  background-color: #045BC0;
   color: white;
   font-size: 16px;
   border: none;
-  border-radius: 5px;
+  border-radius: 999px;
   cursor: pointer;
   text-align: center;
   line-height: 39px;
@@ -358,10 +370,10 @@ h4{
 
 /* Resource Component */
 .resource {
-  border-radius: 25px;
+  border-radius: 12px;
   border: 1px solid rgba(185, 185, 185, 1);
-  padding: 10px;
-  margin: 10px;
+  padding: 20px;
+  margin: 20px;
   width: 40%;
 }
 
@@ -372,7 +384,6 @@ h4{
   font-weight: 400;
   font-size: 24px;
   font-weight: 340;
-  padding-bottom: 10px;
 }
 
 .course-title {
@@ -382,6 +393,41 @@ h4{
   font-weight: 700;
   margin-top: -15px;
   margin-bottom: 0px;
+}
+
+.check-out-link {
+  font-family: "Inter";
+  color: rgba(4, 91, 192, 1);
+  font-size: 16px;
+  line-height: 28px;
+}
+
+.new-post-box {
+  display: grid;
+  grid-template-columns: 30% 50% 20%;
+}
+
+.new-post-box #enter-title,
+.new-post-box #tell-me-more {
+  grid-column: 2/span 1;
+  border-radius: 5px;
+  border-color: rgb(220, 220, 220);
+  border-style: solid;
+  width: 100%;
+  height: 30px;
+  margin: 5px;
+}
+
+.new-post-box #pfp {
+  grid-column: 1/span 1;
+  align-self: start;
+  justify-self: end;
+  border-radius: 50%;
+  width: 15%;
+}
+
+.new-post-box #tell-me-more {
+  grid-row: 2/span 1;
 }
 
 .resource-info {
@@ -399,17 +445,48 @@ h4{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin: 20px;
   justify-content: center;
-}
-
-.check-out-link {
-  font-family: "Inter";
-  color: rgba(4, 91, 192, 1);
-  font-size: 16px;
-  line-height: 28px;
 }
 
 .tab-styling .active-tab {
   border-bottom: 4px solid #045BC0;
+}
+
+.filters {
+  grid-row: 3/span 1;
+  grid-column: 2/span1;
+  align-items: end;
+  margin: 10px;
+}
+
+.filters img {
+  display: inline-block;
+  margin: 5px;
+}
+
+.transparent-button {
+  display: inline-block;
+  margin: 0px 5px 5px 5px;
+  font-size: 10px;
+  padding: 5px 2px;
+  background-color: white;
+  border: none;
+}
+
+#select-course {
+  color: #045BC0;
+}
+
+#post {
+  color: white;
+  background: #045BC0;
+  border-radius: 20px;
+  padding: 5px 30px;
+}
+
+.custom-select {
+  color: #045BC0; /* Set the font color to blue */
+  border: none; /* Remove the border */
+  outline: none; /* Remove the outline */
 }
