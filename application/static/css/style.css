@@ -27,6 +27,12 @@ button {
   font-weight: 510;
 }
 
+input, textarea {
+  font-family: "Inter", serif, Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
 a:hover, button:hover {
   cursor: pointer;
 }
@@ -348,7 +354,7 @@ h4{
   letter-spacing: 0.2px;
 }
 
-.join-button {
+.rounded-blue-button {
   width: 115px;
   height: 39px;
   background-color: #045BC0;
@@ -465,7 +471,6 @@ h4{
   border-color: rgb(220, 220, 220);
   border-style: solid;
   width: 100%;
-  height: 30px;
   margin: 5px;
 }
 
@@ -479,7 +484,6 @@ h4{
 
 .new-post-box #tell-me-more {
   grid-row: 2/span 1;
-  height: 80px;
 }
 
 .icons {

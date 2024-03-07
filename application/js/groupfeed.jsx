@@ -58,7 +58,7 @@ export default function GroupFeed() {
             <div className="new-post-box">
                 <img src="/static/assets/logo.png" id="pfp" alt="pfp"></img>
                 <input name="enterTitle" id="enter-title" placeholder="Enter Title" />
-                <input name="tellMore" id="tell-me-more" placeholder="Tell me more about your study group..." />
+                <textarea name="tellMore" id="tell-me-more" placeholder="Tell me more about your study group..." />
                 <div className="icons">
                     <button><img src="/static/assets/calendar-plus.svg" alt="calendar filter"></img>Meeting time</button>
                     <button><img src="/static/assets/location.svg" alt="location filter"></img>Location</button>

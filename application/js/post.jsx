@@ -86,7 +86,7 @@ const handleChange = (event) => {
             <p>Address</p>
         </div>
         <div class = "join-section">
-            <h2 class = "join-button">Join</h2>
+            <h2 class = "rounded-blue-button">Join</h2>
         </div>
     </div>
     );

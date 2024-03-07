@@ -58,7 +58,7 @@ export default function ResourceFeed() {
             <div className="new-post-box">
                 <img src="/static/assets/logo.png" id="pfp" alt="pfp"></img>
                 <input name="enterTitle" id="enter-title" placeholder="Enter Title" />
-                <input name="tellMore" id="tell-me-more" placeholder="Tell me more about your resource post..." />
+                <textarea name="tellMore" id="tell-me-more" placeholder="Tell me more about your resource post..." />
                 <div className="icons">
                     <button><img src="/static/assets/upload.svg" alt="upload filter"></img>Upload</button>
                     <button><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
