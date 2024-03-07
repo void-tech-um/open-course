@@ -95,14 +95,24 @@ def get_post(post_id):
     post = cur.fetchone()
     return post
 
-def get_condensed_post_info():
-    """Get a condensed version of post information."""
+def create_post(username, title, description, course_code, created, schedule_link, type):
+    """Create a post"""
     cur = get_db().cursor()
     cur.execute(
-        "SELECT title, username, course_code, created FROM posts"
+        "INSERT INTO posts ('username', 'title', 'description', 'course_code', 'created', 'schedule_link', 'type') "
+        "VALUES (?, ?) ",
+        (username, title, description, course_code, created, schedule_link, type)
     )
-    posts = cur.fetchall()
-    return posts
+    post_id = cur.lastrowid
+    cur.commit()
+    cur.execute(
+        "SELECT post_id, created FROM posts WHERE post_id = %s",
+        (post_id,)
+    )
+    post = post.fetchone()
+    return post
+    
+
 
 # Get all posts for a specific user for their profile page
 def get_users_posts(username):
@@ -137,6 +147,15 @@ def get_tags_for_post(post_id):
     tags = cur.fetchall()
     return tags
 
+def insert_tag(post_id,tag_id): 
+    """Get all tags."""
+    cur = get_db().cursor()
+    cur.execute(
+        "INSERT INTO filters ('post_id', 'tag_id') "
+        "VALUES (?, ?) ",
+        (post_id, tag_id)
+    )
+
 # COURSE RELATED DB CALLS ------------------------------------------------------------------------
 
 def get_all_course_codes():
@@ -158,6 +177,14 @@ def get_courses_of_user(username):
     course_codes = cur.fetchall()
     return course_codes
 
+def join_course(logname, course_code):
+    """Join a course."""
+    cur = get_db().cursor()
+    cur.execute(
+        "INSERT INTO enrollments ('username', 'course_code') "
+        "VALUES (?, ?) ",
+        (logname, course_code)
+    )
 
 
 class InvalidUsage(Exception):

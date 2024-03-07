@@ -61,7 +61,8 @@ nav a:hover {
 }
 
 .navbar-logo img {
-  margin-right: 5px; /* Adjust as needed */
+  margin-right: 5px;
+  /* Adjust as needed */
 }
 
 .feed-banner {
@@ -225,42 +226,42 @@ h4{
   margin-bottom: 3%;
 }
 
-.check-box{
+.check-box {
   margin: 0;
   width: auto;
 }
 
-.side-bar{
+.side-bar {
   width: 20%;
 }
 
-.feed{
+.feed {
   width: 80%;
   display: inline;
 
 }
 
-.main-content{
+.main-content {
   display: flex;
   flex-direction: row;
 }
 
-.search-content{
+.search-content {
   display: flex;
   justify-content: center;
 }
 
-#search{
+#search {
   width: 30%;
   border-radius: 7px;
   border-color: rgb(185, 185, 185);
   border-style: solid;
   margin-left: 10px;
   margin-right: 10px;
-  
+
 }
 
-.new-post-btn{
+.new-post-btn {
   border-radius: 7px;
   border-color: rgb(185, 185, 185);
   border-style: solid;
@@ -275,14 +276,15 @@ h4{
   margin: 2%;
 }
 
-.user_name{
+.user_name {
   font-family: Inter;
   color: black;
   font-size: 16px;
 }
 
-.email{
-  font-family: Inter; color: gray;
+.email {
+  font-family: Inter;
+  color: gray;
   font-size: 12px
 }
 
@@ -292,14 +294,16 @@ h4{
   cursor: pointer;
   margin-left: 350px;
 }
+
 .star:before {
- content: "\2605";
- position: absolute;
- visibility:visible;
+  content: "\2605";
+  position: absolute;
+  visibility: visible;
 }
+
 .star:checked:before {
- content: "\2606";
- position: absolute;
+  content: "\2606";
+  position: absolute;
 }
 
 .info-tag {
@@ -307,22 +311,25 @@ h4{
   font-size: 12px;
   border: 1px solid #008CBA;
   background-color: white;
-  border-top-left-radius: 20px; 
-  border-top-right-radius: 20px; 
-  border-bottom-left-radius: 20px; 
-  border-bottom-right-radius: 20px; 
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   display: inline-block;
 }
 
 .study-group {
-  font-family: Inter; color: gray;
+  font-family: Inter;
+  color: gray;
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 1.5px;
 }
 
 .brief-descript {
-  font-family: Inter; color: #4C5980;;
+  font-family: Inter;
+  color: #4C5980;
+  ;
   font-size: 12px;
   line-height: 24px;
   letter-spacing: 0.2px;
@@ -345,11 +352,12 @@ h4{
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
-  line-height: 39px; /* Center the text vertically */
+  line-height: 39px;
+  /* Center the text vertically */
 }
 
 /* Resource Component */
-.resource{
+.resource {
   border-radius: 25px;
   border: 1px solid rgba(185, 185, 185, 1);
   padding: 10px;
@@ -357,7 +365,7 @@ h4{
   width: 40%;
 }
 
-.resource-title{
+.resource-title {
   font-family: "Inter";
   color: rgba(33, 37, 41, 1);
   font-size: 24px;
@@ -376,7 +384,7 @@ h4{
   margin-bottom: 0px;
 }
 
-.resource-info{
+.resource-info {
   font-family: "Inter";
   color: rgba(108, 117, 125, 1);
   font-size: 16px;
@@ -405,4 +413,3 @@ h4{
 .tab-styling .active-tab {
   border-bottom: 4px solid #045BC0;
 }
-

@@ -12,44 +12,44 @@ export default function ResourceFeed() {
     useEffect(() => {
         let ignoreStaleRequest = false;
         if (!booleanFetch) {
-        return () => {
-            ignoreStaleRequest = true;
-        };
+            return () => {
+                ignoreStaleRequest = true;
+            };
         }
         fetch(url, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
         })
-        .then((response) => {
-            // do error handling
-            if (!response.ok) {
-            throw Error(response.statusText);
-            }
-            return response.json();
-        })
-        .then((json) => {
-            if (!ignoreStaleRequest) {
-            setBooleanFetch(false);
-            }
-            const postsToRender = json.results.map(({ postid }) => postid);
-            setPosts(posts.concat(postsToRender));
+            .then((response) => {
+                // do error handling
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response.json();
+            })
+            .then((json) => {
+                if (!ignoreStaleRequest) {
+                    setBooleanFetch(false);
+                }
+                const postsToRender = json.results.map(({ postid }) => postid);
+                setPosts(posts.concat(postsToRender));
 
-            if (json.next !== "") {
-            setUrl(json.next);
-            setMorePosts(true);
-            } else {
-            setUrl("");
-            setMorePosts(false);
-            }
-            return postsToRender;
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+                if (json.next !== "") {
+                    setUrl(json.next);
+                    setMorePosts(true);
+                } else {
+                    setUrl("");
+                    setMorePosts(false);
+                }
+                return postsToRender;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
         return () => {
-        ignoreStaleRequest = true;
+            ignoreStaleRequest = true;
         };
     }, [booleanFetch, url, posts]);
 
@@ -79,6 +79,7 @@ export default function ResourceFeed() {
             ))}
             </div>
         </InfiniteScroll> */}
+
         </div>
     );
 }
