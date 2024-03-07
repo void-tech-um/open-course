@@ -63,7 +63,7 @@ const handleChange = (event) => {
 
 //if (postHasRendered) {
     return (
-    <div class = "post-border">
+    <div class = "post">
         <div class = "user-info">
             <p class = "user_name">UserName</p>
             <p class = "email">UmichEmail</p>

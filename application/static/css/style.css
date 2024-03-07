@@ -87,16 +87,10 @@ nav a:hover {
   color: black;
   padding: 10px 24px;
   text-align: center;
-  text-decoration: none;
   display: inline-block;
   font-size: 28px;
   margin: 4px 2px;
   cursor: pointer;
-}
-
-.active-tab {
-  border-bottom: 2px;
-  border-bottom-color: #045BC0;
 }
 
 .row {
@@ -227,24 +221,7 @@ input:checked+.slider:before {
   margin-left: 50px;
 }
 
-
-.post {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 5%;
-  border: 2px;
-  border-style: solid none;
-}
-
-.post-or-group,
-.tags,
-.courseid {
-  display: inline;
-  margin-top: 3%;
-  margin-bottom: 3%;
-}
-
-h4 {
+h4{
   margin-top: 3%;
   margin-bottom: 3%;
 }
@@ -292,13 +269,11 @@ h4 {
 }
 
 /* Post Component */
-.post-border {
-  width: 382px;
-  height: 585px;
+.post {
+  width: 25%;
   background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  /* Shadow */
-  margin-top: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow */
+  margin: 2%;
 }
 
 .user_name {
@@ -385,9 +360,9 @@ h4 {
 .resource {
   border-radius: 25px;
   border: 1px solid rgba(185, 185, 185, 1);
-  padding: 20px;
-  width: 445px;
-  height: 200px;
+  padding: 10px;
+  margin: 10px;
+  width: 40%;
 }
 
 .resource-title {
@@ -420,6 +395,14 @@ h4 {
   line-height: 28px;
 }
 
+.feed-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  justify-content: center;
+}
+
 .check-out-link {
   font-family: "Inter";
   color: rgba(4, 91, 192, 1);
@@ -427,62 +410,6 @@ h4 {
   line-height: 28px;
 }
 
-.post-box {
-  display: grid;
-  grid-template-columns: 30% 50% 20%;
-}
-
-.post-box #enter-title,
-.post-box #tell-me-more {
-  grid-column: 2/span 1;
-  border-radius: 5px;
-  border-color: rgb(220, 220, 220);
-  border-style: solid;
-  width: 100%;
-  height: 30px;
-  margin: 5px;
-}
-
-.post-box #pfp {
-  grid-column: 1/span 1;
-  align-self: start;
-  justify-self: end;
-  border-radius: 50%;
-  width: 20%;
-}
-
-.post-box #tell-me-more {
-  grid-row: 2/span 1;
-  height: 80px;
-}
-
-.icons {
-  grid-row: 3/span 1;
-  grid-column: 2/span1;
-  align-items: end;
-}
-
-.icons img {
-  display: inline-block;
-  margin: 5px;
-}
-
-.icons button {
-  display: inline-block;
-  margin: 0px 5px 5px 5px;
-  font-size: 10px;
-  padding: 5px 2px;
-  background-color: white;
-  border: none;
-}
-
-#select-course {
-  color: blue;
-}
-
-#post {
-  color: white;
-  background: blue;
-  border-radius: 20px;
-  padding: 5px 30px;
+.tab-styling .active-tab {
+  border-bottom: 4px solid #045BC0;
 }

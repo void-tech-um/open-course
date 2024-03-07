@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import '../static/css/style.css';
 import Post from "./post";
-import Resource from "./resource";
 
 export default function GroupFeed() {
     const [posts, setPosts] = useState([]);
@@ -56,7 +55,14 @@ export default function GroupFeed() {
 
     return (
         <div>
-        <h1>STUDY GROUP FEED</h1>
+            <div className="feed-container">
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+            </div>
         {/* <InfiniteScroll
             dataLength={posts.length}
             // provide a fcn to be called to get the new posts
@@ -75,13 +81,6 @@ export default function GroupFeed() {
             ))}
             </div>
         </InfiniteScroll> */}
-        <Post/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-
-        <Resource/>
         </div>
     );
 }
