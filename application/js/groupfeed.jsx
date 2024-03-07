@@ -55,6 +55,23 @@ export default function GroupFeed() {
 
     return (
         <div>
+            <div className="new-post-box">
+                <img src="/static/assets/logo.png" id="pfp" alt="pfp"></img>
+                <input name="enterTitle" id="enter-title" placeholder="Enter Title" />
+                <input name="tellMore" id="tell-me-more" placeholder="Tell me more about your study group..." />
+                <div className="icons">
+                    <button><img src="/static/assets/calendar-plus.svg" alt="calendar filter"></img>Meeting time</button>
+                    <button><img src="/static/assets/location.svg" alt="location filter"></img>Location</button>
+                    <button><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
+                    <select className="custom-select">
+                        <option value="" selected>Select Course</option>
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                    </select>
+                    <button id="post">Post</button>
+                </div>
+            </div>
             <div className="feed-container">
                 <Post />
                 <Post />

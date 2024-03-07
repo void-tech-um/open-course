@@ -208,11 +208,11 @@ input {
 }
 
 input:checked+.slider {
-  background-color: #2196F3;
+  background-color: #045BC0;
 }
 
 input:focus+.slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #045BC0;
 }
 
 input:checked+.slider:before {
@@ -315,7 +315,7 @@ h4{
 .info-tag {
   padding: 5px 13px;
   font-size: 12px;
-  border: 1px solid #008CBA;
+  border: 1px solid #045BC0;
   background-color: white;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -351,11 +351,11 @@ h4{
 .join-button {
   width: 115px;
   height: 39px;
-  background-color: #2E64A4;
+  background-color: #045BC0;
   color: white;
   font-size: 16px;
   border: none;
-  border-radius: 5px;
+  border-radius: 999px;
   cursor: pointer;
   text-align: center;
   line-height: 39px;
@@ -396,13 +396,13 @@ h4{
   line-height: 28px;
 }
 
-.resource-box {
+.new-post-box {
   display: grid;
   grid-template-columns: 30% 50% 20%;
 }
 
-.resource-box #enter-title,
-.resource-box #tell-me-more {
+.new-post-box #enter-title,
+.new-post-box #tell-me-more {
   grid-column: 2/span 1;
   border-radius: 5px;
   border-color: rgb(220, 220, 220);
@@ -412,7 +412,7 @@ h4{
   margin: 5px;
 }
 
-.resource-box #pfp {
+.new-post-box #pfp {
   grid-column: 1/span 1;
   align-self: start;
   justify-self: end;
@@ -420,9 +420,8 @@ h4{
   width: 20%;
 }
 
-.resource-box #tell-me-more {
+.new-post-box #tell-me-more {
   grid-row: 2/span 1;
-  height: 80px;
 }
 
 .icons {
@@ -454,13 +453,13 @@ h4{
   border-bottom: 4px solid #045BC0;
 }
 
-.resource-box {
+.new-post-box {
   display: grid;
   grid-template-columns: 30% 50% 20%;
 }
 
-.resource-box #enter-title,
-.resource-box #tell-me-more {
+.new-post-box #enter-title,
+.new-post-box #tell-me-more {
   grid-column: 2/span 1;
   border-radius: 5px;
   border-color: rgb(220, 220, 220);
@@ -470,7 +469,7 @@ h4{
   margin: 5px;
 }
 
-.resource-box #pfp {
+.new-post-box #pfp {
   grid-column: 1/span 1;
   align-self: start;
   justify-self: end;
@@ -478,7 +477,7 @@ h4{
   width: 20%;
 }
 
-.resource-box #tell-me-more {
+.new-post-box #tell-me-more {
   grid-row: 2/span 1;
   height: 80px;
 }
