@@ -108,7 +108,7 @@ def get_max_post_id(username):
         "SELECT MAX(post_id) FROM posts "
         "WHERE posts.course_code IN "
         "(SELECT course_code FROM enrollments WHERE username=%s) "
-        (username)
+        (username,)
     )
     post_id = cur.fetchone()
     return post_id
