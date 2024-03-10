@@ -22,16 +22,18 @@ useEffect(() => {
     })
     .then((response) => {
         // do error handling
+        
         if (!response.ok) {
-            console.log("error");
             throw Error(response.statusText);
         }
         return response.json();
     })
     .then((json) => {
-        console.log("hello")
+        console.log(json)
+
         const utcDate = moment.utc(json.created).toDate();
         const local = moment(utcDate).local().format("YYYY-MM-DD HH:mm:ss");
+
         return {
             postShowUrl: json.postShowUrl,
             imgUrl: json.imgUrl,
@@ -75,54 +77,54 @@ const handleChange = (event) => {
 
 //if (postHasRendered) {
     return (
-        <div class = "post-border">
-        <div class = "user-info">
-            <p class = "user_name">{post.post_id}</p>
-            <p class = "email">{post.email}</p>
-            <input class="star" type="checkbox" title="bookmark page" checked/><br/>
+        <div className = "post-border">
+        <div className = "user-info">
+            <p className = "user_name">{post.post_id}</p>
+            <p className = "email">{post.email}</p>
+            <input className="star" type="checkbox" title="bookmark page" checked/><br/>
         </div>
-        <div class = "tags">
+        <div className = "tags">
         {/* {post.tags.map((tag) =>{
-                <button class = "info-tag" type = "button">tag.tag_name</button>
+                <button className = "info-tag" type = "button">tag.tag_name</button>
             })} */}
 
         </div>
-        <div class = "post-info">
-            <p class = "study-group">STUDY GROUP</p>
-            <h1>post.title</h1>
-            <p class = "brief-descript">post.description</p>
-            <p>post.created</p>
-            <p class = "label">json.created</p>
-            <p class = "add-to-calendar">Add to calendar</p>
+        <div className = "post-info">
+            <p className = "study-group">STUDY GROUP</p>
+            <h1>{post.title}</h1>
+            <p className = "brief-descript">{post.description}</p>
+            <p>Date</p>
+            <p className = "label">{post.created}</p>
+            <p className = "add-to-calendar">Add to calendar</p>
         </div>
-        <div class = "join-section">
-            <h2 class = "rounded-blue-button">Join</h2>
+        <div className = "join-section">
+            <h2 className = "rounded-blue-button">Join</h2>
         </div>
     </div>        
-    // <div class = "post-border">
-    //     <div class = "user-info">
-    //         <p class = "user_name">UserName</p>
-    //         <p class = "email">UmichEmail</p>
-    //         <input class="star" type="checkbox" title="bookmark page" checked/><br/>
+    // <div className = "post-border">
+    //     <div className = "user-info">
+    //         <p className = "user_name">UserName</p>
+    //         <p className = "email">UmichEmail</p>
+    //         <input className="star" type="checkbox" title="bookmark page" checked/><br/>
     //     </div>
-    //     <div class = "tags">
-    //         <button class = "info-tag" type = "button">Tag</button>
-    //         <button class = "info-tag" type = "button">Tag</button>
-    //         <button class = "info-tag" type = "button">Tag</button>
-    //         <button class = "info-tag" type = "button">Tag</button>
+    //     <div className = "tags">
+    //         <button className = "info-tag" type = "button">Tag</button>
+    //         <button className = "info-tag" type = "button">Tag</button>
+    //         <button className = "info-tag" type = "button">Tag</button>
+    //         <button className = "info-tag" type = "button">Tag</button>
     //     </div>
-    //     <div class = "post-info">
-    //         <p class = "study-group">STUDY GROUP</p>
+    //     <div className = "post-info">
+    //         <p className = "study-group">STUDY GROUP</p>
     //         <h1>TITLE</h1>
-    //         <p class = "brief-descript">Brief Description</p>
+    //         <p className = "brief-descript">Brief Description</p>
     //         <p>Date</p>
-    //         <p class = "label">time</p>
-    //         <p class = "add-to-calendar">Add to calendar</p>
+    //         <p className = "label">time</p>
+    //         <p className = "add-to-calendar">Add to calendar</p>
     //         <p>Room</p>
     //         <p>Address</p>
     //     </div>
-    //     <div class = "join-section">
-    //         <h2 class = "rounded-blue-button">Join</h2>
+    //     <div className = "join-section">
+    //         <h2 className = "rounded-blue-button">Join</h2>
     //     </div>
     // </div>
     );

@@ -74,11 +74,11 @@ export default function GroupFeed() {
             </div>
             <div className="feed-container">
                 <Post />
+                {/* <Post />
                 <Post />
                 <Post />
                 <Post />
-                <Post />
-                <Post />
+                <Post /> */}
             </div>
         {/* <InfiniteScroll
             dataLength={posts.length}

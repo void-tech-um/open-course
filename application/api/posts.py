@@ -6,17 +6,16 @@ from application import model
 @application.app.route('/api/v1/')
 def get_services():
     """Return list of services."""
-    print("hello")
+
     return model.get_services(), 200
 
 
 @application.app.route('/api/v1/posts/', methods=["GET"])
 def get_posts():
     """Return specific number of posts."""
-    username = "logname"
-
-    size = flask.request.args("size", default = 10, type=int)
-    page = flask.request.args("page", default = 0, type=int)
+    username = "test"
+    size = flask.request.args.get("size", default = 10, type=int)
+    page = flask.request.args.get("page", default = 0, type=int)
     if (size <= 0) or (page < 0):
         context = {
             "message": "Bad Request",
@@ -25,16 +24,17 @@ def get_posts():
         return flask.jsonify(**context), 400    
     post_id = model.get_max_post_id(username)
     page_lte = flask.request.args.get("postid_lte",
-                                   default=post_id["postid"], type=int)
+                                   default=post_id, type=int)
     next = ""
     if (page + 1) <= page_lte % size:
         next = f"/api/v1/posts/?size={size}&page={page+1}&postid_lte={page_lte}"
 
     results = model.get_posts_user(username, page_lte, size, page)
-
-    
-    for post in results:
-        post["url"] = f"/api/v1/posts/{post['postid']}/"
+    print(post_id)
+    posts = []
+    for p in results:
+        post = {}
+        post['url'] = f"/api/v1/posts/{post[0]}/"
 
     url = flask.request.path
 
@@ -42,6 +42,8 @@ def get_posts():
             flask.request.args.get("size") or
             flask.request.args.get("postid_lte")):
         url = flask.request.full_path
+
+    
 
     context = {
         "next": next,

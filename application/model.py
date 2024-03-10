@@ -8,6 +8,7 @@ import requests
 import json
 import psycopg2
 import os
+from psycopg2.extras import DictCursor 
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -107,10 +108,11 @@ def get_max_post_id(username):
     cur.execute(
         "SELECT MAX(post_id) FROM posts "
         "WHERE posts.course_code IN "
-        "(SELECT course_code FROM enrollments WHERE username=%s) "
+        "(SELECT course_code FROM enrollments WHERE username=%s) ",
         (username,)
     )
-    post_id = cur.fetchone()
+    post_id = cur.fetchone()[0]
+    
     return post_id
 
 def get_post(post_id):
