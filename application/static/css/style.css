@@ -542,6 +542,20 @@ h4{
   flex-direction: row;
   background-color: #ACCBEF;
   color: #002A5A;
+  padding: 3%;
+}
+
+.first-footer-sub {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.first-footer-sub a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #002A5A;
+  margin-right: 5%;
 }
 
 .second-footer {
