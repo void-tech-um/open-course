@@ -6,6 +6,7 @@ from application import model
 @application.app.route('/api/v1/')
 def get_services():
     """Return list of services."""
+    print("hello")
     return model.get_services(), 200
 
 
