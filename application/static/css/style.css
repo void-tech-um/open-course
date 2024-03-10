@@ -112,6 +112,40 @@ nav a:hover {
   flex: 50%;
 }
 
+.column1 {
+  flex: 33%;
+}
+
+.description {
+  color: white;
+  display: flexbox;
+  background-color: #045BC0;
+  height: 310px;
+}
+
+.study {
+  display: flexbox;
+  background-color: #f1f8ff;
+  height: 366px;
+}
+
+.study-images {
+  display: flexbox;
+}
+
+.material {
+  display: flexbox;
+  background-color: #f1f8ff;
+  height: 366px;
+}
+
+.material-images {
+  display: flexbox;
+}
+
+.image-titles {
+  color: #045BC0;
+}
 
 .course {
   display: flex;

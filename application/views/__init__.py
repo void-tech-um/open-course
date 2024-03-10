@@ -6,3 +6,4 @@ from application.views.create import show_create
 from application.views.join import show_join
 from application.views.profile import show_profile
 from application.views.viewUsers import show_view_users
+from application.views.about import show_about
