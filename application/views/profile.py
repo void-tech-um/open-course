@@ -12,3 +12,7 @@ def show_profile(username):
                "bio": user[4],
                }
     return render_template('profile.html', **context)
+
+@application.app.route("/temporary/")
+def show_temporary():
+    return render_template('temporary.html')

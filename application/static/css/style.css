@@ -529,3 +529,25 @@ h4{
   border: none; /* Remove the border */
   outline: none; /* Remove the outline */
 }
+
+/* Profile */
+.flex-container {
+  display: flex;
+}
+
+.left-box {
+  flex: 1;
+  background-color: #E6F1FF;
+}
+
+.right-box {
+  flex: 2;
+  background-color: #FFFFFF;
+}
+
+.profile-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: grey;
+}
