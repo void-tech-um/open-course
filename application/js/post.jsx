@@ -12,7 +12,8 @@ const [postHasRendered, setPostHasRendered] = useState(false);
 
 useEffect(() => {
     let ignoreStaleRequest = false;
-    const postURL = `/api/v1/posts/${JSON.stringify(postid)}/`;
+    // const postURL = `/api/v1/posts/${JSON.stringify(postid)}/`;
+    const postURL = `/api/v1/posts/1/`;
     fetch(postURL, {
     method: "GET",
     headers: {
@@ -22,19 +23,30 @@ useEffect(() => {
     .then((response) => {
         // do error handling
         if (!response.ok) {
-        console.log("error");
-        throw Error(response.statusText);
+            console.log("error");
+            throw Error(response.statusText);
         }
         return response.json();
     })
     .then((json) => {
+        console.log("hello")
         const utcDate = moment.utc(json.created).toDate();
         const local = moment(utcDate).local().format("YYYY-MM-DD HH:mm:ss");
         return {
-        postShowUrl: json.postShowUrl,
-        imgUrl: json.imgUrl,
-        created: moment(local).fromNow(),
-        owner: json.owner,
+            postShowUrl: json.postShowUrl,
+            imgUrl: json.imgUrl,
+            created: moment(local).fromNow(),
+            owner: json.owner,
+            post_id: postid,
+            imgUrl: json.imgUrl,
+            username: json.owner,
+            email:json.email,
+            title: json.title,
+            description: json.description,
+            course_code: json.course_code,
+            schedule_link: json.schedule_link,
+            type: json.type,
+            tags: json.tags            
         };
     })
     .then((postInfo) => {
@@ -63,37 +75,63 @@ const handleChange = (event) => {
 
 //if (postHasRendered) {
     return (
-    <div class = "post-border">
+        <div class = "post-border">
         <div class = "user-info">
-            <p class = "user_name">UserName</p>
-            <p class = "email">UmichEmail</p>
+            <p class = "user_name">{post.post_id}</p>
+            <p class = "email">{post.email}</p>
             <input class="star" type="checkbox" title="bookmark page" checked/><br/>
         </div>
         <div class = "tags">
-            <button class = "info-tag" type = "button">Tag</button>
-            <button class = "info-tag" type = "button">Tag</button>
-            <button class = "info-tag" type = "button">Tag</button>
-            <button class = "info-tag" type = "button">Tag</button>
+        {/* {post.tags.map((tag) =>{
+                <button class = "info-tag" type = "button">tag.tag_name</button>
+            })} */}
+
         </div>
         <div class = "post-info">
             <p class = "study-group">STUDY GROUP</p>
-            <h1>TITLE</h1>
-            <p class = "brief-descript">Brief Description</p>
-            <p>Date</p>
-            <p class = "label">time</p>
+            <h1>post.title</h1>
+            <p class = "brief-descript">post.description</p>
+            <p>post.created</p>
+            <p class = "label">json.created</p>
             <p class = "add-to-calendar">Add to calendar</p>
-            <p>Room</p>
-            <p>Address</p>
         </div>
         <div class = "join-section">
             <h2 class = "rounded-blue-button">Join</h2>
         </div>
-    </div>
+    </div>        
+    // <div class = "post-border">
+    //     <div class = "user-info">
+    //         <p class = "user_name">UserName</p>
+    //         <p class = "email">UmichEmail</p>
+    //         <input class="star" type="checkbox" title="bookmark page" checked/><br/>
+    //     </div>
+    //     <div class = "tags">
+    //         <button class = "info-tag" type = "button">Tag</button>
+    //         <button class = "info-tag" type = "button">Tag</button>
+    //         <button class = "info-tag" type = "button">Tag</button>
+    //         <button class = "info-tag" type = "button">Tag</button>
+    //     </div>
+    //     <div class = "post-info">
+    //         <p class = "study-group">STUDY GROUP</p>
+    //         <h1>TITLE</h1>
+    //         <p class = "brief-descript">Brief Description</p>
+    //         <p>Date</p>
+    //         <p class = "label">time</p>
+    //         <p class = "add-to-calendar">Add to calendar</p>
+    //         <p>Room</p>
+    //         <p>Address</p>
+    //     </div>
+    //     <div class = "join-section">
+    //         <h2 class = "rounded-blue-button">Join</h2>
+    //     </div>
+    // </div>
     );
 //}
 return <div>Loading...</div>;
 }
 
 Post.propTypes = {
-postid: PropTypes.number.isRequired,
+// postid: PropTypes.number.isRequired,
+postid: PropTypes.number,
+
 };

@@ -31,17 +31,17 @@ export default function GroupFeed() {
         })
         .then((json) => {
             if (!ignoreStaleRequest) {
-            setBooleanFetch(false);
+                setBooleanFetch(false);
             }
             const postsToRender = json.results.map(({ postid }) => postid);
             setPosts(posts.concat(postsToRender));
 
             if (json.next !== "") {
-            setUrl(json.next);
-            setMorePosts(true);
+                setUrl(json.next);
+                setMorePosts(true);
             } else {
-            setUrl("");
-            setMorePosts(false);
+                setUrl("");
+                setMorePosts(false);
             }
             return postsToRender;
         })

@@ -85,6 +85,34 @@ def get_posts():
     posts = cur.fetchall()
     return posts
 
+def get_posts_user(username, page_lte, size, page):
+    """Get all posts for a user."""
+    cur = get_db().cursor()
+    cur.execute(
+        "SELECT post_id FROM posts "
+        "WHERE posts.course_code IN "
+        "(SELECT course_code FROM enrollments WHERE username=%s) "
+        "AND post_id <= %s"
+        "ORDER BY post_id DESC "
+        "LIMIT %s"
+        "OFFSET %s",
+        (username, page_lte, size, page * size)
+    )
+    posts = cur.fetchall()
+    return posts
+
+def get_max_post_id(username):
+    """Get all posts for a user."""
+    cur = get_db().cursor()
+    cur.execute(
+        "SELECT MAX(post_id) FROM posts "
+        "WHERE posts.course_code IN "
+        "(SELECT course_code FROM enrollments WHERE username=%s) "
+        (username)
+    )
+    post_id = cur.fetchone()
+    return post_id
+
 def get_post(post_id):
     """Get all information on post using its post_id."""
     cur = get_db().cursor()
@@ -100,7 +128,7 @@ def create_post(username, title, description, course_code, created, schedule_lin
     cur = get_db().cursor()
     cur.execute(
         "INSERT INTO posts ('username', 'title', 'description', 'course_code', 'created', 'schedule_link', 'type') "
-        "VALUES (?, ?) ",
+        "VALUES (%s, %s) ",
         (username, title, description, course_code, created, schedule_link, type)
     )
     post_id = cur.lastrowid
@@ -152,7 +180,7 @@ def insert_tag(post_id,tag_id):
     cur = get_db().cursor()
     cur.execute(
         "INSERT INTO filters ('post_id', 'tag_id') "
-        "VALUES (?, ?) ",
+        "VALUES (%s, %s) ",
         (post_id, tag_id)
     )
 
@@ -182,7 +210,7 @@ def join_course(logname, course_code):
     cur = get_db().cursor()
     cur.execute(
         "INSERT INTO enrollments ('username', 'course_code') "
-        "VALUES (?, ?) ",
+        "VALUES (%s, %s) ",
         (logname, course_code)
     )
 
