@@ -421,6 +421,21 @@ h4{
   font-weight: 340;
 }
 
+.resource-info {
+  font-family: "Inter";
+  color: rgba(108, 117, 125, 1);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+  margin-left: 0px;
+  max-width: 445px;
+  line-height: 28px;
+}
+
+.resource-btn-space {
+  margin-left: 70%;
+}
+
 .course-title {
   font-family: "Inter";
   color: rgba(108, 117, 125, 1);
@@ -464,17 +479,6 @@ h4{
 
 .new-post-box #tell-me-more {
   grid-row: 2/span 1;
-}
-
-.resource-info {
-  font-family: "Inter";
-  color: rgba(108, 117, 125, 1);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 150%;
-  margin-left: 0px;
-  max-width: 445px;
-  line-height: 28px;
 }
 
 .feed-container {

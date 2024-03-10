@@ -70,11 +70,17 @@ const handleChange = (event) => {
         <div class="course-title">
             <p>COURSE TITLE</p>
         </div>
+        <div>
+            <button className="info-tag" type="button">Topic</button>
+            <button className="info-tag tag-spacing" type="button">Topic</button>
+            <button className="info-tag tag-spacing" type="button">Topic</button>
+            <button className="info-tag tag-spacing" type="button">Topic</button>
+        </div>
         <div class="resource-info">
             <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
-        <div class="check-out-link">
-        <button className="rounded-blue-button">Check it Out</button>
+        <div className="resource-btn-space">
+            <button className="rounded-blue-button">Check it Out</button>
         </div>
 
     </div>
