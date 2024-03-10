@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import '../static/css/style.css';
 import Post from "./post";
-import Resource from "./resource";
 
 export default function GroupFeed() {
     const [posts, setPosts] = useState([]);
@@ -56,7 +55,31 @@ export default function GroupFeed() {
 
     return (
         <div>
-        <h1>STUDY GROUP FEED</h1>
+            <div className="new-post-box">
+                <img src="/static/assets/logo.png" id="pfp" alt="pfp"></img>
+                <input name="enterTitle" id="enter-title" placeholder="Enter Title" />
+                <textarea name="tellMore" id="tell-me-more" placeholder="Tell me more about your study group..." />
+                <div className="filters">
+                    <button className="transparent-button"><img src="/static/assets/calendar-plus.svg" alt="calendar filter"></img>Meeting time</button>
+                    <button className="transparent-button"><img src="/static/assets/location.svg" alt="location filter"></img>Location</button>
+                    <button className="transparent-button"><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
+                    <select className="custom-select">
+                        <option value="" selected>Select Course</option>
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                    </select>
+                    <button className="rounded-blue-button">Post</button>
+                </div>
+            </div>
+            <div className="feed-container">
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+            </div>
         {/* <InfiniteScroll
             dataLength={posts.length}
             // provide a fcn to be called to get the new posts
@@ -75,13 +98,6 @@ export default function GroupFeed() {
             ))}
             </div>
         </InfiniteScroll> */}
-        <Post/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-
-        <Resource/>
         </div>
     );
 }
