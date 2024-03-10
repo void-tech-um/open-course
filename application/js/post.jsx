@@ -13,7 +13,7 @@ const [postHasRendered, setPostHasRendered] = useState(false);
 useEffect(() => {
     let ignoreStaleRequest = false;
     // const postURL = `/api/v1/posts/${JSON.stringify(postid)}/`;
-    const postURL = `/api/v1/posts/1/`;
+    const postURL = `/api/v1/posts/`;
     fetch(postURL, {
     method: "GET",
     headers: {
