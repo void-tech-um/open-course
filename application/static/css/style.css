@@ -152,7 +152,6 @@ input {
   width: 80%;
 }
 
-
 .switch {
   position: relative;
   display: inline-block;
@@ -255,7 +254,7 @@ h4{
   border-style: solid;
   margin-left: 10px;
   margin-right: 10px;
-
+  font-size: 16px;
 }
 
 .new-post-btn {
@@ -528,6 +527,15 @@ h4{
   background: #045BC0;
   border-radius: 20px;
   padding: 5px 30px;
+}
+
+.filter-select {
+  font-size: 16px;
+  color: #777777; /* Set the font color to blue */
+  margin: 6px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 7px;
 }
 
 .custom-select {

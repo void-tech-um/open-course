@@ -75,9 +75,36 @@ export default function GroupFeed() {
             <hr></hr> {/* Horiztonal Line */}
             <div className="search-content">
                 <input type="text" id="search" name="search" placeholder="Search Posts, Classes..." />
-                <button type="button" className="new-post-btn">
-                    Button
-                </button>
+                <select className="filter-select">
+                    <option value="" selected>All Filters</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                </select>
+                <select className="filter-select">
+                    <option value="" selected>Group Type</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                </select>
+                <select className="filter-select">
+                    <option value="" selected>Location</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                </select>
+                <select className="filter-select">
+                    <option value="" selected>Time</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                </select>
+                <select className="filter-select">
+                    <option value="" selected>Class</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                </select>
             </div>
             <div className="feed-container">
                 <Post />
