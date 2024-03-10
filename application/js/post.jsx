@@ -64,33 +64,37 @@ const handleChange = (event) => {
 
 //if (postHasRendered) {
     return (
-    <div>
+    <div className="feed-item">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-        <div class="post-border">
-            <div class="user-info profile-right">
-                <div class="circle"></div>
-                <input class="star" type="checkbox" title="bookmark page" checked/> 
-                <p class="user_name">Username </p>
-                <p class="email">UmichEmail</p>
+        <div className="post-border">
+            <div className="profile-right">
+                <div className="profile-info circle">
+                    <img src="/static/assets/logo.png" alt="pfp" className="circle"></img>
+                    <div>
+                        <p class="user-name">Username </p>
+                        <p class="email">UmichEmail</p>
+                    </div>
+                    <input class="star" type="checkbox" title="bookmark page" checked/> 
+                </div>
             </div>
-            <div class="tags profile-right">
-                <button class="info-tag" type = "button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
+            <div className="profile-right">
+                <button className="info-tag" type="button">Topic</button>
+                <button className="info-tag tag-spacing" type="button">Topic</button>
+                <button className="info-tag tag-spacing" type="button">Topic</button>
+                <button className="info-tag tag-spacing" type="button">Topic</button>
             </div>
-            <div class="post-info profile-right">
-                <p class="study-group">STUDY GROUP</p>
+            <div className="profile-right">
+                <p className="study-group">STUDY GROUP</p>
                 <h1>TITLE</h1>
-                <p class="brief-descript">Brief Description</p>
-                <p class="date-room"><i class="far fa-calendar"></i> Date</p>
-                <p class="post-time-address align-with-icon">time</p>
-                <p class="add-to-calendar align-with-icon">Add to calendar</p>
-                <p><i class="date-room material-icons">location_on</i>Room</p>
-                <p class="post-time-address align-with-icon">Address</p>
+                <p className="brief-descript">Brief Description</p>
+                <p className="date-room"><i className="far fa-calendar"></i> Date</p>
+                <p className="post-time-address align-with-icon">time</p>
+                <p className="add-to-calendar align-with-icon">Add to calendar</p>
+                <p><i className="date-room material-icons">location_on</i>Room</p>
+                <p className="post-time-address align-with-icon">Address</p>
             </div>
-            <div class="join-section profile-right">
-                <h2 class="rounded-blue-button">Join</h2>
+            <div className="join-section">
+                <h2 className="rounded-blue-button">Join</h2>
             </div>
         </div>
     </div>

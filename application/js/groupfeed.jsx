@@ -72,6 +72,13 @@ export default function GroupFeed() {
                     <button className="rounded-blue-button">Post</button>
                 </div>
             </div>
+            <hr></hr> {/* Horiztonal Line */}
+            <div className="search-content">
+                <input type="text" id="search" name="search" placeholder="Search Posts, Classes..." />
+                <button type="button" className="new-post-btn">
+                    Button
+                </button>
+            </div>
             <div className="feed-container">
                 <Post />
                 <Post />

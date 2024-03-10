@@ -4,6 +4,7 @@ body {
   font-family: "Inter", serif, Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 400;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -111,21 +112,6 @@ nav a:hover {
   flex: 50%;
 }
 
-/*
-.course p {
-  float: left;
-  padding: 5px 16px;
-}
-
-.course button {
-  float: right;
-  padding: 5px 13px;
-}
-
-.course {
-  display: inline-block;
-}
-*/
 
 .course {
   display: flex;
@@ -259,6 +245,7 @@ h4{
 .search-content {
   display: flex;
   justify-content: center;
+  margin: 3%;
 }
 
 #search {
@@ -280,22 +267,28 @@ h4{
 
 /* Post Component */
 .post-border {
-  width: 382px;
-  height: 585px;
+  width: 360px;
   background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
   /* Shadow */
-  margin: 1%;
+  margin: 3%;
+  padding: 3%;
 }
 
 .circle {
   width: 70px; /* Specify the width */
   height: 70px; /* Specify the height */
-  background-color: rgb(160, 157, 157); /* Just for demonstration */
   border-radius: 50%; /* Make it a circle */
 }
 
-.user_name{
+.profile-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.user-name{
   font-family: Inter;
   color: black;
   font-size: 16px;
@@ -314,7 +307,7 @@ h4{
   visibility: hidden;
   font-size: 30px;
   cursor: pointer;
-  margin-left: 300px;
+  margin-left: auto;
 }   
 
 .star:before {
@@ -349,7 +342,12 @@ h4{
 }
 
 .profile-right {
+  margin-top: 5%;
   margin-left: 30px;
+}
+
+.join-section {
+  margin-left: 200px;
 }
 
 .study-group {
@@ -368,7 +366,6 @@ h4{
   line-height: 24px;
   letter-spacing: 0.2px;
 }
-
 
 .date-room {
   color: #2D3142;
@@ -405,7 +402,6 @@ h4{
   text-align: center;
   line-height: 39px; /* Center the text vertically */
   margin-top: 35px;
-  margin-left: 200px;
 }
 /* Resource Component */
 .resource {
@@ -442,6 +438,7 @@ h4{
 }
 
 .new-post-box {
+  margin: 3%;
   display: grid;
   grid-template-columns: 30% 50% 20%;
 }
@@ -482,10 +479,15 @@ h4{
 
 .feed-container {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  margin: 20px;
   justify-content: center;
+}
+
+.feed-item {
+  width: calc(33.33% - 10px); /* Adjust the width as per your design */
+  /* You can also add margin or padding to create space between items */
+  margin-bottom: 20px;
+  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
 }
 
 .tab-styling .active-tab {
@@ -507,7 +509,7 @@ h4{
 .transparent-button {
   display: inline-block;
   margin: 0px 5px 5px 5px;
-  font-size: 10px;
+  font-size: 16px;
   padding: 5px 2px;
   background-color: white;
   border: none;
@@ -525,6 +527,7 @@ h4{
 }
 
 .custom-select {
+  font-size: 16px;
   color: #045BC0; /* Set the font color to blue */
   border: none; /* Remove the border */
   outline: none; /* Remove the outline */
