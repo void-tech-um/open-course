@@ -72,32 +72,21 @@ export default function GroupFeed() {
                     <button className="rounded-blue-button">Post</button>
                 </div>
             </div>
-            <div className="feed-container">
-                <Post />
-                {/* <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post /> */}
-            </div>
-        {/* <InfiniteScroll
-            dataLength={posts.length}
-            // provide a fcn to be called to get the new posts
-            next={() => setBooleanFetch(true)}
-            loader={<h4>Loading...</h4>}
-            morePosts={morePosts}
-            endMessage={
-            <p style={{ textAlign: "center" }}>
-                <b>No More Posts Available</b>
-            </p>
-            }
-        >
-            <div>
-            {posts.map((postid) => (
-                <Post key={postid} postid={postid} />
-            ))}
-            </div>
-        </InfiniteScroll> */}
+            <InfiniteScroll className="feed-container"
+                dataLength={posts.length}
+                next={() => setBooleanFetch(true)}
+                loader={<h6>Loading...</h6>}
+                hasMore={hasMore}
+                endMessage={
+                <h6>Check back later for more posts!</h6>
+                }
+            >
+                <div>
+                {posts.map((postid) => (
+                    <Post key={postid} postid={postid} />
+                ))}
+                </div>
+            </InfiniteScroll>
         </div>
     );
 }
