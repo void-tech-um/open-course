@@ -29,132 +29,19 @@
     </div>
 
     <div class="resource-grid">
-        <div class="resource">
-            <div class="resource-title">
-                <h2>Resource Title</h2>
+        {% for course in courses %}
+            <div class="resource">
+                <div class="resource-title">
+                    <h2>{{course[0]}}</h2>
+                </div>
+                <div class="course-title">
+                    <p>{{course[1]}}</p>
+                </div>
+                <div class="resource-btn-space">
+                    <button class="rounded-blue-button">Join Course</button>
+                </div>
             </div>
-            <div class="course-title">
-                <p>COURSE TITLE</p>
-            </div>
-            <div>
-                <button class="info-tag" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-            </div>
-            <div class="resource-info">
-                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="resource-btn-space">
-                <button class="rounded-blue-button">Check it Out</button>
-            </div>
-        </div>
-
-        <div class="resource">
-            <div class="resource-title">
-                <h2>Resource Title</h2>
-            </div>
-            <div class="course-title">
-                <p>COURSE TITLE</p>
-            </div>
-            <div>
-                <button class="info-tag" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-            </div>
-            <div class="resource-info">
-                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="resource-btn-space">
-                <button class="rounded-blue-button">Check it Out</button>
-            </div>
-        </div>
-
-        <div class="resource">
-            <div class="resource-title">
-                <h2>Resource Title</h2>
-            </div>
-            <div class="course-title">
-                <p>COURSE TITLE</p>
-            </div>
-            <div>
-                <button class="info-tag" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-            </div>
-            <div class="resource-info">
-                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="resource-btn-space">
-                <button class="rounded-blue-button">Check it Out</button>
-            </div>
-        </div>
-
-        <div class="resource">
-            <div class="resource-title">
-                <h2>Resource Title</h2>
-            </div>
-            <div class="course-title">
-                <p>COURSE TITLE</p>
-            </div>
-            <div>
-                <button class="info-tag" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-            </div>
-            <div class="resource-info">
-                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="resource-btn-space">
-                <button class="rounded-blue-button">Check it Out</button>
-            </div>
-        </div>
-
-        <div class="resource">
-            <div class="resource-title">
-                <h2>Resource Title</h2>
-            </div>
-            <div class="course-title">
-                <p>COURSE TITLE</p>
-            </div>
-            <div>
-                <button class="info-tag" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-            </div>
-            <div class="resource-info">
-                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="resource-btn-space">
-                <button class="rounded-blue-button">Check it Out</button>
-            </div>
-        </div>
-
-        <div class="resource">
-            <div class="resource-title">
-                <h2>Resource Title</h2>
-            </div>
-            <div class="course-title">
-                <p>COURSE TITLE</p>
-            </div>
-            <div>
-                <button class="info-tag" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-            </div>
-            <div class="resource-info">
-                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="resource-btn-space">
-                <button class="rounded-blue-button">Check it Out</button>
-            </div>
-        </div>
-
+        {% endfor %}
     </div>
 
 

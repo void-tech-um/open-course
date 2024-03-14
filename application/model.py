@@ -111,7 +111,6 @@ def create_post(username, title, description, course_code, created, schedule_lin
     )
     post = post.fetchone()
     return post
-    
 
 
 # Get all posts for a specific user for their profile page
@@ -162,7 +161,7 @@ def get_all_course_codes():
     """Get all course codes."""
     cur = get_db().cursor()
     cur.execute(
-        "SELECT * FROM course_codes"
+        "SELECT * FROM courses"
     )
     course_codes = cur.fetchall()
     return course_codes
