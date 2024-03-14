@@ -52,24 +52,25 @@ CREATE TABLE study_group_enrollments (
     FOREIGN KEY (post_id) REFERENCES posts(post_id) ON DELETE CASCADE
 );
 
-UPDATE courses SET course_name = 'Calculus 1' WHERE course_code = 'MATH 115';
-UPDATE courses SET course_name = 'Calculus 2' WHERE course_code = 'MATH 116';
-UPDATE courses SET course_name = 'Multivariable and Vector Calculus' WHERE course_code = 'MATH 215';
-UPDATE courses SET course_name = 'Elementary Programming Concepts' WHERE course_code = 'EECS 183';
-UPDATE courses SET course_name = 'Discrete Math' WHERE course_code = 'EECS 203';
-UPDATE courses SET course_name = 'Programming and Introductory Data Structures' WHERE course_code = 'EECS 280';
-UPDATE courses SET course_name = 'Introduction to Statistics and Data Analysis' WHERE course_code = 'STATS 250';
-UPDATE courses SET course_name = 'Introductory Biology: Ecology and Evolution' WHERE course_code = 'BIOLOGY 171';
-UPDATE courses SET course_name = 'Introductory Biology: Molecular, Cellular, and Developmental' WHERE course_code = 'BIOLOGY 172';
-UPDATE courses SET course_name = 'Introductory Biology Laboratory' WHERE course_code = 'BIOLOGY 173';
-UPDATE courses SET course_name = 'General Chemistry: Macroscopic Investigations and Reaction Principles' WHERE course_code = 'CHEM 130';
-UPDATE courses SET course_name = 'General Chemistry Laboratory I' WHERE course_code = 'CHEM 125';
-UPDATE courses SET course_name = 'Structure and Reactivity I' WHERE course_code = 'CHEM 210';
-UPDATE courses SET course_name = 'Investigations in Chemistry' WHERE course_code = 'CHEM 211';
-UPDATE courses SET course_name = 'Structure and Reactivity II' WHERE course_code = 'CHEM 215';
-UPDATE courses SET course_name = 'Synthesis and Characterization of Organic Compounds' WHERE course_code = 'CHEM 216';
-UPDATE courses SET course_name = 'Intro Comp & Prog' WHERE course_code = 'ENGR 101';
-UPDATE courses SET course_name = 'General Physics I' WHERE course_code = 'PHYSICS 140';
-UPDATE courses SET course_name = 'Elementary Laboratory I' WHERE course_code = 'PHYSICS 141';
+INSERT INTO courses (course_code, course_name) VALUES ('MATH 115', 'Calculus 1');
+INSERT INTO courses (course_code, course_name) VALUES ('MATH 116', 'Calculus 2');
+INSERT INTO courses (course_code, course_name) VALUES ('MATH 215', 'Multivariable and Vector Calculus');
+INSERT INTO courses (course_code, course_name) VALUES ('EECS 183', 'Elementary Programming Concepts');
+INSERT INTO courses (course_code, course_name) VALUES ('EECS 203', 'Discrete Math');
+INSERT INTO courses (course_code, course_name) VALUES ('EECS 280', 'Programming and Introductory Data Structures');
+INSERT INTO courses (course_code, course_name) VALUES ('STATS 250', 'Introduction to Statistics and Data Analysis');
+INSERT INTO courses (course_code, course_name) VALUES ('BIOLOGY 171', 'Introductory Biology: Ecology and Evolution');
+INSERT INTO courses (course_code, course_name) VALUES ('BIOLOGY 172', 'Introductory Biology: Molecular, Cellular, and Developmental');
+INSERT INTO courses (course_code, course_name) VALUES ('BIOLOGY 173', 'Introductory Biology Laboratory');
+INSERT INTO courses (course_code, course_name) VALUES ('CHEM 130', 'General Chemistry: Macroscopic Investigations and Reaction Principles');
+INSERT INTO courses (course_code, course_name) VALUES ('CHEM 125', 'General Chemistry Laboratory I');
+INSERT INTO courses (course_code, course_name) VALUES ('CHEM 210', 'Structure and Reactivity I');
+INSERT INTO courses (course_code, course_name) VALUES ('CHEM 211', 'Investigations in Chemistry');
+INSERT INTO courses (course_code, course_name) VALUES ('CHEM 215', 'Structure and Reactivity II');
+INSERT INTO courses (course_code, course_name) VALUES ('CHEM 216', 'Synthesis and Characterization of Organic Compounds');
+INSERT INTO courses (course_code, course_name) VALUES ('ENGR 101', 'Intro Comp & Prog');
+INSERT INTO courses (course_code, course_name) VALUES ('PHYSICS 140', 'General Physics I');
+INSERT INTO courses (course_code, course_name) VALUES ('PHYSICS 141', 'Elementary Laboratory I');
+
 
 
