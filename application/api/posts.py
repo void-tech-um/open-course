@@ -6,13 +6,13 @@ from application import model
 @application.app.route('/api/v1/')
 def get_services():
     """Return list of services."""
-
     return model.get_services(), 200
 
 
 @application.app.route('/api/v1/posts/', methods=["GET"])
 def get_posts():
     """Return specific number of posts."""
+    # TODO set username
     username = "test"
     size = flask.request.args.get("size", default = 10, type=int)
     page = flask.request.args.get("page", default = 0, type=int)
@@ -30,7 +30,7 @@ def get_posts():
         next = f"/api/v1/posts/?size={size}&page={page+1}&postid_lte={page_lte}"
 
     results = model.get_posts_user(username, page_lte, size, page)
-    print(post_id)
+    print(results)
     posts = []
     for p in results:
         post = {}
@@ -42,8 +42,6 @@ def get_posts():
             flask.request.args.get("size") or
             flask.request.args.get("postid_lte")):
         url = flask.request.full_path
-
-    
 
     context = {
         "next": next,
