@@ -28,13 +28,15 @@ button {
   font-weight: 510;
 }
 
-input, textarea {
+input,
+textarea {
   font-family: "Inter", serif, Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 400;
 }
 
-a:hover, button:hover {
+a:hover,
+button:hover {
   cursor: pointer;
 }
 
@@ -112,13 +114,14 @@ nav a:hover {
   flex: 50%;
 }
 
-
+/* temporarily removed this because it made the webpage look weird
 .course {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2px 12px;
 }
+*/
 
 .left-content {
   display: flex;
@@ -216,7 +219,7 @@ input:checked+.slider:before {
   margin-left: 50px;
 }
 
-h4{
+h4 {
   margin-top: 3%;
   margin-bottom: 3%;
 }
@@ -276,9 +279,12 @@ h4{
 }
 
 .circle {
-  width: 70px; /* Specify the width */
-  height: 70px; /* Specify the height */
-  border-radius: 50%; /* Make it a circle */
+  width: 70px;
+  /* Specify the width */
+  height: 70px;
+  /* Specify the height */
+  border-radius: 50%;
+  /* Make it a circle */
 }
 
 .profile-info {
@@ -287,17 +293,18 @@ h4{
   justify-content: space-between;
 }
 
-.user-name{
+.user-name {
   font-family: Inter;
   color: black;
   font-size: 16px;
   margin: 0;
-  display: flex; 
+  display: flex;
   align-items: center;
 }
 
-.email{
-  font-family: Inter; color: gray;
+.email {
+  font-family: Inter;
+  color: gray;
   font-size: 12px;
   clear: both;
 }
@@ -307,7 +314,7 @@ h4{
   font-size: 30px;
   cursor: pointer;
   margin-left: auto;
-}   
+}
 
 .star:before {
   content: "\2605";
@@ -399,9 +406,11 @@ h4{
   border-radius: 999px;
   cursor: pointer;
   text-align: center;
-  line-height: 39px; /* Center the text vertically */
+  line-height: 39px;
+  /* Center the text vertically */
   margin-top: 35px;
 }
+
 /* Resource Component */
 .resource {
   border-radius: 12px;
@@ -487,10 +496,12 @@ h4{
 }
 
 .feed-item {
-  width: calc(33.33% - 10px); /* Adjust the width as per your design */
+  width: calc(33.33% - 10px);
+  /* Adjust the width as per your design */
   /* You can also add margin or padding to create space between items */
   margin-bottom: 20px;
-  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+  box-sizing: border-box;
+  /* Includes padding and border in the element's total width and height */
 }
 
 .tab-styling .active-tab {
@@ -531,7 +542,8 @@ h4{
 
 .filter-select {
   font-size: 16px;
-  color: #777777; /* Set the font color to blue */
+  color: #777777;
+  /* Set the font color to blue */
   margin: 6px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -540,9 +552,12 @@ h4{
 
 .custom-select {
   font-size: 16px;
-  color: #045BC0; /* Set the font color to blue */
-  border: none; /* Remove the border */
-  outline: none; /* Remove the outline */
+  color: #045BC0;
+  /* Set the font color to blue */
+  border: none;
+  /* Remove the border */
+  outline: none;
+  /* Remove the outline */
 }
 
 .first-footer {
@@ -580,4 +595,47 @@ h4{
 .second-footer p {
   font-size: 16px;
   margin-top: 0;
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 50px 20px;
+}
+
+.resource-grid .resource {
+  width: 90%;
+  box-shadow: 5px 10px 15px rgb(232, 231, 231);
+}
+
+.blue-header {
+  padding: 70px 20px 20px 40px;
+  background-color: #045BC0;
+  color: white;
+  box-shadow: inset 0 15px 12px -12px #c9daff;
+}
+
+.blue-header p {
+  margin: 0px;
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.search-grid {
+  display: grid;
+  grid-template-columns: 60% 13% 13% 8%;
+  gap: 1%;
+  margin: 50px 20px;
+}
+
+.search-grid input {
+  border-radius: 30px;
+  border-color: gray;
+  padding-left: 10px;
+  width: 96%;
+}
+
+.search-grid button {
+  background-color: white;
+  border-color: gray;
 }
