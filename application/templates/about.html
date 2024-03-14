@@ -1,63 +1,67 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="description">
-    <h1>What is Open Course?</h1>
-    <div class="row">
-        <p class="column">
-            We are a team under a University of Michigan student organization called <a href="https://void-tech-um.github.io/index.html">VOID tech</a>. We are dedicated towards providing the resources you need to conquer that exam and major as a student!
+<div class="blue-header">
+    <div>
+        <h1>What is Open Course?</h1>
+        <br>
+        <p>
+            We are a team under a University of Michigan student organization called <a
+                href="https://void-tech-um.github.io/index.html">VOID tech</a>. We are dedicated towards providing the
+            resources you need to conquer that exam and major as a student!
         </p>
-        <a href="https://void-tech-um.github.io/index.html">
-            <button href="https://void-tech-um.github.io/index.html">About VOID Tech</button>
-        </a>
-        
+    </div>
+    <a href="https://void-tech-um.github.io/index.html">
+        <button class="rounded-white-button">About VOID Tech</button>
+    </a>
+</div>
+<div class="about-headings">
+    <h2 class="image-titles"><img src="/static/assets/clarity_group-solid.svg" alt="Group" /> Study Groups</h1>
+
+        <p>
+            Ever feel like you would benefit from joining or starting a study group? There are tons of benefits! None of
+            us
+            know everything but we all know something! Exchanging knowledge can benefit others and yourself in ways
+            you’ve
+            never thought of before. Start a study group, make friends, and ace that class!
+        </p>
+</div>
+<div class="about-images">
+    <div class="column1">
+        <img src="/static/assets/profile.svg">
+        <p> List the information of the study group</p>
+    </div>
+    <div class="column1">
+        <img src="/static/assets/social-media.svg">
+        <p>Wait for people to contact and join your group</p>
+    </div>
+    <div class="column1">
+        <img src="/static/assets/entertain.svg">
+        <p>Meet your group at the designated time and place</p>
     </div>
 </div>
-<div class ="study">
-        <img src="/static/assets/clarity_group-solid.svg" alt="Group"/><h1 class="image-titles">Study Groups</h1>
+<div class="about-headings">
+
+    <h2 class="image-titles"><img src="/static/assets/ph_book.svg" alt="Book" /> Class Materials</h1>
+
         <p>
-            Ever feel like you would benefit from joining or starting a study group? There are tons of benefits! None of us know everything but we all know something! Exchanging knowledge can benefit others and yourself in ways you’ve never thought of before. Start a study group, make friends, and ace that class!
+            You made neat notes that you are super proud of--wanna share it with people who might be struggling in the
+            class? Or you found this awesome Quizlet that you want to show your peers. Sharing is caring and caring is
+            the biggest flex. Maybe you’ll make a new friend.
         </p>
-
-
 </div>
-<div class="study-images">
-    <div class="row">
-        <div class="column1">
-            <img src="/static/assets/profile.svg">
-            <p> List the information of the study group</p>
-        </div>
-        <div class="column1">
-            <img src="/static/assets/social-media.svg">
-            <p>Wait for people to contact and join your group</p>
-        </div>
-        <div class="column1">
-            <img src="/static/assets/entertain.svg">
-            <p>Meet your group at the designated time and place</p>
-        </div>
-</div>
-<div class ="material">
-        <img src="/static/assets/ph_book.svg" alt="Book"/><h1 class="image-titles">Class Materials</h1>            
-        <p>
-            You made neat notes that you are super proud of--wanna share it with people who might be struggling in the class? Or you found this awesome Quizlet that you want to show your peers. Sharing is caring and caring is the biggest flex. Maybe you’ll make a new friend.
-        </p>       
-</div>
-
-
-<div class="material-images">
-    <div class="row">
-        <div class="column1">
-            <img src="/static/assets/analyze-data.svg">
-            <p>Upload or paste the material you found</p>
-        </div>
-        <div class="column1">
-            <img src="/static/assets/help.svg">
-            <p>Wait for people to download your materials</p>
-        </div>
-        <div class="column1">
-            <img src="/static/assets/being-vip.svg">
-            <p>Rise up as a top contributor</p>
-        </div>
+<div class="about-images">
+    <div class="column1">
+        <img src="/static/assets/analyze-data.svg">
+        <p>Upload or paste the material you found</p>
+    </div>
+    <div class="column1">
+        <img src="/static/assets/help.svg">
+        <p>Wait for people to download your materials</p>
+    </div>
+    <div class="column1">
+        <img src="/static/assets/being-vip.svg">
+        <p>Rise up as a top contributor!</p>
     </div>
 </div>
-    
+
 {% endblock %}
