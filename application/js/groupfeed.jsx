@@ -31,17 +31,18 @@ export default function GroupFeed() {
         })
         .then((json) => {
             if (!ignoreStaleRequest) {
-            setBooleanFetch(false);
+                setBooleanFetch(false);
             }
-            const postsToRender = json.results.map(({ postid }) => postid);
+
+            const postsToRender = json.results.map(({ post_id }) => post_id);
             setPosts(posts.concat(postsToRender));
 
             if (json.next !== "") {
-            setUrl(json.next);
-            setMorePosts(true);
+                setUrl(json.next);
+                setMorePosts(true);
             } else {
-            setUrl("");
-            setMorePosts(false);
+                setUrl("");
+                setMorePosts(false);
             }
             return postsToRender;
         })
@@ -106,32 +107,28 @@ export default function GroupFeed() {
                     <option value="option3">Option 3</option>
                 </select>
             </div>
-            <div className="feed-container">
+            {/* <div className="feed-container">
                 <Post />
                 <Post />
                 <Post />
                 <Post />
                 <Post />
                 <Post />
-            </div>
-        {/* <InfiniteScroll
-            dataLength={posts.length}
-            // provide a fcn to be called to get the new posts
-            next={() => setBooleanFetch(true)}
-            loader={<h4>Loading...</h4>}
-            morePosts={morePosts}
-            endMessage={
-            <p style={{ textAlign: "center" }}>
-                <b>No More Posts Available</b>
-            </p>
-            }
-        >
-            <div>
-            {posts.map((postid) => (
-                <Post key={postid} postid={postid} />
-            ))}
-            </div>
-        </InfiniteScroll> */}
+            </div> */}
+            <InfiniteScroll className="feed-container"
+                    dataLength={posts.length}
+                    next={() => setBooleanFetch(true)}
+                    loader={<h6>Loading...</h6>}
+                    hasMore={morePosts}
+                    endMessage={
+                    <p>Check back later for more posts!</p>
+                    }
+                >
+                    {posts.map((post_id) => (
+                        
+                        <Post key={post_id} post_id={post_id} />
+                    ))}
+                </InfiniteScroll>
         </div>
     );
 }

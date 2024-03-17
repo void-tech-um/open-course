@@ -145,6 +145,7 @@ nav a:hover {
   padding: 20px 8%;
 }
 
+
 .image-titles {
   color: #045BC0;
 }
@@ -155,6 +156,7 @@ nav a:hover {
   align-items: center;
   padding: 2px 12px;
 }
+*/
 
 .left-content {
   display: flex;
@@ -630,6 +632,17 @@ h4 {
   margin-top: 0;
 }
 
+.resource-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 50px 20px;
+}
+
+.resource-grid .resource {
+  width: 90%;
+  box-shadow: 5px 10px 15px rgb(232, 231, 231);
+}
+
 .blue-header {
   padding: 70px 45px 25px 45px;
   background-color: #045BC0;
@@ -666,4 +679,23 @@ h4 {
   line-height: 39px;
   /* Center the text vertically */
   margin-top: 35px;
+}
+
+.search-grid {
+  display: grid;
+  grid-template-columns: 60% 13% 13% 8%;
+  gap: 1%;
+  margin: 50px 20px;
+}
+
+.search-grid input {
+  border-radius: 30px;
+  border-color: gray;
+  padding-left: 10px;
+  width: 96%;
+}
+
+.search-grid button {
+  background-color: white;
+  border-color: gray;
 }

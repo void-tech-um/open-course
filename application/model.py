@@ -8,6 +8,7 @@ import requests
 import json
 import psycopg2
 import os
+from psycopg2.extras import DictCursor 
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -72,7 +73,14 @@ def get_user(username):
         (username,)
     )
     user = cur.fetchone()
-    return user
+    content = {
+        "username" : user[0],
+        "email" : user[1],
+        "phone_num": user[2],
+        "profile_picture": user[3],
+        "bio" : user[4]
+    }
+    return content
 
 # POST RELATED DB CALLS --------------------------------------------------------------------------
 
@@ -85,6 +93,44 @@ def get_posts():
     posts = cur.fetchall()
     return posts
 
+def get_posts_user(username, page_lte, size, page):
+    """Get all posts for a user."""
+
+    cur = get_db().cursor()
+
+    cur.execute(
+        "SELECT post_id FROM posts "
+        "WHERE posts.course_code IN "
+        "(SELECT course_code FROM enrollments WHERE username=%s) "
+        "AND post_id <= %s"
+        "ORDER BY post_id DESC "
+        "LIMIT %s"
+        "OFFSET %s",
+        (username, page_lte, size, page * size)
+    )
+    posts = cur.fetchall()
+    content = []
+    for post in posts:
+        content.append({
+            "post_id" : post[0]
+        })
+    return content
+
+def get_max_post_id(username):
+    """Get all posts for a user."""    
+
+    cur = get_db().cursor()
+
+    cur.execute(
+        "SELECT MAX(post_id) FROM posts "
+        "WHERE posts.course_code IN "
+        "(SELECT course_code FROM enrollments WHERE username=%s) ",
+        (username,)
+    )
+    post_id = cur.fetchone()
+    content = {"post_id": post_id[0]}
+    return content
+
 def get_post(post_id):
     """Get all information on post using its post_id."""
     cur = get_db().cursor()
@@ -93,14 +139,24 @@ def get_post(post_id):
         (post_id,)
     )
     post = cur.fetchone()
-    return post
+    content = {
+        "post_id" : post[0],
+        "username" : post[1],
+        "title" : post[2],
+        "description" : post[3],
+        "course_code" : post[4],
+        "created" : post[5],
+        "schedule_link" : post[6],
+        "type" : post[7]
+    }
+    return content
 
 def create_post(username, title, description, course_code, created, schedule_link, type):
     """Create a post"""
     cur = get_db().cursor()
     cur.execute(
         "INSERT INTO posts ('username', 'title', 'description', 'course_code', 'created', 'schedule_link', 'type') "
-        "VALUES (?, ?) ",
+        "VALUES (%s, %s) ",
         (username, title, description, course_code, created, schedule_link, type)
     )
     post_id = cur.lastrowid
@@ -111,7 +167,6 @@ def create_post(username, title, description, course_code, created, schedule_lin
     )
     post = post.fetchone()
     return post
-    
 
 
 # Get all posts for a specific user for their profile page
@@ -145,14 +200,18 @@ def get_tags_for_post(post_id):
         (post_id,)
     )
     tags = cur.fetchall()
-    return tags
+    context = []
+    for tag in tags:
+        context.append(tag[0])
+
+    return context
 
 def insert_tag(post_id,tag_id): 
     """Get all tags."""
     cur = get_db().cursor()
     cur.execute(
         "INSERT INTO filters ('post_id', 'tag_id') "
-        "VALUES (?, ?) ",
+        "VALUES (%s, %s) ",
         (post_id, tag_id)
     )
 
@@ -162,7 +221,7 @@ def get_all_course_codes():
     """Get all course codes."""
     cur = get_db().cursor()
     cur.execute(
-        "SELECT * FROM course_codes"
+        "SELECT * FROM courses"
     )
     course_codes = cur.fetchall()
     return course_codes
@@ -182,7 +241,7 @@ def join_course(logname, course_code):
     cur = get_db().cursor()
     cur.execute(
         "INSERT INTO enrollments ('username', 'course_code') "
-        "VALUES (?, ?) ",
+        "VALUES (%s, %s) ",
         (logname, course_code)
     )
 
