@@ -80,7 +80,7 @@ export default function Post(props) {
             <div className="post-border">
                 <div className="profile-right">
                     <div className="profile-info circle">
-                        <img src="/static/assets/logo.png" alt="pfp" className="circle"></img>
+                        <img src="https://d1yh0yxb8mxq43.cloudfront.net/designTeamIcon.png" alt="pfp" className="circle"></img>
                         <div>
                             <p class="user-name">{post.username} </p>
                             <p class="email">{post.email}</p>
