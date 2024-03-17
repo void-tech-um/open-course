@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import '../static/css/style.css';
+
 // STUDY GROUP POST COMPONENT
 
 export default function Post(props) {
@@ -72,63 +73,47 @@ export default function Post(props) {
         setInputVal(event.target.value);
     };
 
-    if (postHasRendered) {
-        return (
-            <div className="post-border">
-                <div className="user-info">
-                    <p className="user_name">{post.username}</p>
-                    <p className="email">{post.email}</p>
-                    <input className="star" type="checkbox" title="bookmark page" checked /><br />
-                </div>
-                <div className="tags">
-                    {/* {post.tags.map((tag) =>{
-                <button className = "info-tag" type = "button">tag.tag_name</button>
-            })} */}
 
-                </div>
-                <div className="post-info">
-                    <p className="study-group">STUDY GROUP</p>
-                    <h1>{post.title}</h1>
-                    <p>{post.course_code}</p>
-                    <p className="brief-descript">{post.description}</p>
-                    <p className="label">{post.created}</p>
-                    <p className="add-to-calendar">Add to calendar</p>
-                </div>
-                <div className="join-section">
-                    <h2 className="rounded-blue-button">Join</h2>
+//if (postHasRendered) {
+    return (
+    <div className="feed-item">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+        <div className="post-border">
+            <div className="profile-right">
+                <div className="profile-info circle">
+                    <img src="/static/assets/logo.png" alt="pfp" className="circle"></img>
+                    <div>
+                        <p class="user-name">Username </p>
+                        <p class="email">UmichEmail</p>
+                    </div>
+                    <input class="star" type="checkbox" title="bookmark page" checked/> 
                 </div>
             </div>
-            // <div className = "post-border">
-            //     <div className = "user-info">
-            //         <p className = "user_name">UserName</p>
-            //         <p className = "email">UmichEmail</p>
-            //         <input className="star" type="checkbox" title="bookmark page" checked/><br/>
-            //     </div>
-            //     <div className = "tags">
-            //         <button className = "info-tag" type = "button">Tag</button>
-            //         <button className = "info-tag" type = "button">Tag</button>
-            //         <button className = "info-tag" type = "button">Tag</button>
-            //         <button className = "info-tag" type = "button">Tag</button>
-            //     </div>
-            //     <div className = "post-info">
-            //         <p className = "study-group">STUDY GROUP</p>
-            //         <h1>TITLE</h1>
-            //         <p className = "brief-descript">Brief Description</p>
-            //         <p>Date</p>
-            //         <p className = "label">time</p>
-            //         <p className = "add-to-calendar">Add to calendar</p>
-            //         <p>Room</p>
-            //         <p>Address</p>
-            //     </div>
-            //     <div className = "join-section">
-            //         <h2 className = "rounded-blue-button">Join</h2>
-            //     </div>
-            // </div>
-        );
-        //}
-        // return <div>Loading...</div>;
-        // }
-    }
+            <div className="profile-right">
+                <button className="info-tag" type="button">Topic</button>
+                <button className="info-tag tag-spacing" type="button">Topic</button>
+                <button className="info-tag tag-spacing" type="button">Topic</button>
+                <button className="info-tag tag-spacing" type="button">Topic</button>
+            </div>
+            <div className="profile-right">
+                <p className="study-group">STUDY GROUP</p>
+                <h1>TITLE</h1>
+                <p className="brief-descript">Brief Description</p>
+                <p className="date-room"><i className="far fa-calendar"></i> Date</p>
+                <p className="post-time-address align-with-icon">time</p>
+                <p className="add-to-calendar align-with-icon">Add to calendar</p>
+                <p><i className="date-room material-icons">location_on</i>Room</p>
+                <p className="post-time-address align-with-icon">Address</p>
+            </div>
+            <div className="join-section">
+                <h2 className="rounded-blue-button">Join</h2>
+            </div>
+        </div>
+    </div>
+    );
+//}
+return <div>Loading...</div>;
+}
     Post.propTypes = {
         post_id: PropTypes.number,
     }

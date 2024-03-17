@@ -74,8 +74,49 @@ export default function GroupFeed() {
                     <button className="rounded-blue-button">Post</button>
                 </div>
             </div>
-
-            <InfiniteScroll className="feed-container"
+            <hr></hr> {/* Horiztonal Line */}
+            <div className="search-content">
+                <input type="text" id="search" name="search" placeholder="Search Posts, Classes..." />
+                <select className="filter-select">
+                    <option value="" selected>All Filters</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                </select>
+                <select className="filter-select">
+                    <option value="" selected>Group Type</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                </select>
+                <select className="filter-select">
+                    <option value="" selected>Location</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                </select>
+                <select className="filter-select">
+                    <option value="" selected>Time</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                </select>
+                <select className="filter-select">
+                    <option value="" selected>Class</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                </select>
+            </div>
+            <div className="feed-container">
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+            </div>
+        {/*<InfiniteScroll className="feed-container"
                 dataLength={posts.length}
                 next={() => setBooleanFetch(true)}
                 loader={<h6>Loading...</h6>}
@@ -88,6 +129,7 @@ export default function GroupFeed() {
                     <Post key={post_id} post_id={post_id} />
                 ))}
             </InfiniteScroll>
+        </InfiniteScroll> */}
         </div>
     );
 }

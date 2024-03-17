@@ -4,6 +4,7 @@ body {
   font-family: "Inter", serif, Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 400;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -27,13 +28,15 @@ button {
   font-weight: 510;
 }
 
-input, textarea {
+input,
+textarea {
   font-family: "Inter", serif, Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 400;
 }
 
-a:hover, button:hover {
+a:hover,
+button:hover {
   cursor: pointer;
 }
 
@@ -111,28 +114,14 @@ nav a:hover {
   flex: 50%;
 }
 
-/*
-.course p {
-  float: left;
-  padding: 5px 16px;
-}
-
-.course button {
-  float: right;
-  padding: 5px 13px;
-}
-
-.course {
-  display: inline-block;
-}
-*/
-
+/* temporarily removed this because it made the webpage look weird
 .course {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2px 12px;
 }
+*/
 
 .left-content {
   display: flex;
@@ -165,7 +154,6 @@ nav a:hover {
 input {
   width: 80%;
 }
-
 
 .switch {
   position: relative;
@@ -231,7 +219,7 @@ input:checked+.slider:before {
   margin-left: 50px;
 }
 
-h4{
+h4 {
   margin-top: 3%;
   margin-bottom: 3%;
 }
@@ -259,6 +247,7 @@ h4{
 .search-content {
   display: flex;
   justify-content: center;
+  margin: 3%;
 }
 
 #search {
@@ -268,7 +257,7 @@ h4{
   border-style: solid;
   margin-left: 10px;
   margin-right: 10px;
-
+  font-size: 16px;
 }
 
 .new-post-btn {
@@ -280,31 +269,51 @@ h4{
 
 /* Post Component */
 .post-border {
-  width: 382px;
-  height: 585px;
+  width: 360px;
   background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
   /* Shadow */
-  margin: 1%;
+  margin: 3%;
+  padding: 3%;
 }
 
-.user_name {
+.circle {
+  width: 70px;
+  /* Specify the width */
+  height: 70px;
+  /* Specify the height */
+  border-radius: 50%;
+  /* Make it a circle */
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.user-name {
   font-family: Inter;
   color: black;
   font-size: 16px;
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 .email {
   font-family: Inter;
   color: gray;
-  font-size: 12px
+  font-size: 12px;
+  clear: both;
 }
 
 .star {
   visibility: hidden;
   font-size: 30px;
   cursor: pointer;
-  margin-left: 350px;
+  margin-left: auto;
 }
 
 .star:before {
@@ -330,6 +339,23 @@ h4{
   display: inline-block;
 }
 
+.align-with-icon {
+  margin-left: 24px;
+}
+
+.tag-spacing {
+  margin-left: 15px;
+}
+
+.profile-right {
+  margin-top: 5%;
+  margin-left: 30px;
+}
+
+.join-section {
+  margin-left: 200px;
+}
+
 .study-group {
   font-family: Inter;
   color: gray;
@@ -347,11 +373,27 @@ h4{
   letter-spacing: 0.2px;
 }
 
+.date-room {
+  color: #2D3142;
+  line-height: 14px;
+  letter-spacing: 0.23px;
+  font-size: 16;
+  margin-top: 30px;
+}
+
+.post-time-address {
+  line-height: 17px;
+  letter-spacing: 0.2px;
+  font-size: 14px;
+  color: #9C9EB9;
+}
+
 .add-to-calendar {
   font-family: "Inter";
   color: #045BC0;
   line-height: 4px;
   letter-spacing: 0.2px;
+  font-size: 14px;
 }
 
 .rounded-blue-button {
@@ -366,6 +408,7 @@ h4{
   text-align: center;
   line-height: 39px;
   /* Center the text vertically */
+  margin-top: 35px;
 }
 
 /* Resource Component */
@@ -386,6 +429,21 @@ h4{
   font-weight: 340;
 }
 
+.resource-info {
+  font-family: "Inter";
+  color: rgba(108, 117, 125, 1);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+  margin-left: 0px;
+  max-width: 445px;
+  line-height: 28px;
+}
+
+.resource-btn-space {
+  margin-left: 70%;
+}
+
 .course-title {
   font-family: "Inter";
   color: rgba(108, 117, 125, 1);
@@ -403,6 +461,7 @@ h4{
 }
 
 .new-post-box {
+  margin: 3%;
   display: grid;
   grid-template-columns: 30% 50% 20%;
 }
@@ -430,23 +489,19 @@ h4{
   grid-row: 2/span 1;
 }
 
-.resource-info {
-  font-family: "Inter";
-  color: rgba(108, 117, 125, 1);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 150%;
-  margin-left: 0px;
-  max-width: 445px;
-  line-height: 28px;
-}
-
 .feed-container {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  margin: 20px;
   justify-content: center;
+}
+
+.feed-item {
+  width: calc(33.33% - 10px);
+  /* Adjust the width as per your design */
+  /* You can also add margin or padding to create space between items */
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  /* Includes padding and border in the element's total width and height */
 }
 
 .tab-styling .active-tab {
@@ -468,7 +523,7 @@ h4{
 .transparent-button {
   display: inline-block;
   margin: 0px 5px 5px 5px;
-  font-size: 10px;
+  font-size: 16px;
   padding: 5px 2px;
   background-color: white;
   border: none;
@@ -485,8 +540,102 @@ h4{
   padding: 5px 30px;
 }
 
+.filter-select {
+  font-size: 16px;
+  color: #777777;
+  /* Set the font color to blue */
+  margin: 6px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 7px;
+}
+
 .custom-select {
-  color: #045BC0; /* Set the font color to blue */
-  border: none; /* Remove the border */
-  outline: none; /* Remove the outline */
+  font-size: 16px;
+  color: #045BC0;
+  /* Set the font color to blue */
+  border: none;
+  /* Remove the border */
+  outline: none;
+  /* Remove the outline */
+}
+
+.first-footer {
+  display: flex;
+  flex-direction: row;
+  background-color: #ACCBEF;
+  color: #002A5A;
+  padding: 3%;
+}
+
+.first-footer-sub {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.first-footer-sub a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #002A5A;
+  margin-right: 5%;
+}
+
+.second-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 1%;
+  background-color: #2E64A4;
+  color: white
+}
+
+.second-footer p {
+  font-size: 16px;
+  margin-top: 0;
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 50px 20px;
+}
+
+.resource-grid .resource {
+  width: 90%;
+  box-shadow: 5px 10px 15px rgb(232, 231, 231);
+}
+
+.blue-header {
+  padding: 70px 20px 20px 40px;
+  background-color: #045BC0;
+  color: white;
+  box-shadow: inset 0 15px 12px -12px #c9daff;
+}
+
+.blue-header p {
+  margin: 0px;
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.search-grid {
+  display: grid;
+  grid-template-columns: 60% 13% 13% 8%;
+  gap: 1%;
+  margin: 50px 20px;
+}
+
+.search-grid input {
+  border-radius: 30px;
+  border-color: gray;
+  padding-left: 10px;
+  width: 96%;
+}
+
+.search-grid button {
+  background-color: white;
+  border-color: gray;
 }
