@@ -200,7 +200,11 @@ def get_tags_for_post(post_id):
         (post_id,)
     )
     tags = cur.fetchall()
-    return tags
+    context = []
+    for tag in tags:
+        context.append(tag[0])
+
+    return context
 
 def insert_tag(post_id,tag_id): 
     """Get all tags."""
