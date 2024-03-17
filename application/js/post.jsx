@@ -5,14 +5,13 @@ import '../static/css/style.css';
 // STUDY GROUP POST COMPONENT
 
 export default function Post(props) {
-    const { postid } = props;
+    const { post_id } = props;
 
     const [post, setPost] = useState([]);
     const [postHasRendered, setPostHasRendered] = useState(false);
-
     useEffect(() => {
         let ignoreStaleRequest = false;
-        const postURL = `/api/v1/posts/`;
+        const postURL = `/api/v1/posts/${post_id}`;
         fetch(postURL, {
             method: "GET",
             headers: {
@@ -37,10 +36,9 @@ export default function Post(props) {
                     postShowUrl: json.postShowUrl,
                     imgUrl: json.imgUrl,
                     created: moment(local).fromNow(),
-                    owner: json.owner,
-                    post_id: postid,
+                    post_id: post_id,
                     imgUrl: json.imgUrl,
-                    username: json.owner,
+                    username: json.username,
                     email: json.email,
                     title: json.title,
                     description: json.description,
@@ -78,7 +76,7 @@ export default function Post(props) {
         return (
             <div className="post-border">
                 <div className="user-info">
-                    <p className="user_name">{post.post_id}</p>
+                    <p className="user_name">{post.username}</p>
                     <p className="email">{post.email}</p>
                     <input className="star" type="checkbox" title="bookmark page" checked /><br />
                 </div>
@@ -91,8 +89,8 @@ export default function Post(props) {
                 <div className="post-info">
                     <p className="study-group">STUDY GROUP</p>
                     <h1>{post.title}</h1>
+                    <p>{post.course_code}</p>
                     <p className="brief-descript">{post.description}</p>
-                    <p>Date</p>
                     <p className="label">{post.created}</p>
                     <p className="add-to-calendar">Add to calendar</p>
                 </div>
@@ -132,6 +130,6 @@ export default function Post(props) {
         // }
     }
     Post.propTypes = {
-        postid: PropTypes.number,
+        post_id: PropTypes.number,
     }
 };

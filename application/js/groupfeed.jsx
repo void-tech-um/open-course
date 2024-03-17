@@ -33,7 +33,9 @@ export default function GroupFeed() {
             if (!ignoreStaleRequest) {
                 setBooleanFetch(false);
             }
-            const postsToRender = json.results.map(({ postid }) => postid);
+            console.log(json)
+
+            const postsToRender = json.results.map(({ post_id }) => post_id);
             setPosts(posts.concat(postsToRender));
 
             if (json.next !== "") {
@@ -72,20 +74,19 @@ export default function GroupFeed() {
                     <button className="rounded-blue-button">Post</button>
                 </div>
             </div>
+
             <InfiniteScroll className="feed-container"
                 dataLength={posts.length}
                 next={() => setBooleanFetch(true)}
                 loader={<h6>Loading...</h6>}
-                hasMore={hasMore}
+                hasMore={morePosts}
                 endMessage={
                 <h6>Check back later for more posts!</h6>
                 }
             >
-                <div>
-                {posts.map((postid) => (
-                    <Post key={postid} postid={postid} />
+                {posts.map((post_id) => (
+                    <Post key={post_id} post_id={post_id} />
                 ))}
-                </div>
             </InfiniteScroll>
         </div>
     );

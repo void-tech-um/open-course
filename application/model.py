@@ -73,7 +73,14 @@ def get_user(username):
         (username,)
     )
     user = cur.fetchone()
-    return user
+    content = {
+        "username" : user[0],
+        "email" : user[1],
+        "phone_num": user[2],
+        "profile_picture": user[3],
+        "bio" : user[4]
+    }
+    return content
 
 # POST RELATED DB CALLS --------------------------------------------------------------------------
 
@@ -88,7 +95,9 @@ def get_posts():
 
 def get_posts_user(username, page_lte, size, page):
     """Get all posts for a user."""
+
     cur = get_db().cursor()
+
     cur.execute(
         "SELECT post_id FROM posts "
         "WHERE posts.course_code IN "
@@ -100,20 +109,27 @@ def get_posts_user(username, page_lte, size, page):
         (username, page_lte, size, page * size)
     )
     posts = cur.fetchall()
-    return posts
+    content = []
+    for post in posts:
+        content.append({
+            "post_id" : post[0]
+        })
+    return content
 
 def get_max_post_id(username):
-    """Get all posts for a user."""
+    """Get all posts for a user."""    
+
     cur = get_db().cursor()
+
     cur.execute(
         "SELECT MAX(post_id) FROM posts "
         "WHERE posts.course_code IN "
         "(SELECT course_code FROM enrollments WHERE username=%s) ",
         (username,)
     )
-    post_id = cur.fetchone()[0]
-    
-    return post_id
+    post_id = cur.fetchone()
+    content = {"post_id": post_id[0]}
+    return content
 
 def get_post(post_id):
     """Get all information on post using its post_id."""
@@ -123,7 +139,17 @@ def get_post(post_id):
         (post_id,)
     )
     post = cur.fetchone()
-    return post
+    content = {
+        "post_id" : post[0],
+        "username" : post[1],
+        "title" : post[2],
+        "description" : post[3],
+        "course_code" : post[4],
+        "created" : post[5],
+        "schedule_link" : post[6],
+        "type" : post[7]
+    }
+    return content
 
 def create_post(username, title, description, course_code, created, schedule_link, type):
     """Create a post"""
