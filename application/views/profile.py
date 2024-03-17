@@ -45,7 +45,7 @@ def add_item():
     s3 = boto3.client('s3', aws_access_key_id=access_key, aws_secret_access_key=secret_access_key)
     s3.upload_fileobj(fileobj, bucket_name, uuid_basename)
     # insert into the items database with the info
-    conn = habfab.model.get_db()
+    conn = application.model.get_db()
     cur = conn.cursor()
     cur.execute(
         "INSERT INTO items "
@@ -76,7 +76,7 @@ def edit_item():
         or category == '' or category == 'Choose a category':
         flask.abort(400)
 
-    conn = habfab.model.get_db()
+    conn = application.model.get_db()
     uuid_basename = ''
     if filename == '':
         cur1 = conn.cursor()
@@ -84,7 +84,7 @@ def edit_item():
             "SELECT image FROM items WHERE itemid = %s",
             (itemid,)
         )
-        img_name = cur1.fetchone()[0]
+        img_name = 
         uuid_basename = img_name
 
     if filename != '':
@@ -94,8 +94,8 @@ def edit_item():
         # Delete from content delivery network
         cur2 = conn.cursor()
         cur2.execute(
-            "SELECT image FROM items WHERE itemid = %s",
-            (itemid,)
+            # "SELECT image FROM items WHERE itemid = %s",
+            # (itemid,)
         )
         img_name = cur2.fetchone()[0]
         s3 = boto3.resource('s3', aws_access_key_id=access_key, aws_secret_access_key=secret_access_key)
@@ -109,10 +109,10 @@ def edit_item():
     # insert into the items database with the info
     cur3 = conn.cursor()
     cur3.execute(
-        "UPDATE items "
-        "SET name = %s, description = %s, width = %s, price = %s, image = %s, category = %s "
-        "WHERE itemid = %s",
-        (name, description, width, price, uuid_basename, category, itemid)
+        # "UPDATE items "
+        # "SET name = %s, description = %s, width = %s, price = %s, image = %s, category = %s "
+        # "WHERE itemid = %s",
+        # (name, description, width, price, uuid_basename, category, itemid)
     )
     conn.commit()
 
@@ -129,13 +129,12 @@ def delete_item():
         flask.abort(400)
 
     # Get the filename from the database
-    conn = habfab.model.get_db()
+    conn = application.model.get_db()
     cur1 = conn.cursor()
     cur1.execute(
-        "SELECT image FROM items WHERE itemid = %s",
-        (itemid,)
+        
     )
-    img_name = cur1.fetchone()[0]
+    img_name = 
 
     # Delete from content delivery network
     access_key = os.environ.get('AWS_ACCESS_KEY')
@@ -147,8 +146,6 @@ def delete_item():
     # insert into the items database with the info
     cur2 = conn.cursor()
     cur2.execute(
-        "DELETE FROM items "
-        "WHERE itemid = %s",
-        (itemid,)
+        
     )
     conn.commit()
