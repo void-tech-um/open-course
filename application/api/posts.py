@@ -15,7 +15,7 @@ def get_posts():
     # TODO set username
     
     username = "test"
-    size = flask.request.args.get("size", default = 9, type=int)
+    size = flask.request.args.get("size", default = 6, type=int)
     page = flask.request.args.get("page", default = 0, type=int)
     if (size <= 0) or (page < 0):
         context = {
@@ -52,7 +52,6 @@ def get_posts():
 @application.app.route('/api/v1/posts/<int:postid>/', methods=['GET'])
 def get_specific_post(postid):
     data_post = model.get_post(postid)
-    print(data_post)
     if not data_post:
        context = {
           "message": "Not Found",
@@ -79,7 +78,6 @@ def get_specific_post(postid):
         "tags" : tags,
         "postShowUrl": f"/api/v1/posts/{postid}/"
     }
-    print(context)
     return flask.jsonify(**context), 200
 
 @application.app.route('/api/v1/posts/', methods=['POST'])

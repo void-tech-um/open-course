@@ -7,7 +7,6 @@ import '../static/css/style.css';
 
 export default function Post(props) {
     const { post_id } = props;
-
     const [post, setPost] = useState([]);
     const [postHasRendered, setPostHasRendered] = useState(false);
     useEffect(() => {
@@ -28,7 +27,6 @@ export default function Post(props) {
                 return response.json();
             })
             .then((json) => {
-                console.log(json)
 
                 const utcDate = moment.utc(json.created).toDate();
                 const local = moment(utcDate).local().format("YYYY-MM-DD HH:mm:ss");
@@ -50,8 +48,10 @@ export default function Post(props) {
                 };
             })
             .then((postInfo) => {
+
                 setPost(postInfo);
                 setPostHasRendered(true);
+
             })
             .catch((error) => {
                 console.log(error);
@@ -73,48 +73,49 @@ export default function Post(props) {
         setInputVal(event.target.value);
     };
 
-
-//if (postHasRendered) {
-    return (
-    <div className="feed-item">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-        <div className="post-border">
-            <div className="profile-right">
-                <div className="profile-info circle">
-                    <img src="/static/assets/logo.png" alt="pfp" className="circle"></img>
-                    <div>
-                        <p class="user-name">Username </p>
-                        <p class="email">UmichEmail</p>
+    if (postHasRendered) {
+        return (
+        <div className="feed-item">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+            <div className="post-border">
+                <div className="profile-right">
+                    <div className="profile-info circle">
+                        <img src="/static/assets/logo.png" alt="pfp" className="circle"></img>
+                        <div>
+                            <p class="user-name">{post.username} </p>
+                            <p class="email">{post.email}</p>
+                        </div>
+                        <input class="star" type="checkbox" title="bookmark page" checked/> 
                     </div>
-                    <input class="star" type="checkbox" title="bookmark page" checked/> 
+                </div>
+                <div className="profile-right">
+                    {post.tags.map((tag) => (
+                        <button className="info-tag tag-spacing" type="button">{tag}</button>
+                    ))}
+                    <button className="info-tag tag-spacing" type="button">Topic</button>
+                    <button className="info-tag tag-spacing" type="button">Topic</button>
+                    <button className="info-tag tag-spacing" type="button">Topic</button>
+                </div>
+                <div className="profile-right">
+                    <p className="study-group">STUDY GROUP</p>
+                    <h1>{post.title}</h1>
+                    <p className="brief-descript">{post.description}</p>
+                    <p className="date-room"><i className="far fa-calendar"></i> Date</p>
+                    <p className="post-time-address align-with-icon">time</p>
+                    <p className="add-to-calendar align-with-icon">Add to calendar</p>
+                    <p><i className="date-room material-icons">location_on</i>Room</p>
+                    <p className="post-time-address align-with-icon">Address</p>
+                </div>
+                <div className="join-section">
+                    <h2 className="rounded-blue-button">Join</h2>
                 </div>
             </div>
-            <div className="profile-right">
-                <button className="info-tag" type="button">Topic</button>
-                <button className="info-tag tag-spacing" type="button">Topic</button>
-                <button className="info-tag tag-spacing" type="button">Topic</button>
-                <button className="info-tag tag-spacing" type="button">Topic</button>
-            </div>
-            <div className="profile-right">
-                <p className="study-group">STUDY GROUP</p>
-                <h1>TITLE</h1>
-                <p className="brief-descript">Brief Description</p>
-                <p className="date-room"><i className="far fa-calendar"></i> Date</p>
-                <p className="post-time-address align-with-icon">time</p>
-                <p className="add-to-calendar align-with-icon">Add to calendar</p>
-                <p><i className="date-room material-icons">location_on</i>Room</p>
-                <p className="post-time-address align-with-icon">Address</p>
-            </div>
-            <div className="join-section">
-                <h2 className="rounded-blue-button">Join</h2>
-            </div>
         </div>
-    </div>
-    );
+        );
+    }
+    return <div>Loading...</div>;
 //}
-return <div>Loading...</div>;
-}
-Post.propTypes = {
-    post_id: PropTypes.number,
-}
+    Post.propTypes = {
+        post_id: PropTypes.number,
+    }
 };

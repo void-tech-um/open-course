@@ -33,7 +33,6 @@ export default function GroupFeed() {
             if (!ignoreStaleRequest) {
                 setBooleanFetch(false);
             }
-            console.log(json)
 
             const postsToRender = json.results.map(({ post_id }) => post_id);
             setPosts(posts.concat(postsToRender));
@@ -108,28 +107,28 @@ export default function GroupFeed() {
                     <option value="option3">Option 3</option>
                 </select>
             </div>
-            <div className="feed-container">
+            {/* <div className="feed-container">
                 <Post />
                 <Post />
                 <Post />
                 <Post />
                 <Post />
                 <Post />
-            </div>
-        {/*<InfiniteScroll className="feed-container"
-                dataLength={posts.length}
-                next={() => setBooleanFetch(true)}
-                loader={<h6>Loading...</h6>}
-                hasMore={morePosts}
-                endMessage={
-                <h6>Check back later for more posts!</h6>
-                }
-            >
-                {posts.map((post_id) => (
-                    <Post key={post_id} post_id={post_id} />
-                ))}
-            </InfiniteScroll>
-        </InfiniteScroll> */}
+            </div> */}
+            <InfiniteScroll className="feed-container"
+                    dataLength={posts.length}
+                    next={() => setBooleanFetch(true)}
+                    loader={<h6>Loading...</h6>}
+                    hasMore={morePosts}
+                    endMessage={
+                    <p>Check back later for more posts!</p>
+                    }
+                >
+                    {posts.map((post_id) => (
+                        
+                        <Post key={post_id} post_id={post_id} />
+                    ))}
+                </InfiniteScroll>
         </div>
     );
 }
