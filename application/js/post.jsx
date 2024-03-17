@@ -114,7 +114,7 @@ export default function Post(props) {
 //}
 return <div>Loading...</div>;
 }
-    Post.propTypes = {
-        post_id: PropTypes.number,
-    }
+Post.propTypes = {
+    post_id: PropTypes.number,
+}
 };
