@@ -12,22 +12,47 @@ def get_services():
 @application.app.route('/api/v1/posts/', methods=["GET"])
 def get_posts():
     """Return specific number of posts."""
+    # TODO set username
     
+    username = "test"
+    size = flask.request.args.get("size", default = 9, type=int)
+    page = flask.request.args.get("page", default = 0, type=int)
+    if (size <= 0) or (page < 0):
+        context = {
+            "message": "Bad Request",
+            "status_code": 400
+        }
+        return flask.jsonify(**context), 400    
+    post_id = model.get_max_post_id(username)
+    page_lte = flask.request.args.get("postid_lte",
+                                   default=post_id["post_id"], type=int)
+    next = ""
+    if (page + 1) <= int(page_lte / size):
+        next = f"/api/v1/posts/?size={size}&page={page+1}&postid_lte={page_lte}"
 
-    size = flask.request.args("size", default = 10, type=int)
-    page = flask.request.args("page", default = 0, type=int)
-    data = model.get_posts()
+    results = model.get_posts_user(username, page_lte, size, page)
 
+    for post in results:
+        post['url'] = f"/api/v1/posts/{post['post_id']}/"
+
+    url = flask.request.path
+
+    if (flask.request.args.get("page") or
+            flask.request.args.get("size") or
+            flask.request.args.get("postid_lte")):
+        url = flask.request.full_path
 
     context = {
-
+        "next": next,
+        "results": results,
+        "url": url
     }
     return flask.jsonify(**context)
 
 @application.app.route('/api/v1/posts/<int:postid>/', methods=['GET'])
 def get_specific_post(postid):
-
     data_post = model.get_post(postid)
+    print(data_post)
     if not data_post:
        context = {
           "message": "Not Found",
@@ -44,14 +69,17 @@ def get_specific_post(postid):
         "post_id": postid,
         "imgUrl": data_user["profile_picture"],
         "username": data_post["username"],
+        "email":data_user["email"],
         "title": data_post["title"],
         "description": data_post["description"],
         "course_code": data_post["course_code"],
         "created": data_post["created"],
         "schedule_link": data_post["schedule_link"],
         "type": data_post["type"],
-        "tags" : tags
+        "tags" : tags,
+        "postShowUrl": f"/api/v1/posts/{postid}/"
     }
+    print(context)
     return flask.jsonify(**context), 200
 
 @application.app.route('/api/v1/posts/', methods=['POST'])

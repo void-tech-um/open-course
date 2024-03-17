@@ -6,61 +6,73 @@ import '../static/css/style.css';
 // STUDY GROUP POST COMPONENT
 
 export default function Post(props) {
-const { postid } = props;
+    const { post_id } = props;
 
-const [post, setPost] = useState([]);
-const [postHasRendered, setPostHasRendered] = useState(false);
+    const [post, setPost] = useState([]);
+    const [postHasRendered, setPostHasRendered] = useState(false);
+    useEffect(() => {
+        let ignoreStaleRequest = false;
+        const postURL = `/api/v1/posts/${post_id}`;
+        fetch(postURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => {
+                // do error handling
+        
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response.json();
+            })
+            .then((json) => {
+                console.log(json)
 
-useEffect(() => {
-    let ignoreStaleRequest = false;
-    const postURL = `/api/v1/posts/${JSON.stringify(postid)}/`;
-    fetch(postURL, {
-    method: "GET",
-    headers: {
-        "Content-Type": "application/json",
-    },
-    })
-    .then((response) => {
-        // do error handling
-        if (!response.ok) {
-        console.log("error");
-        throw Error(response.statusText);
-        }
-        return response.json();
-    })
-    .then((json) => {
-        const utcDate = moment.utc(json.created).toDate();
-        const local = moment(utcDate).local().format("YYYY-MM-DD HH:mm:ss");
-        return {
-        postShowUrl: json.postShowUrl,
-        imgUrl: json.imgUrl,
-        created: moment(local).fromNow(),
-        owner: json.owner,
+                const utcDate = moment.utc(json.created).toDate();
+                const local = moment(utcDate).local().format("YYYY-MM-DD HH:mm:ss");
+
+                return {
+                    postShowUrl: json.postShowUrl,
+                    imgUrl: json.imgUrl,
+                    created: moment(local).fromNow(),
+                    post_id: post_id,
+                    imgUrl: json.imgUrl,
+                    username: json.username,
+                    email: json.email,
+                    title: json.title,
+                    description: json.description,
+                    course_code: json.course_code,
+                    schedule_link: json.schedule_link,
+                    type: json.type,
+                    tags: json.tags
+                };
+            })
+            .then((postInfo) => {
+                setPost(postInfo);
+                setPostHasRendered(true);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        return () => {
+            // This is a cleanup function that runs whenever the Post component
+            // unmounts or re-renders. If a Post is about to unmount or re-render, we
+            // should avoid updating state.
+            ignoreStaleRequest = true;
         };
-    })
-    .then((postInfo) => {
-        setPost(postInfo);
-        setPostHasRendered(true);
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-    return () => {
-    // This is a cleanup function that runs whenever the Post component
-    // unmounts or re-renders. If a Post is about to unmount or re-render, we
-    // should avoid updating state.
-    ignoreStaleRequest = true;
+    }, []);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setInputVal("");
     };
-}, []);
 
-const handleSubmit = (event) => {
-    event.preventDefault();
-    setInputVal("");
-};
+    const handleChange = (event) => {
+        setInputVal(event.target.value);
+    };
 
-const handleChange = (event) => {
-    setInputVal(event.target.value);
-};
 
 //if (postHasRendered) {
     return (
@@ -102,7 +114,7 @@ const handleChange = (event) => {
 //}
 return <div>Loading...</div>;
 }
-
-Post.propTypes = {
-postid: PropTypes.number.isRequired,
+    Post.propTypes = {
+        post_id: PropTypes.number,
+    }
 };

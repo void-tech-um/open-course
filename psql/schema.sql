@@ -2,7 +2,8 @@ CREATE TABLE users (
     username VARCHAR(50) PRIMARY KEY NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     phone_num VARCHAR(20) NOT NULL,
-    profile_picture VARCHAR(256) NOT NULL
+    profile_picture VARCHAR(256) NOT 
+    bio VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE posts (
