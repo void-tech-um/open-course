@@ -1,96 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 <section class="profile">
-    <h1>Profile Page</h1>
-
-    <div id="accountSetting">
-        <h2><u>Account setting</u></h2>
-        <div class="row">
-            <div class="column">
-                <p>Username:</p>
-                <input type="text" placeholder="{{ username }}" id="myInput" onkeyup="filterFunction()">
-                <p>Password:</p>
-                <!-- TODO: FIGURE OUT PASSWORD DETAILS -->
-                <input type="text" placeholder="**********" id="myInput" onkeyup="filterFunction()">
+    <div class="flex-container">
+        <div class = "left-box">
+            <div class = "flex-container">
+                <h1>Your Courses</h1>
+                <button class="rounded-blue-button">Add/Join Courses</button>
             </div>
-            <div class="column">
-                <p>profile picture</p>
-                <img src="{{ profile_picture }}">
-                <button>+</button>
-            </div>
+            
         </div>
-        <p>Email:</p>
-        <input type="text" placeholder="{{ email }}" id="myInput" onkeyup="filterFunction()">
-        <p>Bio:</p>
-        <input type="text" placeholder="{{ bio }}" id="myInput" onkeyup="filterFunction()">
-        <p>Phone number:</p>
-        <input type="text" placeholder="{{ phone_num }}" id="myInput" onkeyup="filterFunction()">
-    </div>
-
-    <div id="nav">
-        <hr style="width:20;text-align:left;margin-right:70px">
-        <a href="#yourPosts" class="btn">Your Posts</a>
-        <hr style="width:20;text-align:left;margin-right:70px">
-        <a href="#accountSetting" class="btn">Account Settings</a>
-        <hr style="width:20;text-align:left;margin-right:70px">
-        <a href="#notification" class="btn">Notification Settings</a>
-        <hr style="width:20;text-align:left;margin-right:70px">
-
-    </div>
-
-    <div id="yourPosts">
-        <div class="filled_box">
-            <h2>Your Posts</h2>
-            <div class="box">
-                <div class="box">
-                    <p style="text-align:left;"><u>Class:
-                            <span style="float:right;">
-                                Time: Monday 3:00pm-4:00pm
-                            </span>
-                        </u></p>
-                    <div class="box">
-                        <p>Blahhh</p>
-                        <p>#Tag</p>
-                    </div>
-                </div>
-                <div class="box">
-                    <p style="text-align:left;"><u>Class:
-                            <span style="float:right;">
-                                Time: MWF 2:00pm-2:30pm
-                            </span>
-                        </u></p>
-                    <div class="box">
-                        <p>Blahhh</p>
-                        <p>#Tag</p>
-                    </div>
-                </div>
-            </div>
+        <div class = "right-box">
+            oh no
         </div>
-    </div>
-
-    <div id="notification">
-        <h2><u>Notification</u></h2>
-        <p>New member Notification
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
-        </p>
-
-        <p> Alerts
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
-        </p>
-
-        <p> Allow notification
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
-        </p>
-
     </div>
 </section>
 {% endblock %}

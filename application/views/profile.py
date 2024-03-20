@@ -5,5 +5,4 @@ from flask import render_template
 def show_profile(username):
     """Display /profile route."""
     context = application.model.get_user(username)
-
     return render_template('profile.html', **context)
