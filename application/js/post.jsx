@@ -6,99 +6,116 @@ import '../static/css/style.css';
 // STUDY GROUP POST COMPONENT
 
 export default function Post(props) {
-const { postid } = props;
+    const { post_id } = props;
+    const [post, setPost] = useState([]);
+    const [postHasRendered, setPostHasRendered] = useState(false);
+    useEffect(() => {
+        let ignoreStaleRequest = false;
+        const postURL = `/api/v1/posts/${post_id}`;
+        fetch(postURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => {
+                // do error handling
+        
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response.json();
+            })
+            .then((json) => {
 
-const [post, setPost] = useState([]);
-const [postHasRendered, setPostHasRendered] = useState(false);
+                const utcDate = moment.utc(json.created).toDate();
+                const local = moment(utcDate).local().format("YYYY-MM-DD HH:mm:ss");
 
-useEffect(() => {
-    let ignoreStaleRequest = false;
-    const postURL = `/api/v1/posts/${JSON.stringify(postid)}/`;
-    fetch(postURL, {
-    method: "GET",
-    headers: {
-        "Content-Type": "application/json",
-    },
-    })
-    .then((response) => {
-        // do error handling
-        if (!response.ok) {
-        console.log("error");
-        throw Error(response.statusText);
-        }
-        return response.json();
-    })
-    .then((json) => {
-        const utcDate = moment.utc(json.created).toDate();
-        const local = moment(utcDate).local().format("YYYY-MM-DD HH:mm:ss");
-        return {
-        postShowUrl: json.postShowUrl,
-        imgUrl: json.imgUrl,
-        created: moment(local).fromNow(),
-        owner: json.owner,
+                return {
+                    postShowUrl: json.postShowUrl,
+                    imgUrl: json.imgUrl,
+                    created: moment(local).fromNow(),
+                    post_id: post_id,
+                    imgUrl: json.imgUrl,
+                    username: json.username,
+                    email: json.email,
+                    title: json.title,
+                    description: json.description,
+                    course_code: json.course_code,
+                    schedule_link: json.schedule_link,
+                    type: json.type,
+                    tags: json.tags
+                };
+            })
+            .then((postInfo) => {
+
+                setPost(postInfo);
+                setPostHasRendered(true);
+
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        return () => {
+            // This is a cleanup function that runs whenever the Post component
+            // unmounts or re-renders. If a Post is about to unmount or re-render, we
+            // should avoid updating state.
+            ignoreStaleRequest = true;
         };
-    })
-    .then((postInfo) => {
-        setPost(postInfo);
-        setPostHasRendered(true);
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-    return () => {
-    // This is a cleanup function that runs whenever the Post component
-    // unmounts or re-renders. If a Post is about to unmount or re-render, we
-    // should avoid updating state.
-    ignoreStaleRequest = true;
+    }, []);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setInputVal("");
     };
-}, []);
 
-const handleSubmit = (event) => {
-    event.preventDefault();
-    setInputVal("");
-};
+    const handleChange = (event) => {
+        setInputVal(event.target.value);
+    };
 
-const handleChange = (event) => {
-    setInputVal(event.target.value);
-};
-
-//if (postHasRendered) {
-    return (
-    <div>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-        <div class="post-border">
-            <div class="user-info profile-right">
-                <div class="circle"></div>
-                <input class="star" type="checkbox" title="bookmark page" checked/> 
-                <p class="user_name">Username </p>
-                <p class="email">UmichEmail</p>
-            </div>
-            <div class="tags profile-right">
-                <button class="info-tag" type = "button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-                <button class="info-tag tag-spacing" type="button">Topic</button>
-            </div>
-            <div class="post-info profile-right">
-                <p class="study-group">STUDY GROUP</p>
-                <h1>TITLE</h1>
-                <p class="brief-descript">Brief Description</p>
-                <p class="date-room"><i class="far fa-calendar"></i> Date</p>
-                <p class="post-time-address align-with-icon">time</p>
-                <p class="add-to-calendar align-with-icon">Add to calendar</p>
-                <p><i class="date-room material-icons">location_on</i>Room</p>
-                <p class="post-time-address align-with-icon">Address</p>
-            </div>
-            <div class="join-section profile-right">
-                <h2 class="rounded-blue-button">Join</h2>
+    if (postHasRendered) {
+        return (
+        <div className="feed-item">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+            <div className="post-border">
+                <div className="profile-right">
+                    <div className="profile-info circle">
+                        <img src="/static/assets/logo.png" alt="pfp" className="circle"></img>
+                        <div>
+                            <p class="user-name">{post.username} </p>
+                            <p class="email">{post.email}</p>
+                        </div>
+                        <input class="star" type="checkbox" title="bookmark page" checked/> 
+                    </div>
+                </div>
+                <div className="profile-right">
+                    {post.tags.map((tag) => (
+                        <button className="info-tag tag-spacing" type="button">{tag}</button>
+                    ))}
+                    <button className="info-tag tag-spacing" type="button">Topic</button>
+                    <button className="info-tag tag-spacing" type="button">Topic</button>
+                    <button className="info-tag tag-spacing" type="button">Topic</button>
+                </div>
+                <div className="profile-right">
+                    <p className="study-group">STUDY GROUP</p>
+                    <h1>{post.title}</h1>
+                    <p className="brief-descript">{post.description}</p>
+                    <p className="date-room"><i className="far fa-calendar"></i> Date</p>
+                    <p className="post-time-address align-with-icon">time</p>
+                    <p className="add-to-calendar align-with-icon">Add to calendar</p>
+                    <p><i className="date-room material-icons">location_on</i>Room</p>
+                    <p className="post-time-address align-with-icon">Address</p>
+                </div>
+                <div className="join-section">
+                    <h2 className="rounded-blue-button">Join</h2>
+                </div>
             </div>
         </div>
-    </div>
-    );
+        );
+    }
+    return <div>Loading...</div>;
 //}
-return <div>Loading...</div>;
-}
-
-Post.propTypes = {
-postid: PropTypes.number.isRequired,
+    Post.propTypes = {
+        post_id: PropTypes.number,
+    }
 };

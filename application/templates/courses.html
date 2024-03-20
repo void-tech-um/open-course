@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="courses">
+    <div class="blue-header">
+        <h1>Courses</h1>
+        <p>Add your courses here to see study groups and materials on your feed</p>
+    </div>
+
+    <div class="resource-grid">
+        {% for course in courses %}
+            <div class="resource">
+                <div class="resource-title">
+                    <h2>{{course[0]}}</h2>
+                </div>
+                <div class="course-title">
+                    <p>{{course[1]}}</p>
+                </div>
+                <div class="resource-btn-space">
+                    <button class="rounded-blue-button">Join Course</button>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+</section>
+{% endblock %}

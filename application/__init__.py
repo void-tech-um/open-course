@@ -21,4 +21,4 @@ app.config.from_envvar('APPLICATION_SETTINGS', silent=True)
 # going to tell pylint and pycodestyle to ignore this coding style violation.
 import application.views  # noqa: E402  pylint: disable=wrong-import-position
 import application.model
-# import application.api
+import application.api

@@ -5,6 +5,7 @@ body {
   font-family: "Inter", serif, Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 400;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -35,13 +36,15 @@ button {
   font-weight: 510;
 }
 
-input, textarea {
+input,
+textarea {
   font-family: "Inter", serif, Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 400;
 }
 
-a:hover, button:hover {
+a:hover,
+button:hover {
   cursor: pointer;
 }
 
@@ -111,29 +114,49 @@ nav a:hover {
   cursor: pointer;
 }
 
-.row {
-  display: flex;
-}
-
 .column {
   flex: 50%;
 }
 
-/*
-.course p {
-  float: left;
-  padding: 5px 16px;
+.column1 {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 }
 
-.course button {
-  float: right;
-  padding: 5px 13px;
+.column1 img {
+  margin: auto;
 }
 
-.course {
-  display: inline-block;
+.column1 p {
+  text-align: center;
+  margin: 5%;
+  justify-content: end;
 }
-*/
+
+.description {
+  color: white;
+  display: flexbox;
+  background-color: #045BC0;
+  height: 310px;
+}
+
+.about-headings {
+  background-color: #f1f8ff;
+  padding: 60px 8%;
+}
+
+.about-images {
+  display: flex;
+  flex-direction: row;
+  padding: 20px 8%;
+}
+
+
+.image-titles {
+  color: #045BC0;
+}
 
 .course {
   display: flex;
@@ -141,6 +164,7 @@ nav a:hover {
   align-items: center;
   padding: 2px 12px;
 }
+*/
 
 .left-content {
   display: flex;
@@ -173,7 +197,6 @@ nav a:hover {
 input {
   width: 80%;
 }
-
 
 .switch {
   position: relative;
@@ -239,7 +262,7 @@ input:checked+.slider:before {
   margin-left: 50px;
 }
 
-h4{
+h4 {
   margin-top: 3%;
   margin-bottom: 3%;
 }
@@ -267,6 +290,7 @@ h4{
 .search-content {
   display: flex;
   justify-content: center;
+  margin: 3%;
 }
 
 #search {
@@ -276,7 +300,7 @@ h4{
   border-style: solid;
   margin-left: 10px;
   margin-right: 10px;
-
+  font-size: 16px;
 }
 
 .new-post-btn {
@@ -288,32 +312,42 @@ h4{
 
 /* Post Component */
 .post-border {
-  width: 382px;
-  height: 585px;
+  width: 360px;
   background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
   /* Shadow */
-  margin: 1%;
+  margin: 3%;
+  padding: 3%;
 }
 
 .circle {
-  width: 70px; /* Specify the width */
-  height: 70px; /* Specify the height */
-  background-color: rgb(160, 157, 157); /* Just for demonstration */
-  border-radius: 50%; /* Make it a circle */
+  width: 70px;
+  /* Specify the width */
+  height: 70px;
+  /* Specify the height */
+  border-radius: 50%;
+  /* Make it a circle */
 }
 
-.user_name{
+.profile-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.user-name {
   font-family: Inter;
   color: black;
   font-size: 16px;
   margin: 0;
-  display: flex; 
+  display: flex;
   align-items: center;
 }
 
-.email{
-  font-family: Inter; color: gray;
+.email {
+  font-family: Inter;
+  color: gray;
   font-size: 12px;
   clear: both;
 }
@@ -322,8 +356,8 @@ h4{
   visibility: hidden;
   font-size: 30px;
   cursor: pointer;
-  margin-left: 300px;
-}   
+  margin-left: auto;
+}
 
 .star:before {
   content: "\2605";
@@ -359,6 +393,15 @@ h4{
 .right {
   margin-left: 30px;
 }
+ 
+.profile-right {
+  margin-top: 5%;
+  margin-left: 30px;
+}
+
+.join-section {
+  margin-left: 200px;
+}
 
 .study-group {
   font-family: Inter;
@@ -376,7 +419,6 @@ h4{
   line-height: 24px;
   letter-spacing: 0.2px;
 }
-
 
 .date-room {
   color: #2D3142;
@@ -411,11 +453,13 @@ h4{
   border-radius: 999px;
   cursor: pointer;
   text-align: center;
-  line-height: 39px; /* Center the text vertically */
+  line-height: 39px;
+  /* Center the text vertically */
   margin-top: 35px;
   /*margin-left: 350;*/
   margin: auto;
 }
+
 /* Resource Component */
 .resource {
   border-radius: 12px;
@@ -432,6 +476,21 @@ h4{
   font-weight: 400;
   font-size: 24px;
   font-weight: 340;
+}
+
+.resource-info {
+  font-family: "Inter";
+  color: rgba(108, 117, 125, 1);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+  margin-left: 0px;
+  max-width: 445px;
+  line-height: 28px;
+}
+
+.resource-btn-space {
+  margin-left: 70%;
 }
 
 .course-title {
@@ -451,6 +510,7 @@ h4{
 }
 
 .new-post-box {
+  margin: 3%;
   display: grid;
   grid-template-columns: 30% 50% 20%;
 }
@@ -478,6 +538,7 @@ h4{
   grid-row: 2/span 1;
 }
 
+
 .resource-info {
   font-family: "Inter";
   color: rgba(108, 117, 125, 1);
@@ -492,10 +553,17 @@ h4{
 
 .feed-container {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  margin: 20px;
   justify-content: center;
+}
+
+.feed-item {
+  width: calc(33.33% - 10px);
+  /* Adjust the width as per your design */
+  /* You can also add margin or padding to create space between items */
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  /* Includes padding and border in the element's total width and height */
 }
 
 .tab-styling .active-tab {
@@ -517,7 +585,7 @@ h4{
 .transparent-button {
   display: inline-block;
   margin: 0px 5px 5px 5px;
-  font-size: 10px;
+  font-size: 16px;
   padding: 5px 2px;
   background-color: white;
   border: none;
@@ -532,6 +600,16 @@ h4{
   background: #045BC0;
   border-radius: 20px;
   padding: 5px 30px;
+}
+
+.filter-select {
+  font-size: 16px;
+  color: #777777;
+  /* Set the font color to blue */
+  margin: 6px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 7px;
 }
 
 .custom-select {
@@ -644,7 +722,92 @@ h4{
   height: 39px;
   background-color: #045BC0;
   color: white;
+  font-size: 16px;
+  color: #045BC0;
+  /* Set the font color to blue */
+  border: none;
+  /* Remove the border */
+  outline: none;
+  /* Remove the outline */
+}
+
+.first-footer {
+  display: flex;
+  flex-direction: row;
+  background-color: #ACCBEF;
+  color: #002A5A;
+  padding: 3%;
+}
+
+.first-footer-sub {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.first-footer-sub a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #002A5A;
+  margin-right: 5%;
+}
+
+.second-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 1%;
+  background-color: #2E64A4;
+  color: white
+}
+
+.second-footer p {
+  font-size: 16px;
+  margin-top: 0;
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 50px 20px;
+}
+
+.resource-grid .resource {
+  width: 90%;
+  box-shadow: 5px 10px 15px rgb(232, 231, 231);
+}
+
+.blue-header {
+  padding: 70px 45px 25px 45px;
+  background-color: #045BC0;
+  color: white;
+  box-shadow: inset 0 15px 12px -12px #c9daff;
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+.blue-header p {
+  margin: 0px;
+  font-size: 17px;
+  font-weight: 300;
+  width: 60%;
+}
+
+.blue-header a {
+  color: white;
+  align-self: end;
+  justify-self: end;
+}
+
+.rounded-white-button {
+  height: 39px;
+  background-color: white;
+  padding: 0px 20px;
+  color: #045BC0;
   font-size: 14px;
+  font-weight: 500;
   border: none;
   border-radius: 999px;
   cursor: pointer;
@@ -729,4 +892,25 @@ h4{
   cursor: pointer;
   text-align: center;
   line-height: 30px; /* Center the text vertically */
+  /* Center the text vertically */
+  margin-top: 35px;
+}
+
+.search-grid {
+  display: grid;
+  grid-template-columns: 60% 13% 13% 8%;
+  gap: 1%;
+  margin: 50px 20px;
+}
+
+.search-grid input {
+  border-radius: 30px;
+  border-color: gray;
+  padding-left: 10px;
+  width: 96%;
+}
+
+.search-grid button {
+  background-color: white;
+  border-color: gray;
 }
