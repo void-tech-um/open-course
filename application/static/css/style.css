@@ -622,6 +622,7 @@ h4 {
 .flex-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .left-box {
@@ -650,7 +651,7 @@ h4 {
   background-color: rgb(210, 206, 206);
 }
 
-.font-22 {
+.font-20 {
   font-size: 20px;
 }
 
@@ -704,7 +705,7 @@ h4 {
   color: #045BC0;
 }
 
-.left_box_container {
+.left-box-container {
   flex: 1;
   margin-left: 10px;
   flex-direction: row;
@@ -848,11 +849,12 @@ h4 {
 
 .profile-course{
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   background-color: #045BC0;
   border-radius: 10px;
   padding: 10px;
   margin-right: 50px;
-  flex-flow: row wrap;
   justify-content: center;
   
 }
