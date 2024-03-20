@@ -723,8 +723,7 @@ h4 {
   background-color: #045BC0;
   color: white;
   font-size: 16px;
-  color: #045BC0;
-  /* Set the font color to blue */
+  border: none;
   border-radius: 999px;
   cursor: pointer;
   text-align: center;

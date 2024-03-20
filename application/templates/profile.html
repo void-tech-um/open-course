@@ -6,7 +6,7 @@
             <div class = "left_box_container">
                     <h1-blue class="margin_top padding">Your Courses</h1-blue>
                     <button class="margin_top profile-rounded-blue-button">Add/Join Courses 
-                        <div class="bx bx-up-arrow-alt" id="menu-icon"></div> <br> 
+                        <div class="bx bx-up-arrow-alt" id="menu-icon"></div>
                     </button> 
                 <div class="profile-course">
                     <div class="individuals-course">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                <br><br><h1-blue class="padding">Your Posts</h1-blue>
+                <h1-blue class="padding">Your Posts</h1-blue>
                 <div class="profile-post-container">
                     <!--Template for Post/Resource-->
                     <div class="profile-post"> 
@@ -83,14 +83,15 @@
         <div class = "right-box">
             <div class = "right-box-container"></div>
                 <div class = "profile-photo center-horizontally"></div>
-                <p class = "font-22 font-bold center-text">Name Name</p>
+                <p class = "font-22 font-bold center-text">{{ username }}</p>
                 <p class = "font-16 center-text profile-bio-link">Edit photo</p>
-                <br><p class = "font-22 subtitle-format">Bio</p>
-                <div class="profile-bio-text-box bio-box font-16">A little about me...</div>
-                <br><p class = "font-22 subtitle-format">Preferred Contact Info</p>
-                <div class="profile-bio-text-box pref-contact-box font-16">Namename@umich.edu</div>
-                <br><p class = "font-16 center-text profile-bio-link">Security FAQs</p>
-                <br><div class = "button-container">
+                <p class = "font-22 subtitle-format">Bio</p>
+                <div class="profile-bio-text-box bio-box font-16">{{ bio }}</div>
+                <p class = "font-22 subtitle-format">Preferred Contact Info</p>
+                <div class="profile-bio-text-box pref-contact-box font-16">{{ email }}</div>
+                <div class="profile-bio-text-box pref-contact-box font-16">{{ phone_num }}</div>
+                <p class = "font-16 center-text profile-bio-link">Security FAQs</p>
+                <div class = "button-container">
                     <button class = "rounded-blue-button font-22">Log Out</button>
                 </div>
         </div>
