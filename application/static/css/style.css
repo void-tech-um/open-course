@@ -725,10 +725,12 @@ h4 {
   font-size: 16px;
   color: #045BC0;
   /* Set the font color to blue */
-  border: none;
-  /* Remove the border */
-  outline: none;
-  /* Remove the outline */
+  border-radius: 999px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 39px; /* Center the text vertically */
+  margin-left: 575px;
+  margin-bottom: 40px;
 }
 
 .first-footer {
