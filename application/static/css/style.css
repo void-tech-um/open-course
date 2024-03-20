@@ -710,11 +710,8 @@ h4 {
   margin-left: 10px;
   flex-direction: row;
 }
-.margin_top {
-  margin-top: 125px;
-}
 
-.padding {
+.top-padding {
   padding: 30px;
 }
 
