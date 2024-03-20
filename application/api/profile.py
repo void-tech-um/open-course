@@ -1,6 +1,7 @@
 """REST API for account."""
 import flask
 import application
+import os
 from application import model
 
 @application.app.route('/api/v1/profile/<username>/', methods=['GET'])
@@ -31,4 +32,5 @@ def show_profile(username):
                "profile_picture": user["profile_picture"],
                "posts" : posts_list
                }
-    return flask.jsonify(**context), 200
+    cloudfront_domain_name = os.environ.get('CLOUDFRONT_DOMAIN_NAME')
+    return flask.jsonify(**context, cloudfront_domain_name), 200
