@@ -92,9 +92,6 @@ export default function Post(props) {
                     {post.tags.map((tag) => (
                         <button className="info-tag tag-spacing" type="button">{tag}</button>
                     ))}
-                    <button className="info-tag tag-spacing" type="button">Topic</button>
-                    <button className="info-tag tag-spacing" type="button">Topic</button>
-                    <button className="info-tag tag-spacing" type="button">Topic</button>
                 </div>
                 <div className="profile-right">
                     <p className="study-group">STUDY GROUP</p>
