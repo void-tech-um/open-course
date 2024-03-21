@@ -262,12 +262,17 @@ def get_courses_of_user(username):
 
 def join_course(username, course_code):
     """Join a course."""
-    cur = get_db().cursor()
+    conn = get_db()
+    cur = conn.cursor()
+    
+    print("hello")
+    print(course_code)
     cur.execute(
         "INSERT INTO enrollments (username, course_code) "
         "VALUES (%s, %s) ",
         (username, course_code)
     )
+    conn.commit()
 
 def get_all_courses_user(username):
     """Get all courses for user that have not been joined yet."""
@@ -290,7 +295,6 @@ def get_all_courses_user(username):
     for course in course_codes:
         course_codes_list.append({"course_code" : course[0], "course_name" : course[1], "is_in_course" : course[2]})
     context = {"courses" : course_codes_list}
-    print(context)
 
     return context
 
