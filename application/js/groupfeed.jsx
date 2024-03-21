@@ -5,27 +5,49 @@ import Post from "./post";
 
 export default function GroupFeed() {
     const [posts, setPosts] = useState([]);
+    const [courses, setCourses] = useState([]);
     const [morePosts, setMorePosts] = useState(false);
     const [url, setUrl] = useState("/api/v1/posts/");
     const [booleanFetch, setBooleanFetch] = useState(true);
 
     useEffect(() => {
-        let ignoreStaleRequest = false;
-        if (!booleanFetch) {
-        return () => {
-            ignoreStaleRequest = true;
-        };
-        }
-        fetch(url, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
+        fetch('/api/v1/courses/', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
         })
         .then((response) => {
-            // do error handling
             if (!response.ok) {
-            throw Error(response.statusText);
+                throw Error(response.statusText);
+            }
+            return response.json();
+        })
+            .then((json) => {
+            const fetchedCourses = json.courses;
+            setCourses(fetchedCourses);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    }, []); // Empty dependency array means this effect runs once on mount
+
+    useEffect(() => {
+        let ignoreStaleRequest = false;
+        if (!booleanFetch) {
+            return () => {
+                ignoreStaleRequest = true;
+            };
+        }
+        fetch(url, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw Error(response.statusText);
             }
             return response.json();
         })
@@ -50,7 +72,7 @@ export default function GroupFeed() {
             console.log(error);
         });
         return () => {
-        ignoreStaleRequest = true;
+            ignoreStaleRequest = true;
         };
     }, [booleanFetch, url, posts]);
 
@@ -66,9 +88,9 @@ export default function GroupFeed() {
                     <button className="transparent-button"><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
                     <select className="custom-select">
                         <option value="" selected>Select Course</option>
-                        <option value="option1">Option 1</option>
-                        <option value="option2">Option 2</option>
-                        <option value="option3">Option 3</option>
+                        {courses.map((courses) => (
+                            <button className="info-tag tag-spacing" type="button">{courses[0]}</button>
+                        ))}
                     </select>
                     <button className="rounded-blue-button">Post</button>
                 </div>
