@@ -117,7 +117,6 @@ export default function GroupFeed() {
                     }
                 >
                     {posts.map((post_id) => (
-                        
                         <Post key={post_id} post_id={post_id} />
                     ))}
                 </InfiniteScroll>
