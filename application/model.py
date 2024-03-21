@@ -263,8 +263,6 @@ def get_courses_of_user(username):
 def join_course(username, course_code):
     """Join a course."""
     cur = get_db().cursor()
-    print(username)
-    print(course_code)
     cur.execute(
         "INSERT INTO enrollments (username, course_code) "
         "VALUES (%s, %s) ",
