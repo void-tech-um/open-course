@@ -85,7 +85,5 @@ const handleChange = (event) => {
 
     </div>
     );
-//}
-return <div>Loading...</div>;
 }
 

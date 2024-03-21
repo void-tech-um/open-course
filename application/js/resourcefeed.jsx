@@ -99,25 +99,6 @@ export default function ResourceFeed() {
                 <Resource></Resource>
                 <Resource></Resource>
             </div>
-        {/* <InfiniteScroll
-            dataLength={posts.length}
-            // provide a fcn to be called to get the new posts
-            next={() => setBooleanFetch(true)}
-            loader={<h4>Loading...</h4>}
-            morePosts={morePosts}
-            endMessage={
-            <p style={{ textAlign: "center" }}>
-                <b>No More Posts Available</b>
-            </p>
-            }
-        >
-            <div>
-            {posts.map((postid) => (
-                <Post key={postid} postid={postid} />
-            ))}
-            </div>
-        </InfiniteScroll> */}
-
         </div>
     );
 }

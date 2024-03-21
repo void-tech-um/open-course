@@ -107,18 +107,10 @@ export default function GroupFeed() {
                     <option value="option3">Option 3</option>
                 </select>
             </div>
-            {/* <div className="feed-container">
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-            </div> */}
             <InfiniteScroll className="feed-container"
                     dataLength={posts.length}
                     next={() => setBooleanFetch(true)}
-                    loader={<h6>Loading...</h6>}
+                    loader={<h6> </h6>}
                     hasMore={morePosts}
                     endMessage={
                     <p>Check back later for more posts!</p>
