@@ -165,9 +165,8 @@ nav a:hover {
   align-items: center;
   padding: 2px 12px;
 }
-*/
 
-.left-content {
+*/ .left-content {
   display: flex;
 }
 
@@ -461,6 +460,98 @@ h4 {
   margin: auto;
 }
 
+/* Detail Componenet */
+.center-title {
+  font-family: "Inter";
+  color: rgba(33, 37, 41, 1);
+  font-size: 24px;
+  font-weight: 400;
+  font-size: 24px;
+  font-weight: 340;
+  text-align: center;
+  padding: 20px;
+}
+
+.display1 {
+  border-radius: 12px;
+  border: 1px solid rgba(185, 185, 185, 1);
+  padding: 20px;
+  margin: 20px;
+  width: 40%;
+}
+
+.display-box {
+  display: grid;
+  place-items: center;
+  height: auto;
+  width: auto;
+  margin-top: -30px;
+}
+
+.display-box .detail1 {
+  width: auto;
+  box-shadow: 5px 10px 15px rgb(232, 231, 231);
+}
+
+.profile-name {
+  font-family: "Inter";
+  color: rgba(33, 37, 41, 1);
+  font-size: 24px;
+  font-weight: 400;
+  font-size: 24px;
+  font-weight: 340;
+}
+
+.umich-email {
+  font-family: "Inter";
+  color: rgba(108, 117, 125, 1);
+  font-size: 16 px;
+  font-weight: auto;
+  margin-top: -30px;
+  margin-bottom: 0px;
+  text-decoration: underline;
+}
+
+.detail-desc {
+  font-family: "Inter";
+  color: rgba(108, 117, 125, 1);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+  margin-top: -20px;
+  margin-left: 0px;
+  line-height: 28px;
+  max-width: auto;
+}
+
+.join-text {
+  font-family: "Inter";
+  color: rgba(108, 117, 125, 1);
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 220px;
+}
+
+.join-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #007bff;
+}
+
+
 /* Resource Component */
 .resource {
   border-radius: 12px;
@@ -497,7 +588,7 @@ h4 {
 .course-title {
   font-family: "Inter";
   color: rgba(108, 117, 125, 1);
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 700;
   margin-top: -15px;
   margin-bottom: 0px;
@@ -614,9 +705,12 @@ h4 {
 }
 
 .custom-select {
-  color: #045BC0; /* Set the font color to blue */
-  border: none; /* Remove the border */
-  outline: none; /* Remove the outline */
+  color: #045BC0;
+  /* Set the font color to blue */
+  border: none;
+  /* Remove the border */
+  outline: none;
+  /* Remove the outline */
 }
 
 /* Profile Component*/
@@ -694,7 +788,7 @@ h4 {
   min-height: 80px;
 }
 
-.pref-contact-box{
+.pref-contact-box {
   min-height: 20px;
 }
 
@@ -702,7 +796,7 @@ h4 {
   margin: auto;
 }
 
-.profile-bio-link{
+.profile-bio-link {
   color: #045BC0;
 }
 
@@ -728,7 +822,8 @@ h4 {
   border-radius: 999px;
   cursor: pointer;
   text-align: center;
-  line-height: 39px; /* Center the text vertically */
+  line-height: 39px;
+  /* Center the text vertically */
   margin-left: 500px;
   margin-bottom: 40px;
 }
@@ -814,13 +909,14 @@ h4 {
   border-radius: 999px;
   cursor: pointer;
   text-align: center;
-  line-height: 39px; /* Center the text vertically */
+  line-height: 39px;
+  /* Center the text vertically */
   margin-left: 575px;
   margin-bottom: 40px;
 }
 
-.profile-post-container{
-  display:flex;
+.profile-post-container {
+  display: flex;
   flex-flow: row wrap;
 }
 
@@ -836,18 +932,18 @@ h4 {
   background-color: white;
 }
 
-.profile-post-h1{
+.profile-post-h1 {
   font-size: 24px;
   font-weight: 590;
 }
 
-.profile-post-h2{
+.profile-post-h2 {
   font-size: 18px;
   font-weight: 200;
   font: "Inter";
 }
 
-.profile-course{
+.profile-course {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -867,7 +963,8 @@ h4 {
   height: 135px;
   background-color: white;
 }
-.profile-course-h1{
+
+.profile-course-h1 {
   font-size: 24px;
   font: "inter";
   font-weight: 350;
@@ -892,7 +989,8 @@ h4 {
   border-radius: 999px;
   cursor: pointer;
   text-align: center;
-  line-height: 30px; /* Center the text vertically */
+  line-height: 30px;
+  /* Center the text vertically */
   /* Center the text vertically */
   margin-top: 35px;
 }
