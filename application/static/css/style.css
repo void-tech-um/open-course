@@ -313,13 +313,13 @@ h4 {
 
 /* Post Component */
 .post-border {
-  width: 360px;
+  width: 300px;
   background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 12px;
   /* Shadow */
-  margin: 3%;
-  padding: 3%;
+  margin: 2%;
+  padding: 4rem;
 }
 
 .circle {
@@ -556,15 +556,6 @@ h4 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.feed-item {
-  width: calc(33.33% - 10px);
-  /* Adjust the width as per your design */
-  /* You can also add margin or padding to create space between items */
-  margin-bottom: 20px;
-  box-sizing: border-box;
-  /* Includes padding and border in the element's total width and height */
 }
 
 .tab-styling .active-tab {

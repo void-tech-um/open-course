@@ -75,37 +75,35 @@ export default function Post(props) {
 
     if (postHasRendered) {
         return (
-        <div className="feed-item">
+        <div className="post-border">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-            <div className="post-border">
-                <div className="profile-right">
-                    <div className="profile-info circle">
-                        <img src="/static/assets/logo.png" alt="pfp" className="circle"></img>
-                        <div>
-                            <p class="user-name">{post.username} </p>
-                            <p class="email">{post.email}</p>
-                        </div>
-                        <input class="star" type="checkbox" title="bookmark page" checked/> 
+            <div className="profile-right">
+                <div className="profile-info circle">
+                    <img src="/static/assets/logo.png" alt="pfp" className="circle"></img>
+                    <div>
+                        <p class="user-name">{post.username} </p>
+                        <p class="email">{post.email}</p>
                     </div>
+                    <input class="star" type="checkbox" title="bookmark page" checked/> 
                 </div>
-                <div className="profile-right">
-                    {post.tags.map((tag) => (
-                        <button className="info-tag tag-spacing" type="button">{tag}</button>
-                    ))}
-                </div>
-                <div className="profile-right">
-                    <p className="study-group">STUDY GROUP</p>
-                    <h1>{post.title}</h1>
-                    <p className="brief-descript">{post.description}</p>
-                    <p className="date-room"><i className="far fa-calendar"></i> Date</p>
-                    <p className="post-time-address align-with-icon">time</p>
-                    <p className="add-to-calendar align-with-icon">Add to calendar</p>
-                    <p><i className="date-room material-icons">location_on</i>Room</p>
-                    <p className="post-time-address align-with-icon">Address</p>
-                </div>
-                <div className="join-section">
-                    <h2 className="rounded-blue-button">Join</h2>
-                </div>
+            </div>
+            <div className="profile-right">
+                {post.tags.map((tag) => (
+                    <button className="info-tag tag-spacing" type="button">{tag}</button>
+                ))}
+            </div>
+            <div className="profile-right">
+                <p className="study-group">STUDY GROUP</p>
+                <h1>{post.title}</h1>
+                <p className="brief-descript">{post.description}</p>
+                <p className="date-room"><i className="far fa-calendar"></i> Date</p>
+                <p className="post-time-address align-with-icon">time</p>
+                <p className="add-to-calendar align-with-icon">Add to calendar</p>
+                <p><i className="date-room material-icons">location_on</i>Room</p>
+                <p className="post-time-address align-with-icon">Address</p>
+            </div>
+            <div className="join-section">
+                <h2 className="rounded-blue-button">Join</h2>
             </div>
         </div>
         );
