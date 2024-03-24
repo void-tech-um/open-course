@@ -81,10 +81,10 @@ export default function Post(props) {
                 <div className="profile-info circle">
                     <img src="/static/assets/logo.png" alt="pfp" className="circle"></img>
                     <div>
-                        <p class="user-name">{post.username} </p>
-                        <p class="email">{post.email}</p>
+                        <p className="user-name">{post.username} </p>
+                        <p className="email">{post.email}</p>
                     </div>
-                    <input class="star" type="checkbox" title="bookmark page" checked/> 
+                    <input className="star" type="checkbox" title="bookmark page" checked/> 
                 </div>
             </div>
             <div className="profile-right">
