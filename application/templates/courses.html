@@ -10,13 +10,18 @@
         {% for course in courses %}
             <div class="resource">
                 <div class="resource-title">
-                    <h2>{{course[0]}}</h2>
+                    <h2>{{course.course_code}}</h2>
                 </div>
                 <div class="course-title">
-                    <p>{{course[1]}}</p>
+                    <p>{{course.course_name}}</p>
                 </div>
                 <div class="resource-btn-space">
-                    <button class="rounded-blue-button">Join Course</button>
+                    {% if course.is_in_course == False %}
+                    <form action="/courses/?target={{ url_for('show_courses') }}" method="post" enctype="multipart/form-data">
+                        <input class="rounded-blue-button" type="submit" name="join" value="Join Course"/>
+                        <input type="hidden" name="course_code" value="{{course.course_code}}"/>
+                    </form>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}

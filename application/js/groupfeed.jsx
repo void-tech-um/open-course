@@ -89,7 +89,7 @@ export default function GroupFeed() {
                     <select className="custom-select">
                         <option value="" selected>Select Course</option>
                         {courses.map((courses) => (
-                            <button className="info-tag tag-spacing" type="button">{courses[0]}</button>
+                            <option className="info-tag tag-spacing" type="button">{courses[0]}</option>
                         ))}
                     </select>
                     <button className="rounded-blue-button">Post</button>
