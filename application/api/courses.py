@@ -23,7 +23,4 @@ def join_course():
 @application.app.route('/api/v1/courses/', methods=['GET'])
 def get_courses():
     courses = model.get_all_course_codes()
-    context = {
-        "courses" : courses
-    }
-    return flask.jsonify(**context), 200
+    return flask.jsonify(**courses), 200

@@ -88,9 +88,9 @@ export default function GroupFeed() {
                     <button className="transparent-button"><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
                     <select className="custom-select">
                         <option value="" selected>Select Course</option>
-                        {/* {courses.map((courses) => (
-                            <option className="info-tag tag-spacing" type="button">{courses[0]}</option>
-                        ))} */}
+                        {courses.map((courses) => (
+                            <option className="info-tag tag-spacing" type="button">{courses.course_code}</option>
+                        ))}
                     </select>
                     <button className="rounded-blue-button">Post</button>
                 </div>
