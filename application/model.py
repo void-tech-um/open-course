@@ -91,7 +91,24 @@ def get_posts():
         "SELECT * FROM posts"
     )
     posts = cur.fetchall()
-    return posts
+    #fetchall - return a list of tuples [(),()]
+    #fetchone - return one tuple ()
+    #[(2,test, looking, description,), ()]
+    #[{"post_id" : 2, "username" : test}]
+    context = []
+    for post in posts:
+        #(2,test, looking, description,)        
+        context.append({
+            "post_id" : post[0],
+            "username" : post[1],
+            "title" : post[2],
+            "description" : post[3],
+            "course_code" : post[4],
+            "created" : post[5],
+            "schedule_link" : post[6],
+            "type" : post[7]
+        })
+    return context
 
 def get_posts_user(username, page_lte, size, page):
     """Get all posts for a user."""
@@ -139,6 +156,7 @@ def get_post(post_id):
         (post_id,)
     )
     post = cur.fetchone()
+    #(5, test, eecs 485 study group)
     content = {
         "post_id" : post[0],
         "username" : post[1],
@@ -178,6 +196,7 @@ def get_users_posts(username):
         (username,)
     )
     posts = cur.fetchall()
+    #[{"username" : test, 5, i love void},]
     return posts
 
 # TAG RELATED DB CALLS --------------------------------------------------------------------------
@@ -200,6 +219,7 @@ def get_tags_for_post(post_id):
         (post_id,)
     )
     tags = cur.fetchall()
+    #[(EECS 280,),(EECS 485,)]
     context = []
     for tag in tags:
         context.append(tag[0])
@@ -224,7 +244,11 @@ def get_all_course_codes():
         "SELECT * FROM courses"
     )
     course_codes = cur.fetchall()
-    return course_codes
+    course_codes_list = []
+    for course in course_codes:
+        course_codes_list.append({"course_code" : course[0], "course_name" : course[1]})
+    context = {"courses" : course_codes_list}
+    return context
 
 def get_courses_of_user(username):
     """Get all enrollments for a specific user."""
@@ -236,15 +260,43 @@ def get_courses_of_user(username):
     course_codes = cur.fetchall()
     return course_codes
 
-def join_course(logname, course_code):
+def join_course(username, course_code):
     """Join a course."""
+    conn = get_db()
+    cur = conn.cursor()
+    
+    print("hello")
+    print(course_code)
+    cur.execute(
+        "INSERT INTO enrollments (username, course_code) "
+        "VALUES (%s, %s) ",
+        (username, course_code)
+    )
+    conn.commit()
+
+def get_all_courses_user(username):
+    """Get all courses for user that have not been joined yet."""
     cur = get_db().cursor()
     cur.execute(
-        "INSERT INTO enrollments ('username', 'course_code') "
-        "VALUES (%s, %s) ",
-        (logname, course_code)
+        '''
+        SELECT u.course_code, u.course_name, EXISTS(
+            SELECT 1
+            FROM
+            (SELECT course_code FROM enrollments
+            WHERE username = 'test'
+            ) e
+            WHERE e.course_code = u.course_code
+        ) AS user_in_course FROM courses u;
+        ''',
+        (username,)
     )
+    course_codes = cur.fetchall()
+    course_codes_list = []
+    for course in course_codes:
+        course_codes_list.append({"course_code" : course[0], "course_name" : course[1], "is_in_course" : course[2]})
+    context = {"courses" : course_codes_list}
 
+    return context
 
 class InvalidUsage(Exception):
     """Custom exception class for invalid usage of API."""
