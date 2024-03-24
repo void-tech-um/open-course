@@ -230,11 +230,20 @@ def get_courses_of_user(username):
     """Get all enrollments for a specific user."""
     cur = get_db().cursor()
     cur.execute(
-        "SELECT * FROM enrollments WHERE username = %s",
+        "SELECT e.course_code, course_name FROM enrollments e JOIN courses c ON c.course_code = e.course_code WHERE username = %s",
         (username,)
     )
-    course_codes = cur.fetchall()
-    return course_codes
+    courses = cur.fetchall()
+    course_list = []
+    for course in courses:
+        course_list.append({
+            "course_code" : course[0],
+            "course_name" : course[1]
+        })
+    context = {"courses" : course_list}
+    #[{course_code : EECS 280, course_name : INtroductory to Data structures},{course_code: EECS 370, course_name: }]
+    #{course : [{course_code : EECS 280, course_name : INtroductory to Data structures},{course_code: EECS 370, course_name: }]}
+    return context
 
 def join_course(logname, course_code):
     """Join a course."""

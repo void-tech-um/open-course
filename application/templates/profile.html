@@ -12,42 +12,17 @@
                     </a>
                 </div>
                 <div class="profile-course">
+                    {% for course in courses %}
                     <div class="individuals-course">
                         <div class="profile-post-h1">
-                            Course title
+                            {{course.course_code}}
                         </div>
                         <div class="profile-post-h2">
-                            <p>Some quick example text.</p>
+                            <p>{{course.course_name}}</p>
                         </div>
                         <p class="course-blue-button">Drop Course</p>
                     </div>
-                    <div class="individuals-course">
-                        <div class="profile-post-h1">
-                            Course title2
-                        </div>
-                        <div class="profile-post-h2">
-                            <p>Some quick example text2.</p>
-                        </div>
-                        <p class="course-blue-button">Drop Course</p>
-                    </div>
-                    <div class="individuals-course">
-                        <div class="profile-post-h1">
-                            Course title3
-                        </div>
-                        <div class="profile-post-h2">
-                            <p>Some quick example text2.</p>
-                        </div>
-                        <p class="course-blue-button">Drop Course</p>
-                    </div>
-                    <div class="individuals-course">
-                        <div class="profile-post-h1">
-                            Course title3
-                        </div>
-                        <div class="profile-post-h2">
-                            <p>Some quick example text2.</p>
-                        </div>
-                        <p class="course-blue-button">Drop Course</p>
-                    </div>
+                    {% endfor %}  
                 </div>
                 <br><br>
                 <h1-blue class="top-padding">Your Posts</h1-blue>
