@@ -32,7 +32,7 @@ def get_posts():
 
     results = model.get_posts_user(username, page_lte, size, page)
 
-    for post in results:
+    for post in results["posts"]:
         post['url'] = f"/api/v1/posts/{post['post_id']}/"
 
     url = flask.request.path
@@ -44,7 +44,7 @@ def get_posts():
 
     context = {
         "next": next,
-        "results": results,
+        "results": results["posts"],
         "url": url
     }
     return flask.jsonify(**context)
@@ -75,7 +75,7 @@ def get_specific_post(postid):
         "created": data_post["created"],
         "schedule_link": data_post["schedule_link"],
         "type": data_post["type"],
-        "tags" : tags,
+        "tags" : tags["tags"],
         "postShowUrl": f"/api/v1/posts/{postid}/"
     }
     return flask.jsonify(**context), 200

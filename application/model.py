@@ -62,7 +62,17 @@ def get_users():
         "SELECT * FROM users"
     )
     users = cur.fetchall()
-    return users
+    users_list=[]
+    for user in users:
+        users_list.append({
+        "username" : user[0],
+        "email" : user[1],
+        "phone_num": user[2],
+        "profile_picture": user[3],
+        "bio" : user[4]
+    })
+    content = {"users" : users_list}
+    return content
 
 # Get all information for a specific user for their profile page
 def get_user(username):
@@ -95,10 +105,10 @@ def get_posts():
     #fetchone - return one tuple ()
     #[(2,test, looking, description,), ()]
     #[{"post_id" : 2, "username" : test}]
-    context = []
+    posts_list = []
     for post in posts:
         #(2,test, looking, description,)        
-        context.append({
+        posts_list.append({
             "post_id" : post[0],
             "username" : post[1],
             "title" : post[2],
@@ -108,7 +118,8 @@ def get_posts():
             "schedule_link" : post[6],
             "type" : post[7]
         })
-    return context
+    content = {"posts" : posts_list} 
+    return content
 
 def get_posts_user(username, page_lte, size, page):
     """Get all posts for a user."""
@@ -126,11 +137,12 @@ def get_posts_user(username, page_lte, size, page):
         (username, page_lte, size, page * size)
     )
     posts = cur.fetchall()
-    content = []
+    posts_list = []
     for post in posts:
-        content.append({
+        posts_list.append({
             "post_id" : post[0]
         })
+    content = {"posts" : posts_list}
     return content
 
 def get_max_post_id(username):
@@ -196,8 +208,19 @@ def get_users_posts(username):
         (username,)
     )
     posts = cur.fetchall()
-    #[{"username" : test, 5, i love void},]
-    return posts
+    posts_list = []
+    for post in posts:
+        posts_list.append({
+            "post_id" : post[0],
+            "title" : post[2],
+            "description" : post[3],
+            "course_code" : post[4],
+            "created" : post[5],
+            "schedule_link": post[6],
+            "type" : post[7]
+        })
+    content = {"posts" : posts_list}
+    return content
 
 # TAG RELATED DB CALLS --------------------------------------------------------------------------
 
@@ -208,7 +231,14 @@ def get_all_tags():
         "SELECT * FROM tags"
     )
     tags = cur.fetchall()
-    return tags
+    tags_lists = []
+    for tag in tags_lists:
+        tags_lists.append({
+            "tag_id" : tag[0],
+            "tag_name" : tag
+        })
+    context = {"tags" : tags_lists}
+    return context
 
 # Get tags for a specific posts (likely for viewing a post and its associated filters)
 def get_tags_for_post(post_id):
@@ -219,12 +249,11 @@ def get_tags_for_post(post_id):
         (post_id,)
     )
     tags = cur.fetchall()
-    #[(EECS 280,),(EECS 485,)]
-    context = []
+    tags_lists = []
     for tag in tags:
-        context.append(tag[0])
-
-    return context
+        tags_lists.append({"tag_name" : tag})
+    content = {"tags" : tags_lists}
+    return content
 
 def insert_tag(post_id,tag_id): 
     """Get all tags."""
