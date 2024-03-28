@@ -311,7 +311,7 @@ h4 {
 }
 
 /* Post Component */
-.post-border {
+.oc-post-border {
   width: 300px;
   background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -553,7 +553,7 @@ h4 {
 
 
 /* Resource Component */
-.resource {
+.oc-resource {
   border-radius: 12px;
   border: 1px solid rgba(185, 185, 185, 1);
   padding: 20px;
@@ -653,14 +653,14 @@ h4 {
   border-bottom: 4px solid #045BC0;
 }
 
-.filters {
+.oc-filters {
   grid-row: 3/span 1;
   grid-column: 2/span1;
   align-items: end;
   margin: 10px;
 }
 
-.filters img {
+.oc-filters img {
   display: inline-block;
   margin: 5px;
 }
