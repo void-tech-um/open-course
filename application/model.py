@@ -307,7 +307,7 @@ def get_all_courses_user(username):
 
     return context
 
-def leave_course(username, course_code):
+def drop_course(username, course_code):
     """Allow a user to drop a course."""
     conn = get_db()
     cur = conn.cursor()
