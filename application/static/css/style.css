@@ -856,17 +856,6 @@ h4 {
   margin-top: 0;
 }
 
-.resource-grid {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  margin: 50px 20px;
-}
-
-.resource-grid .resource {
-  width: 90%;
-  box-shadow: 5px 10px 15px rgb(232, 231, 231);
-}
-
 .blue-header {
   padding: 70px 45px 25px 45px;
   background-color: #045BC0;
