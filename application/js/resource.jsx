@@ -63,7 +63,7 @@ const handleChange = (event) => {
 
 //if (postHasRendered) {
     return (
-    <div class="resource"> 
+    <div class="oc-resource"> 
         <div class="resource-title">
             <h2>Resource Title</h2>
         </div>
