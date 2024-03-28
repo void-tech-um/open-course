@@ -89,7 +89,7 @@ export default function Post(props) {
             </div>
             <div className="profile-right">
                 {post.tags.map((tag) => (
-                    <button className="info-tag tag-spacing" type="button">{tag}</button>
+                    <button className="info-tag tag-spacing" type="button">{tag.tag_name}</button>
                 ))}
             </div>
             <div className="profile-right">

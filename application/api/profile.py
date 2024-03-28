@@ -14,21 +14,11 @@ def show_profile(username):
         }
         return flask.jsonify(**context), 404
     posts = model.get_users_posts
-    posts_list = []
-    for post in posts:
-        posts_list.append({
-            "post_id": post["postid"],
-            "title": post["title"],
-            "description": post["description"],
-            "course_code": post["course_code"],
-            "created": post["created"],
-            "schedule_link": post["schedule_link"],
-            "type": post["type"]
-        })
+
     context = {"username": user["username"], 
                "email": user["email"],
                "phone_num": user["phone_num"],
                "profile_picture": user["profile_picture"],
-               "posts" : posts_list
+               "posts" : posts
                }
     return flask.jsonify(**context), 200
