@@ -75,12 +75,12 @@
             <div class = "right-box-container"></div>
                 <br>
                 <div class = "profile-photo center-horizontally"></div>
-                <p class = "font-22 font-bold center-text">{{ username }}</p>
+                <p class = "font-22 font-bold center-text">{{ profile_data.username }}</p>
                 <p class = "font-22 subtitle-format">Bio</p>
-                <div class="profile-bio-text-box bio-box font-16">{{ bio }}</div>
+                <div class="profile-bio-text-box bio-box font-16">{{ profile_data.bio }}</div>
                 <p class = "font-22 subtitle-format">Preferred Contact Info</p>
-                <div class="profile-bio-text-box pref-contact-box font-16">{{ email }}</div>
-                <div class="profile-bio-text-box pref-contact-box font-16">{{ phone_num }}</div>
+                <div class="profile-bio-text-box pref-contact-box font-16">{{ profile_data.email }}</div>
+                <div class="profile-bio-text-box pref-contact-box font-16">{{ profile_data.phone_num }}</div>
                 <p class = "font-16 center-text profile-bio-link">Security FAQs</p>
                 <div class = "button-container">
                     <button class = "rounded-blue-button font-20">Log Out</button>
