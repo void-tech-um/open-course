@@ -29,7 +29,6 @@ def process_drop():
     if not username:
         # Handle not logged in case, perhaps redirect to login page
         return flask.redirect(flask.url_for('login'))
-
     course_code = flask.request.form.get('course_code')
     if course_code:
         model.drop_course(username, course_code)
