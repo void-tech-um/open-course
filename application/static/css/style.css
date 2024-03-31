@@ -937,10 +937,9 @@ h4 {
   border-radius: 12px;
   border: 1px solid rgba(185, 185, 185, 1);
   padding: 20px;
-  margin: 20px;
-  margin-left: 30px;
+  margin: 15px;
   width: 356px;
-  height: 135px;
+  height: auto;
   background-color: white;
 }
 
