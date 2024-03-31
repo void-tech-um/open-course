@@ -121,6 +121,34 @@ def get_posts():
     content = {"posts" : posts_list} 
     return content
 
+def get_posts_created_by_user(username):
+    """Get all posts."""
+    cur = get_db().cursor()
+    cur.execute(
+        "SELECT * FROM posts WHERE username=%s",
+        (username,)
+    )
+    posts = cur.fetchall()
+    #fetchall - return a list of tuples [(),()]
+    #fetchone - return one tuple ()
+    #[(2,test, looking, description,), ()]
+    #[{"post_id" : 2, "username" : test}]
+    posts_list = []
+    for post in posts:
+        #(2,test, looking, description,)        
+        posts_list.append({
+            "post_id" : post[0],
+            "username" : post[1],
+            "title" : post[2],
+            "description" : post[3],
+            "course_code" : post[4],
+            "created" : post[5],
+            "schedule_link" : post[6],
+            "type" : post[7]
+        })
+    content = {"posts" : posts_list} 
+    return content
+
 def get_posts_user(username, page_lte, size, page):
     """Get all posts for a user."""
 

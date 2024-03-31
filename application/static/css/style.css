@@ -953,9 +953,9 @@ h4 {
 .profile-course-title {
   font-family: "Inter";
   color: rgba(108, 117, 125, 1);
-  font-size: 1px;
+  font-size: 18px;
   font-weight: 530;
-  margin-top: -15px;
+  margin-top: 0px;
   margin-bottom: 0px;
 }
 
