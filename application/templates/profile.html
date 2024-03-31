@@ -20,7 +20,10 @@
                         <div class="profile-post-h2">
                             <p>{{course.course_name}}</p>
                         </div>
-                        <p class="course-blue-button">Drop Course</p>
+                        <form class="course-blue-button" action="/courses/drop-course/" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="course_code" value="{{course.course_code}}"/>
+                            <input class="rounded-blue-button" type="submit" name="drop" value="Drop Course"/>
+                        </form>
                     </div>
                     {% endfor %}  
                 </div>
@@ -72,14 +75,13 @@
             <div class = "right-box-container"></div>
                 <br>
                 <div class = "profile-photo center-horizontally"></div>
-                <p class = "font-22 font-bold center-text">{{ username }}</p>
-                <p class = "font-16 center-text profile-bio-link">Edit photo</p>
+                <p class = "font-22 font-bold center-text">{{ profile_data.username }}</p>
                 <p class = "font-22 subtitle-format">Bio</p>
-                <div class="profile-bio-text-box bio-box font-16">{{ bio }}</div>
+                <div class="profile-bio-text-box bio-box font-16">{{ profile_data.bio }}</div>
                 <p class = "font-22 subtitle-format">Preferred Contact Info</p>
-                <div class="profile-bio-text-box pref-contact-box font-16">{{ email }}</div>
-                <div class="profile-bio-text-box pref-contact-box font-16">{{ phone_num }}</div>
-                <p class = "font-16 center-text profile-bio-link">Security FAQs</p>
+                <div class="profile-bio-text-box pref-contact-box font-16">{{ profile_data.email }}</div>
+                <div class="profile-bio-text-box pref-contact-box font-16">{{ profile_data.phone_num }}</div>
+                <p class = "font-16 center-text profile-bio-link">Save Profile Data</p>
                 <div class = "button-container">
                     <button class = "rounded-blue-button font-20">Log Out</button>
                 </div>

@@ -19,3 +19,19 @@ def process_join():
     course_code = flask.request.form.get('course_code')
     model.join_course(username, course_code)
     return flask.redirect(target_url)
+
+@application.app.route('/courses/drop-course/', methods=['POST'])
+def process_drop():
+    # Assuming you're getting the current username from user session
+    # TODO get username from session
+    # username = flask.session.get('username', None)
+    username = 'test'
+    if not username:
+        # Handle not logged in case, perhaps redirect to login page
+        return flask.redirect(flask.url_for('login'))
+    course_code = flask.request.form.get('course_code')
+    if course_code:
+        model.drop_course(username, course_code)
+        return flask.redirect(flask.url_for("show_profile", username=username))
+    else:
+        return "Error: Course code not provided", 400

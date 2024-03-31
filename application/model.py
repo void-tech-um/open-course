@@ -336,6 +336,16 @@ def get_all_courses_user(username):
 
     return context
 
+def drop_course(username, course_code):
+    """Allow a user to drop a course."""
+    conn = get_db()
+    cur = conn.cursor()
+    cur.execute(
+        "DELETE FROM enrollments WHERE username = %s AND course_code = %s",
+        (username, course_code)
+    )
+    conn.commit()
+
 class InvalidUsage(Exception):
     """Custom exception class for invalid usage of API."""
 
