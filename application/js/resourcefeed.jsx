@@ -59,7 +59,7 @@ export default function ResourceFeed() {
                 <img src="/static/assets/logo.png" id="pfp" alt="pfp"></img>
                 <input name="enterTitle" id="enter-title" placeholder="Enter Title" />
                 <textarea name="tellMore" id="tell-me-more" placeholder="Tell me more about your resource post..." />
-                <div className="oc-filters">
+                <div className="filters">
                     <button className="transparent-button"><img src="/static/assets/upload.svg" alt="upload filter"></img>Upload</button>
                     <button className="transparent-button"><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
                     <select className="custom-select">
