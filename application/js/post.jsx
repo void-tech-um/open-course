@@ -77,7 +77,7 @@ export default function Post(props) {
         return (
         <div className="post-border">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-            <div className="profile-right">
+            <div>
                 <div className="profile-info circle">
                     <img src="/static/assets/logo.png" alt="pfp" className="circle"></img>
                     <div>
@@ -87,12 +87,12 @@ export default function Post(props) {
                     <input className="star" type="checkbox" title="bookmark page" checked/> 
                 </div>
             </div>
-            <div className="profile-right">
+            <div>
                 {post.tags.map((tag) => (
                     <button className="info-tag tag-spacing" type="button">{tag.tag_name}</button>
                 ))}
             </div>
-            <div className="profile-right">
+            <div>
                 <p className="study-group">STUDY GROUP</p>
                 <h1>{post.title}</h1>
                 <p className="brief-descript">{post.description}</p>
