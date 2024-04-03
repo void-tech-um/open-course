@@ -31,22 +31,27 @@
                 <h1-blue class="top-padding">Your Posts</h1-blue>
                 <div class="profile-post-container">
                     <!--Template for Post/Resource-->
+                    {% for post in posts %}
                     <div class="profile-post"> 
                         <div class="profile-post-h1">
-                            <p>Study Guide</p>
+                            <p>{{post.title}}</p>
+                        </div>
+                        <div class="profile-course-title">
+                            <p>{{post.course_code}}</p>
                         </div>
                         <div class="tags">
-                            <button class="info-tag tag-spacing" type = "button">Topic</button>
+                            <button class="info-tag" type = "button">Topic</button>
                             <button class="info-tag tag-spacing" type="button">Topic</button>
                             <button class="info-tag tag-spacing" type="button">Topic</button>
                             <button class="info-tag tag-spacing" type="button">Topic</button>
                         </div>
                         <div class="profile-post-h2">
-                            <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p>{{post.description}}</p>
                         </div>
                     </div>
+                    {% endfor %}
                     <!--Template for StudyGuide-->
-                    <div class="profile-post"> 
+                    <!-- <div class="profile-post"> 
                         <div class="profile-post-h1">
                             <p>Study Guide</p>
                         </div>
@@ -60,7 +65,7 @@
                         <div class="profile-post-h2">
                             <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <br>
             </div>
