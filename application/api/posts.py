@@ -67,7 +67,7 @@ def get_specific_post(postid):
     context = {
         "post_id": postid,
         "imgUrl": data_user["profile_picture"],
-        "username": data_post["username"],
+        "username": data_post["username"], 
         "email":data_user["email"],
         "title": data_post["title"],
         "description": data_post["description"],
@@ -148,7 +148,7 @@ def create_post():
     
     context = {
         "post_id": post["post_id"],
-        "username": data["username"],
+        "username": data["username"],#change to flask.session.get('logname') later
         "title": data["title"],
         "description": data["description"],
         "course_code": data["course_code"],
