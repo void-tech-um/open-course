@@ -12,8 +12,8 @@ def show_profile(username):
     #           posts : [{post_id: 4, title: "hi"}]}
     return render_template('profile.html', **context, profile_data=profile_data)
 
-
-def edit_profile_bio():
+@application.app.route("/profile/<username>/edit/", methods=["POST"])
+def edit_profile_bio(username):
     """Make an edit to a user's profile bio."""
     if 'username' not in flask.session:
         flask.abort(403)
@@ -30,6 +30,6 @@ def edit_profile_bio():
         "UPDATE users "
         "SET bio = %s, phone_num = %s "
         "WHERE username = %s",
-        (bio, phone_num)
+        (bio, phone_num, username)
     )
     conn.commit()
