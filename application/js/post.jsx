@@ -79,7 +79,7 @@ export default function Post(props) {
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
                 <div className="profile-right">
                     <div className="profile-info circle">
-                        <a href='/show-user-profile/test/'><img src="/static/assets/logo.png" alt="pfp" className="circle"></img></a>
+                        <img src="/static/assets/logo.png" alt="pfp" className="circle"></img>
                         <div>
                             <p className="user-name">{post.username} </p>
                             <p className="email">{post.email}</p>
@@ -98,7 +98,6 @@ export default function Post(props) {
                     <p className="brief-descript">{post.description}</p>
                     <p className="date-room"><i className="far fa-calendar"></i> Date</p>
                     <p className="post-time-address align-with-icon">time</p>
-                    <p className="add-to-calendar align-with-icon">Add to calendar</p>
                     <p><i className="date-room material-icons">location_on</i>Room</p>
                     <p className="post-time-address align-with-icon">Address</p>
                 </div>

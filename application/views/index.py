@@ -6,7 +6,3 @@ from flask import flash
 def show_index():
     return render_template('index.html')
 
-
-@application.app.route('/show-user-profile/<username>/')
-def show_user_profile(username):
-    return flash("testing")

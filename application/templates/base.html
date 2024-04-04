@@ -26,55 +26,8 @@
         </nav>
     </header>
     <main>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <script>
-            // Open the modal when there are flash messages
-            document.addEventListener("DOMContentLoaded", function () {
-                document.getElementById("modal").style.display = "block";
-            });
-        </script>
-        {% endif %}
-        {% endwith %}
-
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <div class="modal-container">
-            {% for message in messages %}
-            <div id="modal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h6 style="text-align: center">hello</h6>
-                    <button class="submit-btn" id="ok-modal"
-                        style="width: 125px; margin: auto; display: block; margin-top: 2%;">OK
-                    </button>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
-        {% endwith %}
         {% block content %}{% endblock %}
     </main>
-    <script>
-        // Close the modal when the user clicks on <span> (x) or the ok button
-        let modal = document.getElementById("modal");
-        let span = document.getElementsByClassName("close")[0];
-        let okButton = document.getElementById("ok-modal");
-        span.onclick = function () {
-            modal.style.display = "none";
-        };
-        okButton.onclick = function () {
-            modal.style.display = "none";
-        };
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        };
-
-
-    </script>
 </body>
 <footer>
     <div class="first-footer">
