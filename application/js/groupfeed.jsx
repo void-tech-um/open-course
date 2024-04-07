@@ -127,7 +127,7 @@ export default function GroupFeed() {
                     <button className="transparent-button"><img src="/static/assets/location.svg" alt="location filter"></img>Location</button>
                     <button className="transparent-button"><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
                     <select className="custom-select" onChange={handleCourseChange}>
-                        <option value="h" selected>Select Course</option>
+                        <option value="" selected>Select Course</option>
                         {courses.map((courses) => (
                             <option value = "{courses.course_code}" className="info-tag tag-spacing" type="button">{courses.course_code}</option>
                         ))}
