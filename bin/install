@@ -17,3 +17,4 @@ npm install -save-dev @babel/plugin-transform-runtime
 npm install react react-dom
 npm install --save-dev style-loader css-loader
 npm install react-type-animation
+npm install multiselect-react-dropdown  
