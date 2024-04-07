@@ -426,6 +426,14 @@ h4 {
 .study-group {
   font-family: Inter;
   color: gray;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 1.5px;
+}
+
+.course-title {
+  font-family: Inter;
+  color: gray;
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 1.5px;
