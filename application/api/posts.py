@@ -82,30 +82,70 @@ def get_specific_post(postid):
 
 @application.app.route('/api/v1/posts/', methods=['POST'])
 def create_post():
-
     data = flask.request.get_json()
-    
+    # model.create_post parameters
+    # create_post(username, title, description, course_code, created, schedule_link, type)
+    print(data)
+    """
+    context = {
+          "message": "Not Found",
+          "status_code": 404
+        }
+       return flask.jsonify(**context), 404
+    """
+    username = data["username"]
+    title = data["title"]
+    if title == '' or title == None:
+        context = {
+          "message": "Please enter a title.",
+          "status_code": 404
+        }
+        return flask.jsonify(**context), 404
+
+    description = data["description"]
+    if description == '' or description == None:
+        context = {
+          "message": "Please enter a description.",
+          "status_code": 404
+        }
+        return flask.jsonify(**context), 404
+
+    # might need to check if the course is one of ther user's courses
+    course_code = data["course_code"]
+    if course_code == '' or course_code == None:
+        context = {
+          "message": "Please enter a course code.",
+          "status_code": 404
+        }
+        return flask.jsonify(**context), 404
+
+    schedule_link = data["schedule_link"]
+    if schedule_link == '' or schedule_link == None:
+        context = {
+          "message": "Please enter a schedule time.",
+          "status_code": 404
+        }
+        return flask.jsonify(**context), 404
+
+    postType = data["type"]
+    if postType == '' or postType == None:
+        context = {
+          "message": "Please enter a post type.",
+          "status_code": 404
+        }
+        return flask.jsonify(**context), 404
+
     post = model.create_post(data["username"], data["title"], data["description"], data["course_code"], data["schedule_link"], data["type"])
     tags = data["tags"]
-
-    filters_list = []
-    for tag in tags:
-        model.insert_tag(post["post_id"], tag)
-        filters_list.append({
-            "post_id" : post["post_id"],
-            "tag_id" : tag
-        })
-    
     context = {
         "post_id": post["post_id"],
         "username": data["username"],
-        "title": data["username"],
+        "title": data["title"],
         "description": data["description"],
         "course_code": data["course_code"],
         "created": post["created"],
         "schedule_link": data["schedule_link"],
         "type": data["type"],
-        "filters" : filters_list
     }
     return flask.jsonify(**context), 201
 

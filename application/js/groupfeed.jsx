@@ -9,6 +9,11 @@ export default function GroupFeed() {
     const [morePosts, setMorePosts] = useState(false);
     const [url, setUrl] = useState("/api/v1/posts/");
     const [booleanFetch, setBooleanFetch] = useState(true);
+    const [textEntry, setTextEntry] = useState("");
+    const [titleEntry, setTitleEntry] = useState("");
+    const [course_code, setCourseCode] = useState("");
+    const [schedule_link, setScheduleLink] = useState("");
+    const [tags, setTags] = useState("");
 
     useEffect(() => {
         fetch('/api/v1/courses/', {
@@ -76,25 +81,60 @@ export default function GroupFeed() {
         };
     }, [booleanFetch, url, posts]);
 
+    const handleTextChange = (event) => {
+        setTextEntry(event.target.value);
+    };
+    const handleCourseChange = (event) => {
+        setCourseCode(event.target.value);
+    };
+
+    const handleTitleChange = (event) => {
+        setTitleEntry(event.target.value);
+    };
+
+    const handlePostSubmit = (event) => {
+        event.preventDefault();
+
+        fetch('/api/v1/posts/', {
+            method: "POST",
+            credentials: "same-origin",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:"", type :"1", tags : []}),
+          })
+            .then((response) => {
+              if (!response.ok) throw Error(response.statusText);
+              return response.json();
+            })
+            .then((data) => {
+              setComments([...comments, data]);
+            })
+            .catch((error) => console.log(error));
+        setTitleEntry("");
+        setTextEntry("");
+      };
+    // "username", "title", "description","course_code","schedule_link", "type", "tags" 
     return (
         <div>
-            <div className="new-post-box">
+            <form className="new-post-box" onSubmit={handlePostSubmit}>
                 <img src="/static/assets/logo.png" id="pfp" alt="pfp"></img>
-                <input name="enterTitle" id="enter-title" placeholder="Enter Title" />
-                <textarea name="tellMore" id="tell-me-more" placeholder="Tell me more about your study group..." />
+                <input type="text" name="enterTitle" id="enter-title" placeholder="Enter Title" value={titleEntry} onChange={handleTitleChange} />
+                <textarea name="tellMore" id="tell-me-more" value={textEntry} onChange={handleTextChange}  placeholder="Tell me more about your study group..." />
                 <div className="filters">
                     <button className="transparent-button"><img src="/static/assets/calendar-plus.svg" alt="calendar filter"></img>Meeting time</button>
                     <button className="transparent-button"><img src="/static/assets/location.svg" alt="location filter"></img>Location</button>
                     <button className="transparent-button"><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
-                    <select className="custom-select">
-                        <option value="" selected>Select Course</option>
+                    <select className="custom-select" onChange={handleCourseChange}>
+                        <option value="h" selected>Select Course</option>
                         {courses.map((courses) => (
-                            <option className="info-tag tag-spacing" type="button">{courses.course_code}</option>
+                            <option value = "{courses.course_code}" className="info-tag tag-spacing" type="button">{courses.course_code}</option>
                         ))}
                     </select>
                     <button className="rounded-blue-button">Post</button>
-                </div>
-            </div>
+                </div>       
+            </form>
             <hr></hr> {/* Horiztonal Line */}
             <div className="search-content">
                 <input type="text" id="search" name="search" placeholder="Search Posts, Classes..." />
