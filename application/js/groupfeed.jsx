@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import '../static/css/style.css';
 import Post from "./post";
+import Multiselect from 'multiselect-react-dropdown';
 
 export default function GroupFeed() {
     const [posts, setPosts] = useState([]);
@@ -9,6 +10,8 @@ export default function GroupFeed() {
     const [morePosts, setMorePosts] = useState(false);
     const [url, setUrl] = useState("/api/v1/posts/");
     const [booleanFetch, setBooleanFetch] = useState(true);
+    const [filters, setFilters] = useState([]);
+    const [selected, setSelected] = useState([]);
 
     useEffect(() => {
         fetch('/api/v1/courses/', {
@@ -76,7 +79,31 @@ export default function GroupFeed() {
         };
     }, [booleanFetch, url, posts]);
 
+    useEffect(() => {
+        fetch('/api/v1/tags/', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+            return response.json();
+        })
+            .then((json) => {
+            const fetchedFilters = json.tags;
+            setFilters(fetchedFilters);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    }, []);
+
+
     return (
+
         <div>
             <div className="new-post-box">
                 <img src="/static/assets/logo.png" id="pfp" alt="pfp"></img>
@@ -98,12 +125,17 @@ export default function GroupFeed() {
             <hr></hr> {/* Horiztonal Line */}
             <div className="search-content">
                 <input type="text" id="search" name="search" placeholder="Search Posts, Classes..." />
-                <select className="filter-select">
-                    <option value="" selected>All Filters</option>
-                    <option value="option1">Option 1</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
-                </select>
+                <Multiselect
+                    options={[
+                        { label: "Option 1", value: "option1" },
+                        { label: "Option 2", value: "option2" },
+                        { label: "Option 3", value: "option3" }
+                    ]}
+                    selectedValues={setSelected}
+                    onSelect={(selected) => setSelected(selected)}
+                    onRemove={(selected) => setSelected(selected)}
+                    displayValue="label"
+                />
                 <select className="filter-select">
                     <option value="" selected>Group Type</option>
                     <option value="option1">Option 1</option>
