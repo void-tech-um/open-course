@@ -15,8 +15,9 @@ def show_profile(username):
 @application.app.route("/profile/<username>/edit/", methods=["POST"])
 def edit_profile_bio(username):
     """Make an edit to a user's profile bio."""
-    if 'username' not in flask.session:
-        flask.abort(403)
+    # TODO uncomment this out once the username is stored in the flask session!
+    # if 'username' not in flask.session:
+    #     flask.abort(403)
     try:
         bio = flask.request.form['bio']
         phone_num = flask.request.form['phone-num']
@@ -33,3 +34,4 @@ def edit_profile_bio(username):
         (bio, phone_num, username)
     )
     conn.commit()
+    return flask.redirect(f"/profile/{username}/")

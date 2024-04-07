@@ -221,10 +221,6 @@ nav a:hover {
   align-items: center;
 }
 
-input {
-  width: 80%;
-}
-
 .switch {
   position: relative;
   display: inline-block;
@@ -811,6 +807,7 @@ h4 {
 
 .profile-bio-link {
   color: #045BC0;
+  cursor: pointer;
 }
 
 .left-box-container {
