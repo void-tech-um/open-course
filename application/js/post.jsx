@@ -105,6 +105,7 @@ export default function Post(props) {
                     <h2 className="rounded-blue-button">Join</h2>
                 </div>
             </div>
+
         );
     }
     Post.propTypes = {

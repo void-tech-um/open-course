@@ -57,6 +57,7 @@ nav {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 }
 
 nav a {
@@ -84,6 +85,33 @@ nav a:hover {
 .navbar-logo img {
   margin-right: 5px;
   /* Adjust as needed */
+}
+
+.login-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-left {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+
+.login-right {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #045BC0;
 }
 
 .feed-banner {
@@ -258,9 +286,6 @@ input:checked+.slider:before {
   transform: translateX(26px);
 }
 
-#nav {
-  margin-left: 50px;
-}
 
 h4 {
   margin-top: 3%;
@@ -391,11 +416,6 @@ h4 {
 }
 
 .right {
-  margin-left: 30px;
-}
-
-.profile-right {
-  margin-top: 5%;
   margin-left: 30px;
 }
 
@@ -856,17 +876,6 @@ h4 {
   margin-top: 0;
 }
 
-.resource-grid {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  margin: 50px 20px;
-}
-
-.resource-grid .resource {
-  width: 90%;
-  box-shadow: 5px 10px 15px rgb(232, 231, 231);
-}
-
 .blue-header {
   padding: 70px 45px 25px 45px;
   background-color: #045BC0;
@@ -948,10 +957,9 @@ h4 {
   border-radius: 12px;
   border: 1px solid rgba(185, 185, 185, 1);
   padding: 20px;
-  margin: 20px;
-  margin-left: 30px;
+  margin: 15px;
   width: 356px;
-  height: 135px;
+  height: auto;
   background-color: white;
 }
 
@@ -964,9 +972,9 @@ h4 {
 .profile-course-title {
   font-family: "Inter";
   color: rgba(108, 117, 125, 1);
-  font-size: 1px;
+  font-size: 18px;
   font-weight: 530;
-  margin-top: -15px;
+  margin-top: 0px;
   margin-bottom: 0px;
 }
 
@@ -1026,3 +1034,44 @@ h4 {
   max-width: 600px;
   border-radius: 20px;
 }
+/*  responsive navbar code */
+
+.navbar-toggler {
+  display: none;
+  cursor: pointer;
+}
+  
+@media screen and (max-width: 768px) {
+  .navbar-toggler {
+      display: block;
+      text-decoration: none;
+      margin-right: 1rem;
+  }
+  .navbar-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: -500px; /* Initially hidden */
+    left: 0;
+    right: 0;
+    transition: top 0.3s;
+    transition-behavior: smooth;
+    text-align: center;
+    background-color: white;
+}
+
+
+.navbar-links.active {
+  top: 72px; /* Show menu */
+  display: block;
+  background-color: white;
+}
+
+.navbar-links a {
+  padding: 1.5rem;
+  display: block;
+}
+
+  
+}
+/* responsive navbar */
