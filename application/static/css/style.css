@@ -1003,34 +1003,13 @@ h4 {
   border-color: gray;
 }
 
-/* olive trying navbar responsive */
+/*  responsive navbar code */
 
 .navbar-toggler {
   display: none;
   cursor: pointer;
 }
   
-  /* display: flex;
-  width: 100%; */
-
-/* nav {
-  display: flex;
-  justify-content: space-between;
-  position:relative;
-  align-items: center;
-} */
-
-/* .navbar-links {
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  width: auto;
-  align-items: center;
-  justify-content: flex-end;
-} */
-
 @media screen and (max-width: 768px) {
   .navbar-toggler {
       display: block;
@@ -1044,7 +1023,6 @@ h4 {
     top: -500px; /* Initially hidden */
     left: 0;
     right: 0;
-    background: var(--bg-color); /* Ensure you have this variable defined or replace it with a color */
     transition: top 0.3s;
     transition-behavior: smooth;
     text-align: center;
@@ -1065,6 +1043,4 @@ h4 {
 
   
 }
-
-
-/* end of olive trying */
+/* responsive navbar */

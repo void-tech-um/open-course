@@ -11,8 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <!-- link to lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
 
 
 </head>
@@ -25,7 +24,7 @@
             
 <!-- nav bar test -->
 <div class="navbar-toggler" aria-label="Toggle navigation">
-    <img src="https://unpkg.com/lucide-static@latest/icons/menu.svg" />
+    <img content-type="image/svg+xml" src="/static/assets/align-justify.svg" />
 </div> 
 
             <div class="navbar-links">
@@ -42,9 +41,9 @@
         {% block content %}{% endblock %}
     </main>
 
-    <!-- link to navbar responsive js Olive -->
+    <!-- link to navbar responsive js -->
     <script type='text/javascript' src="{{ url_for('static', filename='js/responsive_navbar.js') }}"></script>
-    <!-- end link to navbar responsive js Olive -->
+    <!-- end link to navbar responsive js -->
 
 </body>
 <footer>
