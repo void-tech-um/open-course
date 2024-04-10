@@ -20,7 +20,7 @@ export default function Post(props) {
         })
             .then((response) => {
                 // do error handling
-        
+
                 if (!response.ok) {
                     throw Error(response.statusText);
                 }
@@ -75,37 +75,38 @@ export default function Post(props) {
 
     if (postHasRendered) {
         return (
-        <div className="post-border">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-            <div>
-                <div className="profile-info circle">
-                    <img src="/static/assets/logo.png" alt="pfp" className="circle"></img>
-                    <div>
-                        <p className="user-name">{post.username} </p>
-                        <p className="email">{post.email}</p>
+            <div className="post-border">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+                <div className="profile-right">
+                    <div className="profile-info circle">
+                        <img src="/static/assets/logo.png" alt="pfp" className="circle"></img>
+                        <div>
+                            <p className="user-name">{post.username} </p>
+                            <p className="email">{post.email}</p>
+                        </div>
+                        <input className="star" type="checkbox" title="bookmark page" checked />
                     </div>
-                    <input className="star" type="checkbox" title="bookmark page" checked/> 
+                </div>
+                <div className="profile-right">
+                    {post.tags.map((tag) => (
+                        <button className="info-tag tag-spacing" type="button">{tag.tag_name}</button>
+                    ))}
+                </div>
+                <div className="profile-right">
+                    <p className="study-group">STUDY GROUP</p>
+                    <h1>{post.title}</h1>
+                    <p className="study-group">{post.course_code}</p>
+                    <p className="brief-descript">{post.description}</p>
+                    <p className="date-room"><i className="far fa-calendar"></i> Date</p>
+                    <p className="post-time-address align-with-icon">time</p>
+                    <p><i className="date-room material-icons">location_on</i>Room</p>
+                    <p className="post-time-address align-with-icon">Address</p>
+                </div>
+                <div className="join-section">
+                    <h2 className="rounded-blue-button">Join</h2>
                 </div>
             </div>
-            <div>
-                {post.tags.map((tag) => (
-                    <button className="info-tag tag-spacing" type="button">{tag.tag_name}</button>
-                ))}
-            </div>
-            <div>
-                <p className="study-group">STUDY GROUP</p>
-                <h1>{post.title}</h1>
-                <p className="brief-descript">{post.description}</p>
-                <p className="date-room"><i className="far fa-calendar"></i> Date</p>
-                <p className="post-time-address align-with-icon">time</p>
-                <p className="add-to-calendar align-with-icon">Add to calendar</p>
-                <p><i className="date-room material-icons">location_on</i>Room</p>
-                <p className="post-time-address align-with-icon">Address</p>
-            </div>
-            <div className="join-section">
-                <h2 className="rounded-blue-button">Join</h2>
-            </div>
-        </div>
+
         );
     }
     Post.propTypes = {

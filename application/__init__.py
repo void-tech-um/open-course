@@ -1,5 +1,6 @@
 """application package initializer."""
 import flask
+import os
 
 # app is a single object used by all the code modules in this package
 app = flask.Flask(__name__)  # pylint: disable=invalid-name
@@ -14,6 +15,9 @@ app.config.from_object('application.config')
 # EXAMPLE:
 # $ export INSTA485_SETTINGS=secret_key_config.py
 app.config.from_envvar('APPLICATION_SETTINGS', silent=True)
+
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+
 
 # Tell our app about views and model.  This is dangerously close to a
 # circular import, which is naughty, but Flask was designed that way.

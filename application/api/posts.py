@@ -67,7 +67,7 @@ def get_specific_post(postid):
     context = {
         "post_id": postid,
         "imgUrl": data_user["profile_picture"],
-        "username": data_post["username"],
+        "username": data_post["username"], 
         "email":data_user["email"],
         "title": data_post["title"],
         "description": data_post["description"],
@@ -85,7 +85,6 @@ def create_post():
     data = flask.request.get_json()
     # model.create_post parameters
     # create_post(username, title, description, course_code, created, schedule_link, type)
-    print(data)
     """
     context = {
           "message": "Not Found",
@@ -101,7 +100,8 @@ def create_post():
           "status_code": 404
         }
         return flask.jsonify(**context), 404
-
+      
+    
     description = data["description"]
     if description == '' or description == None:
         context = {
@@ -139,7 +139,7 @@ def create_post():
     tags = data["tags"]
     context = {
         "post_id": post["post_id"],
-        "username": data["username"],
+        "username": data["username"], #change to flask.session.get('username') later
         "title": data["title"],
         "description": data["description"],
         "course_code": data["course_code"],
