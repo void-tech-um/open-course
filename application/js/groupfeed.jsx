@@ -12,7 +12,10 @@ export default function GroupFeed() {
     const [booleanFetch, setBooleanFetch] = useState(true);
     const [filters, setFilters] = useState([]);
     const [selected, setSelected] = useState([]);
-
+    const handleSelectChange = (selectedList) => {
+        setSelected(selectedList);
+        console.log(selected);
+    };
     useEffect(() => {
         fetch('/api/v1/courses/', {
             method: "GET",
@@ -131,9 +134,9 @@ export default function GroupFeed() {
                         { label: "Option 2", value: "option2" },
                         { label: "Option 3", value: "option3" }
                     ]}
-                    selectedValues={setSelected}
-                    onSelect={(selected) => setSelected(selected)}
-                    onRemove={(selected) => setSelected(selected)}
+                    selectedValues={selected}
+                    onSelect={handleSelectChange} // Pass the function to handle selection
+                    onRemove={handleSelectChange} // Pass the function to handle removal
                     displayValue="label"
                 />
                 <select className="filter-select">
