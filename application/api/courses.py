@@ -24,3 +24,8 @@ def join_course():
 def get_courses():
     courses = model.get_all_course_codes()
     return flask.jsonify(**courses), 200
+
+@application.app.route('/api/v1/tags/', methods=['GET'])
+def get_tags():
+    tags = model.get_all_tags()
+    return flask.jsonify(**tags), 200
