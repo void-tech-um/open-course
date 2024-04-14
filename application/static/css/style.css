@@ -6,6 +6,7 @@ body {
   font-size: 20px;
   font-weight: 400;
   overflow-x: hidden;
+  margin: 0;
 }
 
 h1 {
@@ -222,10 +223,6 @@ nav a:hover {
   align-items: center;
 }
 
-input {
-  width: 80%;
-}
-
 .switch {
   position: relative;
   display: inline-block;
@@ -426,15 +423,14 @@ h4 {
 .study-group {
   font-family: Inter;
   color: gray;
-  font-size: 12px;
-  line-height: 14px;
+  font-size: 14px;
+  line-height: 16px;
   letter-spacing: 1.5px;
 }
 
 .brief-descript {
   font-family: Inter;
   color: #4C5980;
-  ;
   font-size: 12px;
   line-height: 24px;
   letter-spacing: 0.2px;
@@ -809,6 +805,7 @@ h4 {
 
 .profile-bio-link {
   color: #045BC0;
+  cursor: pointer;
 }
 
 .left-box-container {
