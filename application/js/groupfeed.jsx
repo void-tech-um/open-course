@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import '../static/css/style.css';
 import Post from "./post";
-import Multiselect from 'multiselect-react-dropdown';
 
 export default function GroupFeed() {
     const [posts, setPosts] = useState([]);
@@ -175,17 +174,6 @@ export default function GroupFeed() {
             <hr></hr> {/* Horiztonal Line */}
             <div className="search-content">
                 <input type="text" id="search" name="search" placeholder="Search Posts, Classes..." />
-                <Multiselect
-                    options={[
-                        { label: "Option 1", value: "option1" },
-                        { label: "Option 2", value: "option2" },
-                        { label: "Option 3", value: "option3" }
-                    ]}
-                    selectedValues={selected}
-                    onSelect={handleSelectChange} // Pass the function to handle selection
-                    onRemove={handleSelectChange} // Pass the function to handle removal
-                    displayValue="label"
-                />
                 <select className="filter-select">
                     <option value="" selected>Group Type</option>
                     <option value="option1">Option 1</option>
