@@ -95,7 +95,7 @@ export default function ResourceFeed() {
                 </div>
             </div>
             <hr></hr> {/* Horiztonal Line */}
-            <div className="search-content">
+            {/* <div className="search-content">
                 <input type="text" id="search" name="search" placeholder="Search Posts, Classes..." />
                 <select className="filter-select">
                     <option value="" selected>All Filters</option>
@@ -115,13 +115,21 @@ export default function ResourceFeed() {
                     <option value="option2">Option 2</option>
                     <option value="option3">Option 3</option>
                 </select>
-            </div>
-            <div className="feed-container">
-                <Resource></Resource>
-                <Resource></Resource>
-                <Resource></Resource>
-                <Resource></Resource>
-            </div>
+            </div> */}
+            <InfiniteScroll className="feed-container"
+                    dataLength={posts.length}
+                    next={() => setBooleanFetch(true)}
+                    loader={<h6> </h6>}
+                    hasMore={morePosts}
+                    endMessage={
+                    <p>Check back later for more posts!</p>
+                    }
+                >
+                    {posts.map((post_id) => (
+                        
+                        <Resource key={post_id} post_id={post_id} />
+                    ))}
+            </InfiniteScroll>
         </div>
     );
 }

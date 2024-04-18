@@ -172,7 +172,7 @@ export default function GroupFeed() {
                 </div>       
             </form>
             <hr></hr> {/* Horiztonal Line */}
-            <div className="search-content">
+            {/* <div className="search-content">
                 <input type="text" id="search" name="search" placeholder="Search Posts, Classes..." />
                 <select className="filter-select">
                     <option value="" selected>Group Type</option>
@@ -198,7 +198,7 @@ export default function GroupFeed() {
                     <option value="option2">Option 2</option>
                     <option value="option3">Option 3</option>
                 </select>
-            </div>
+            </div> */}
             <InfiniteScroll className="feed-container"
                     dataLength={posts.length}
                     next={() => setBooleanFetch(true)}
