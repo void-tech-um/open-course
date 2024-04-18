@@ -124,6 +124,12 @@ export default function GroupFeed() {
 
     const handlePostSubmit = (event) => {
         event.preventDefault();
+        // Get the current time
+        const currentTime = moment();
+
+        // Format the current time as desired
+        const created = currentTime.format("YYYY-MM-DD HH:mm:ss");
+
 
         fetch('/api/v1/posts/', {
             method: "POST",
@@ -132,7 +138,7 @@ export default function GroupFeed() {
               Accept: "application/json",
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:"", type :"1", tags : []}),
+            body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:"", created: created, type :"1", tags : []}),
           })
             .then((response) => {
               if (!response.ok) throw Error(response.statusText);

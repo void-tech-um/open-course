@@ -92,7 +92,7 @@ def create_post():
         }
        return flask.jsonify(**context), 404
     """
-    username = data["username"]
+    username = "test"
     title = data["title"]
     if title == '' or title == None:
         context = {
@@ -118,34 +118,36 @@ def create_post():
           "status_code": 404
         }
         return flask.jsonify(**context), 404
+    # Removed to make more simplified
+    # schedule_link = data["schedule_link"]
+    # if schedule_link == '' or schedule_link == None:
+    #     context = {
+    #       "message": "Please enter a schedule time.",
+    #       "status_code": 404
+    #     }
+    #     return flask.jsonify(**context), 404
 
-    schedule_link = data["schedule_link"]
-    if schedule_link == '' or schedule_link == None:
-        context = {
-          "message": "Please enter a schedule time.",
-          "status_code": 404
-        }
-        return flask.jsonify(**context), 404
+    # postType = data["type"]
+    # if postType == '' or postType == None:
+    #     context = {
+    #       "message": "Please enter a post type.",
+    #       "status_code": 404
+    #     }
+    #     return flask.jsonify(**context), 404
 
-    postType = data["type"]
-    if postType == '' or postType == None:
-        context = {
-          "message": "Please enter a post type.",
-          "status_code": 404
-        }
-        return flask.jsonify(**context), 404
+    # post = model.create_post(data["username"], data["title"], data["description"], data["course_code"], data["schedule_link"], data["type"])
+    post = model.create_post(username, data["title"], data["description"], data["course_code"], data["created"], "", 1)
 
-    post = model.create_post(data["username"], data["title"], data["description"], data["course_code"], data["schedule_link"], data["type"])
     tags = data["tags"]
     context = {
         "post_id": post["post_id"],
-        "username": data["username"], #change to flask.session.get('username') later
+        "username": "test", #change to flask.session.get('username') later
         "title": data["title"],
         "description": data["description"],
         "course_code": data["course_code"],
         "created": post["created"],
-        "schedule_link": data["schedule_link"],
-        "type": data["type"],
+        "schedule_link": "",
+        "type": 1,
     }
     return flask.jsonify(**context), 201
 
