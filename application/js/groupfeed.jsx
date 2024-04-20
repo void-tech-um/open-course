@@ -146,7 +146,7 @@ export default function GroupFeed() {
             .catch((error) => console.log(error));
         setTitleEntry("");
         setTextEntry("");
-        setCourseCode("");
+        setCourseCode("Select Course");
       };
     // "username", "title", "description","course_code","schedule_link", "type", "tags" 
     return (
@@ -160,7 +160,7 @@ export default function GroupFeed() {
                     <button className="transparent-button"><img src="/static/assets/calendar-plus.svg" alt="calendar filter"></img>Meeting time</button>
                     <button className="transparent-button"><img src="/static/assets/location.svg" alt="location filter"></img>Location</button>
                     <button className="transparent-button"><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
-                    <select className="custom-select" onChange={handleCourseChange}>
+                    <select className="custom-select" onChange={handleCourseChange} value={course_code}>
                         <option value="" selected>Select Course</option>
                         {courses.map((courses) => (
                             <option value = {courses.course_code}  className="info-tag tag-spacing" type="button">{courses.course_code}</option>
