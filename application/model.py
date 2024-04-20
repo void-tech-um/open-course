@@ -209,22 +209,29 @@ def get_post(post_id):
     }
     return content
 
-def create_post(username, title, description, course_code, created, schedule_link, type):
+def create_post(username, title, description, course_code,schedule_link, type):
     """Create a post"""
-    cur = get_db().cursor()
+    conn = get_db()
+    cur = conn.cursor()
+
+    # Execute the INSERT query with parameters
     cur.execute(
-        "INSERT INTO posts ('username', 'title', 'description', 'course_code', 'created', 'schedule_link', 'type') "
-        "VALUES (%s, %s) ",
-        (username, title, description, course_code, created, schedule_link, type)
+        "INSERT INTO posts (username, title, description, course_code, schedule_link, type) "
+        "VALUES (%s, %s, %s, %s, %s, %s) RETURNING post_id, created",  # Use RETURNING to get post_id and created
+        (username, title, description, course_code, schedule_link, type)
     )
-    post_id = cur.lastrowid
-    cur.commit()
-    cur.execute(
-        "SELECT post_id, created FROM posts WHERE post_id = %s",
-        (post_id,)
-    )
-    post = post.fetchone()
-    return post
+    # Fetch the inserted row containing post_id and created
+    post = cur.fetchone()
+
+    # Commit the transaction
+    conn.commit()
+
+    # Access post_id and created from the fetched row
+    post_id = post[0]
+    created = post[1]
+    content = {"post_id" : post_id,
+               "created" : created}
+    return content
 
 
 # Get all posts for a specific user for their profile page

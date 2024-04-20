@@ -83,6 +83,7 @@ def get_specific_post(postid):
 @application.app.route('/api/v1/posts/', methods=['POST'])
 def create_post():
     data = flask.request.get_json()
+    print(data["course_code"])
     # model.create_post parameters
     # create_post(username, title, description, course_code, created, schedule_link, type)
     """
@@ -136,8 +137,9 @@ def create_post():
     #     return flask.jsonify(**context), 404
 
     # post = model.create_post(data["username"], data["title"], data["description"], data["course_code"], data["schedule_link"], data["type"])
-    post = model.create_post(username, data["title"], data["description"], data["course_code"], data["created"], "", 1)
-
+    
+    post = model.create_post(username, data["title"], data["description"], data["course_code"], "", data["type"])
+    #Blank quote is the placeholder for schedule link
     tags = data["tags"]
     context = {
         "post_id": post["post_id"],
@@ -149,6 +151,7 @@ def create_post():
         "schedule_link": "",
         "type": 1,
     }
+    print(context)
     return flask.jsonify(**context), 201
 
 
