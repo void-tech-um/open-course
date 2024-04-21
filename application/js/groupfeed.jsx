@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import '../static/css/style.css';
 import Post from "./post";
+import moment from "moment";
+
 
 export default function GroupFeed() {
     const [posts, setPosts] = useState([]);
@@ -123,12 +125,6 @@ export default function GroupFeed() {
 
     const handlePostSubmit = (event) => {
         event.preventDefault();
-        // Get the current time
-        const currentTime = moment();
-
-        // Format the current time as desired
-        const created = currentTime.format("YYYY-MM-DD HH:mm:ss");
-
 
         fetch('/api/v1/posts/', {
             method: "POST",
@@ -137,18 +133,20 @@ export default function GroupFeed() {
               Accept: "application/json",
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:"", created: created, type :"1", tags : []}),
+            body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:"",type :true, tags : []}),
           })
             .then((response) => {
               if (!response.ok) throw Error(response.statusText);
               return response.json();
             })
             .then((data) => {
-              setComments([...comments, data]);
+              setPosts([data["post_id"], ...posts, ]);
+
             })
             .catch((error) => console.log(error));
         setTitleEntry("");
         setTextEntry("");
+        setCourseCode("");
       };
     // "username", "title", "description","course_code","schedule_link", "type", "tags" 
     return (
@@ -165,11 +163,12 @@ export default function GroupFeed() {
                     <select className="custom-select" onChange={handleCourseChange}>
                         <option value="" selected>Select Course</option>
                         {courses.map((courses) => (
-                            <option value = "{courses.course_code}" className="info-tag tag-spacing" type="button">{courses.course_code}</option>
+                            <option value = {courses.course_code}  className="info-tag tag-spacing" type="button">{courses.course_code}</option>
                         ))}
                     </select>
-                    <button className="rounded-blue-button">Post</button>
-                </div>       
+                    <input className="rounded-blue-button" type="submit" name="Post" id="submit-post" value="Post"/>
+
+                </div>     
             </form>
             <hr></hr> {/* Horiztonal Line */}
             <div className="search-content">
