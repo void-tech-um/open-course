@@ -44,7 +44,8 @@ textarea {
 }
 
 a:hover,
-button:hover {
+button:hover,
+#profile-info:hover {
   cursor: pointer;
 }
 
@@ -1013,4 +1014,151 @@ h4 {
 .search-grid button {
   background-color: white;
   border-color: gray;
+}
+
+#groupdetailsbody>.resource {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 80%;
+}
+
+#profile-info {
+  display: flex;
+}
+
+#profile-info * {
+  margin: 0px;
+}
+
+#profile-info h2 {
+  margin-top: 5px;
+}
+
+#profile-info>.pfp {
+  width: 15%;
+  height: 100%;
+  min-height: 45px;
+  min-width: 45px;
+  margin: 1px;
+}
+
+.small-box {
+  margin: 0px 10px;
+  width: 100%;
+  border: 1.5px solid #045BC0;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.small-box h3 {
+  margin: 8px 5px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.small-box p {
+  font-size: 13px;
+  margin: 3px 5px;
+}
+
+.small-box button {
+  font-size: 11px;
+  color: #045BC0;
+  margin: 5px 5px;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  padding: 0px;
+}
+
+.small-box .detail2 {
+  color: rgb(75, 75, 75);
+}
+
+.small-boxes {
+  display: flex;
+}
+
+.groupdetails {
+  grid-column: 1 / span 2;
+}
+
+.groupdetails h3 {
+  margin: 0px;
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+.groupdetails p {
+  margin: 0px;
+  font-size: 13px;
+}
+
+#groupdetailsbody {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#groupdetailsbody .resource {
+  padding: 40px;
+  border: none;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 60px;
+}
+
+#joingroup p {
+  font-size: 13px;
+  margin: 3px 5px;
+  color: rgb(75, 75, 75);
+}
+
+#joingroup {
+  display: flex;
+  align-content: center;
+  justify-content: end;
+  grid-column: 1 / span 2;
+}
+
+#groupdetailsbody>.resource {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 80%;
+}
+
+#viewprofile {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  width: 500px;
+  padding: 40px;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  position: absolute;
+  display: none;
+  background-color: white;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#viewprofile p {
+  margin: 0px;
+}
+
+#viewprofile h2 {
+  margin: 0px;
+  font-size: 36px;
+}
+
+#viewprofile .pfp {
+  width: 120px;
+}
+
+#viewprofile>p {
+  grid-column: 1 / span 2;
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: center;
 }

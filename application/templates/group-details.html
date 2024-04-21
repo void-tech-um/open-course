@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="blue-header">
+   <div>
+      <h1>Group Details</h1>
+      <br>
+      <p>
+         Currently viewing a study group
+      </p>
+   </div>
+</div>
+<div id="groupdetailsbody">
+   <h2>Calculus Final Exam Study</h2>
+   <div class="resource">
+      <div>
+         <div id="profile-info">
+            <img src="/static/assets/logo.png" class="pfp" alt="pfp">
+            <div>
+               <h2>Martha Stewart</h2>
+               <div class="resource-info">
+                  <p>mstews@umich.edu</p>
+               </div>
+            </div>
+         </div>
+         <div>
+            <button class="info-tag tag-spacing" type="button">Topic</button>
+            <button class="info-tag tag-spacing" type="button">Topic</button>
+            <button class="info-tag tag-spacing" type="button">Topic</button>
+            <button class="info-tag tag-spacing" type="button">Topic</button>
+         </div>
+      </div>
+      <div class="small-boxes">
+         <div class="small-box">
+            <h3>Location</h3>
+            <p class="detail1">Mason Hall Room 2326</p>
+            <p class="detail2">419 State St, Ann Arbor</p>
+            <button>Open in Map</button>
+         </div>
+         <div class="small-box">
+            <h3>Date & Time</h3>
+            <p class="detail1">Saturday, 6 Feb 2024</p>
+            <p class="detail2">6:30pm - 7:30pm</p>
+            <button>Add to Calendar</button>
+         </div>
+      </div>
+      <br>
+      <div class="groupdetails">
+         <h3>Details</h3>
+         <p>Studying Together for calculus final exam in Mason Hall Saturday Night!</p>
+      </div>
+      <div id="joingroup">
+         <p>Send an email to the group creator to join the group! <button
+               class="course-button rounded-blue-button">Join</button></p>
+      </div>
+   </div>
+</div>
+<div id="viewprofile" class="resource">
+   <img src="/static/assets/logo.png" class="pfp" alt="pfp">
+   <div>
+      <h2>Martha Stewart</h2>
+      <p>(232)562-4293</p>
+      <p>mstews@umich.edu</p>
+      <button class="info-tag" type="button">Topic</button>
+      <button class="info-tag" type="button">Topic</button>
+      <button class="info-tag" type="button">Topic</button>
+      <button class="info-tag" type="button">Topic</button>
+   </div>
+   <p> Hi my name is Martha Stewart and I'm a current Sophomore
+      studying Computer Science at Umich! I love coffee and am
+      always looking for new books to read :)</p>
+</div>
+<script>
+   let popup;
+   let button = document.getElementById("profile-info");
+   let profile = document.getElementById("viewprofile");
+
+   let isMouseHover = false
+   button.addEventListener("mouseleave", function (event) {
+      isMouseHover = false
+      console.log(isMouseHover)
+   }, false);
+   button.addEventListener("mouseover", function (event) {
+      isMouseHover = true
+      console.log(isMouseHover)
+   }, false);
+
+   window.addEventListener("load", function () {
+      console.log("Good job opening the window");
+      profile.style.display = "none";
+      popup = false;
+   });
+
+   window.addEventListener("click", function () {
+      let body = document.querySelector("#groupdetailsbody");
+      if (isMouseHover && !popup) {
+         popup = true;
+         console.log(popup);
+         body.style.filter = "blur(5px)";
+         profile.style.display = "grid";
+      } else {
+         popup = false;
+         console.log(popup);
+         body.style.filter = "blur(0px)";
+         profile.style.display = "none";
+      }
+   });
+
+</script>
+{% endblock %}

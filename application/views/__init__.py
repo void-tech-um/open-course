@@ -7,3 +7,4 @@ from application.views.view_user_profile import show_view_user_profile
 from application.views.saved import show_saved
 from application.views.login import show_login
 from application.views.login import show_privacy_policy
+from application.views.index import show_group_details
