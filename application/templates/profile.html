@@ -7,7 +7,7 @@
                 <div style="margin-top: 60px; margin-bottom: 60px">
                     <br>
                     <h1-blue>Your Courses</h1-blue>
-                    <a href="/courses/" class="profile-rounded-blue-button">Add/Join Courses
+                    <a href="/courses/" class="profile-rounded-blue-button"> Add/Join Courses
                         <div class="bx bx-up-arrow-alt" id="menu-icon"></div>
                     </a>
                 </div>
@@ -80,8 +80,10 @@
                     <textarea class="profile-bio-text-box bio-box font-16" type="submit" name="bio" value="bio">{{ profile_data.bio }}</textarea>
                     <p class = "font-22 subtitle-format">Preferred Contact Info</p>
                     <div class="profile-bio-text-box pref-contact-box font-16">{{ profile_data.email }}</div>
-                    <input type="tel" class="profile-bio-text-box pref-contact-box font-16" name="phone-num" value="{{ profile_data.phone_num }}">
-                    <input class="font-16 center-text profile-bio-link" style="background: none; border: none" type="submit" name="save" value="Save Profile Data">
+                    <input type="tel" class="profile-bio-text-box pref-contact-box font-16" style="margin-top:10px" name="phone-num" value="{{ profile_data.phone_num }}">
+                    <div class="center-item">
+                        <input class="font-16 center-text profile-bio-link" style="background: none; border: none" type="submit" name="save" value="Save Profile Data">
+                    </div>
                     <input type="hidden" name="operation" value="edit-profile"/>
                 </form>
                 <div class = "button-container">
