@@ -12,5 +12,10 @@ Repository for the Open Course project team within VOID Tech at the University o
 
 ### Running the Application with Docker in the open-course-web-app repo
 ```sudo docker build -t open-course .```
-
+#### If the previous container is running, then stop it
+#### Check current docker process with:
+```sudo docker ps```
+#### Using the container id, run this command:
+```sudo docker stop <CONTAINER_ID>```
+#### Run open-course application on port 8000
 ```sudo docker run --env-file .env -p 8000:8000 open-course```
