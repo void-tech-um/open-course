@@ -137,7 +137,7 @@ export default function GroupFeed() {
             <div className="time-popup-content">
               <h2>Add a google calender link here <img src="/static/assets/calendar-plus.svg" alt="calendar filter"></img> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
               <input type="text" name="enterTitle" id="enter-time" placeholder="Link but doesn't work rn" value={titleEntry} onChange={handleTitleChange} />
-              <input className="time-rounded-blue-button" type="submit" name="Post" id="submit-post" value="Post"/>
+              <input className="time-rounded-blue-button" type="submit" name="Post" id="submit-post" value="Submit"/>
             </div>
           </div>
         );
