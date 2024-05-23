@@ -1049,6 +1049,54 @@ h4 {
   display: none;
   cursor: pointer;
 }
+
+/* popup */
+.time-popup {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 25px;
+  width: 660px;
+  height: 212px;
+  background-color: white;
+  border: 1px solid #888;
+  z-index: 10;
+}
+
+.time-popup-content {
+  text-align: left;
+  padding-left: 30px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.time-rounded-blue-button {
+  width: 115px;
+  height: 39px;
+  text-decoration: none;
+  background-color: #045BC0;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 81%;
+}
+
+.new-post-box #enter-time{
+  grid-column: 2/span 1;
+  border-radius: 5px;
+  border: 1px solid #045BC0;
+  width: 100%;
+  height: 30px;
+}
+
   
 @media screen and (max-width: 768px) {
   .navbar-toggler {

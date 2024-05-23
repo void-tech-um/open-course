@@ -123,6 +123,37 @@ export default function GroupFeed() {
         setTitleEntry(event.target.value);
     };
 
+    const TimePopup = ({ isOpen, onClose }) => {
+        if (!isOpen) return null;
+
+        const handleOverlayClick = (event) => {
+            if (event.target === event.currentTarget) {
+              onClose();
+            }
+        };  
+        
+        return (
+          <div className="time-popup" onClick={handleOverlayClick}>
+            <div className="time-popup-content">
+              <h2>Add a google calender link here <img src="/static/assets/calendar-plus.svg" alt="calendar filter"></img> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+              <input type="text" name="enterTitle" id="enter-time" placeholder="Link but doesn't work rn" value={titleEntry} onChange={handleTitleChange} />
+              <input className="time-rounded-blue-button" type="submit" name="Post" id="submit-post" value="Post"/>
+            </div>
+          </div>
+        );
+      };
+      
+
+    const [isTimePopupOpen, setIsTimePopupOpen] = useState(false);
+
+    const handleOpenTimePopup = () => {
+      setIsTimePopupOpen(true);
+    };
+  
+    const handleCloseTimePopup = () => {
+      setIsTimePopupOpen(false);
+    };
+
     const handlePostSubmit = (event) => {
         event.preventDefault();
 
@@ -157,7 +188,8 @@ export default function GroupFeed() {
                 <input type="text" name="enterTitle" id="enter-title" placeholder="Enter Title" value={titleEntry} onChange={handleTitleChange} />
                 <textarea name="tellMore" id="tell-me-more" value={textEntry} onChange={handleTextChange}  placeholder="Tell me more about your study group..." />
                 <div className="filters">
-                    <button className="transparent-button"><img src="/static/assets/calendar-plus.svg" alt="calendar filter"></img>Meeting time</button>
+                    <button className="transparent-button" onClick={handleOpenTimePopup}><img src="/static/assets/calendar-plus.svg" alt="calendar filter"></img>Meeting time</button>
+                    <TimePopup isOpen={isTimePopupOpen} onClose={handleCloseTimePopup} />
                     <button className="transparent-button"><img src="/static/assets/location.svg" alt="location filter"></img>Location</button>
                     <button className="transparent-button"><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
                     <select className="custom-select" onChange={handleCourseChange} value={course_code}>
