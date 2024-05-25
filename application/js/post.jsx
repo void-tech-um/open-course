@@ -98,7 +98,7 @@ export default function Post(props) {
                     <p className="study-group">{post.course_code}</p>
                     <p className="brief-descript">{post.description}</p>
                     <p className="date-room"><i className="far fa-calendar"></i> Date</p>
-                    <p className="post-time-address align-with-icon">time</p>
+                    <p className="post-time-address align-with-icon">{post.schedule_link}</p>
                     <p><i className="date-room material-icons">location_on</i>Room</p>
                     <p className="post-time-address align-with-icon">Address</p>
                 </div>

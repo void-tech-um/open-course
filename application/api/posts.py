@@ -119,15 +119,14 @@ def create_post():
           "status_code": 404
         }
         return flask.jsonify(**context), 404
-    # Removed to make more simplified
-    # schedule_link = data["schedule_link"]
-    # if schedule_link == '' or schedule_link == None:
-    #     context = {
-    #       "message": "Please enter a schedule time.",
-    #       "status_code": 404
-    #     }
-    #     return flask.jsonify(**context), 404
-
+    schedule_link = data["schedule_link"]
+    if schedule_link == '' or schedule_link == None:
+        context = {
+          "message": "Please enter a schedule time.",
+          "status_code": 404
+        }
+        return flask.jsonify(**context), 404
+    #    Removed to make more simplified
     # postType = data["type"]
     # if postType == '' or postType == None:
     #     context = {
@@ -138,7 +137,7 @@ def create_post():
 
     # post = model.create_post(data["username"], data["title"], data["description"], data["course_code"], data["schedule_link"], data["type"])
     
-    post = model.create_post(username, data["title"], data["description"], data["course_code"], "", data["type"])
+    post = model.create_post(username, data["title"], data["description"], data["course_code"], data["schedule_link"], data["type"])
     #Blank quote is the placeholder for schedule link
     tags = data["tags"]
     context = {
@@ -148,7 +147,7 @@ def create_post():
         "description": data["description"],
         "course_code": data["course_code"],
         "created": post["created"],
-        "schedule_link": "",
+        "schedule_link": data["schedule_link"],
         "type": 1,
     }
     print(context)

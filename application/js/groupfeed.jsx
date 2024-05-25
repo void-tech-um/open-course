@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import '../static/css/style.css';
 import Post from "./post";
+import { createPortal } from "react-dom";
 import moment from "moment";
 
 
@@ -18,6 +19,8 @@ export default function GroupFeed() {
     const [course_code, setCourseCode] = useState("");
     const [schedule_link, setScheduleLink] = useState("");
     const [tags, setTags] = useState("");
+    const [isTimePopupOpen, setIsTimePopupOpen] = useState(false);
+
     const handleSelectChange = (selectedList) => {
         setSelected(selectedList);
         console.log(selected);
@@ -122,38 +125,40 @@ export default function GroupFeed() {
     const handleTitleChange = (event) => {
         setTitleEntry(event.target.value);
     };
-
-    const TimePopup = ({ isOpen, onClose }) => {
-        if (!isOpen) return null;
-
-        const handleOverlayClick = (event) => {
-            if (event.target === event.currentTarget) {
-              onClose();
-            }
-        };  
-        
-        return (
-          <div className="time-popup" onClick={handleOverlayClick}>
-            <div className="time-popup-content">
-              <h2>Add a google calender link here <img src="/static/assets/calendar-plus.svg" alt="calendar filter"></img> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
-              <input type="text" name="enterTitle" id="enter-time" placeholder="Link but doesn't work rn" value={titleEntry} onChange={handleTitleChange} />
-              <input className="time-rounded-blue-button" type="submit" name="Post" id="submit-post" value="Submit"/>
-            </div>
-          </div>
-        );
-      };
-      
-
-    const [isTimePopupOpen, setIsTimePopupOpen] = useState(false);
-
-    const handleOpenTimePopup = () => {
-      setIsTimePopupOpen(true);
+    const handleScheduleChange = (event) => {
+        setScheduleLink(event.target.value);
     };
-  
+
     const handleCloseTimePopup = () => {
       setIsTimePopupOpen(false);
     };
+    const TimePopup = () => {
+        return (
+        <div 
+			className="time-popup"
+			onClick={(e) => {
+				if(e.target.className === "time-popup" ){
+					handleCloseTimePopup();
+				}
+			}}
+		>
+			<div className="time-popup-elements">
+				<div className="new-time-box">
+					<div className="time-title">
+						<h2 id="title">Add a google calender link here</h2>
+						<img src="/static/assets/calendar-plus.svg" alt="calendar filter"/>
+					</div>
+					<div className="time-input">
+						<input type="text" className="enterTitle" id="enter-time" placeholder="Link but doesn't work rn" value={schedule_link} onChange={handleScheduleChange} autoFocus/>
+						<input className="time-rounded-blue-button" type="submit" name="Post" id="submit-post" value="Submit" onClick={handleCloseTimePopup}/>
+					</div>
 
+				</div>
+			</div>
+        </div>
+        );
+      };
+      
     const handlePostSubmit = (event) => {
         event.preventDefault();
 
@@ -164,7 +169,7 @@ export default function GroupFeed() {
               Accept: "application/json",
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:"",type :true, tags : []}),
+            body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:schedule_link,type :true, tags : []}),
           })
             .then((response) => {
               if (!response.ok) throw Error(response.statusText);
@@ -188,10 +193,10 @@ export default function GroupFeed() {
                 <input type="text" name="enterTitle" id="enter-title" placeholder="Enter Title" value={titleEntry} onChange={handleTitleChange} />
                 <textarea name="tellMore" id="tell-me-more" value={textEntry} onChange={handleTextChange}  placeholder="Tell me more about your study group..." />
                 <div className="filters">
-                    <button className="transparent-button" onClick={handleOpenTimePopup}><img src="/static/assets/calendar-plus.svg" alt="calendar filter"></img>Meeting time</button>
-                    <TimePopup isOpen={isTimePopupOpen} onClose={handleCloseTimePopup} />
-                    <button className="transparent-button"><img src="/static/assets/location.svg" alt="location filter"></img>Location</button>
-                    <button className="transparent-button"><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
+                    <button type="button" className="transparent-button" onClick={() =>setIsTimePopupOpen(true)}><img src="/static/assets/calendar-plus.svg" alt="calendar filter"></img>Meeting time</button>
+                    {isTimePopupOpen && (<TimePopup/>)}
+                    <button type="button" className="transparent-button"><img src="/static/assets/location.svg" alt="location filter"></img>Location</button>
+                    <button type="button" className="transparent-button"><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
                     <select className="custom-select" onChange={handleCourseChange} value={course_code}>
                         <option value="" selected>Select Course</option>
                         {courses.map((courses) => (

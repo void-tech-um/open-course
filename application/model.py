@@ -209,7 +209,7 @@ def get_post(post_id):
     }
     return content
 
-def create_post(username, title, description, course_code,schedule_link, type):
+def create_post(username, title, description, course_code, schedule_link, type):
     """Create a post"""
     conn = get_db()
     cur = conn.cursor()
