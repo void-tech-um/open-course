@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import '../static/css/style.css';
 import Post from "./post";
+import PopUp from "./popUp";
 import { createPortal } from "react-dom";
 import moment from "moment";
 
@@ -132,32 +133,7 @@ export default function GroupFeed() {
     const handleCloseTimePopup = () => {
       setIsTimePopupOpen(false);
     };
-    const TimePopup = () => {
-        return (
-        <div 
-			className="time-popup"
-			onClick={(e) => {
-				if(e.target.className === "time-popup" ){
-					handleCloseTimePopup();
-				}
-			}}
-		>
-			<div className="time-popup-elements">
-				<div className="new-time-box">
-					<div className="time-title">
-						<h2 id="title">Add a google calender link here</h2>
-						<img src="/static/assets/calendar-plus.svg" alt="calendar filter"/>
-					</div>
-					<div className="time-input">
-						<input type="text" className="enterTitle" id="enter-time" placeholder="Link but doesn't work rn" value={schedule_link} onChange={handleScheduleChange} autoFocus/>
-						<input className="time-rounded-blue-button" type="submit" name="Post" id="submit-post" value="Submit" onClick={handleCloseTimePopup}/>
-					</div>
 
-				</div>
-			</div>
-        </div>
-        );
-      };
       
     const handlePostSubmit = (event) => {
         event.preventDefault();
@@ -182,6 +158,7 @@ export default function GroupFeed() {
             .catch((error) => console.log(error));
         setTitleEntry("");
         setTextEntry("");
+        setScheduleLink("");
         setCourseCode("Select Course");
       };
     // "username", "title", "description","course_code","schedule_link", "type", "tags" 
@@ -194,7 +171,13 @@ export default function GroupFeed() {
                 <textarea name="tellMore" id="tell-me-more" value={textEntry} onChange={handleTextChange}  placeholder="Tell me more about your study group..." />
                 <div className="filters">
                     <button type="button" className="transparent-button" onClick={() =>setIsTimePopupOpen(true)}><img src="/static/assets/calendar-plus.svg" alt="calendar filter"></img>Meeting time</button>
-                    {isTimePopupOpen && (<TimePopup/>)}
+                    {isTimePopupOpen && (
+                        <PopUp handleClose = {handleCloseTimePopup} handleScheduleChange = {handleScheduleChange} schedule_link={schedule_link} placeHolderText="Google Meet URL">
+                            {/* These two tags are being passed in as a prop called "children" */}
+                            <h2 id="title">Add a Google Calendar Link</h2>
+                            <img src="/static/assets/calendar-plus.svg" alt="calendar filter" />
+                        </PopUp>
+                    )}
                     <button type="button" className="transparent-button"><img src="/static/assets/location.svg" alt="location filter"></img>Location</button>
                     <button type="button" className="transparent-button"><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
                     <select className="custom-select" onChange={handleCourseChange} value={course_code}>
