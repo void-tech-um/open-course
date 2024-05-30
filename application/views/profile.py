@@ -35,3 +35,20 @@ def edit_profile_bio(username):
     )
     conn.commit()
     return flask.redirect(f"/profile/{username}/")
+
+@application.app.route("/profile/delete/", methods=["POST"])
+def delete_post():
+    # Assuming you're getting the current username from user session
+    # TODO get username from session
+    # username = flask.session.get('username', None)
+    username = 'test'
+    if not username:
+        # Handle not logged in case, perhaps redirect to login page
+        return flask.redirect(flask.url_for('login'))
+    post_id = flask.request.form.get('post_id')
+    print(post_id)
+    if post_id:
+        application.model.delete_post(username, post_id)
+        return flask.redirect(flask.url_for("show_profile", username=username))
+    else:
+        return "Error: Post ID not provided", 400
