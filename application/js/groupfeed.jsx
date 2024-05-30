@@ -19,8 +19,10 @@ export default function GroupFeed() {
     const [titleEntry, setTitleEntry] = useState("");
     const [course_code, setCourseCode] = useState("");
     const [schedule_link, setScheduleLink] = useState("");
+    const [location_on, setLocationOn] = useState("");
     const [tags, setTags] = useState("");
     const [isTimePopupOpen, setIsTimePopupOpen] = useState(false);
+    const [isLocationPopupOpen, setIsLocationPopupOpen] = useState(false);
 
     const handleSelectChange = (selectedList) => {
         setSelected(selectedList);
@@ -129,11 +131,16 @@ export default function GroupFeed() {
     const handleScheduleChange = (event) => {
         setScheduleLink(event.target.value);
     };
+    const handleLocationOn = (event) => {
+        setLocationOn(event.target.value);
+    };
 
     const handleCloseTimePopup = () => {
       setIsTimePopupOpen(false);
     };
-
+    const handleCloseLocationPopup = () => {
+        setIsLocationPopupOpen(false);
+      };
       
     const handlePostSubmit = (event) => {
         event.preventDefault();
@@ -145,7 +152,8 @@ export default function GroupFeed() {
               Accept: "application/json",
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:schedule_link,type :true, tags : []}),
+            //body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:schedule_link,type :true, tags : []}),
+            body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:schedule_link, location_on: location_on, type :true, tags : []}),
           })
             .then((response) => {
               if (!response.ok) throw Error(response.statusText);
@@ -159,9 +167,10 @@ export default function GroupFeed() {
         setTitleEntry("");
         setTextEntry("");
         setScheduleLink("");
+        setLocationOn("");
         setCourseCode("Select Course");
       };
-    // "username", "title", "description","course_code","schedule_link", "type", "tags" 
+    // "username", "title", "description","course_code","schedule_link", "location_on", "type", "tags" 
     return (
 
         <div>
@@ -178,7 +187,14 @@ export default function GroupFeed() {
                             <img src="/static/assets/calendar-plus.svg" alt="calendar filter" />
                         </PopUp>
                     )}
-                    <button type="button" className="transparent-button"><img src="/static/assets/location.svg" alt="location filter"></img>Location</button>
+                    <button type="button" className="transparent-button" onClick={() => setIsLocationPopupOpen(true)}><img src="/static/assets/location.svg" alt="location filter"></img>Location</button>
+                    {isLocationPopupOpen && (
+                        <PopUp handleClose = {handleCloseLocationPopup} handleLocationOn = {handleLocationOn} schedule_link={location_on} placeHolderText="Add Location and Room Number">
+                            {/* These two tags are being passed in as a prop called "children" */}
+                            <h2 id="title">Add Location and Room Number</h2>
+                            <img src="/static/assets/location.svg" alt="location filter" />
+                        </PopUp>
+                    )}
                     <button type="button" className="transparent-button"><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
                     <select className="custom-select" onChange={handleCourseChange} value={course_code}>
                         <option value="" selected>Select Course</option>
