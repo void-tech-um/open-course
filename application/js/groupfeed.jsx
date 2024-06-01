@@ -19,7 +19,7 @@ export default function GroupFeed() {
     const [titleEntry, setTitleEntry] = useState("");
     const [course_code, setCourseCode] = useState("");
     const [schedule_link, setScheduleLink] = useState("");
-    const [location_on, setLocationOn] = useState("");
+    const [location, setLocation] = useState("");
     const [tags, setTags] = useState("");
     const [isTimePopupOpen, setIsTimePopupOpen] = useState(false);
     const [isLocationPopupOpen, setIsLocationPopupOpen] = useState(false);
@@ -131,8 +131,8 @@ export default function GroupFeed() {
     const handleScheduleChange = (event) => {
         setScheduleLink(event.target.value);
     };
-    const handleLocationOn = (event) => {
-        setLocationOn(event.target.value);
+    const handleLocatonChange = (event) => {
+        setLocation(event.target.value);
     };
 
     const handleCloseTimePopup = () => {
@@ -153,7 +153,7 @@ export default function GroupFeed() {
               "Content-Type": "application/json",
             },
             //body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:schedule_link,type :true, tags : []}),
-            body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:schedule_link, location_on: location_on, type :true, tags : []}),
+            body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:schedule_link, location: location, type :true, tags : []}),
           })
             .then((response) => {
               if (!response.ok) throw Error(response.statusText);
@@ -167,10 +167,10 @@ export default function GroupFeed() {
         setTitleEntry("");
         setTextEntry("");
         setScheduleLink("");
-        setLocationOn("");
+        setLocation("");
         setCourseCode("Select Course");
       };
-    // "username", "title", "description","course_code","schedule_link", "location_on", "type", "tags" 
+    // "username", "title", "description","course_code","schedule_link", "location", "type", "tags" 
     return (
 
         <div>
@@ -181,7 +181,7 @@ export default function GroupFeed() {
                 <div className="filters">
                     <button type="button" className="transparent-button" onClick={() =>setIsTimePopupOpen(true)}><img src="/static/assets/calendar-plus.svg" alt="calendar filter"></img>Meeting time</button>
                     {isTimePopupOpen && (
-                        <PopUp handleClose = {handleCloseTimePopup} handleScheduleChange = {handleScheduleChange} schedule_link={schedule_link} placeHolderText="Google Meet URL">
+                        <PopUp handleClose = {handleCloseTimePopup} handleChange = {handleScheduleChange} inputValue={schedule_link} placeHolderText="Google Meet URL">
                             {/* These two tags are being passed in as a prop called "children" */}
                             <h2 id="title">Add a Google Calendar Link</h2>
                             <img src="/static/assets/calendar-plus.svg" alt="calendar filter" />
@@ -189,7 +189,7 @@ export default function GroupFeed() {
                     )}
                     <button type="button" className="transparent-button" onClick={() => setIsLocationPopupOpen(true)}><img src="/static/assets/location.svg" alt="location filter"></img>Location</button>
                     {isLocationPopupOpen && (
-                        <PopUp handleClose = {handleCloseLocationPopup} handleLocationOn = {handleLocationOn} schedule_link={location_on} placeHolderText="Add Location and Room Number">
+                        <PopUp handleClose = {handleCloseLocationPopup} handleChange = {handleLocatonChange} inputValue={location} placeHolderText="Add Location and Room Number">
                             {/* These two tags are being passed in as a prop called "children" */}
                             <h2 id="title">Add Location and Room Number</h2>
                             <img src="/static/assets/location.svg" alt="location filter" />

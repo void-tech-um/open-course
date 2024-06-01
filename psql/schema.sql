@@ -15,6 +15,7 @@ CREATE TABLE posts (
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
     schedule_link VARCHAR(100),
     "type" BOOLEAN NOT NULL,
+    "location" VARCHAR(150) NOT NULL,
     FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE
 );
 

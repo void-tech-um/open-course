@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import '../static/css/style.css';
 
-export default function PopUp({handleClose, handleChange, scheduleLink, placeHolderText, children}) {
+export default function PopUp({handleClose, handleChange, inputValue, placeHolderText, children}) {
 
     return (
         <div 
@@ -18,7 +18,7 @@ export default function PopUp({handleClose, handleChange, scheduleLink, placeHol
                         {children}
                     </div>
                     <div className="time-input">
-                        <input type="text" className="enterTitle" id="enter-time" placeholder={placeHolderText} value={scheduleLink} onChange={handleChange} autoFocus/>
+                        <input type="text" className="enterTitle" id="enter-time" placeholder={placeHolderText} value={inputValue} onChange={handleChange} autoFocus/>
                         <input className="time-rounded-blue-button" type="submit" name="Post" id="submit-post" value="Submit" onClick={handleClose}/>
                     </div>
                 </div>
