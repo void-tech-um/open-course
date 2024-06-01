@@ -44,7 +44,8 @@ export default function Post(props) {
                     course_code: json.course_code,
                     schedule_link: json.schedule_link,
                     type: json.type,
-                    tags: json.tags
+                    tags: json.tags,
+                    location: json.location
                 };
             })
             .then((postInfo) => {
@@ -98,9 +99,9 @@ export default function Post(props) {
                     <p className="study-group">{post.course_code}</p>
                     <p className="brief-descript">{post.description}</p>
                     <p className="date-room"><i className="far fa-calendar"></i> Date</p>
-                    <p className="post-time-address align-with-icon">time</p>
-                    <p><i className="date-room material-icons">location_on</i>Room</p>
-                    <p className="post-time-address align-with-icon">Address</p>
+                    <p className="post-time-address align-with-icon">{post.schedule_link}</p>
+                    <p className="date-room"><i className="material-icons"></i>Room</p>
+                    <p className="post-time-address align-with-icon">{post.location}</p>
                 </div>
                 <div className="join-section">
                     <h2 className="rounded-blue-button">Join</h2>

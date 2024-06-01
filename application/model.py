@@ -116,7 +116,8 @@ def get_posts():
             "course_code" : post[4],
             "created" : post[5],
             "schedule_link" : post[6],
-            "type" : post[7]
+            "type" : post[7],
+            "location" : post[8]
         })
     content = {"posts" : posts_list} 
     return content
@@ -144,7 +145,8 @@ def get_posts_created_by_user(username):
             "course_code" : post[4],
             "created" : post[5],
             "schedule_link" : post[6],
-            "type" : post[7]
+            "type" : post[7],
+            "location" : post[8]
         })
     content = {"posts" : posts_list} 
     return content
@@ -205,20 +207,21 @@ def get_post(post_id):
         "course_code" : post[4],
         "created" : post[5],
         "schedule_link" : post[6],
-        "type" : post[7]
+        "type" : post[7],
+        "location" : post[8],
     }
     return content
 
-def create_post(username, title, description, course_code,schedule_link, type):
+def create_post(username, title, description, course_code, schedule_link, location, type):
     """Create a post"""
     conn = get_db()
     cur = conn.cursor()
 
     # Execute the INSERT query with parameters
     cur.execute(
-        "INSERT INTO posts (username, title, description, course_code, schedule_link, type) "
-        "VALUES (%s, %s, %s, %s, %s, %s) RETURNING post_id, created",  # Use RETURNING to get post_id and created
-        (username, title, description, course_code, schedule_link, type)
+        "INSERT INTO posts (username, title, description, course_code, schedule_link, location, type) "
+        "VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING post_id, created",  # Use RETURNING to get post_id and created
+        (username, title, description, course_code, schedule_link, location, type)
     )
     # Fetch the inserted row containing post_id and created
     post = cur.fetchone()
@@ -252,7 +255,8 @@ def get_users_posts(username):
             "course_code" : post[4],
             "created" : post[5],
             "schedule_link": post[6],
-            "type" : post[7]
+            "type" : post[7],
+            "location" : post[8]
         })
     content = {"posts" : posts_list}
     return content

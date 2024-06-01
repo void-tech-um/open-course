@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import '../static/css/style.css';
 import Post from "./post";
+import PopUp from "./popUp";
+import { createPortal } from "react-dom";
 import moment from "moment";
 
 
@@ -17,7 +19,11 @@ export default function GroupFeed() {
     const [titleEntry, setTitleEntry] = useState("");
     const [course_code, setCourseCode] = useState("");
     const [schedule_link, setScheduleLink] = useState("");
+    const [location, setLocation] = useState("");
     const [tags, setTags] = useState("");
+    const [isTimePopupOpen, setIsTimePopupOpen] = useState(false);
+    const [isLocationPopupOpen, setIsLocationPopupOpen] = useState(false);
+
     const handleSelectChange = (selectedList) => {
         setSelected(selectedList);
         console.log(selected);
@@ -122,7 +128,20 @@ export default function GroupFeed() {
     const handleTitleChange = (event) => {
         setTitleEntry(event.target.value);
     };
+    const handleScheduleChange = (event) => {
+        setScheduleLink(event.target.value);
+    };
+    const handleLocatonChange = (event) => {
+        setLocation(event.target.value);
+    };
 
+    const handleCloseTimePopup = () => {
+      setIsTimePopupOpen(false);
+    };
+    const handleCloseLocationPopup = () => {
+        setIsLocationPopupOpen(false);
+      };
+      
     const handlePostSubmit = (event) => {
         event.preventDefault();
 
@@ -133,7 +152,8 @@ export default function GroupFeed() {
               Accept: "application/json",
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:"",type :true, tags : []}),
+            //body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:schedule_link,type :true, tags : []}),
+            body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:schedule_link, location: location, type :true, tags : []}),
           })
             .then((response) => {
               if (!response.ok) throw Error(response.statusText);
@@ -146,9 +166,11 @@ export default function GroupFeed() {
             .catch((error) => console.log(error));
         setTitleEntry("");
         setTextEntry("");
+        setScheduleLink("");
+        setLocation("");
         setCourseCode("Select Course");
       };
-    // "username", "title", "description","course_code","schedule_link", "type", "tags" 
+    // "username", "title", "description","course_code","schedule_link", "location", "type", "tags" 
     return (
 
         <div>
@@ -157,9 +179,23 @@ export default function GroupFeed() {
                 <input type="text" name="enterTitle" id="enter-title" placeholder="Enter Title" value={titleEntry} onChange={handleTitleChange} />
                 <textarea name="tellMore" id="tell-me-more" value={textEntry} onChange={handleTextChange}  placeholder="Tell me more about your study group..." />
                 <div className="filters">
-                    <button className="transparent-button"><img src="/static/assets/calendar-plus.svg" alt="calendar filter"></img>Meeting time</button>
-                    <button className="transparent-button"><img src="/static/assets/location.svg" alt="location filter"></img>Location</button>
-                    <button className="transparent-button"><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
+                    <button type="button" className="transparent-button" onClick={() =>setIsTimePopupOpen(true)}><img src="/static/assets/calendar-plus.svg" alt="calendar filter"></img>Meeting time</button>
+                    {isTimePopupOpen && (
+                        <PopUp handleClose = {handleCloseTimePopup} handleChange = {handleScheduleChange} inputValue={schedule_link} placeHolderText="Google Meet URL">
+                            {/* These two tags are being passed in as a prop called "children" */}
+                            <h2 id="title">Add a Google Calendar Link</h2>
+                            <img src="/static/assets/calendar-plus.svg" alt="calendar filter" />
+                        </PopUp>
+                    )}
+                    <button type="button" className="transparent-button" onClick={() => setIsLocationPopupOpen(true)}><img src="/static/assets/location.svg" alt="location filter"></img>Location</button>
+                    {isLocationPopupOpen && (
+                        <PopUp handleClose = {handleCloseLocationPopup} handleChange = {handleLocatonChange} inputValue={location} placeHolderText="Add Location and Room Number">
+                            {/* These two tags are being passed in as a prop called "children" */}
+                            <h2 id="title">Add Location and Room Number</h2>
+                            <img src="/static/assets/location.svg" alt="location filter" />
+                        </PopUp>
+                    )}
+                    <button type="button" className="transparent-button"><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
                     <select className="custom-select" onChange={handleCourseChange} value={course_code}>
                         <option value="" selected>Select Course</option>
                         {courses.map((courses) => (

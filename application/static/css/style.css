@@ -1049,6 +1049,80 @@ h4 {
   display: none;
   cursor: pointer;
 }
+
+/* popup */
+.time-popup {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  
+
+}
+
+.time-popup-elements{
+  border-radius: 25px;
+  width: 660px;
+  height: 212px;
+  background-color: white;
+  border: 1px solid #888;
+}
+
+.time-rounded-blue-button {
+  width: 115px;
+  height: 39px;
+  text-decoration: none;
+  background-color: #045BC0;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+
+}
+
+.new-time-box{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 2rem;
+}
+
+.time-title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.time-title #title{
+  margin: 0;
+}
+
+.time-input{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+}
+
+.time-input #enter-time{
+  border-radius: 5px;
+  border: 1px solid #045BC0;
+  width: 100%;
+  height: 30px;
+  display: block;
+  margin: 1rem 0;
+}
+
+
+
+
   
 @media screen and (max-width: 768px) {
   .navbar-toggler {

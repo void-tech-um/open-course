@@ -75,6 +75,7 @@ def get_specific_post(postid):
         "created": data_post["created"],
         "schedule_link": data_post["schedule_link"],
         "type": data_post["type"],
+        "location": data_post["location"],
         "tags" : tags["tags"],
         "postShowUrl": f"/api/v1/posts/{postid}/"
     }
@@ -119,15 +120,21 @@ def create_post():
           "status_code": 404
         }
         return flask.jsonify(**context), 404
-    # Removed to make more simplified
-    # schedule_link = data["schedule_link"]
-    # if schedule_link == '' or schedule_link == None:
-    #     context = {
-    #       "message": "Please enter a schedule time.",
-    #       "status_code": 404
-    #     }
-    #     return flask.jsonify(**context), 404
-
+    schedule_link = data["schedule_link"]
+    if schedule_link == '' or schedule_link == None:
+        context = {
+          "message": "Please enter a schedule time.",
+          "status_code": 404
+        }
+        return flask.jsonify(**context), 404
+    location = data["location"]
+    if location == '' or location == None:
+        context = {
+          "message": "Please enter a location.",
+          "status_code": 404
+        }
+        return flask.jsonify(**context), 404    
+    #    Removed to make more simplified
     # postType = data["type"]
     # if postType == '' or postType == None:
     #     context = {
@@ -138,7 +145,7 @@ def create_post():
 
     # post = model.create_post(data["username"], data["title"], data["description"], data["course_code"], data["schedule_link"], data["type"])
     
-    post = model.create_post(username, data["title"], data["description"], data["course_code"], "", data["type"])
+    post = model.create_post(username, data["title"], data["description"], data["course_code"], data["schedule_link"], data["location"] , data["type"])
     #Blank quote is the placeholder for schedule link
     tags = data["tags"]
     context = {
@@ -148,7 +155,8 @@ def create_post():
         "description": data["description"],
         "course_code": data["course_code"],
         "created": post["created"],
-        "schedule_link": "",
+        "schedule_link": data["schedule_link"],
+        "location": data["location"],
         "type": 1,
     }
     print(context)
