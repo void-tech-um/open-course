@@ -48,6 +48,10 @@
                         <div class="profile-post-h2">
                             <p>{{post.description}}</p>
                         </div>
+                        <form class="course-blue-button" action="/profile/delete/" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="post_id" value="{{post.post_id}}"/>
+                            <input class="rounded-blue-button" type="submit" name="drop" value="Delete Post"/>
+                        </form>
                     </div>
                     {% endfor %}
                     <!--Template for StudyGuide-->

@@ -261,6 +261,16 @@ def get_users_posts(username):
     content = {"posts" : posts_list}
     return content
 
+def delete_post(username, post_id):
+    """Allow a user to drop a course."""
+    conn = get_db()
+    cur = conn.cursor()
+    cur.execute(
+        "DELETE FROM posts WHERE username = %s AND post_id = %s",
+        (username, post_id)
+    )
+    conn.commit()
+
 # TAG RELATED DB CALLS --------------------------------------------------------------------------
 
 def get_all_tags(): 
