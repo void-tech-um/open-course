@@ -26,6 +26,14 @@ def authorized():
         )
     session['google_token'] = (response['access_token'], '')
     user_info = google.get('userinfo')
+
+    # Check if the user is from umich.edu
+    domain = user_info.data['hd']
+    if domain != 'umich.edu':
+        return 'Access denied: reason=invalid domain', 406
+    #
+    #username = user_info.data['email'].split('@')[0]
+
     return redirect(url_for('show_index'))
 
 @application.app.route('/logout')

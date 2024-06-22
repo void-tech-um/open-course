@@ -11,8 +11,9 @@ def show_profile(username):
     post = application.model.get_posts_created_by_user(username)
     context["name"] = user_info.data["name"]
     context["profile_pic"] = user_info.data["picture"]
+    #context["username"] = user_info.data["email"].split("@")[0]
     print(context["name"])
-    # context = {course : [{course_code : EECS 280, course_name : INtroductory to Data structures},{course_code: EECS 370, course_name: }],
+    # context = {course : [{course_code : EECS 280, course_name : Introductory to Data structures},{course_code: EECS 370, course_name: }],
     #           posts : [{post_id: 4, title: "hi"}]}
     return render_template('profile.html', **context, profile_data=profile_data)
 
