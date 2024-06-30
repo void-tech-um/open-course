@@ -83,6 +83,12 @@ def get_user(username):
         (username,)
     )
     user = cur.fetchone()
+
+    # The case where no user is found
+    if user is None:
+        print(f"No user found for username: {username}")
+        return None
+
     content = {
         "username" : user[0],
         "email" : user[1],
@@ -370,7 +376,7 @@ def get_all_courses_user(username):
             SELECT 1
             FROM
             (SELECT course_code FROM enrollments
-            WHERE username = 'test'
+            WHERE username = username
             ) e
             WHERE e.course_code = u.course_code
         ) AS user_in_course FROM courses u;

@@ -1,6 +1,7 @@
 import flask, application
 from flask import render_template
 from .. import google
+
 @application.app.route("/profile/<username>/")
 def show_profile(username):
     """Display /profile route."""
@@ -13,6 +14,8 @@ def show_profile(username):
     context["profile_pic"] = user_info.data["picture"]
     #context["username"] = user_info.data["email"].split("@")[0]
     print(context["name"])
+    print(username)
+    print(flask.session.get('username'))
     # context = {course : [{course_code : EECS 280, course_name : Introductory to Data structures},{course_code: EECS 370, course_name: }],
     #           posts : [{post_id: 4, title: "hi"}]}
     return render_template('profile.html', **context, profile_data=profile_data)
@@ -21,8 +24,8 @@ def show_profile(username):
 def edit_profile_bio(username):
     """Make an edit to a user's profile bio."""
     # TODO uncomment this out once the username is stored in the flask session!
-    # if 'username' not in flask.session:
-    #     flask.abort(403)
+    if 'username' not in flask.session:
+        flask.abort(403)
     try:
         bio = flask.request.form['bio']
         phone_num = flask.request.form['phone-num']
@@ -45,8 +48,7 @@ def edit_profile_bio(username):
 def delete_post():
     # Assuming you're getting the current username from user session
     # TODO get username from session
-    # username = flask.session.get('username', None)
-    username = 'test'
+    username = flask.session.get('username', None)
     if not username:
         # Handle not logged in case, perhaps redirect to login page
         return flask.redirect(flask.url_for('login'))
