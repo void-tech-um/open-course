@@ -37,37 +37,31 @@ def authorized():
     username = user_info.data['email'].split('@')[0]
     email = user_info.data['email']
 
-    conn = connect_to_db()
-    cur = get_db().cursor()
-
     # Store the username in the database
-    cur.execute(
-        "SELECT * FROM users WHERE username = %s",
-        (username,)
-    )
-    user = cur.fetchone()
+    user = get_user(username)
+
     if user is None:
-        # User does not exist, so insert the new user
-        cur.execute("INSERT INTO users (username, email, phone_num, profile_picture, bio) VALUES (%s, %s, %s, %s, %s)", (username, email, "123-456-7890", user_info.data['picture'], "None"))
+        conn = get_db()
+        cur = conn.cursor()
+        cur.execute(
+            "INSERT INTO users (username, email, phone_num, profile_picture, bio)"
+            "VALUES (%s, %s, %s, %s, %s) ",
+            (username, email, "123-456-7890", user_info.data['picture'], "None")
+        )
         conn.commit()
-        print("User inserted")
+
+        print( 'User added to database. Redirecting to home page.')
     else:
-        print("User is already in the database")
-    
-    cur.close()
+        print( 'User already exists in database. Redirecting to home page.')
 
     session['username'] = username
-    print(username)
-    print(session['username'])
-    print(session.get('username'))
 
-    return redirect(url_for('show_index'))
+    #return redirect(url_for('show_index'))
     
-    #return redirect(url_for('show_profile', username=username))
+    return redirect(url_for('show_profile', username=username))
 
 @application.app.route('/logout')
 def logout():
     session.pop('google_token')
     session.pop('username')
     return redirect(url_for('show_index'))
-
