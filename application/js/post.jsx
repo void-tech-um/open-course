@@ -76,32 +76,37 @@ export default function Post(props) {
 
     if (postHasRendered) {
         return (
-            <div className="post-border">
+            <div className="post__border">
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-                <div className="profile-right">
-                    <div className="profile-info circle">
+                <div className="post__header">
+                    <div className="post__header--left">
                         <img src="/static/assets/logo.png" alt="pfp" className="circle"></img>
-                        <div>
-                            <p className="user-name">{post.username} </p>
-                            <p className="email">{post.email}</p>
+                        <div className="post__profile-info">
+                            <p className="post__user-name">{post.username} </p>
+                            <p className="post__email">{post.email}</p>
                         </div>
-                        <input className="star" type="checkbox" title="bookmark page" checked />
+                    </div>
+                    <div className="post__header--right">
+                        <input className="post__star" type="checkbox" title="bookmark page"/>
                     </div>
                 </div>
-                <div className="profile-right">
+                <div className="post__tags">
                     {post.tags.map((tag) => (
                         <button className="info-tag tag-spacing" type="button">{tag.tag_name}</button>
                     ))}
                 </div>
-                <div className="profile-right">
-                    <p className="study-group">STUDY GROUP</p>
-                    <h1>{post.title}</h1>
-                    <p className="study-group">{post.course_code}</p>
-                    <p className="brief-descript">{post.description}</p>
-                    <p className="date-room"><i className="far fa-calendar"></i> Date</p>
-                    <p className="post-time-address align-with-icon">{post.schedule_link}</p>
-                    <p className="date-room"><i className="material-icons"></i>Room</p>
-                    <p className="post-time-address align-with-icon">{post.location}</p>
+                <div className="post__info">
+                    <p className="post__info--study-group">STUDY GROUP</p>
+                    <div className="post__info--body">
+                        <h1 className="post__info--title">{post.title}</h1>
+                        <p className="post__info--code">{post.course_code}</p>
+                        <p className="post__info--description">{post.description}</p>
+                    </div>
+
+                    <p className="post__info--date-room"><i className="far fa-calendar"></i> Date</p>
+                    <p className="post__info--time-address">{post.schedule_link}</p>
+                    <p className="post__info--date-room"><i className="fa fa-map-marker"></i> Room</p>
+                    <p className="post__info--time-address">{post.location}</p>
                 </div>
                 <div className="join-section">
                     <h2 className="rounded-blue-button">Join</h2>

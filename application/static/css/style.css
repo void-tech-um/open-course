@@ -323,17 +323,6 @@ h4 {
 
 }
 
-/* Post Component */
-.post-border {
-  width: 300px;
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  border-radius: 12px;
-  /* Shadow */
-  margin: 2%;
-  padding: 4rem;
-}
-
 .circle {
   width: 70px;
   /* Specify the width */
@@ -343,41 +332,6 @@ h4 {
   /* Make it a circle */
 }
 
-
-
-.user-name {
-  font-family: Inter;
-  color: black;
-  font-size: 16px;
-  margin: 0;
-  display: flex;
-  align-items: center;
-}
-
-.email {
-  font-family: Inter;
-  color: gray;
-  font-size: 12px;
-  clear: both;
-}
-
-.star {
-  visibility: hidden;
-  font-size: 30px;
-  cursor: pointer;
-  margin-left: auto;
-}
-
-.star:before {
-  content: "\2605";
-  position: absolute;
-  visibility: visible;
-}
-
-.star:checked:before {
-  content: "\2606";
-  position: absolute;
-}
 
 .info-tag {
   padding: 5px 13px;
@@ -391,10 +345,6 @@ h4 {
   display: inline-block;
 }
 
-.align-with-icon {
-  margin-left: 24px;
-}
-
 .tag-spacing {
   margin-right: 15px;
 }
@@ -405,37 +355,6 @@ h4 {
 
 .join-section {
   margin-left: 200px;
-}
-
-.study-group {
-  font-family: Inter;
-  color: gray;
-  font-size: 14px;
-  line-height: 16px;
-  letter-spacing: 1.5px;
-}
-
-.brief-descript {
-  font-family: Inter;
-  color: #4C5980;
-  font-size: 12px;
-  line-height: 24px;
-  letter-spacing: 0.2px;
-}
-
-.date-room {
-  color: #2D3142;
-  line-height: 14px;
-  letter-spacing: 0.23px;
-  font-size: 16;
-  margin-top: 30px;
-}
-
-.post-time-address {
-  line-height: 17px;
-  letter-spacing: 0.2px;
-  font-size: 14px;
-  color: #9C9EB9;
 }
 
 .add-to-calendar {
