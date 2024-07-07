@@ -115,13 +115,6 @@ nav a:hover {
   background-color: #045BC0;
 }
 
-.feed-banner {
-  background-color: #045BC0;
-  box-shadow: inset 0 15px 12px -12px #c9daff;
-  color: white;
-  padding: 2em;
-  font-weight: bold;
-}
 
 .tab-styling {
   display: flex;
@@ -188,12 +181,12 @@ nav a:hover {
   color: #045BC0;
 }
 
-.course {
+/* .course {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2px 12px;
-}
+} */
 
 */ .left-content {
   display: flex;
@@ -202,8 +195,6 @@ nav a:hover {
 .course p {
   margin: 0;
   /* Remove default margin for paragraphs */
-  padding: 5px 8px;
-  /* Adjust padding as needed */
 }
 
 .course button {
@@ -542,7 +533,6 @@ h4 {
   justify-content: flex-start;
 }
 
-
 /* Resource Component */
 .resource {
   border-radius: 12px;
@@ -551,6 +541,12 @@ h4 {
   margin: 20px;
   width: 40%;
 }
+
+.feed-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}  
 
 .resource-title {
   font-family: "Inter";
@@ -576,14 +572,6 @@ h4 {
   margin-left: 70%;
 }
 
-.course-title {
-  font-family: "Inter";
-  color: rgba(108, 117, 125, 1);
-  font-size: 24px;
-  font-weight: 700;
-  margin-top: -15px;
-  margin-bottom: 0px;
-}
 
 .check-out-link {
   font-family: "Inter";
@@ -634,11 +622,7 @@ h4 {
   text-wrap: pretty;
 }
 
-.feed-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+
 
 .tab-styling .active-tab {
   border-bottom: 4px solid #045BC0;
