@@ -4,6 +4,12 @@
 	gap: 10px;
 }
 
+.flex-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
 .left-card {
   flex: 2;
   background-color: #E6F1FF;
@@ -23,7 +29,7 @@
 	align-items: center;
 }
 
-.profile-rounded-blue-button {
+.left-card__profile-rounded-blue-button {
 	width: 100%;
 	max-width: 200px;
 	height: 39px;
@@ -49,22 +55,9 @@
   justify-content: center;
 	margin: 1rem 0rem 1rem;
 	padding: 1em;
+	
 }
 
-
-.profile-course-h1 {
-	font-size: 24px;
-	font: "inter";
-	font-weight: 350;
-}
-
-.profile-course-title {
-	font-family: "Inter";
-	color: rgba(108, 117, 125, 1);
-	font-size: 1.125rem;
-	font-weight: 530;
-	margin: 0;
-}
 
 .left-card__course-items {
 	border-radius: 12px;
@@ -82,13 +75,51 @@
 	align-items: flex-start;
 }
 
+.left-card__profile-text--title {
+	font-size: 24px;
+	font: "inter";
+	font-weight: 350;
+}
+
+.left-card__profile-text--code {
+	font-family: "Inter";
+	color: rgba(108, 117, 125, 1);
+	font-size: 1.125rem;
+	font-weight: 530;
+	margin: 0;
+}
+
+.left-card__profile-text--description {
+  font-size: 18px;
+  font-weight: 200;
+  font: "Inter";
+}
+
+.left-card__profile-post-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.left-card__profile-post {
+  border-radius: 12px;
+  border: 1px solid rgba(185, 185, 185, 1);
+	padding: 10px 20px 20px 20px;
+  margin: 20px 28px 20px 0px;
+  width: 40%;
+	max-width: 442px;
+  background-color: white;
+}
+
+
 .right-box {
-  flex: 1;
   background-color: #FFFFFF;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;	
+	align-items: center;
+  flex: 1;
+
 }
 
 /* .right_box_container {
@@ -97,43 +128,41 @@
   justify-content: center;
 } */
 
-.profile-info {
+/* .profile-info {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-}
+} */
 
-.profile-name {
+/* .profile-name {
 	font-family: "Inter";
 	color: rgba(33, 37, 41, 1);
 	font-size: 24px;
 	font-weight: 400;
 	font-size: 24px;
 	font-weight: 340;
-}
+} */
 
-.profile-circle {
+/* .profile-circle {
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
 	background-color: #007bff;
-}
+} */
 
   /* Profile Component*/
-.flex-container {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-}
 
-.profile-photo {
+.right-card__profile-photo {
 	width: 200px;
 	height: 200px;
 	border-radius: 50%;
 	background-color: rgb(210, 206, 206);
+	margin: auto;
 }
 
-.profile-bio-text-box {
+
+
+.right-card__profile-textbox--bio {
 	border-radius: 12px;
 	border: 1px solid rgba(185, 185, 185, 1);
 	padding: 20px;
@@ -141,33 +170,42 @@
 	background-color: white;
 	word-wrap: break-word;
 	overflow: hidden;
-	margin-left: 70px;
-	margin-right: 15px;
 	color: #5A5A5A;
+	font-size: 16px;
+	min-height: 80px;
 }
 
-.profile-bio-link {
+.right-card__profile-textbox--contact {
+	border-radius: 12px;
+	border: 1px solid rgba(185, 185, 185, 1);
+	padding: 20px;
+	width: 425px;
+	background-color: white;
+	word-wrap: break-word;
+	overflow: hidden;
+	color: #5A5A5A;
+	font-size: 16px;
+	min-height: 20px;
+}
+
+.right-card__profile-title{
+	font-size: 20px;
+}
+
+.right-card__profile-title--name{
+	font-size: 22px;
+  font-weight: bold;
+
+}
+
+.right-card__profile-bio-link {
 	color: #045BC0;
 	cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+
 }
 
-
-.profile-post-container {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-.profile-post {
-  border-radius: 12px;
-  border: 1px solid rgba(185, 185, 185, 1);
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-  padding-top: 10px;
-  margin: 20px;
-  width: 40%;
-  background-color: white;
-}
 
 .left-card__courses--h1 {
   font-size: 24px;
@@ -180,16 +218,3 @@
   font: "Inter";
 }
 
-.button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.bio-box {
-  min-height: 80px;
-}
-
-.pref-contact-box {
-  min-height: 20px;
-}
