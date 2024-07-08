@@ -499,11 +499,6 @@ h4 {
   line-height: 28px;
 }
 
-.new-post-box {
-  margin: 3%;
-  display: grid;
-  grid-template-columns: 30% 50% 20%;
-}
 
 .new-post-box #enter-title,
 .new-post-box #tell-me-more {
@@ -547,26 +542,6 @@ h4 {
   border-bottom: 4px solid #045BC0;
 }
 
-.filters {
-  grid-row: 3/span 1;
-  grid-column: 2/span1;
-  align-items: end;
-  margin: 10px;
-}
-
-.filters img {
-  display: inline-block;
-  margin: 5px;
-}
-
-.transparent-button {
-  display: inline-block;
-  margin: 0px 5px 5px 5px;
-  font-size: 16px;
-  padding: 5px 2px;
-  background-color: white;
-  border: none;
-}
 
 #select-course {
   color: #045BC0;
