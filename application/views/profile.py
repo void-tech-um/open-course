@@ -12,8 +12,8 @@ def show_profile(username):
     post = application.model.get_posts_created_by_user(username)
     context["name"] = user_info.data["name"]
     context["profile_pic"] = user_info.data["picture"]
-    if flask.session.get('username') != username:
-        return 'Access denied', 403
+    #if flask.session.get('username') != username:
+        #return 'Access denied', 403
     print(context["name"])
     print(username)
     print(flask.session.get('username'))

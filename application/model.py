@@ -98,6 +98,18 @@ def get_user(username):
     }
     return content
 
+# Insert user into database
+def add_user(username, email, phone_num, profile_picture, bio):
+    """Add a user to the database."""
+    conn = get_db()
+    cur = conn.cursor()
+    cur.execute(
+        "INSERT INTO users (username, email, phone_num, profile_picture, bio) "
+        "VALUES (%s, %s, %s, %s, %s)",
+        (username, email, phone_num, profile_picture, bio)
+    )
+    conn.commit()
+
 # POST RELATED DB CALLS --------------------------------------------------------------------------
 
 def get_posts():

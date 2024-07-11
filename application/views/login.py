@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, redirect, session, request, jsonify
 from flask_oauthlib.client import OAuth
-from application.model import connect_to_db, get_db, get_user
+from application.model import get_user, add_user
 from .. import google, oauth
 import application
 
@@ -33,29 +33,18 @@ def authorized():
     if domain != 'umich.edu':
         return 'Access denied: reason=invalid domain', 406
     
-    # Check if the user is in the database
     username = user_info.data['email'].split('@')[0]
     email = user_info.data['email']
 
     # Store the username in the session
     session['username'] = username
 
-    # Store the username in the database
-    user = get_user(username)
-
-    if user is None:
-        conn = get_db()
-        cur = conn.cursor()
-        cur.execute(
-            "INSERT INTO users (username, email, phone_num, profile_picture, bio)"
-            "VALUES (%s, %s, %s, %s, %s) ",
-            (username, email, "123-456-7890", user_info.data['picture'], "None")
-        )
-        conn.commit()
-
-        print( 'User added to database. Redirecting to home page.')
+    # Check if the user is in the database
+    if get_user(username) is None:
+        add_user(username, email, "123-456-7890", user_info.data['picture'], "None")
+        print("User added to database")
     else:
-        print( 'User already exists in database. Redirecting to home page.')
+        print("User already in database")
 
     #return redirect(url_for('show_index'))
     
