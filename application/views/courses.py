@@ -7,8 +7,8 @@ from application import model
 def show_courses():
     username = flask.session.get('username', None)
     print(username)
-    # if not username:
-        # return flask.redirect(flask.url_for('login'))
+    if not username:
+        return flask.redirect(flask.url_for('login'))
     context = model.get_all_courses_user(username)
     context["username"] = username
     return render_template('courses.html', **context)
