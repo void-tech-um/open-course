@@ -32,10 +32,13 @@ def authorized():
     domain = user_info.data['hd']
     if domain != 'umich.edu':
         return 'Access denied: reason=invalid domain', 406
-    #
+    
     # Check if the user is in the database
     username = user_info.data['email'].split('@')[0]
     email = user_info.data['email']
+
+    # Store the username in the session
+    session['username'] = username
 
     # Store the username in the database
     user = get_user(username)
@@ -53,8 +56,6 @@ def authorized():
         print( 'User added to database. Redirecting to home page.')
     else:
         print( 'User already exists in database. Redirecting to home page.')
-
-    session['username'] = username
 
     #return redirect(url_for('show_index'))
     
