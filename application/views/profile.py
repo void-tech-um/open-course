@@ -11,12 +11,13 @@ def show_profile(username):
     context = application.model.get_courses_of_user(username)
     post = application.model.get_posts_created_by_user(username)
     context["name"] = user_info.data["name"]
-    context["profile_pic"] = user_info.data["picture"]
+    context["profile_pic"] = profile_data.get("profile_picture")
+    context["username"] = username
+    context["flask_username"] = flask.session.get('username', None)
+    print(username)
+    print(flask.session.get('username', None))
     #if flask.session.get('username') != username:
         #return 'Access denied', 403
-    print(context["name"])
-    print(username)
-    print(flask.session.get('username'))
     # context = {course : [{course_code : EECS 280, course_name : Introductory to Data structures},{course_code: EECS 370, course_name: }],
     #           posts : [{post_id: 4, title: "hi"}]}
     return render_template('profile.html', **context, profile_data=profile_data)

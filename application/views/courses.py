@@ -10,6 +10,7 @@ def show_courses():
     if not username:
         return flask.redirect(flask.url_for('login'))
     context = model.get_all_courses_user(username)
+    print(context)
     context["username"] = username
     return render_template('courses.html', **context)
 

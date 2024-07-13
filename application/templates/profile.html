@@ -78,13 +78,15 @@
             <div class = "right-box-container"></div>
                 <br>
                 <img src="{{profile_pic}}" class = "profile-photo">
-                <p class = "font-22 font-bold center-text">{{ name }}</p>
-                <form method="POST" action="/profile/{{ profile_data.username }}/edit/" enctype="multipart/form-data">
+                {% if flask_username == username %}
+                    <p class = "font-22 font-bold center-text">{{ name }}</p>
+                {% endif %}
+                <form method="POST" action="/profile/{{ username }}/edit/" enctype="multipart/form-data">
                     <p class = "font-22 subtitle-format">Bio</p>
-                    <textarea class="profile-bio-text-box bio-box font-16" type="submit" name="bio" value="bio">{{ profile_data.bio }}</textarea>
+                    <textarea class="profile-bio-text-box bio-box font-16" type="submit" name="bio" value="bio">{{ profile_data.get("bio") }}</textarea>
                     <p class = "font-22 subtitle-format">Preferred Contact Info</p>
                     <div class="profile-bio-text-box pref-contact-box font-16">{{ profile_data.email }}</div>
-                    <input type="tel" class="profile-bio-text-box pref-contact-box font-16" style="margin-top:10px" name="phone-num" value="{{ profile_data.phone_num }}">
+                    <input type="tel" class="profile-bio-text-box pref-contact-box font-16" style="margin-top:10px" name="phone-num" value="{{ profile_data.get("phone_num") }}">
                     <div class="center-item">
                         <input class="font-16 center-text profile-bio-link" style="background: none; border: none" type="submit" name="save" value="Save Profile Data">
                     </div>
