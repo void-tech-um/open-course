@@ -386,11 +386,8 @@ def get_all_courses_user(username):
         '''
         SELECT u.course_code, u.course_name, EXISTS(
             SELECT 1
-            FROM
-            (SELECT course_code FROM enrollments
-            WHERE username = username
-            ) e
-            WHERE e.course_code = u.course_code
+            FROM enrollments e
+            WHERE e.username = %s AND e.course_code = u.course_code
         ) AS user_in_course FROM courses u;
         ''',
         (username,)
