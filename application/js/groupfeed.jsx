@@ -3,8 +3,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import '../static/css/style.css';
 import Post from "./post";
 import PopUp from "./popUp";
+import FilterPopUp from "./filterPopUp";
 import { createPortal } from "react-dom";
 import moment from "moment";
+import { Filter } from "lucide-static";
 
 
 export default function GroupFeed() {
@@ -23,6 +25,9 @@ export default function GroupFeed() {
     const [tags, setTags] = useState("");
     const [isTimePopupOpen, setIsTimePopupOpen] = useState(false);
     const [isLocationPopupOpen, setIsLocationPopupOpen] = useState(false);
+    const [isFilterPopOpen, setIsFilterPopOpen] = useState(false);
+    const [meetLink, setMeetLink]=useState(""); //ADDED meetLink variable so that user can see an updated (typed) google calender link
+    const [meetLocation,setMeetLocation]=useState(""); //Added meetLocation variable so that user can see an updated (typed) meeting location
 
     const handleSelectChange = (selectedList) => {
         setSelected(selectedList);
@@ -128,20 +133,29 @@ export default function GroupFeed() {
     const handleTitleChange = (event) => {
         setTitleEntry(event.target.value);
     };
+
     const handleScheduleChange = (event) => {
         setScheduleLink(event.target.value);
     };
+
     const handleLocatonChange = (event) => {
         setLocation(event.target.value);
+        
     };
 
     const handleCloseTimePopup = () => {
-      setIsTimePopupOpen(false);
+        setIsTimePopupOpen(false);
+        setMeetLink(schedule_link);
     };
     const handleCloseLocationPopup = () => {
         setIsLocationPopupOpen(false);
-      };
-      
+        setMeetLocation(location);
+    };
+    
+    const handleCloseFilterPopup = () =>{
+        setIsFilterPopOpen(false);
+    };
+
     const handlePostSubmit = (event) => {
         event.preventDefault();
 
@@ -172,13 +186,14 @@ export default function GroupFeed() {
       };
     // "username", "title", "description","course_code","schedule_link", "location", "type", "tags" 
     return (
-
+        <>
         <div>
             <form className="new-post-box" onSubmit={handlePostSubmit}>
                 <img src="/static/assets/logo.png" id="pfp" alt="pfp"></img>
                 <input type="text" name="enterTitle" id="enter-title" placeholder="Enter Title" value={titleEntry} onChange={handleTitleChange} />
                 <textarea name="tellMore" id="tell-me-more" value={textEntry} onChange={handleTextChange}  placeholder="Tell me more about your study group..." />
                 <div className="filters">
+                    <div>
                     <button type="button" className="transparent-button" onClick={() =>setIsTimePopupOpen(true)}><img src="/static/assets/calendar-plus.svg" alt="calendar filter"></img>Meeting time</button>
                     {isTimePopupOpen && (
                         <PopUp handleClose = {handleCloseTimePopup} handleChange = {handleScheduleChange} inputValue={schedule_link} placeHolderText="Google Meet URL">
@@ -187,6 +202,9 @@ export default function GroupFeed() {
                             <img src="/static/assets/calendar-plus.svg" alt="calendar filter" />
                         </PopUp>
                     )}
+                    <span className="info">{meetLink}</span>
+                    </div>
+                    <div>
                     <button type="button" className="transparent-button" onClick={() => setIsLocationPopupOpen(true)}><img src="/static/assets/location.svg" alt="location filter"></img>Location</button>
                     {isLocationPopupOpen && (
                         <PopUp handleClose = {handleCloseLocationPopup} handleChange = {handleLocatonChange} inputValue={location} placeHolderText="Add Location and Room Number">
@@ -195,15 +213,23 @@ export default function GroupFeed() {
                             <img src="/static/assets/location.svg" alt="location filter" />
                         </PopUp>
                     )}
-                    <button type="button" className="transparent-button"><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
+                    <span className="info">{meetLocation}</span>
+                    </div>
+                    <div>
+                    <button type="button" className="transparent-button" onClick={()=>setIsFilterPopOpen(true)}><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
+                    {isFilterPopOpen && (
+                        <FilterPopUp handleClose = {handleCloseFilterPopup}></FilterPopUp>
+                    )}
                     <select className="custom-select" onChange={handleCourseChange} value={course_code}>
                         <option value="" selected>Select Course</option>
                         {courses.map((courses) => (
                             <option value = {courses.course_code}  className="info-tag tag-spacing" type="button">{courses.course_code}</option>
                         ))}
                     </select>
-                    <input className="rounded-blue-button" type="submit" name="Post" id="submit-post" value="Post"/>
-
+                    </div>
+                    <div>
+                        <input className="rounded-blue-button" type="submit" name="Post" id="submit-post" value="Post"/>
+                    </div>
                 </div>     
             </form>
             <hr></hr> {/* Horiztonal Line */}
@@ -249,5 +275,6 @@ export default function GroupFeed() {
                     ))}
                 </InfiniteScroll>
         </div>
+        </>
     );
 }
