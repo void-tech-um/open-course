@@ -10,7 +10,7 @@ def show_profile(username):
     profile_data = application.model.get_user(username)
     context = application.model.get_courses_of_user(username)
     post = application.model.get_posts_created_by_user(username)
-    context["name"] = user_info.data["name"]
+    #context["name"] = user_info.data["name"]
     context["profile_pic"] = profile_data.get("profile_picture")
     context["username"] = username
     context["flask_username"] = flask.session.get('username', None)

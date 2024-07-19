@@ -78,9 +78,7 @@
             <div class = "right-box-container"></div>
                 <br>
                 <img src="{{ profile_pic }}" class = "profile-photo">
-                {% if flask_username == username %}
-                    <p class = "font-22 font-bold center-text">{{ name }}</p>
-                {% endif %}
+                <p class = "font-22 font-bold center-text">{{ username }}</p>
                 <form method="POST" action="/profile/{{ username }}/edit/" enctype="multipart/form-data">
                     <p class = "font-22 subtitle-format">Bio</p>
                     <textarea class="profile-bio-text-box bio-box font-16" type="submit" name="bio" value="bio">{{ profile_data.get("bio") }}</textarea>
