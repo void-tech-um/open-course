@@ -18,6 +18,10 @@
         <div class="login-left">
             <h1>Login</h1>
             <p>Welcome to University of Michigan’s study group and resources platform</p>
+            {% if message %}
+            <p style="color: red;">{{ message }}</p>
+            {% endif %}
+            <a href="{{ url_for('login') }}">Login with Google</a>
             <form action="/login/" method="post" enctype="multipart/form-data">
                 <input type="submit" name="login" value="Web Login">
             </form>

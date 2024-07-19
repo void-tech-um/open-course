@@ -117,6 +117,9 @@ export default function GroupFeed() {
         });
     }, []);
 
+    useEffect(() => {
+        console.log('Component re-rendered with posts:', posts);
+      }, [posts]);      
 
     const handleTextChange = (event) => {
         setTextEntry(event.target.value);
@@ -152,7 +155,6 @@ export default function GroupFeed() {
               Accept: "application/json",
               "Content-Type": "application/json",
             },
-            //body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:schedule_link,type :true, tags : []}),
             body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:schedule_link, location: location, type :true, tags : []}),
           })
             .then((response) => {
@@ -160,10 +162,16 @@ export default function GroupFeed() {
               return response.json();
             })
             .then((data) => {
-              setPosts([data["post_id"], ...posts, ]);
-
+              console.log("Data received", data);
+              setPosts((prevPosts) => {
+                console.log('Previous posts:', prevPosts);
+                const updatedPosts = [data["post_id"], ...prevPosts];
+                console.log('Updated posts:', updatedPosts);
+                return updatedPosts;
+              });          
             })
             .catch((error) => console.log(error));
+            console.log('Rendering posts:', posts);
         setTitleEntry("");
         setTextEntry("");
         setScheduleLink("");

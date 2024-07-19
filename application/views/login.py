@@ -28,13 +28,14 @@ def authorized():
     session['google_token'] = (response['access_token'], '')
     user_info = google.get('userinfo')
 
+    email = user_info.data['email']
+
     # Check if the user is from umich.edu
-    domain = user_info.data['hd']
-    if domain != 'umich.edu':
-        return 'Access denied: reason=invalid domain', 406
+    if not email.endswith('@umich.edu'):
+        session.pop('google_token')
+        return render_template('login.html', message='Only umich emails are allowed.')
     
     username = user_info.data['email'].split('@')[0]
-    email = user_info.data['email']
 
     # Store the username in the session
     session['username'] = username
@@ -46,9 +47,9 @@ def authorized():
     else:
         print("User already in database")
 
-    #return redirect(url_for('show_index'))
+    return redirect(url_for('show_index'))
     
-    return redirect(url_for('show_profile', username=username))
+    #return redirect(url_for('show_profile', username=username))
 
 @application.app.route('/logout')
 def logout():
