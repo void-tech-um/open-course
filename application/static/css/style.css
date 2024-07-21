@@ -71,23 +71,6 @@ nav a {
   white-space: nowrap;
 }
 
-/* Change the color of links on hover */
-nav a:hover {
-  text-decoration: underline;
-}
-
-.navbar-logo {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  width: 35px;
-}
-
-.navbar-logo img {
-  margin-right: 5px;
-  /* Adjust as needed */
-}
-
 .login-container {
   display: flex;
   flex-direction: row;
@@ -141,44 +124,11 @@ nav a:hover {
   flex: 50%;
 }
 
-.column1 {
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-}
-
-.column1 img {
-  margin: auto;
-}
-
-.column1 p {
-  text-align: center;
-  margin: 5%;
-  justify-content: end;
-}
-
 .description {
   color: white;
   display: flexbox;
   background-color: #045BC0;
   height: 310px;
-}
-
-.about-headings {
-  background-color: #f1f8ff;
-  padding: 60px 8%;
-}
-
-.about-images {
-  display: flex;
-  flex-direction: row;
-  padding: 20px 8%;
-}
-
-
-.image-titles {
-  color: #045BC0;
 }
 
 /* .course {
@@ -323,16 +273,6 @@ h4 {
 
 }
 
-.circle {
-  width: 70px;
-  /* Specify the width */
-  height: 70px;
-  /* Specify the height */
-  border-radius: 50%;
-  /* Make it a circle */
-}
-
-
 .info-tag {
   padding: 5px 13px;
   font-size: 12px;
@@ -351,10 +291,6 @@ h4 {
 
 .right {
   margin-left: 30px;
-}
-
-.join-section {
-  margin-left: 200px;
 }
 
 .add-to-calendar {
@@ -382,115 +318,6 @@ h4 {
   margin: auto;
 }
 
-/* Detail Componenet */
-.center-title {
-  font-family: "Inter";
-  color: rgba(33, 37, 41, 1);
-  font-size: 24px;
-  font-weight: 400;
-  font-size: 24px;
-  font-weight: 340;
-  text-align: center;
-  padding: 20px;
-}
-
-.display1 {
-  border-radius: 12px;
-  border: 1px solid rgba(185, 185, 185, 1);
-  padding: 20px;
-  margin: 20px;
-  width: 40%;
-}
-
-.display-box {
-  display: grid;
-  place-items: center;
-  height: auto;
-  width: auto;
-  margin-top: -30px;
-}
-
-.display-box .detail1 {
-  width: auto;
-  box-shadow: 5px 10px 15px rgb(232, 231, 231);
-}
-
-
-.umich-email {
-  font-family: "Inter";
-  color: rgba(108, 117, 125, 1);
-  font-size: 16 px;
-  font-weight: auto;
-  margin-top: -30px;
-  margin-bottom: 0px;
-  text-decoration: underline;
-}
-
-.detail-desc {
-  font-family: "Inter";
-  color: rgba(108, 117, 125, 1);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 150%;
-  margin-top: -20px;
-  margin-left: 0px;
-  line-height: 28px;
-  max-width: auto;
-}
-
-.join-text {
-  font-family: "Inter";
-  color: rgba(108, 117, 125, 1);
-  font-size: 16px;
-  font-weight: 500;
-  padding-left: 220px;
-}
-
-.join-btn {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-/* Resource Component */
-.resource {
-  border-radius: 12px;
-  border: 1px solid rgba(185, 185, 185, 1);
-  padding: 20px;
-  margin: 20px;
-  width: 40%;
-}
-
-.feed-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}  
-
-.resource-title {
-  font-family: "Inter";
-  color: rgba(33, 37, 41, 1);
-  font-size: 24px;
-  font-weight: 400;
-  font-size: 24px;
-  font-weight: 340;
-}
-
-.resource-info {
-  font-family: "Inter";
-  color: rgba(108, 117, 125, 1);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 150%;
-  margin-left: 0px;
-  max-width: 445px;
-  line-height: 28px;
-}
-
-.resource-btn-space {
-  margin-left: 70%;
-}
-
 
 .check-out-link {
   font-family: "Inter";
@@ -498,44 +325,6 @@ h4 {
   font-size: 16px;
   line-height: 28px;
 }
-
-
-.new-post-box #enter-title,
-.new-post-box #tell-me-more {
-  grid-column: 2/span 1;
-  border-radius: 5px;
-  border-color: rgb(220, 220, 220);
-  border-style: solid;
-  width: 100%;
-  height: 30px;
-  margin: 5px;
-}
-
-.new-post-box #pfp {
-  grid-column: 1/span 1;
-  align-self: start;
-  justify-self: end;
-  border-radius: 50%;
-  width: 15%;
-}
-
-.new-post-box #tell-me-more {
-  grid-row: 2/span 1;
-}
-
-
-.resource-info {
-  font-family: "Inter";
-  color: rgba(108, 117, 125, 1);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 150%;
-  margin-left: 0px;
-  max-width: 445px;
-  line-height: 28px;
-  text-wrap: pretty;
-}
-
 
 
 .tab-styling .active-tab {
@@ -553,26 +342,6 @@ h4 {
   border-radius: 20px;
   padding: 5px 30px;
 }
-
-.filter-select {
-  font-size: 16px;
-  color: #777777;
-  /* Set the font color to blue */
-  margin: 6px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-radius: 7px;
-}
-
-.custom-select {
-  color: #045BC0;
-  /* Set the font color to blue */
-  border: none;
-  /* Remove the border */
-  outline: none;
-  /* Remove the outline */
-}
-
 
 .font-20 {
   font-size: 20px;
@@ -613,64 +382,6 @@ h4 {
   padding: 30px;
 }
 
-.first-footer {
-  display: flex;
-  flex-direction: row;
-  background-color: #ACCBEF;
-  color: #002A5A;
-  padding: 3%;
-}
-
-.first-footer-sub {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.first-footer-sub a {
-  text-decoration: none;
-  font-size: 16px;
-  color: #002A5A;
-  margin-right: 5%;
-}
-
-.second-footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 1%;
-  background-color: #2E64A4;
-  color: white
-}
-
-.second-footer p {
-  font-size: 16px;
-  margin-top: 0;
-}
-
-.blue-header {
-  padding: 70px 45px 25px 45px;
-  background-color: #045BC0;
-  color: white;
-  box-shadow: inset 0 15px 12px -12px #c9daff;
-  display: grid;
-  grid-template-columns: 70% 30%;
-}
-
-.blue-header p {
-  margin: 0px;
-  font-size: 17px;
-  font-weight: 300;
-  width: 60%;
-}
-
-.blue-header a {
-  color: white;
-  align-self: end;
-  justify-self: end;
-}
 
 .rounded-white-button {
   height: 39px;
@@ -688,160 +399,3 @@ h4 {
   margin-left: 575px;
   margin-bottom: 40px;
 }
-
-
-.search-grid {
-  display: grid;
-  grid-template-columns: 60% 13% 13% 8%;
-  gap: 1%;
-  margin: 50px 20px;
-}
-
-.search-grid input {
-  border-radius: 30px;
-  border-color: gray;
-  padding-left: 10px;
-  width: 96%;
-}
-
-.search-grid button {
-  background-color: white;
-  border-color: gray;
-}
-
-.modal {
-  display: block;
-  position: fixed;
-  z-index: 4;
-  right: 10px;
-  top: 10px;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-  background-color: #FEFEFE;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 30%;
-  max-width: 600px;
-  border-radius: 20px;
-}
-/*  responsive navbar code */
-
-.navbar-toggler {
-  display: none;
-  cursor: pointer;
-}
-
-/* popup */
-.time-popup {
-  display: flex;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 3;
-
-}
-
-.time-popup-elements{
-  border-radius: 25px;
-  width: 660px;
-  height: 212px;
-  background-color: white;
-  border: 1px solid #888;
-}
-
-.time-rounded-blue-button {
-  width: 115px;
-  height: 39px;
-  text-decoration: none;
-  background-color: #045BC0;
-  color: white;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
-
-}
-
-.new-time-box{
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  padding: 2rem;
-}
-
-.time-title{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.time-title #title{
-  margin: 0;
-}
-
-.time-input{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  width: 100%;
-  height: 100%;
-}
-
-.time-input #enter-time{
-  border-radius: 5px;
-  border: 1px solid #045BC0;
-  width: 100%;
-  height: 30px;
-  display: block;
-  margin: 1rem 0;
-}
-
-
-
-
-  
-@media screen and (max-width: 768px) {
-  .navbar-toggler {
-      display: block;
-      text-decoration: none;
-      margin-right: 1rem;
-  }
-  .navbar-links {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: -500px; /* Initially hidden */
-    left: 0;
-    right: 0;
-    transition: top 0.3s;
-    transition-behavior: smooth;
-    text-align: center;
-    background-color: white;
-}
-
-
-.navbar-links.active {
-  top: 72px; /* Show menu */
-  display: block;
-  background-color: white;
-}
-
-.navbar-links a {
-  padding: 1.5rem;
-  display: block;
-}
-
-  
-}
-/* responsive navbar */

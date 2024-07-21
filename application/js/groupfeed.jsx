@@ -169,15 +169,17 @@ export default function GroupFeed() {
         setScheduleLink("");
         setLocation("");
         setCourseCode("Select Course");
-      };
+    };
     // "username", "title", "description","course_code","schedule_link", "location", "type", "tags" 
     return (
 
         <div>
-            <form className="new-post-box" onSubmit={handlePostSubmit}>
-                <img src="/static/assets/logo.png" id="pfp" alt="pfp"></img>
-                <input type="text" name="enterTitle" id="enter-title" placeholder="Enter Title" value={titleEntry} onChange={handleTitleChange} />
-                <textarea name="tellMore" id="tell-me-more" value={textEntry} onChange={handleTextChange}  placeholder="Tell me more about your study group..." />
+            <form className="new-post" onSubmit={handlePostSubmit}>
+                <div className="new-post--pfp-container">
+                    <img src="/static/assets/logo.png" className="new-post--pfp" alt="pfp"></img>
+                </div>
+                <input type="text" name="enterTitle" className="new-post--title" placeholder="Enter Title to create your own study group" value={titleEntry} onChange={handleTitleChange} />
+                <textarea type="text" rows="10" name="tellMore" className="new-post--desc" value={textEntry} onChange={handleTextChange}  placeholder="Tell me more about your study group..." />
                 <div className="input__bottom">
                     <div className="input__filters">
                         <button type="button" className="input__popUp-button" onClick={() =>setIsTimePopupOpen(true)}><img className="input_icon" src="/static/assets/calendar-plus.svg" alt="calendar filter"></img><p className="input__text--button">Meeting time</p></button>
@@ -197,13 +199,13 @@ export default function GroupFeed() {
                             </PopUp>
                         )}
                         <button type="button" className="input__popUp-button"><img src="/static/assets/tags.svg" alt="tags filter"></img><p className="input__text--button">Tags</p></button>
-                    </div>     
-                    <select className="custom-select" onChange={handleCourseChange} value={course_code}>
+                        <select className="custom-select" onChange={handleCourseChange} value={course_code}>
                             <option value="" selected>Select Course</option>
                             {courses.map((courses) => (
                                 <option value = {courses.course_code}  className="info-tag tag-spacing" type="button">{courses.course_code}</option>
                             ))}
-                    </select>
+                        </select>                    
+                    </div>     
                     <input className="input__submit" type="submit" name="Post" id="submit-post" value="Post"/>   
                 </div>
             </form>
@@ -235,20 +237,22 @@ export default function GroupFeed() {
                     <option value="option3">Option 3</option>
                 </select>
             </div>
-            <InfiniteScroll className="feed-container"
-                    dataLength={posts.length}
-                    next={() => setBooleanFetch(true)}
-                    loader={<h6> </h6>}
-                    hasMore={morePosts}
-                    endMessage={
-                    <p>Check back later for more posts!</p>
-                    }
-                >
-                    {posts.map((post_id) => (
-                        
-                        <Post key={post_id} post_id={post_id} />
-                    ))}
+            <div className="posts-container">
+                <InfiniteScroll className="feed-container"
+                        dataLength={posts.length}
+                        next={() => setBooleanFetch(true)}
+                        hasMore={morePosts}
+                        endMessage={
+                        <p>Check back later for more posts!</p>
+                        }
+                    >
+                        {posts.map((post_id) => (
+                            
+                            <Post key={post_id} post_id={post_id} />
+                        ))}
                 </InfiniteScroll>
+            </div>
+
         </div>
     );
 }

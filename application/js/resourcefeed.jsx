@@ -9,6 +9,11 @@ export default function ResourceFeed() {
     const [morePosts, setMorePosts] = useState(false);
     const [url, setUrl] = useState("/api/v1/posts/");
     const [booleanFetch, setBooleanFetch] = useState(true);
+    const [titleEntry, setTitleEntry] = useState("");
+    const [textEntry, setTextEntry] = useState("");
+    const [course_code, setCourseCode] = useState("");
+
+
 
     useEffect(() => {
         fetch('/api/v1/courses/', {
@@ -76,9 +81,47 @@ export default function ResourceFeed() {
         };
     }, [booleanFetch, url, posts]);
 
+    const handleTitleChange = (event) => {
+        setTitleEntry(event.target.value);
+    };
+    const handleTextChange = (event) => {
+        setTextEntry(event.target.value);
+    };
+    const handleCourseChange = (event) => {
+        setCourseCode(event.target.value);
+    };    
+    const handlePostSubmit = (event) => {
+        event.preventDefault();
+
+        fetch('/api/v1/posts/', {
+            method: "POST",
+            credentials: "same-origin",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            //body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:schedule_link,type :true, tags : []}),
+            body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:schedule_link, location: location, type :true, tags : []}),
+          })
+            .then((response) => {
+              if (!response.ok) throw Error(response.statusText);
+              return response.json();
+            })
+            .then((data) => {
+              setPosts([data["post_id"], ...posts, ]);
+
+            })
+            .catch((error) => console.log(error));
+        setTitleEntry("");
+        setTextEntry("");
+        setScheduleLink("");
+        setLocation("");
+        setCourseCode("Select Course");
+    };
+
     return (
         <div>
-            <div className="new-post-box">
+            {/* <div className="new-post-box">
                 <img src="/static/assets/logo.png" id="pfp" alt="pfp"></img>
                 <input name="enterTitle" id="enter-title" placeholder="Enter Title" />
                 <textarea name="tellMore" id="tell-me-more" placeholder="Tell me more about your resource post..." />
@@ -93,7 +136,28 @@ export default function ResourceFeed() {
                     </select>
                     <button className="rounded-blue-button">Post</button>
                 </div>
-            </div>
+            </div> */}
+            <form className="new-post" onSubmit={handlePostSubmit}>
+                <div className="new-post--pfp-container">
+                    <img src="/static/assets/logo.png" className="new-post--pfp" alt="pfp"></img>
+                </div>
+                <input type="text" name="enterTitle" className="new-post--title" placeholder="Enter Title" value={titleEntry} onChange={handleTitleChange} />
+                <input type="text" name="tellMore" className="new-post--desc" value={textEntry} onChange={handleTextChange}  placeholder="Tell me more about your study group..." />
+                <div className="input__bottom">
+                    <div className="input__filters">
+                        <button className="transparent-button"><img src="/static/assets/upload.svg" alt="upload filter"></img>Upload</button>
+                        <button type="button" className="input__popUp-button"><img src="/static/assets/tags.svg" alt="tags filter"></img><p className="input__text--button">Tags</p></button>
+                        <select className="custom-select" onChange={handleCourseChange} value={course_code}>
+                            <option value="" selected>Select Course</option>
+                            {courses.map((courses) => (
+                                <option value = {courses.course_code}  className="info-tag tag-spacing" type="button">{courses.course_code}</option>
+                            ))}
+                        </select>                    
+                    </div>     
+                    <input className="input__submit" type="submit" name="Post" id="submit-post" value="Post"/>   
+                </div>
+            </form>
+
             <hr></hr> {/* Horiztonal Line */}
             <div className="search-content">
                 <input type="text" id="search" name="search" placeholder="Search Posts, Classes..." />
@@ -116,12 +180,15 @@ export default function ResourceFeed() {
                     <option value="option3">Option 3</option>
                 </select>
             </div>
-            <div className="feed-container">
-                <Resource></Resource>
-                <Resource></Resource>
-                <Resource></Resource>
-                <Resource></Resource>
+            <div className="posts-container">
+                <div className="feed-container">
+                    <Resource></Resource>
+                    <Resource></Resource>
+                    <Resource></Resource>
+                    <Resource></Resource>
+                </div>
             </div>
+
         </div>
     );
 }

@@ -15,7 +15,6 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 100%;
 }
 .post__header--left{
 	display: flex;
@@ -24,9 +23,8 @@
 
 .post__header--right{
 	display: flex;
-	align-items: flex-start;
-	justify-content: flex-start;
 	height: 100%;
+  position: relative;
 }
 
 .post__tags{
@@ -65,6 +63,8 @@
   visibility: hidden;
   cursor: pointer;
 	font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
 }
 
 .post__star:before {
@@ -124,4 +124,17 @@
 
 .align-with-icon {
   margin-left: 24px;
+}
+
+.post__profile-pic {
+  width: 60px;
+  /* Specify the width */
+  height: 60px;
+  /* Specify the height */
+  border-radius: 50%;
+  /* Make it a circle */
+}
+
+.join-section {
+  
 }

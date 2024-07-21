@@ -5,21 +5,21 @@ export default function PopUp({handleClose, handleChange, inputValue, placeHolde
 
     return (
         <div 
-            className="time-popup"
+            className="popup"
             onClick={(e) => {
-                if(e.target.className === "time-popup" ){
+                if(e.target.className === "popup" ){
                     handleClose();
                 }
             }}
         >
-            <div className="time-popup-elements">
-                <div className="new-time-box">
-                    <div className="time-title">
+            <div className="popup__box">
+                <div className="popup__elements">
+                    <div className="popup__title">
                         {children}
                     </div>
-                    <div className="time-input">
-                        <input type="text" className="enterTitle" id="enter-time" placeholder={placeHolderText} value={inputValue} onChange={handleChange} autoFocus/>
-                        <input className="time-rounded-blue-button" type="submit" name="Post" id="submit-post" value="Submit" onClick={handleClose}/>
+                    <div className="popup__input-container">
+                        <input type="text" className="popup__input" placeholder={placeHolderText} value={inputValue} onChange={handleChange} autoFocus/>
+                        <input className="popup__blue-button" type="submit" name="Post" id="submit-post" value="Submit" onClick={handleClose}/>
                     </div>
                 </div>
             </div>
