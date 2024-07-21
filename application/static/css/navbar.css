@@ -1,15 +1,15 @@
 /* responsive navbar */
 
 .navbar-toggler {
-    display: none;
-    cursor: pointer;
+  display: none;
+  cursor: pointer;
 }
   
 @media screen and (max-width: 900px) {
   .navbar-toggler {
-      display: block;
-      text-decoration: none;
-      margin-right: 1rem;
+    display: block;
+    text-decoration: none;
+    margin-right: 1rem;
   }
   .navbar-links {
     display: flex;
@@ -24,19 +24,18 @@
     background-color: white;
   }
 
-  
+
   .navbar-links.active {
     top: 72px; /* Show menu */
     display: block;
     background-color: white;
   }
-  
+
   .navbar-links a {
     padding: 1.5rem;
     display: block;
   }
-  
-    
+
 }
 
 /* Change the color of links on hover */
