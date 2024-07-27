@@ -74,17 +74,24 @@ export default function GroupFeed() {
             if (!ignoreStaleRequest) {
                 setBooleanFetch(false);
             }
+            console.log('After Fetch - API Response:', json);
 
-            const postsToRender = json.results.map(({ post_id }) => post_id);
-            setPosts(posts.concat(postsToRender));
-
-            if (json.next !== "") {
+            const newPosts = json.results.map(({ post_id }) => post_id);
+    
+            // Create a Set to keep track of unique post IDs
+            setPosts((prevPosts) => {
+                const updatedPosts = [...prevPosts, ...newPosts].filter((postId, index, self) => self.indexOf(postId) === index);
+                return updatedPosts;
+            });
+    
+            if (json.next) {
                 setUrl(json.next);
                 setMorePosts(true);
             } else {
                 setUrl("");
                 setMorePosts(false);
             }
+            console.log('After Fetch - morePosts:', hasMore);
             return postsToRender;
         })
         .catch((error) => {
@@ -93,7 +100,7 @@ export default function GroupFeed() {
         return () => {
             ignoreStaleRequest = true;
         };
-    }, [booleanFetch, url, posts]);
+    }, [booleanFetch, url]);
 
     useEffect(() => {
         fetch('/api/v1/tags/', {
@@ -165,7 +172,7 @@ export default function GroupFeed() {
               console.log("Data received", data);
               setPosts((prevPosts) => {
                 console.log('Previous posts:', prevPosts);
-                const updatedPosts = [data["post_id"], ...prevPosts];
+                const updatedPosts = [data.post_id, ...prevPosts].filter((postId, index, self) => self.indexOf(postId) === index);
                 console.log('Updated posts:', updatedPosts);
                 return updatedPosts;
               });          
@@ -177,6 +184,8 @@ export default function GroupFeed() {
         setScheduleLink("");
         setLocation("");
         setCourseCode("Select Course");
+
+        setMorePosts(true);
       };
     // "username", "title", "description","course_code","schedule_link", "location", "type", "tags" 
     return (
@@ -250,12 +259,11 @@ export default function GroupFeed() {
                     endMessage={
                     <p>Check back later for more posts!</p>
                     }
-                >
+            >
                     {posts.map((post_id) => (
-                        
                         <Post key={post_id} post_id={post_id} />
                     ))}
-                </InfiniteScroll>
+            </InfiniteScroll>
         </div>
     );
 }
