@@ -121,23 +121,7 @@ export default function ResourceFeed() {
 
     return (
         <div>
-            {/* <div className="new-post-box">
-                <img src="/static/assets/logo.png" id="pfp" alt="pfp"></img>
-                <input name="enterTitle" id="enter-title" placeholder="Enter Title" />
-                <textarea name="tellMore" id="tell-me-more" placeholder="Tell me more about your resource post..." />
-                <div className="filters">
-                    <button className="transparent-button"><img src="/static/assets/upload.svg" alt="upload filter"></img>Upload</button>
-                    <button className="transparent-button"><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
-                    <select className="custom-select">
-                        <option value="" selected>Select Course</option>
-                        {courses.map((courses) => (
-                            <option value = "{courses.course_code}" className="info-tag tag-spacing" type="button">{courses.course_code}</option>
-                        ))}
-                    </select>
-                    <button className="rounded-blue-button">Post</button>
-                </div>
-            </div> */}
-            <form className="new-post" onSubmit={handlePostSubmit}>
+            {/* <form className="new-post" onSubmit={handlePostSubmit}>
                 <div className="new-post--pfp-container">
                     <img src="/static/assets/logo.png" className="new-post--pfp" alt="pfp"></img>
                 </div>
@@ -156,8 +140,27 @@ export default function ResourceFeed() {
                     </div>     
                     <input className="input__submit" type="submit" name="Post" id="submit-post" value="Post"/>   
                 </div>
+            </form> */}
+            <form className="new-post" onSubmit={handlePostSubmit}>
+                <div className="new-post--pfp-container">
+                    <img src="/static/assets/logo.png" className="new-post--pfp" alt="pfp"></img>
+                </div>
+                <input type="text" name="enterTitle" className="new-post--title" placeholder="Enter Title to create your own study group" value={titleEntry} onChange={handleTitleChange} />
+                <textarea type="text" rows="10" name="tellMore" className="new-post--desc" value={textEntry} onChange={handleTextChange}  placeholder="Tell me more about your study group..." />
+                <div className="input__bottom">
+                    <div className="input__filters">
+                        <button className="transparent-button"><img src="/static/assets/upload.svg" alt="upload filter"></img>Upload</button>
+                        <button type="button" className="input__popUp-button"><img src="/static/assets/tags.svg" alt="tags filter"></img><p className="input__text--button">Tags</p></button>
+                        <select className="custom-select" onChange={handleCourseChange} value={course_code}>
+                            <option value="" selected>Select Course</option>
+                            {courses.map((courses) => (
+                                <option value = {courses.course_code}  className="info-tag tag-spacing" type="button">{courses.course_code}</option>
+                            ))}
+                        </select>                    
+                    </div>     
+                    <input className="input__submit" type="submit" name="Post" id="submit-post" value="Post"/>   
+                </div>
             </form>
-
             <hr></hr> {/* Horiztonal Line */}
             <div className="search-content">
                 <input type="text" id="search" name="search" placeholder="Search Posts, Classes..." />

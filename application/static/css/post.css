@@ -122,10 +122,6 @@
   color: #9C9EB9;
 }
 
-.align-with-icon {
-  margin-left: 24px;
-}
-
 .post__profile-pic {
   width: 60px;
   /* Specify the width */
@@ -135,3 +131,8 @@
   /* Make it a circle */
 }
 
+.post__join-section{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
