@@ -1,0 +1,70 @@
+/* Detail Componenet */
+.center-title {
+  font-family: "Inter";
+  color: rgba(33, 37, 41, 1);
+  font-size: 24px;
+  font-weight: 400;
+  font-size: 24px;
+  font-weight: 340;
+  text-align: center;
+  padding: 20px;
+}
+
+.display1 {
+  border-radius: 12px;
+  border: 1px solid rgba(185, 185, 185, 1);
+  padding: 20px;
+  margin: 20px;
+  width: 40%;
+}
+
+.display-box {
+  display: grid;
+  place-items: center;
+  height: auto;
+  width: auto;
+  margin-top: -30px;
+}
+
+
+.display-box .detail1 {
+  width: auto;
+  box-shadow: 5px 10px 15px rgb(232, 231, 231);
+}
+
+
+.umich-email {
+  font-family: "Inter";
+  color: rgba(108, 117, 125, 1);
+  font-size: 16 px;
+  font-weight: auto;
+  margin-top: -30px;
+  margin-bottom: 0px;
+  text-decoration: underline;
+}
+
+.detail-desc {
+  font-family: "Inter";
+  color: rgba(108, 117, 125, 1);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+  margin-top: -20px;
+  margin-left: 0px;
+  line-height: 28px;
+  max-width: auto;
+}
+
+.join-text {
+  font-family: "Inter";
+  color: rgba(108, 117, 125, 1);
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 220px;
+}
+
+.join-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
