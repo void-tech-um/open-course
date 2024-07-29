@@ -15,6 +15,7 @@
   align-content: center;
   justify-content: center;
   gap: 10px;
+  max-width: 562px;
 }
 
 .first-footer--container h4{
@@ -59,4 +60,19 @@
   color: white;
   font-size: 16px;
   margin-right: 10px;
+}
+
+
+
+@media (max-width:870px) {
+  .first-footer{
+    flex-direction: column;
+    height: 100%;
+    gap: 1rem;
+
+  }
+
+  .first-footer--container{
+    width: 100%;
+  }
 }

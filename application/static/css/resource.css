@@ -19,6 +19,10 @@
     display: inline-block;
 }
 
+.resource-title h2{
+    margin: 0;
+}
+
 .resource__tag{
     display: flex;
     flex-wrap: wrap;
@@ -30,4 +34,8 @@
     display: flex;
     justify-content: flex-end;
     width: 100%;
+}
+
+.resource__course-title h2{
+    color: gray;
 }

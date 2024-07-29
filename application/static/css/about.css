@@ -44,14 +44,28 @@
   display: flex;
   flex-direction: column;
   align-content: center;
+  width: fit-content;
 }
 
 .about__column--img {
   margin: auto;
+  width: 70%;
+  max-width: 288px;
 }
 
 .about__column--text {
   text-align: center;
   margin: 5%;
   justify-content: end;
+  font-size: clamp(1.25rem,80%, 1.5rem);
+}
+
+@media (max-width:800px) {
+  .about__images{
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+  }
+
+
 }

@@ -67,7 +67,7 @@ const handleChange = (event) => {
         <div className="resource-title">
             <h2>Resource Title</h2>
         </div>
-        <div className="course-title">
+        <div className="resource__course-title">
             <p>COURSE TITLE</p>
         </div>
         <div className = "resource__tag">
