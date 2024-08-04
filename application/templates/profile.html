@@ -70,7 +70,7 @@
             </div>
         </div>
         <div class = "right-box">
-            <div class = "right-card__profile-photo"><img src="{{ profile_pic }}" class = "profile-photo"></div>
+            <img src="{{ profile_pic }}" class = "right-card__profile-photo">
             <p class = "right-card__profile-title--name">{{username }}</p>
             <form method="POST" action="/profile/{{username }}/edit/" enctype="multipart/form-data">
                 <p class = "right-card__profile-title">Bio</p>
