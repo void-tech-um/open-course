@@ -74,17 +74,24 @@ export default function GroupFeed() {
             if (!ignoreStaleRequest) {
                 setBooleanFetch(false);
             }
+            console.log('After Fetch - API Response:', json);
 
-            const postsToRender = json.results.map(({ post_id }) => post_id);
-            setPosts(posts.concat(postsToRender));
-
-            if (json.next !== "") {
+            const newPosts = json.results.map(({ post_id }) => post_id);
+    
+            // Create a Set to keep track of unique post IDs
+            setPosts((prevPosts) => {
+                const updatedPosts = [...prevPosts, ...newPosts].filter((postId, index, self) => self.indexOf(postId) === index);
+                return updatedPosts;
+            });
+    
+            if (json.next) {
                 setUrl(json.next);
                 setMorePosts(true);
             } else {
                 setUrl("");
                 setMorePosts(false);
             }
+            console.log('After Fetch - morePosts:', hasMore);
             return postsToRender;
         })
         .catch((error) => {
@@ -93,7 +100,7 @@ export default function GroupFeed() {
         return () => {
             ignoreStaleRequest = true;
         };
-    }, [booleanFetch, url, posts]);
+    }, [booleanFetch, url]);
 
     useEffect(() => {
         fetch('/api/v1/tags/', {
@@ -117,6 +124,9 @@ export default function GroupFeed() {
         });
     }, []);
 
+    useEffect(() => {
+        console.log('Component re-rendered with posts:', posts);
+      }, [posts]);      
 
     const handleTextChange = (event) => {
         setTextEntry(event.target.value);
@@ -152,7 +162,6 @@ export default function GroupFeed() {
               Accept: "application/json",
               "Content-Type": "application/json",
             },
-            //body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:schedule_link,type :true, tags : []}),
             body: JSON.stringify({ title: titleEntry, description: textEntry, course_code : course_code, schedule_link:schedule_link, location: location, type :true, tags : []}),
           })
             .then((response) => {
@@ -160,16 +169,24 @@ export default function GroupFeed() {
               return response.json();
             })
             .then((data) => {
-              setPosts([data["post_id"], ...posts, ]);
-
+              console.log("Data received", data);
+              setPosts((prevPosts) => {
+                console.log('Previous posts:', prevPosts);
+                const updatedPosts = [data.post_id, ...prevPosts].filter((postId, index, self) => self.indexOf(postId) === index);
+                console.log('Updated posts:', updatedPosts);
+                return updatedPosts;
+              });          
             })
             .catch((error) => console.log(error));
+            console.log('Rendering posts:', posts);
         setTitleEntry("");
         setTextEntry("");
         setScheduleLink("");
         setLocation("");
         setCourseCode("Select Course");
-    };
+
+        setMorePosts(true);
+      };
     // "username", "title", "description","course_code","schedule_link", "location", "type", "tags" 
     return (
 
@@ -237,6 +254,7 @@ export default function GroupFeed() {
                     <option value="option3">Option 3</option>
                 </select>
             </div>
+
             <div className="posts-container">
                 <InfiniteScroll className="feed-container"
                         dataLength={posts.length}
@@ -252,7 +270,6 @@ export default function GroupFeed() {
                         ))}
                 </InfiniteScroll>
             </div>
-
         </div>
     );
 }

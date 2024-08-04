@@ -70,20 +70,24 @@
             </div>
         </div>
         <div class = "right-box">
-            <div class = "right-card__profile-photo"></div>
-            <p class = "right-card__profile-title--name">{{ profile_data.username }}</p>
-            <form method="POST" action="/profile/{{ profile_data.username }}/edit/" enctype="multipart/form-data">
+            <div class = "right-card__profile-photo"><img src="{{ profile_pic }}" class = "profile-photo"></div>
+            <p class = "right-card__profile-title--name">{{username }}</p>
+            <form method="POST" action="/profile/{{username }}/edit/" enctype="multipart/form-data">
                 <p class = "right-card__profile-title">Bio</p>
-                <textarea class="right-card__profile-textbox--bio" type="submit" name="bio" value="bio">{{ profile_data.bio }}</textarea>
+                <textarea class="right-card__profile-textbox--bio" type="submit" name="bio" value="bio">{{ profile_data.get("bio") }}</textarea>
                 <p class = "right-card__profile-title">Preferred Contact Info</p>
                 <div class="right-card__profile-textbox--contact">{{ profile_data.email }}</div>
-                <input type="tel" class="right-card__profile-textbox--contact" style="margin-top:10px" name="phone-num" value="{{ profile_data.phone_num }}">
+                <input type="tel" class="right-card__profile-textbox--contact" style="margin-top:10px" name="phone-num"  value="{{ profile_data.get("phone_num") }}">
                 <div class="center-item">
                     <input class="right-card__profile-bio-link" style="background: none; border: none" type="submit" name="save" value="Save Profile Data">
                 </div>
                 <input type="hidden" name="operation" value="edit-profile"/>
             </form>
-            <button class = "rounded-blue-button font-20">Log Out</button>
-    </div>
+            <form action="/logout">
+                <div class = "button-container">
+                    <button class = "rounded-blue-button font-20">Log Out</button>
+                </div>
+            </form>
+         </div>
 </section>
 {% endblock %}

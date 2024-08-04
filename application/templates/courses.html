@@ -5,9 +5,8 @@
         <h1>Courses</h1>
         <p>Add your courses here to see study groups and materials on your feed</p>
     </div>
-    <!-- TODO: need to grab username from cookie after oauth is implemented -->
-    <h5 class="courses__text">If you would like to remove a course, please edit your course selections on your
-        <a href="/profile/test/" class="courses__text--link">profile</a>.
+    <h5 style="margin-left: 3%">If you would like to remove a course, please edit your course selections on your
+        <a href="/profile/{{username}}/" style="display: inline; vertical-align: middle; font-size: inherit; color: #045BC0">profile</a>.
     </h5>
     <div class="courses-container">
         {% for course in courses %}
