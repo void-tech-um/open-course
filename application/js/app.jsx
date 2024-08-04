@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { TypeAnimation } from 'react-type-animation';
-import GroupFeed from "./groupfeed";
 import ResourceFeed from "./resourcefeed";
 import Feed from "./mainPage/feed";
 
