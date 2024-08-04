@@ -11,10 +11,11 @@ export default function App() {
             title: "Study Groups",
             component: <StudyGroupTab />,
         },
-        ResourcesTab: {
-            title: "Resources",
-            component: <ResourcesTab />,
-        },
+        //UNCOMMENT THIS TO BRING BACK RESOURCE PAGE
+        // ResourcesTab: { 
+        //     title: "Resources",
+        //     component: <ResourcesTab />,
+        // },
     };
 
     return (

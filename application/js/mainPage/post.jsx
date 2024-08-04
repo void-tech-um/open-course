@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
-import '../static/css/style.css';
+import '../../static/css/style.css';
 
 // STUDY GROUP POST COMPONENT
 

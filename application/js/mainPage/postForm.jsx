@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PopUp from "./popUp";
-import { createPortal } from "react-dom";
-import moment from "moment";
+
 import '../../static/css/style.css';
 
 export default function PostForm({type, courses, onPost}) {
@@ -24,53 +23,53 @@ export default function PostForm({type, courses, onPost}) {
     };
 
 	  const handleChange = (e) => {
-        setFormData({
-          ...formData,
-          [e.target.name]: e.target.value,
-        });
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
     };
 
     const handleCloseTimePopup = () => {
       setIsTimePopupOpen(false);
     };
     const handleCloseLocationPopup = () => {
-        setIsLocationPopupOpen(false);
+      setIsLocationPopupOpen(false);
     };
       
     const handlePostSubmit = async (event) => {
-        event.preventDefault();
-    
-        try {
-            const response = await fetch('/api/v1/posts/', {
-                method: "POST",
-                credentials: "same-origin",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            });
-    
-            if (!response.ok) {
-                throw new Error(response.statusText);
-            }
-    
-            const data = await response.json();
-            handleChangePost(data);
-            setFormData({
-                title: "",
-                description: "",
-                meetingTime: "",
-                location: "",
-                tags: [],
-                course: "",
-                scheduleLink: "",
-                type: type,
-            });
-    
-        } catch (error) {
-            console.log(error);
-        }
+      event.preventDefault();
+  
+      try {
+          const response = await fetch('/api/v1/posts/', {
+              method: "POST",
+              credentials: "same-origin",
+              headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
+          });
+  
+          if (!response.ok) {
+              throw new Error(response.statusText);
+          }
+  
+          const data = await response.json();
+          handleChangePost(data);
+          setFormData({
+              title: "",
+              description: "",
+              meetingTime: "",
+              location: "",
+              tags: [],
+              course: "",
+              scheduleLink: "",
+              type: type,
+          });
+  
+      } catch (error) {
+          console.log(error);
+      }
     };
 
     return (
