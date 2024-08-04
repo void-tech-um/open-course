@@ -19,6 +19,8 @@
 .post__header--left{
 	display: flex;
 	flex-direction: row;
+  gap: 5px;
+
 }
 
 .post__header--right{

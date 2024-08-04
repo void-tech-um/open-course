@@ -84,7 +84,7 @@ def get_specific_post(postid):
 @application.app.route('/api/v1/posts/', methods=['POST'])
 def create_post():
     data = flask.request.get_json()
-    print(data["course_code"])
+    print(data["course"])
     # model.create_post parameters
     # create_post(username, title, description, course_code, created, schedule_link, type)
     """
@@ -113,14 +113,14 @@ def create_post():
         return flask.jsonify(**context), 404
 
     # might need to check if the course is one of ther user's courses
-    course_code = data["course_code"]
+    course_code = data["course"]
     if course_code == '' or course_code == None:
         context = {
           "message": "Please enter a course code.",
           "status_code": 404
         }
         return flask.jsonify(**context), 404
-    schedule_link = data["schedule_link"]
+    schedule_link = data["scheduleLink"]
     if schedule_link == '' or schedule_link == None:
         context = {
           "message": "Please enter a schedule time.",
@@ -145,7 +145,7 @@ def create_post():
 
     # post = model.create_post(data["username"], data["title"], data["description"], data["course_code"], data["schedule_link"], data["type"])
     
-    post = model.create_post(username, data["title"], data["description"], data["course_code"], data["schedule_link"], data["location"] , data["type"])
+    post = model.create_post(username, data["title"], data["description"], data["course"], data["scheduleLink"], data["location"] , data["type"])
     #Blank quote is the placeholder for schedule link
     tags = data["tags"]
     context = {
@@ -153,9 +153,9 @@ def create_post():
         "username": "test", #change to flask.session.get('username') later
         "title": data["title"],
         "description": data["description"],
-        "course_code": data["course_code"],
+        "course": data["course"],
         "created": post["created"],
-        "schedule_link": data["schedule_link"],
+        "scheduleLink": data["scheduleLink"],
         "location": data["location"],
         "type": 1,
     }

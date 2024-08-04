@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import '../static/css/style.css';
 import Post from "./post";
-import PopUp from "./popUp";
+import PopUp from "./mainPage/popUp";
 import { createPortal } from "react-dom";
 import moment from "moment";
 
