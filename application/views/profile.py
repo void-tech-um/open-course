@@ -5,8 +5,7 @@ from .. import google
 @application.app.route("/profile/<username>/")
 def show_profile(username):
     """Display /profile route."""
-    user_info = google.get('userinfo')
-    print(user_info.data)
+
     profile_data = application.model.get_user(username)
     context = application.model.get_courses_of_user(username)
     post = application.model.get_posts_created_by_user(username)
@@ -14,8 +13,6 @@ def show_profile(username):
     context["profile_pic"] = profile_data.get("profile_picture")
     context["username"] = username
     context["flask_username"] = flask.session.get('username', None)
-    print(profile_data.get("profile_picture"))
-    print(user_info.data["picture"])
     #if flask.session.get('username') != username:
         #return 'Access denied', 403
     # context = {course : [{course_code : EECS 280, course_name : Introductory to Data structures},{course_code: EECS 370, course_name: }],
