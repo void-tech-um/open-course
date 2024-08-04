@@ -120,4 +120,9 @@
   font-size: 1rem;
 }
 
-
+.input__error{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}

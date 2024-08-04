@@ -15,7 +15,7 @@ export default function Feed({type}) {
     const [url, setUrl] = useState("/api/v1/posts/");
     const [booleanFetch, setBooleanFetch] = useState(true);
     const [filters, setFilters] = useState([]); 
-  
+    const [userInfo, setUserInfo] = useState([]);
     useEffect(() => {
         const fetchCourses = async () => {
             try {
@@ -32,7 +32,10 @@ export default function Feed({type}) {
 
                 const json = await response.json();
                 const fetchedCourses = json.courses;
-                setCourses(fetchedCourses);
+                setCourses([{
+                    course_code: "Select Course",
+                    course_name: "Select Course"
+                }, ...fetchedCourses,]);
             } catch (error) {
                 console.error(error);
             }
@@ -107,15 +110,39 @@ export default function Feed({type}) {
         });
     }, []);
 
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+            try {
+                const response = await fetch('/api/v1/user/', {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error(response.statusText);
+                }
+
+                const json = await response.json();
+                setUserInfo(json);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchUserInfo();
+    }, []);
+
 
     return (
 
         <div>
             <PostForm type = {type} courses = {courses} onPost={(post) => {
                 setPosts([post.post_id, ...posts]);
-            }}/>
+            }} userInfo = {userInfo}/>
             <hr></hr> {/* Horiztonal Line */}
-            <div className="search-content">
+            {/* <div className="search-content">
                 <input type="text" id="search" name="search" placeholder="Search Posts, Classes..." />
                 <select className="filter-select">
                     <option value="" selected>Group Type</option>
@@ -141,7 +168,7 @@ export default function Feed({type}) {
                     <option value="option2">Option 2</option>
                     <option value="option3">Option 3</option>
                 </select>
-            </div>
+            </div> */}
             <div className="posts-container">
                 <InfiniteScroll className="feed-container"
                         dataLength={posts.length}
