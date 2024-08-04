@@ -8,14 +8,15 @@
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+  width: 100%;
 }
 
 .left-card {
   flex: 2;
   background-color: #E6F1FF;
   flex-direction: column;
-  height: 100%;
 	padding: 2em;
+  display: flex;
 }
 
 /* .left-box-container {
@@ -221,8 +222,6 @@
 @media (max-width:1000px) {
 	.flex-container{
 		flex-direction: column-reverse;
-
-
 	}
 }
   

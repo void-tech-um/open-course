@@ -46,7 +46,12 @@
                 <a href="/courses/">Courses</a>
                 <a href="/view-user-profile/">View Users</a>
                 <a href="/about/">About</a>
-                <a href="/profile/test/">View Profile (test)</a>
+                {% if username %}
+                <a href="/profile/{{ username }}/">View Profile</a>
+                {% else %}
+                <!-- <a href="{{ url_for('login') }}">Login</a> -->
+                <a href="/show-login/">Login</a>
+                {% endif %}
             </div>
             <!-- end of navbar test -->
         </nav>

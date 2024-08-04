@@ -83,6 +83,12 @@ def get_user(username):
         (username,)
     )
     user = cur.fetchone()
+
+    # The case where no user is found
+    if user is None:
+        print(f"No user found for username: {username}")
+        return None
+
     content = {
         "username" : user[0],
         "email" : user[1],
@@ -91,6 +97,18 @@ def get_user(username):
         "bio" : user[4]
     }
     return content
+
+# Insert user into database
+def add_user(username, email, phone_num, profile_picture, bio):
+    """Add a user to the database."""
+    conn = get_db()
+    cur = conn.cursor()
+    cur.execute(
+        "INSERT INTO users (username, email, phone_num, profile_picture, bio) "
+        "VALUES (%s, %s, %s, %s, %s)",
+        (username, email, phone_num, profile_picture, bio)
+    )
+    conn.commit()
 
 # POST RELATED DB CALLS --------------------------------------------------------------------------
 
@@ -368,11 +386,8 @@ def get_all_courses_user(username):
         '''
         SELECT u.course_code, u.course_name, EXISTS(
             SELECT 1
-            FROM
-            (SELECT course_code FROM enrollments
-            WHERE username = 'test'
-            ) e
-            WHERE e.course_code = u.course_code
+            FROM enrollments e
+            WHERE e.username = %s AND e.course_code = u.course_code
         ) AS user_in_course FROM courses u;
         ''',
         (username,)

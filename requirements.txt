@@ -35,3 +35,4 @@ tomlkit==0.12.1
 urllib3==2.0.4
 Werkzeug==2.3.7
 wrapt==1.15.0
+Flask-OAuthlib==0.9.6

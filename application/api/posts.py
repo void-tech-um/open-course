@@ -14,7 +14,7 @@ def get_posts():
     """Return specific number of posts."""
     # TODO set username
     
-    username = "test"
+    username = flask.session.get('username')
     size = flask.request.args.get("size", default = 6, type=int)
     page = flask.request.args.get("page", default = 0, type=int)
     if (size <= 0) or (page < 0):
@@ -94,7 +94,7 @@ def create_post():
         }
        return flask.jsonify(**context), 404
     """
-    username = "test"
+    username = flask.session.get('username')
     title = data["title"]
     if title == '' or title == None:
         context = {
@@ -150,7 +150,7 @@ def create_post():
     tags = data["tags"]
     context = {
         "post_id": post["post_id"],
-        "username": "test", #change to flask.session.get('username') later
+        "username": flask.session.get('username'), 
         "title": data["title"],
         "description": data["description"],
         "course": data["course"],
