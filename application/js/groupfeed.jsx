@@ -191,37 +191,40 @@ export default function GroupFeed() {
     return (
 
         <div>
-            <form className="new-post-box" onSubmit={handlePostSubmit}>
-                <img src="/static/assets/logo.png" id="pfp" alt="pfp"></img>
-                <input type="text" name="enterTitle" id="enter-title" placeholder="Enter Title" value={titleEntry} onChange={handleTitleChange} />
-                <textarea name="tellMore" id="tell-me-more" value={textEntry} onChange={handleTextChange}  placeholder="Tell me more about your study group..." />
-                <div className="filters">
-                    <button type="button" className="transparent-button" onClick={() =>setIsTimePopupOpen(true)}><img src="/static/assets/calendar-plus.svg" alt="calendar filter"></img>Meeting time</button>
-                    {isTimePopupOpen && (
-                        <PopUp handleClose = {handleCloseTimePopup} handleChange = {handleScheduleChange} inputValue={schedule_link} placeHolderText="Google Meet URL">
-                            {/* These two tags are being passed in as a prop called "children" */}
-                            <h2 id="title">Add a Google Calendar Link</h2>
-                            <img src="/static/assets/calendar-plus.svg" alt="calendar filter" />
-                        </PopUp>
-                    )}
-                    <button type="button" className="transparent-button" onClick={() => setIsLocationPopupOpen(true)}><img src="/static/assets/location.svg" alt="location filter"></img>Location</button>
-                    {isLocationPopupOpen && (
-                        <PopUp handleClose = {handleCloseLocationPopup} handleChange = {handleLocatonChange} inputValue={location} placeHolderText="Add Location and Room Number">
-                            {/* These two tags are being passed in as a prop called "children" */}
-                            <h2 id="title">Add Location and Room Number</h2>
-                            <img src="/static/assets/location.svg" alt="location filter" />
-                        </PopUp>
-                    )}
-                    <button type="button" className="transparent-button"><img src="/static/assets/tags.svg" alt="tags filter"></img>Tags</button>
-                    <select className="custom-select" onChange={handleCourseChange} value={course_code}>
-                        <option value="" selected>Select Course</option>
-                        {courses.map((courses) => (
-                            <option value = {courses.course_code}  className="info-tag tag-spacing" type="button">{courses.course_code}</option>
-                        ))}
-                    </select>
-                    <input className="rounded-blue-button" type="submit" name="Post" id="submit-post" value="Post"/>
-
-                </div>     
+            <form className="new-post" onSubmit={handlePostSubmit}>
+                <div className="new-post--pfp-container">
+                    <img src="/static/assets/logo.png" className="new-post--pfp" alt="pfp"></img>
+                </div>
+                <input type="text" name="enterTitle" className="new-post--title" placeholder="Enter Title to create your own study group" value={titleEntry} onChange={handleTitleChange} />
+                <textarea type="text" rows="10" name="tellMore" className="new-post--desc" value={textEntry} onChange={handleTextChange}  placeholder="Tell me more about your study group..." />
+                <div className="input__bottom">
+                    <div className="input__filters">
+                        <button type="button" className="input__popUp-button" onClick={() =>setIsTimePopupOpen(true)}><img className="input_icon" src="/static/assets/calendar-plus.svg" alt="calendar filter"></img><p className="input__text--button">Meeting time</p></button>
+                        {isTimePopupOpen && (
+                            <PopUp handleClose = {handleCloseTimePopup} handleChange = {handleScheduleChange} inputValue={schedule_link} placeHolderText="Google Meet URL">
+                                {/* These two tags are being passed in as a prop called "children" */}
+                                <h2 id="title">Add a Google Calendar Link</h2>
+                                <img src="/static/assets/calendar-plus.svg" alt="calendar filter" />
+                            </PopUp>
+                        )}
+                        <button type="button" className="input__popUp-button" onClick={() => setIsLocationPopupOpen(true)}><img src="/static/assets/location.svg" alt="location filter"></img><p className="input__text--button">Location</p></button>
+                        {isLocationPopupOpen && (
+                            <PopUp handleClose = {handleCloseLocationPopup} handleChange = {handleLocatonChange} inputValue={location} placeHolderText="Add Location and Room Number">
+                                {/* These two tags are being passed in as a prop called "children" */}
+                                <h2 id="title">Add Location and Room Number</h2>
+                                <img src="/static/assets/location.svg" alt="location filter" />
+                            </PopUp>
+                        )}
+                        <button type="button" className="input__popUp-button"><img src="/static/assets/tags.svg" alt="tags filter"></img><p className="input__text--button">Tags</p></button>
+                        <select className="custom-select" onChange={handleCourseChange} value={course_code}>
+                            <option value="" selected>Select Course</option>
+                            {courses.map((courses) => (
+                                <option value = {courses.course_code}  className="info-tag tag-spacing" type="button">{courses.course_code}</option>
+                            ))}
+                        </select>                    
+                    </div>     
+                    <input className="input__submit" type="submit" name="Post" id="submit-post" value="Post"/>   
+                </div>
             </form>
             <hr></hr> {/* Horiztonal Line */}
             <div className="search-content">
@@ -251,19 +254,22 @@ export default function GroupFeed() {
                     <option value="option3">Option 3</option>
                 </select>
             </div>
-            <InfiniteScroll className="feed-container"
-                    dataLength={posts.length}
-                    next={() => setBooleanFetch(true)}
-                    loader={<h6> </h6>}
-                    hasMore={morePosts}
-                    endMessage={
-                    <p>Check back later for more posts!</p>
-                    }
-            >
-                    {posts.map((post_id) => (
-                        <Post key={post_id} post_id={post_id} />
-                    ))}
-            </InfiniteScroll>
+
+            <div className="posts-container">
+                <InfiniteScroll className="feed-container"
+                        dataLength={posts.length}
+                        next={() => setBooleanFetch(true)}
+                        hasMore={morePosts}
+                        endMessage={
+                        <p>Check back later for more posts!</p>
+                        }
+                    >
+                        {posts.map((post_id) => (
+                            
+                            <Post key={post_id} post_id={post_id} />
+                        ))}
+                </InfiniteScroll>
+            </div>
         </div>
     );
 }

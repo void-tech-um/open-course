@@ -1,0 +1,228 @@
+.profile-header {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.flex-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.left-card {
+  flex: 2;
+  background-color: #E6F1FF;
+  flex-direction: column;
+  height: 100%;
+	padding: 2em;
+}
+
+/* .left-box-container {
+  flex: 1;
+  flex-direction: row;
+} */
+
+.left-card__title{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.left-card__profile-rounded-blue-button {
+	width: 100%;
+	max-width: 200px;
+	height: 39px;
+	padding: 6px;
+	text-decoration: none;
+	background-color: #045BC0;
+	color: white;
+	font-size: 16px;
+	border: none;
+	border-radius: 999px;
+	cursor: pointer;
+	text-align: center;
+	line-height: 39px;
+	display: block; /* Ensure the button is a block element for centering */
+}
+
+.left-card__courses{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #045BC0;
+  border-radius: 10px;
+  justify-content: center;
+	margin: 1rem 0rem ;
+	padding: 1em;
+	gap: 1rem;
+}
+
+
+.left-card__course-items {
+	border-radius: 12px;
+	border: 1px solid rgba(185, 185, 185, 1);
+	padding: 15px 13px;
+	width: 100%;
+	max-width: 356px;
+	height: auto;
+	background-color: white;
+	box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.left-card__profile-text--title {
+	font-size: 24px;
+	font: "inter";
+	font-weight: 350;
+}
+
+.left-card__profile-text--code {
+	font-family: "Inter";
+	color: rgba(108, 117, 125, 1);
+	font-size: 1.125rem;
+	font-weight: 530;
+	margin: 0;
+}
+
+.left-card__profile-text--description {
+  font-size: 18px;
+  font-weight: 200;
+  font: "Inter";
+}
+
+.left-card__profile-post-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.left-card__profile-post {
+  border-radius: 12px;
+  border: 1px solid rgba(185, 185, 185, 1);
+	padding: 10px 20px 20px 20px;
+  margin: 20px 28px 20px 0px;
+  width: 40%;
+	max-width: 442px;
+  background-color: white;
+}
+
+
+.right-box {
+  background-color: #FFFFFF;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;	
+	align-items: center;
+  flex: 1;
+  padding: 2em;
+
+}
+
+/* .right_box_container {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+} */
+
+/* .profile-info {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+} */
+
+/* .profile-name {
+	font-family: "Inter";
+	color: rgba(33, 37, 41, 1);
+	font-size: 24px;
+	font-weight: 400;
+	font-size: 24px;
+	font-weight: 340;
+} */
+
+/* .profile-circle {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-color: #007bff;
+} */
+
+  /* Profile Component*/
+
+.right-card__profile-photo {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background-color: rgb(210, 206, 206);
+	margin: auto;
+}
+
+
+
+.right-card__profile-textbox--bio {
+	border-radius: 12px;
+	border: 1px solid rgba(185, 185, 185, 1);
+	padding: 20px;
+	width: 425px;
+	background-color: white;
+	word-wrap: break-word;
+	overflow: hidden;
+	color: #5A5A5A;
+	font-size: 16px;
+	min-height: 80px;
+}
+
+.right-card__profile-textbox--contact {
+	border-radius: 12px;
+	border: 1px solid rgba(185, 185, 185, 1);
+	padding: 20px;
+	width: 425px;
+	background-color: white;
+	word-wrap: break-word;
+	overflow: hidden;
+	color: #5A5A5A;
+	font-size: 16px;
+	min-height: 20px;
+}
+
+.right-card__profile-title{
+	font-size: 20px;
+}
+
+.right-card__profile-title--name{
+	font-size: 22px;
+  font-weight: bold;
+
+}
+
+.right-card__profile-bio-link {
+	color: #045BC0;
+	cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+
+}
+
+
+.left-card__courses--h1 {
+  font-size: 24px;
+  font-weight: 590;
+}
+
+.left-card__courses--h2 {
+  font-size: 18px;
+  font-weight: 200;
+  font: "Inter";
+}
+
+@media (max-width:1000px) {
+	.flex-container{
+		flex-direction: column-reverse;
+
+
+	}
+}
+  
