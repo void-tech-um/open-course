@@ -3,11 +3,10 @@ import PopUp from "./popUp";
 
 import '../../static/css/style.css';
 
-export default function PostForm({type, courses, onPost}) {
+export default function PostForm({type, courses, onPost, userInfo}) {
     const [formData, setFormData] = useState({
         title: "",
         description: "",
-        meetingTime: "",
         location: "",
         tags:[],
         course: "",
@@ -17,6 +16,7 @@ export default function PostForm({type, courses, onPost}) {
 
     const [isTimePopupOpen, setIsTimePopupOpen] = useState(false);
     const [isLocationPopupOpen, setIsLocationPopupOpen] = useState(false);
+    const [error, setError] = useState("");
 
     const handleChangePost = (data) =>{
       onPost(data);
@@ -35,10 +35,20 @@ export default function PostForm({type, courses, onPost}) {
     const handleCloseLocationPopup = () => {
       setIsLocationPopupOpen(false);
     };
-      
+    
+    const checkFormData = () => {
+      if(!formData.title || !formData.description || !formData.location || formData.course == "Select Course" || !formData.scheduleLink){
+        setError("Please fill out all fields.");
+        return false;
+      }
+      return true;
+    }
+
     const handlePostSubmit = async (event) => {
       event.preventDefault();
-  
+      if(!checkFormData()){
+        return;
+      }
       try {
           const response = await fetch('/api/v1/posts/', {
               method: "POST",
@@ -59,13 +69,13 @@ export default function PostForm({type, courses, onPost}) {
           setFormData({
               title: "",
               description: "",
-              meetingTime: "",
               location: "",
               tags: [],
               course: "",
               scheduleLink: "",
               type: type,
           });
+          setError("")
   
       } catch (error) {
           console.log(error);
@@ -76,7 +86,7 @@ export default function PostForm({type, courses, onPost}) {
         <div>
             <form className="new-post" onSubmit={handlePostSubmit}>
                 <div className="new-post--pfp-container">
-                    <img src="/static/assets/logo.png" className="new-post--pfp" alt="pfp"></img>
+                    <img src={userInfo.profile_picture} className="new-post--pfp" alt="pfp"></img>
                 </div>
                 <input type="text" name="title" className="new-post--title" placeholder = "Enter Title to create your own study group" value={formData.title} onChange={handleChange} />
                 <textarea type="text" rows="10" name="description" className="new-post--desc" value={formData.description} onChange={handleChange}  placeholder="Tell me more about your study group..." />
@@ -114,15 +124,20 @@ export default function PostForm({type, courses, onPost}) {
                         )}
                         <button type="button" className="input__popUp-button"><img src="/static/assets/tags.svg" alt="tags filter"></img><p className="input__text--button">Tags</p></button>
                         <select className="custom-select" name = "course" onChange={handleChange} value={formData.course}>
-                            <option value= "" selected>Select Course</option>
                             {courses.map((courses) => (
-                                <option value = {courses.course_code}  className="info-tag tag-spacing" type="button">{courses.course_code}</option>
+                                <option key ={courses.course_code} value = {courses.course_code}  className="info-tag tag-spacing" type="button">{courses.course_code}</option>
                             ))}
                         </select>                    
                     </div>     
                     <input className="input__submit" type="submit" name="Post" id="submit-post" value="Post"/>   
                 </div>
             </form>
+            {error !== "" && 
+              <div className="input__error">
+                <p>{error}</p>
+              </div>
+            }
+
         </div>
     );
 }

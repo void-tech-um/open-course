@@ -22,7 +22,15 @@ def join_course():
 
 @application.app.route('/api/v1/courses/', methods=['GET'])
 def get_courses():
-    courses = model.get_all_course_codes()
+    username = flask.session.get('username', None)
+    if not username:
+        context = {
+            "message": "Unauthorized: No username in session",
+            "status_code": 404
+        }
+        return flask.jsonify(**context), 404
+    courses = model.get_courses_of_user(username)
+
     return flask.jsonify(**courses), 200
 
 @application.app.route('/api/v1/tags/', methods=['GET'])

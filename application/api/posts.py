@@ -161,5 +161,3 @@ def create_post():
     }
     print(context)
     return flask.jsonify(**context), 201
-
-

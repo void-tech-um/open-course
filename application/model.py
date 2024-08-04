@@ -370,8 +370,6 @@ def join_course(username, course_code):
     conn = get_db()
     cur = conn.cursor()
     
-    print("hello")
-    print(course_code)
     cur.execute(
         "INSERT INTO enrollments (username, course_code) "
         "VALUES (%s, %s) ",
