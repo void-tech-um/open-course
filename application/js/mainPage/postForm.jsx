@@ -91,7 +91,17 @@ export default function PostForm({type, courses, onPost, userInfo}) {
                 <input type="text" name="title" className="new-post--title" placeholder = "Enter Title to create your own study group" value={formData.title} onChange={handleChange} />
                 <textarea type="text" rows="10" name="description" className="new-post--desc" value={formData.description} onChange={handleChange}  placeholder="Tell me more about your study group..." />
                 <div className="input__bottom">
+                  <div className="input__bottom--text">
+                    <p className="input__text--info">
+                      Schedule Link: {formData.scheduleLink}
+                    </p>
+                    <p className="input__text--info">
+                      Location: {formData.location}
+                    </p>
+                  </div>
+                  <div className="input__bottom--buttons">
                     <div className="input__filters">
+                        
                         <button type="button" className="input__popUp-button" onClick={() =>setIsTimePopupOpen(true)}>
                             <img className="input_icon" src="/static/assets/calendar-plus.svg" alt="calendar filter"></img>
                             <p className="input__text--button">Meeting time</p>
@@ -130,6 +140,8 @@ export default function PostForm({type, courses, onPost, userInfo}) {
                         </select>                    
                     </div>     
                     <input className="input__submit" type="submit" name="Post" id="submit-post" value="Post"/>   
+                  </div>
+
                 </div>
             </form>
             {error !== "" && 
