@@ -68,8 +68,7 @@
   border-style: solid;
   width: 100%;
   height: 40px;
-  padding: 0;
-  text-indent: 18px;
+  padding: 0px 9px;
 
 }
 
@@ -77,13 +76,13 @@
   resize:none;
   width: 100%;
   min-height: 100px;
-  padding: 10px 0;
+  padding: 10px 9px;
 }
 
 .new-post--title::placeholder,
 .new-post--desc::placeholder{
   color: #C1C1C1;
-  text-indent: 18px; /* Add indentation to the placeholder text */
+  text-indent: 2px; /* Add indentation to the placeholder text */
   font-size: 18px;
 
 }

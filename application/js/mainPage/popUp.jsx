@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import '../static/css/style.css';
+import '../../static/css/style.css';
 
-export default function PopUp({handleClose, handleChange, inputValue, placeHolderText, children}) {
+export default function PopUp({handleClose, title, alt, img, children}) {
 
     return (
         <div 
@@ -15,11 +15,12 @@ export default function PopUp({handleClose, handleChange, inputValue, placeHolde
             <div className="popup__box">
                 <div className="popup__elements">
                     <div className="popup__title">
-                        {children}
+                        <h2 id="title">{title}</h2>
+                        <img src={img} alt={alt} />
+
                     </div>
                     <div className="popup__input-container">
-                        <input type="text" className="popup__input" placeholder={placeHolderText} value={inputValue} onChange={handleChange} autoFocus/>
-                        <input className="popup__blue-button" type="submit" name="Post" id="submit-post" value="Submit" onClick={handleClose}/>
+                        {children}
                     </div>
                 </div>
             </div>
