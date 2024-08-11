@@ -10,7 +10,10 @@ import '../../static/css/style.css';
 
 export default function Feed({type}) {
     const [posts, setPosts] = useState([]);
-    const [courses, setCourses] = useState([]);
+    const [courses, setCourses] = useState([{
+        course_code: "Select Course",
+        course_name: "Select Course"
+    }]);
     const [morePosts, setMorePosts] = useState(false);
     const [url, setUrl] = useState("/api/v1/posts/");
     const [booleanFetch, setBooleanFetch] = useState(true);
@@ -101,7 +104,7 @@ export default function Feed({type}) {
             }
             return response.json();
         })
-            .then((json) => {
+        .then((json) => {
             const fetchedFilters = json.tags;
             setFilters(fetchedFilters);
         })
@@ -119,7 +122,6 @@ export default function Feed({type}) {
                         "Content-Type": "application/json",
                     },
                 });
-
                 if (!response.ok) {
                     throw new Error(response.statusText);
                 }

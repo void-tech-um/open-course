@@ -41,11 +41,32 @@ export default function PostForm({type, courses, onPost, userInfo}) {
         setError("Please fill out all fields.");
         return false;
       }
+      if(formData.title.length > 50){
+        setError("Please enter a title that is less than 50 characters.");
+        return false;
+      }
+      if(formData.description.length > 350){
+        setError("Please enter a description that is less than 350 characters.");
+        return false;
+      }      
+      if(formData.scheduleLink.length > 100){
+        setError("Please enter a schedule Link that is less than 350 characters.");
+        return false;
+      }   
+      if(formData.location.length > 150){
+        setError("Please enter a location that is less than 350 characters.");
+        return false;
+      }               
       return true;
     }
 
     const handlePostSubmit = async (event) => {
       event.preventDefault();
+      console.log(userInfo.length);
+      if(userInfo.length === 0){
+        setError("Please Login to post");
+        return;
+      }
       if(!checkFormData()){
         return;
       }
@@ -86,7 +107,7 @@ export default function PostForm({type, courses, onPost, userInfo}) {
         <div>
             <form className="new-post" onSubmit={handlePostSubmit}>
                 <div className="new-post--pfp-container">
-                    <img src={userInfo.profile_picture} className="new-post--pfp" alt="pfp"></img>
+                    <img src={userInfo.profile_picture ==! "" ? userInfo.profile_picture : '../../static/assets/logo.png'} className="new-post--pfp" alt="pfp"></img>
                 </div>
                 <input type="text" name="title" className="new-post--title" placeholder = "Enter Title to create your own study group" value={formData.title} onChange={handleChange} />
                 <textarea type="text" rows="10" name="description" className="new-post--desc" value={formData.description} onChange={handleChange}  placeholder="Tell me more about your study group..." />
@@ -104,7 +125,7 @@ export default function PostForm({type, courses, onPost, userInfo}) {
                         
                         <button type="button" className="input__popUp-button" onClick={() =>setIsTimePopupOpen(true)}>
                             <img className="input_icon" src="/static/assets/calendar-plus.svg" alt="calendar filter"></img>
-                            <p className="input__text--button">Meeting time</p>
+                            <p className="input__text--button">Schedule Link</p>
                         </button>
                         {isTimePopupOpen && (
                             <PopUp 

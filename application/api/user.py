@@ -10,9 +10,9 @@ def get_user_info():
     if not username:
         context = {
             "message": "Unauthorized: No username in session",
-            "status_code": 404
+            "status_code": 401
         }
-        return flask.jsonify(**context), 404
+        return flask.jsonify(**context), 401
     user_info = model.get_user(username)
     if not user_info:
         context = {
