@@ -24,7 +24,7 @@
                         <input type="hidden" name="course_code" value="{{course.course_code}}"/>
                     </form>
                     {% else %}
-                    <form action="/courses/drop-course/" method="post" enctype="multipart/form-data">
+                    <form action="/courses/drop-course/?target={{url_for('show_courses')}}" method="post" enctype="multipart/form-data">
                         <input class="rounded-blue-button" type="submit" name="drop" value="Drop Course"/>                        
                         <input type="hidden" name="course_code" value="{{course.course_code}}"/>
                     </form>

@@ -1,5 +1,5 @@
 import flask, application
-from flask import render_template
+from flask import render_template, url_for
 from .. import google
 
 @application.app.route("/profile/<username>/")
@@ -26,7 +26,7 @@ def edit_profile_bio(username):
     """Make an edit to a user's profile bio."""
     logged_in_user = flask.session.get('username', None)
     if not username:
-        flask.abort(401)
+        return flask.redirect(url_for('login'))
     if logged_in_user != username:
         flask.abort(403, description="You do not have permission to edit this profile.")
     try:
@@ -41,8 +41,6 @@ def edit_profile_bio(username):
     if len(phone_num) > 20:
         flask.abort(400, description="Phone number exceeds the character limit of 15 characters.")
     
-    if not phone_num.isdigit():
-        flask.abort(400, description="Phone number should contain only digits.")
 
     conn = application.model.get_db()
     # insert into the database with the updated bio info
@@ -54,12 +52,11 @@ def edit_profile_bio(username):
         (bio, phone_num, username)
     )
     conn.commit()
-    return flask.redirect(f"/profile/{username}/")
+    return flask.redirect(flask.url_for("show_profile", username=username))
 
 @application.app.route("/profile/delete/", methods=["POST"])
 def delete_post():
     # Assuming you're getting the current username from user session
-    # TODO get username from session
     username = flask.session.get('username', None)
     if not username:
         # Handle not logged in case, perhaps redirect to login page
