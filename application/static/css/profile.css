@@ -1,7 +1,7 @@
 .profile-header {
 	display: flex;
 	align-items: center;
-	gap: 10px;
+	gap: .75rem;
 }
 
 .flex-container {
@@ -120,7 +120,6 @@
 	align-items: center;
   flex: 1;
   padding: 2em;
-
 }
 
 /* .right_box_container {
@@ -162,7 +161,6 @@
 }
 
 
-
 .right-card__profile-textbox--bio {
 	border-radius: 12px;
 	border: 1px solid rgba(185, 185, 185, 1);
@@ -174,6 +172,8 @@
 	color: #5A5A5A;
 	font-size: 16px;
 	min-height: 80px;
+  resize:none;
+
 }
 
 .right-card__profile-textbox--contact {
@@ -189,8 +189,15 @@
 	min-height: 20px;
 }
 
+.right-card__sections{
+  display: flex;
+  flex-direction: column;
+  gap:.75rem;
+}
+
 .right-card__profile-title{
 	font-size: 20px;
+  margin: 10px 0px;
 }
 
 .right-card__profile-title--name{
@@ -204,9 +211,19 @@
 	cursor: pointer;
   font-size: 16px;
   text-align: center;
-
+  background: none;
+  border: none
 }
 
+.right-card__form{
+  display: flex;
+  flex-direction: column;
+  gap:.75rem;
+}
+
+.right-card__logout-container{
+  margin-top: 10px;
+}
 
 .left-card__courses--h1 {
   font-size: 24px;

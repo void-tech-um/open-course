@@ -71,21 +71,31 @@
         </div>
         <div class = "right-box">
             <img src="{{ profile_pic }}" class = "right-card__profile-photo">
-            <p class = "right-card__profile-title--name">{{username }}</p>
-            <form method="POST" action="/profile/{{username }}/edit/" enctype="multipart/form-data">
-                <p class = "right-card__profile-title">Bio</p>
-                <textarea class="right-card__profile-textbox--bio" type="submit" name="bio" value="bio">{{ profile_data.get("bio") }}</textarea>
-                <p class = "right-card__profile-title">Preferred Contact Info</p>
-                <div class="right-card__profile-textbox--contact">{{ profile_data.email }}</div>
-                <input type="tel" class="right-card__profile-textbox--contact" style="margin-top:10px" name="phone-num"  value="{{ profile_data.get("phone_num") }}">
-                <div class="center-item">
-                    <input class="right-card__profile-bio-link" style="background: none; border: none" type="submit" name="save" value="Save Profile Data">
+            <p class = "right-card__profile-title--name">{{username}}</p>
+            <form method="POST" action="/profile/{{username }}/edit/" enctype="multipart/form-data" >
+                <div class="right-card__form">
+                    <div class = "right-card__sections">
+                        <p class = "right-card__profile-title">Bio</p>
+                        <textarea class="right-card__profile-textbox--bio" type="submit" name="bio" value="bio">{{bio}}</textarea>
+                    </div>
+                    <div class = "right-card__sections">
+                        <p class = "right-card__profile-title">Preferred Contact Info</p>
+                        <div class="right-card__profile-textbox--contact">{{email}}</div>
+                        {% if is_own_profile %}
+                        <input type="tel" class="right-card__profile-textbox--contact" name="phone-num"  value="{{phone_num}}">
+                        {% endif %}
+                    </div>
+                    {% if is_own_profile %}
+                    <div class="center-item">
+                        <input class="right-card__profile-bio-link" type="submit" name="save" value="Save Profile Data">
+                    </div>
+                    {% endif %}
+                    <input type="hidden" name="operation" value="edit-profile"/>
                 </div>
-                <input type="hidden" name="operation" value="edit-profile"/>
             </form>
             <form action="/logout">
-                <div class = "button-container">
-                    <button class = "rounded-blue-button font-20">Log Out</button>
+                <div class = "right-card__logout-container">
+                    <button class = "rounded-blue-button">Log Out</button>
                 </div>
             </form>
          </div>
