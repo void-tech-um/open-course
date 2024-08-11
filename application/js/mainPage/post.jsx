@@ -80,9 +80,9 @@ export default function Post(props) {
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
                 <div className="post__header">
                     <div className="post__header--left">
-                        <img src={post.imgUrl} alt="pfp" className="post__profile-pic"></img>
+                        <a href={`/profile/${post.username}`} className="post__profile-pic-container"><img src={post.imgUrl} alt="pfp" className="post__profile-pic" referrerPolicy="no-referrer"></img></a>
                         <div className="post__profile-info">
-                            <p className="post__user-name">{post.username} </p>
+                        <a href={`/profile/${post.username}`} className="post__user-name">{post.username}</a>
                             <p className="post__email">{post.email}</p>
                         </div>
                     </div>

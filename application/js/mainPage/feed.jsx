@@ -128,6 +128,7 @@ export default function Feed({type}) {
 
                 const json = await response.json();
                 setUserInfo(json);
+                console.log(json)
             } catch (error) {
                 console.error(error);
             }

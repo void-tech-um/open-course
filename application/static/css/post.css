@@ -9,6 +9,7 @@
 	padding: 2rem;  
 	display: flex;
 	flex-direction: column;	
+  max-height: 550px;
 }
 
 .post__header{
@@ -19,7 +20,7 @@
 .post__header--left{
 	display: flex;
 	flex-direction: row;
-  gap: 5px;
+  gap: 10px;
 
 }
 
@@ -51,6 +52,7 @@
   color: black;
   font-size: 16px;
   margin: 0;
+  text-decoration: none;
 }
 .post__email {
   font-family: Inter;
@@ -88,6 +90,14 @@
 
 .post__info--title{
 	margin: 6px 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+          line-clamp: 1; 
+  -webkit-box-orient: vertical;
+  font-size: 1.4rem;
+
 }
 
 .post__info--code{
@@ -103,9 +113,16 @@
   font-family: Inter;
   color: #4C5980;
   font-size: 12px;
-  line-height: 24px;
+  line-height: 1.5rem;
+  height: 4.5rem;
   letter-spacing: 0.2px;
 	margin: 4px 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+          line-clamp: 3; 
+  -webkit-box-orient: vertical;
 
 }
 
@@ -114,14 +131,20 @@
   line-height: 14px;
   letter-spacing: 0.23px;
   font-size: 16;
-  margin-top: 30px;
 }
 
 .post__info--time-address {
   line-height: 17px;
   letter-spacing: 0.2px;
-  font-size: 14px;
+  font-size: 1rem;
   color: #9C9EB9;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+          line-clamp: 1; 
+  -webkit-box-orient: vertical;
 }
 
 .post__profile-pic {
@@ -131,6 +154,12 @@
   /* Specify the height */
   border-radius: 50%;
   /* Make it a circle */
+}
+
+.post__profile-pic-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .post__join-section{

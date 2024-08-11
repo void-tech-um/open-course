@@ -65,7 +65,7 @@
 	border: 1px solid rgba(185, 185, 185, 1);
 	padding: 15px 13px;
 	width: 100%;
-	max-width: 356px;
+	max-width: 350px;
 	height: auto;
 	background-color: white;
 	box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
@@ -75,39 +75,74 @@
 	align-items: flex-start;
 }
 
-.left-card__profile-text--title {
-	font-size: 24px;
+.left-card__profile--title {
+	font-size: 1.5rem;
 	font: "inter";
 	font-weight: 350;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+          line-clamp: 1; 
+  -webkit-box-orient: vertical;
+  margin:0px;
 }
 
-.left-card__profile-text--code {
+.left-card__profile-text--title {
+	font: "inter";
+  margin:0px;
+  font-size: 1.5rem;
+}
+
+.left-card__profile--code {
 	font-family: "Inter";
 	color: rgba(108, 117, 125, 1);
 	font-size: 1.125rem;
-	font-weight: 530;
+	font-weight: 400;
+}
+
+.left-card__profile-text--code {
 	margin: 0;
+  letter-spacing: 0.2px;
+
+}
+
+.left-card__profile--description {
+  line-height: 1.5rem;
+  height: 4.5rem;
 }
 
 .left-card__profile-text--description {
-  font-size: 18px;
-  font-weight: 200;
+  font-size: 1rem;
+  margin:0px;
+  font-weight: 300;
   font: "Inter";
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+          line-clamp: 3; 
+  -webkit-box-orient: vertical;
 }
 
 .left-card__profile-post-container {
   display: flex;
   flex-flow: row wrap;
+  gap: 15px; 
+  justify-content: center;
+  margin: 1rem 0;
+
 }
 
 .left-card__profile-post {
   border-radius: 12px;
   border: 1px solid rgba(185, 185, 185, 1);
-	padding: 10px 20px 20px 20px;
-  margin: 20px 28px 20px 0px;
-  width: 40%;
-	max-width: 442px;
+	padding: 15px 20px;
+	width: 350px;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap:10px;
 }
 
 
@@ -236,7 +271,7 @@
   font: "Inter";
 }
 
-@media (max-width:1000px) {
+@media (max-width:1020px) {
 	.flex-container{
 		flex-direction: column-reverse;
 	}
