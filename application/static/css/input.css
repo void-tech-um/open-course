@@ -15,10 +15,10 @@
 }
 
 .input__bottom--text{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 10px;
+  margin-top: 10px;
 }
 
 
@@ -62,12 +62,17 @@
 .input__text--button{
 	display: inline;
 	margin: 0;
+  color:#045BC0;
+
 }
 
 .input__text--info{
-  display: inline;
 	margin: 0;
-  color:#045BC0;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1rem;
 }
 
 .new-post {
@@ -144,4 +149,6 @@
 	align-items: center;
 	justify-content: center;
 	width: 100%;
+  color: #ff0000;
+
 }
