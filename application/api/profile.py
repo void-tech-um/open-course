@@ -10,9 +10,9 @@ def show_profile(username):
     if not user:
         context = {
             "message": "Not Found",
-            "status_code": 404
+            "status_code": 401
         }
-        return flask.jsonify(**context), 404
+        return flask.jsonify(**context), 401
     posts = model.get_users_posts
 
     context = {"username": user["username"], 

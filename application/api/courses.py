@@ -10,7 +10,8 @@ def join_course():
     course_code = data['course_code']
     logname = flask.session.get('logname')
 
-    #Check to see if course exist?
+    if not model.course_exists(course_code):
+        flask.abort(404, description="Course not found")
 
     model.join_course(logname, course_code)
 
@@ -26,14 +27,22 @@ def get_courses():
     if not username:
         context = {
             "message": "Unauthorized: No username in session",
-            "status_code": 404
+            "status_code": 401
         }
-        return flask.jsonify(**context), 404
+        return flask.jsonify(**context), 401
     courses = model.get_courses_of_user(username)
+
+    if courses is None:
+        flask.abort(404, description="Courses not found")
 
     return flask.jsonify(**courses), 200
 
 @application.app.route('/api/v1/tags/', methods=['GET'])
 def get_tags():
     tags = model.get_all_tags()
+
+    # should this be checked?
+    # if tags is None:
+    #     flask.abort(404, description="Tags not found")
+
     return flask.jsonify(**tags), 200

@@ -430,6 +430,15 @@ def drop_course(username, course_code):
         return {"response" : "success"}
     return {"response" : "error"}
 
+def course_exists(course_code):
+    """Check if a course exists"""
+    cur = get_db().cursor()
+    cur.execute(
+        "SELECT EXISTS(SELECT 1 FROM courses WHERE course_code = %s)", (course_code,)
+    )
+    exists = cur.fetchone()[0]
+    return exists
+
 class InvalidUsage(Exception):
     """Custom exception class for invalid usage of API."""
 

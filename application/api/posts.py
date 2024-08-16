@@ -12,9 +12,12 @@ def get_services():
 @application.app.route('/api/v1/posts/', methods=["GET"])
 def get_posts():
     """Return specific number of posts."""
-    # TODO set username
     
     username = flask.session.get('username')
+
+    if not username:
+        return flask.jsonify({"message": "Unauthorized: No username in session", "status_code": 401}), 401
+    
     size = flask.request.args.get("size", default = 6, type=int)
     page = flask.request.args.get("page", default = 0, type=int)
     if (size <= 0) or (page < 0):
@@ -24,6 +27,9 @@ def get_posts():
         }
         return flask.jsonify(**context), 400    
     post_id = model.get_max_post_id(username)
+    if post_id is None:
+        return flask.jsonify({"message": "No posts found for the user", "status_code": 404}), 404
+
     page_lte = flask.request.args.get("postid_lte",
                                    default=post_id["post_id"], type=int)
     next = ""
@@ -95,53 +101,64 @@ def create_post():
        return flask.jsonify(**context), 404
     """
     username = flask.session.get('username')
+    if not username:
+        return flask.jsonify({"message": "Unauthorized: No username in session", "status_code": 401}), 401
+    
     title = data["title"]
     if title == '' or title == None:
         context = {
           "message": "Please enter a title.",
-          "status_code": 404
+          "status_code": 400
         }
-        return flask.jsonify(**context), 404
+        return flask.jsonify(**context), 400
       
     
     description = data["description"]
     if description == '' or description == None:
         context = {
           "message": "Please enter a description.",
-          "status_code": 404
+          "status_code": 400
         }
-        return flask.jsonify(**context), 404
+        return flask.jsonify(**context), 400
 
-    # might need to check if the course is one of ther user's courses
     course_code = data["course"]
     if course_code == '' or course_code == None:
         context = {
           "message": "Please enter a course code.",
-          "status_code": 404
+          "status_code": 400
         }
-        return flask.jsonify(**context), 404
+        return flask.jsonify(**context), 400
+    
+    # might need to check if the course is one of ther user's courses
+    if not model.check_course(username, course_code):
+        context = {
+          "message": "User is not in course.",
+          "status_code": 403
+        }
+        return flask.jsonify(**context), 403
+
     schedule_link = data["scheduleLink"]
     if schedule_link == '' or schedule_link == None:
         context = {
           "message": "Please enter a schedule time.",
-          "status_code": 404
+          "status_code": 400
         }
-        return flask.jsonify(**context), 404
+        return flask.jsonify(**context), 400
     location = data["location"]
     if location == '' or location == None:
         context = {
           "message": "Please enter a location.",
-          "status_code": 404
+          "status_code": 400
         }
-        return flask.jsonify(**context), 404    
+        return flask.jsonify(**context), 400   
     #    Removed to make more simplified
     # postType = data["type"]
     # if postType == '' or postType == None:
     #     context = {
     #       "message": "Please enter a post type.",
-    #       "status_code": 404
+    #       "status_code": 400
     #     }
-    #     return flask.jsonify(**context), 404
+    #     return flask.jsonify(**context), 400
 
     # post = model.create_post(data["username"], data["title"], data["description"], data["course_code"], data["schedule_link"], data["type"])
     
