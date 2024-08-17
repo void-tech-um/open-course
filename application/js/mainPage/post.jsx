@@ -108,9 +108,11 @@ export default function Post(props) {
                     <p className="post__info--date-room"><i className="fa fa-map-marker"></i> Room</p>
                     <p className="post__info--time-address">{post.location}</p>
                 </div>
+                {/* needs conditional and logic tba */}
                 <div className="post__join-section">
                     <h2 className="rounded-blue-button">Join</h2>
                 </div>
+                {/*                   */}
             </div>
 
         );

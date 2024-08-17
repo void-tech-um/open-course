@@ -1,14 +1,15 @@
 import flask, application
 from flask import render_template, url_for
+from application import model
 from .. import google
 
 @application.app.route("/profile/<username>/")
 def show_profile(username):
     """Display /profile route."""
 
-    profile_data = application.model.get_user(username)
-    context = application.model.get_courses_of_user(username)
-    post = application.model.get_posts_created_by_user(username)
+    profile_data = model.get_user(username)
+    context = model.get_courses_of_user(username)
+    post = model.get_posts_created_by_user(username)
     context["profile_pic"] = profile_data.get("profile_picture")
     context["username"] = username
     context["email"] = profile_data['email']
@@ -41,17 +42,9 @@ def edit_profile_bio(username):
     if len(phone_num) > 20:
         flask.abort(400, description="Phone number exceeds the character limit of 15 characters.")
     
-
-    conn = application.model.get_db()
     # insert into the database with the updated bio info
-    cur = conn.cursor()
-    cur.execute(
-        "UPDATE users "
-        "SET bio = %s, phone_num = %s "
-        "WHERE username = %s",
-        (bio, phone_num, username)
-    )
-    conn.commit()
+    model.update_bio(bio, phone_num, username)
+
     return flask.redirect(flask.url_for("show_profile", username=username))
 
 @application.app.route("/profile/delete/", methods=["POST"])
@@ -63,7 +56,7 @@ def delete_post():
         return flask.redirect(flask.url_for('login'))
     post_id = flask.request.form.get('post_id')
     if post_id:
-        application.model.delete_post(username, post_id)
+        model.delete_post(username, post_id)
         return flask.redirect(flask.url_for("show_profile", username=username))
     else:
         return "Error: Post ID not provided", 400
