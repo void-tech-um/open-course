@@ -86,9 +86,9 @@ export default function Post(props) {
                             <p className="post__email">{post.email}</p>
                         </div>
                     </div>
-                    <div className="post__header--right">
+                    {/* <div className="post__header--right">
                         <input className="post__star" type="checkbox" title="bookmark page"/>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="post__tags">
                     {post.tags.map((tag) => (

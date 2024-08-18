@@ -156,7 +156,7 @@ export default function PostForm({type, courses, onPost, userInfo}) {
                             <input className="popup__blue-button" type="submit" name="Post" id="submit-post" value="Submit" onClick={handleCloseLocationPopup}/>
                           </PopUp>                          
                         )}
-                        <button type="button" className="input__popUp-button"><img src="/static/assets/tags.svg" alt="tags filter"></img><p className="input__text--button">Tags</p></button>
+                        {/* <button type="button" className="input__popUp-button"><img src="/static/assets/tags.svg" alt="tags filter"></img><p className="input__text--button">Tags</p></button> */}
                         <select className="custom-select" name = "course" onChange={handleChange} value={formData.course}>
                             {courses.map((courses) => (
                                 <option key ={courses.course_code} value = {courses.course_code}  className="info-tag tag-spacing" type="button">{courses.course_code}</option>
