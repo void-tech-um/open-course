@@ -5,9 +5,12 @@
         <div class = "left-card">
             <div class = "left-card__title">
                 <h1-blue>Your Courses</h1-blue>
+                {% if is_own_profile %}
                 <a href="/courses/" class="left-card__profile-rounded-blue-button"> Add/Join Courses
                     <div class="bx bx-up-arrow-alt" id="menu-icon"></div>
                 </a>
+                {% endif %}
+
             </div>
             <div class="left-card__courses">
                 {% for course in courses %}
@@ -19,7 +22,7 @@
                         <p class="left-card__courses-name--h2">{{course.course_name}}</p>
                     </div>
                     {% if is_own_profile %}
-                    <form action="/courses/drop-course/" method="post" enctype="multipart/form-data">
+                    <form action="/courses/drop-course/?target={{url_for('show_profile', username=username)}}" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="course_code" value="{{course.course_code}}"/>
                         <input class="rounded-blue-button" type="submit" name="drop" value="Drop Course"/>
                     </form>
@@ -80,7 +83,13 @@
                 <div class="right-card__form">
                     <div class = "right-card__sections">
                         <p class = "right-card__profile-title">Bio</p>
+                        {% if is_own_profile %}
                         <textarea class="right-card__profile-textbox--bio" type="submit" name="bio" value="bio">{{bio}}</textarea>
+                        {% else %}
+                        <div class="right-card__profile-textbox--bio" type="submit" name="bio" value="bio">{{bio}}</div>
+
+                        {% endif %}
+
                     </div>
                     <div class = "right-card__sections">
                         <p class = "right-card__profile-title">Preferred Contact Info</p>
@@ -97,11 +106,14 @@
                     <input type="hidden" name="operation" value="edit-profile"/>
                 </div>
             </form>
+            {% if is_own_profile %}
             <form action="/logout">
                 <div class = "right-card__logout-container">
                     <button class = "rounded-blue-button">Log Out</button>
                 </div>
             </form>
+            {% endif %}
+
          </div>
 </section>
 {% endblock %}
