@@ -62,6 +62,7 @@ export default function PostForm({type, courses, onPost, userInfo}) {
 
     const handlePostSubmit = async (event) => {
       event.preventDefault();
+      console.log(userInfo);
       console.log(userInfo.length);
       if(userInfo.length === 0){
         setError("Please Login to post");
@@ -106,9 +107,11 @@ export default function PostForm({type, courses, onPost, userInfo}) {
     return (
         <div>
             <form className="new-post" onSubmit={handlePostSubmit}>
-                <div className="new-post--pfp-container">
-                    <img src={userInfo.profile_picture ==! "" ? userInfo.profile_picture : '../../static/assets/logo.png'} className="new-post--pfp" alt="pfp"></img>
-                </div>
+                {userInfo.length !== 0 &&
+                  <div className="new-post--pfp-container">
+                      <img src={userInfo.profile_picture !== "" ? userInfo.profile_picture : '../../static/assets/logo.png'} className="new-post--pfp" alt="pfp"></img>
+                  </div>
+                }
                 <input type="text" name="title" className="new-post--title" placeholder = "Enter Title to create your own study group" value={formData.title} onChange={handleChange} />
                 <textarea type="text" rows="10" name="description" className="new-post--desc" value={formData.description} onChange={handleChange}  placeholder="Tell me more about your study group..." />
                 <div className="input__bottom">
@@ -162,14 +165,14 @@ export default function PostForm({type, courses, onPost, userInfo}) {
                     </div>     
                     <input className="input__submit" type="submit" name="Post" id="submit-post" value="Post"/>   
                   </div>
-
+                  {error !== "" && 
+                    <div className="input__error">
+                      <p>{error}</p>
+                    </div>
+                  }
                 </div>
             </form>
-            {error !== "" && 
-              <div className="input__error">
-                <p>{error}</p>
-              </div>
-            }
+
 
         </div>
     );

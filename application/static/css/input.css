@@ -78,7 +78,7 @@
 .new-post {
 	margin: 3%;
 	display: grid;
-	grid-template-columns: 1fr minmax(550px, 700px) 1fr;
+  grid-template-columns: 1fr minmax(550px, 700px) 1fr;
   place-items: center;
   column-gap: 20px;
   row-gap: 10px;
@@ -94,6 +94,8 @@
   height: 40px;
   padding: 0px 9px;
   box-sizing: border-box;
+  font-size: 18px;
+
 }
 
 .new-post--desc{
@@ -106,7 +108,6 @@
 .new-post--title::placeholder,
 .new-post--desc::placeholder{
   color: #C1C1C1;
-  text-indent: 2px; /* Add indentation to the placeholder text */
   font-size: 18px;
 
 }
