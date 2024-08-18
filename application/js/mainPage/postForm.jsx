@@ -109,7 +109,7 @@ export default function PostForm({type, courses, onPost, userInfo}) {
             <form className="new-post" onSubmit={handlePostSubmit}>
                 {userInfo.length !== 0 &&
                   <div className="new-post--pfp-container">
-                      <img src={userInfo.profile_picture !== "" ? userInfo.profile_picture : '../../static/assets/logo.png'} className="new-post--pfp" alt="pfp"></img>
+                      <img src={userInfo.profile_picture !== "" ? userInfo.profile_picture : '../../static/assets/logo.png'} className="new-post--pfp" alt="pfp" referrerPolicy="no-referrer"></img>
                   </div>
                 }
                 <input type="text" name="title" className="new-post--title" placeholder = "Enter Title to create your own study group" value={formData.title} onChange={handleChange} />
