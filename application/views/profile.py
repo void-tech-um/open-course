@@ -9,7 +9,7 @@ def show_profile(username):
     profile_data = application.model.get_user(username)
     context = application.model.get_courses_of_user(username)
     post = application.model.get_posts_created_by_user(username)
-    context["profile_pic"] = profile_data.get("profile_picture")
+    context["profile_pic"] = profile_data.get("profile_picture").replace("s96-c", "s196-c")
     context["username"] = username
     context["email"] = profile_data['email']
     context["bio"] = profile_data['bio']

@@ -33,7 +33,6 @@ def process_join():
 @application.app.route('/courses/drop-course/', methods=['POST'])
 def process_drop():
     target_url = flask.request.args.get('target')
-    print(target_url)
     if not target_url:
         target_url = flask.url_for("show_index")
     # Assuming you're getting the current username from user session
