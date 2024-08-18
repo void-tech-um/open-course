@@ -112,7 +112,7 @@
 .post__info--description {
   font-family: Inter;
   color: #4C5980;
-  font-size: 12px;
+  font-size: 1rem;
   line-height: 1.5rem;
   height: 4.5rem;
   letter-spacing: 0.2px;
@@ -136,6 +136,8 @@
 .post__info--time-address {
   line-height: 17px;
   letter-spacing: 0.2px;
+  line-height: 1.5rem;
+  height: 1.5rem;
   font-size: 1rem;
   color: #9C9EB9;
   margin: 0;
