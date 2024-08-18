@@ -11,10 +11,14 @@ def get_services():
 
 @application.app.route('/api/v1/posts/', methods=["GET"])
 def get_posts():
-    """Return specific number of posts."""
-    # TODO set username
-    
+    """Return specific number of posts."""    
     username = flask.session.get('username')
+    if not username:
+        context = {
+            "message": "Not Found",
+            "status_code": 404
+        }
+        return flask.jsonify(**context), 404
     size = flask.request.args.get("size", default = 6, type=int)
     page = flask.request.args.get("page", default = 0, type=int)
     if (size <= 0) or (page < 0):
