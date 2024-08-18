@@ -1,0 +1,74 @@
+/* Resource Component */
+.resource {
+  border-radius: 12px;
+  border: 1px solid rgba(185, 185, 185, 1);
+  padding: 20px;
+  margin: 20px;
+  width: 40%;
+}
+
+.resource-title {
+  font-family: "Inter";
+  color: rgba(33, 37, 41, 1);
+  font-size: 24px;
+  font-weight: 400;
+  font-size: 24px;
+  font-weight: 340;
+}
+
+.resource-info {
+  font-family: "Inter";
+  color: rgba(108, 117, 125, 1);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+  margin-left: 0px;
+  max-width: 445px;
+  line-height: 28px;
+}
+
+.resource-btn-space {
+  margin-left: 70%;
+}
+
+
+.search-grid {
+  display: grid;
+  grid-template-columns: 60% 13% 13% 8%;
+  gap: 1%;
+  margin: 50px 20px;
+}
+
+.search-grid input {
+  border-radius: 30px;
+  border-color: gray;
+  padding-left: 10px;
+  width: 96%;
+}
+
+.search-grid button {
+  background-color: white;
+  border-color: gray;
+}
+
+.filter-select {
+  font-size: 16px;
+  color: #777777;
+  /* Set the font color to blue */
+  margin: 6px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 7px;
+}
+
+.resource-info {
+  font-family: "Inter";
+  color: rgba(108, 117, 125, 1);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+  margin-left: 0px;
+  max-width: 445px;
+  line-height: 28px;
+  text-wrap: pretty;
+}

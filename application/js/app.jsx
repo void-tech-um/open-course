@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { TypeAnimation } from 'react-type-animation';
-import '../static/css/style.css';
-import GroupFeed from "./groupfeed";
 import ResourceFeed from "./resourcefeed";
+import Feed from "./mainPage/feed";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('StudyGroupTab');
@@ -11,10 +10,11 @@ export default function App() {
             title: "Study Groups",
             component: <StudyGroupTab />,
         },
-        ResourcesTab: {
-            title: "Resources",
-            component: <ResourcesTab />,
-        },
+        //UNCOMMENT THIS TO BRING BACK RESOURCE PAGE
+        // ResourcesTab: { 
+        //     title: "Resources",
+        //     component: <ResourcesTab />,
+        // },
     };
 
     return (
@@ -60,7 +60,7 @@ export default function App() {
 function StudyGroupTab() {
   return (
     <div>
-      <GroupFeed></GroupFeed>
+      <Feed type = "group"/>
     </div>
   );
 }

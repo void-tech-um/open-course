@@ -1,100 +1,119 @@
 {% extends 'base.html' %}
 {% block content %}
-<section class="profile">
+<section class="profile-header">
     <div class="flex-container">
-        <div class = "left-box">
-            <div class = "left-box-container">
-                <div style="margin-top: 60px; margin-bottom: 60px">
-                    <br>
-                    <h1-blue>Your Courses</h1-blue>
-                    <a href="/courses/" class="profile-rounded-blue-button"> Add/Join Courses
-                        <div class="bx bx-up-arrow-alt" id="menu-icon"></div>
-                    </a>
-                </div>
-                <div class="profile-course">
-                    {% for course in courses %}
-                    <div class="individuals-course">
-                        <div class="profile-post-h1">
-                            {{course.course_code}}
-                        </div>
-                        <div class="profile-post-h2">
-                            <p>{{course.course_name}}</p>
-                        </div>
-                        <form class="course-blue-button" action="/courses/drop-course/" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="course_code" value="{{course.course_code}}"/>
-                            <input class="rounded-blue-button" type="submit" name="drop" value="Drop Course"/>
-                        </form>
+        <div class = "left-card">
+            <div class = "left-card__title">
+                <h1-blue>Your Courses</h1-blue>
+                {% if is_own_profile %}
+                <a href="/courses/" class="left-card__profile-rounded-blue-button"> Add/Join Courses
+                    <div class="bx bx-up-arrow-alt" id="menu-icon"></div>
+                </a>
+                {% endif %}
+
+            </div>
+            <div class="left-card__courses">
+                {% for course in courses %}
+                <div class="left-card__course-items">
+                    <div class="left-card__courses--h1">
+                        {{course.course_code}}
                     </div>
-                    {% endfor %}  
-                </div>
-                <br><br>
-                <h1-blue class="top-padding">Your Posts</h1-blue>
-                <div class="profile-post-container">
-                    <!--Template for Post/Resource-->
-                    {% for post in posts %}
-                    <div class="profile-post"> 
-                        <div class="profile-post-h1">
-                            <p>{{post.title}}</p>
-                        </div>
-                        <div class="profile-course-title">
-                            <p>{{post.course_code}}</p>
-                        </div>
-                        <div class="tags">
-                            <button class="info-tag" type = "button">Topic</button>
-                            <button class="info-tag tag-spacing" type="button">Topic</button>
-                            <button class="info-tag tag-spacing" type="button">Topic</button>
-                            <button class="info-tag tag-spacing" type="button">Topic</button>
-                        </div>
-                        <div class="profile-post-h2">
-                            <p>{{post.description}}</p>
-                        </div>
-                        <form class="course-blue-button" action="/profile/delete/" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="post_id" value="{{post.post_id}}"/>
-                            <input class="rounded-blue-button" type="submit" name="drop" value="Delete Post"/>
-                        </form>
+                    <div class="left-card__courses--h2">
+                        <p class="left-card__courses-name--h2">{{course.course_name}}</p>
                     </div>
-                    {% endfor %}
-                    <!--Template for StudyGuide-->
-                    <!-- <div class="profile-post"> 
-                        <div class="profile-post-h1">
-                            <p>Study Guide</p>
-                        </div>
-                        <p class="study-group">STUDY GROUP</p>
-                        <div class="tags">
-                            <button class="info-tag tag-spacing" type = "button">Topic</button>
-                            <button class="info-tag tag-spacing" type="button">Topic</button>
-                            <button class="info-tag tag-spacing" type="button">Topic</button>
-                            <button class="info-tag tag-spacing" type="button">Topic</button>
-                        </div>
-                        <div class="profile-post-h2">
-                            <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div> -->
+                    {% if is_own_profile %}
+                    <form action="/courses/drop-course/?target={{url_for('show_profile', username=username)}}" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="course_code" value="{{course.course_code}}"/>
+                        <input class="rounded-blue-button" type="submit" name="drop" value="Drop Course"/>
+                    </form>
+                    {% endif %}
                 </div>
-                <br>
+                {% endfor %}  
+            </div>
+            <h1-blue>Your Posts</h1-blue>
+            <div class="left-card__profile-post-container">
+                <!--Template for Post/Resource-->
+                {% for post in posts %}
+                <div class="left-card__profile-post"> 
+                    <div class="left-card__profile--title">
+                        <h2 class="left-card__profile-text--title">{{post.title}}</h2>
+                    </div>
+                    <div class="left-card__profile--code">
+                        <p class="left-card__profile-text--code">{{post.course_code}}</p>
+                    </div>
+                    <div class="tags">
+                        <button class="info-tag tag-spacing" type = "button">Topic</button>
+                        <button class="info-tag tag-spacing" type="button">Topic</button>
+                        <button class="info-tag tag-spacing" type="button">Topic</button>
+                        <button class="info-tag tag-spacing" type="button">Topic</button>
+                    </div>
+                    <div class="left-card__profile--description">
+                        <p class="left-card__profile-text--description">{{post.description}}</p>
+                    </div>
+                    {% if is_own_profile %}
+                    <form class="course-blue-button" action="/profile/delete/" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="post_id" value="{{post.post_id}}"/>
+                        <input class="rounded-blue-button" type="submit" name="drop" value="Delete Post"/>
+                    </form>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <!--Template for StudyGuide-->
+                <!-- <div class="profile-post"> 
+                    <div class="profile-post-h1">
+                        <p>Study Guide</p>
+                    </div>
+                    <p class="study-group">STUDY GROUP</p>
+                    <div class="tags">
+                        <button class="info-tag tag-spacing" type = "button">Topic</button>
+                        <button class="info-tag tag-spacing" type="button">Topic</button>
+                        <button class="info-tag tag-spacing" type="button">Topic</button>
+                        <button class="info-tag tag-spacing" type="button">Topic</button>
+                    </div>
+                    <div class="profile-post-h2">
+                        <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div> -->
             </div>
         </div>
         <div class = "right-box">
-            <div class = "right-box-container"></div>
-                <br>
-                <div class = "profile-photo center-horizontally"></div>
-                <p class = "font-22 font-bold center-text">{{ profile_data.username }}</p>
-                <form method="POST" action="/profile/{{ profile_data.username }}/edit/" enctype="multipart/form-data">
-                    <p class = "font-22 subtitle-format">Bio</p>
-                    <textarea class="profile-bio-text-box bio-box font-16" type="submit" name="bio" value="bio">{{ profile_data.bio }}</textarea>
-                    <p class = "font-22 subtitle-format">Preferred Contact Info</p>
-                    <div class="profile-bio-text-box pref-contact-box font-16">{{ profile_data.email }}</div>
-                    <input type="tel" class="profile-bio-text-box pref-contact-box font-16" style="margin-top:10px" name="phone-num" value="{{ profile_data.phone_num }}">
-                    <div class="center-item">
-                        <input class="font-16 center-text profile-bio-link" style="background: none; border: none" type="submit" name="save" value="Save Profile Data">
+            <img src="{{ profile_pic }}" class = "right-card__profile-photo" referrerPolicy="no-referrer">
+            <p class = "right-card__profile-title--name">{{username}}</p>
+            <form method="POST" action="/profile/{{username }}/edit/" enctype="multipart/form-data" >
+                <div class="right-card__form">
+                    <div class = "right-card__sections">
+                        <p class = "right-card__profile-title">Bio</p>
+                        {% if is_own_profile %}
+                        <textarea class="right-card__profile-textbox--bio" type="submit" name="bio" value="bio">{{bio}}</textarea>
+                        {% else %}
+                        <div class="right-card__profile-textbox--bio" type="submit" name="bio" value="bio">{{bio}}</div>
+
+                        {% endif %}
+
                     </div>
+                    <div class = "right-card__sections">
+                        <p class = "right-card__profile-title">Preferred Contact Info</p>
+                        <div class="right-card__profile-textbox--contact">{{email}}</div>
+                        {% if is_own_profile %}
+                        <input type="tel" class="right-card__profile-textbox--contact" name="phone-num"  value="{{phone_num}}">
+                        {% endif %}
+                    </div>
+                    {% if is_own_profile %}
+                    <div class="center-item">
+                        <input class="right-card__profile-bio-link" type="submit" name="save" value="Save Profile Data">
+                    </div>
+                    {% endif %}
                     <input type="hidden" name="operation" value="edit-profile"/>
-                </form>
-                <div class = "button-container">
-                    <button class = "rounded-blue-button font-20">Log Out</button>
                 </div>
-                <br>
-        </div>
-    </div>
+            </form>
+            {% if is_own_profile %}
+            <form action="/logout">
+                <div class = "right-card__logout-container">
+                    <button class = "rounded-blue-button">Log Out</button>
+                </div>
+            </form>
+            {% endif %}
+
+         </div>
 </section>
 {% endblock %}

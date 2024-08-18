@@ -1,0 +1,318 @@
+.profile-header {
+	display: flex;
+	align-items: center;
+	gap: .75rem;
+}
+
+.flex-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+  width: 100%;
+  
+}
+
+.left-card {
+  flex: 2;
+  background-color: #E6F1FF;
+  flex-direction: column;
+	padding: 2em;
+  display: flex;
+  max-width: 1300px;
+}
+
+/* .left-box-container {
+  flex: 1;
+  flex-direction: row;
+} */
+
+.left-card__title{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.left-card__profile-rounded-blue-button {
+	width: 100%;
+	max-width: 200px;
+	height: 39px;
+	padding: 6px;
+	text-decoration: none;
+	background-color: #045BC0;
+	color: white;
+	font-size: 16px;
+	border: none;
+	border-radius: 999px;
+	cursor: pointer;
+	text-align: center;
+	line-height: 39px;
+	display: block; /* Ensure the button is a block element for centering */
+}
+
+.left-card__courses{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  background-color: #045BC0;
+  border-radius: 10px;
+	margin: 1rem 0rem ;
+	padding: 1em;
+}
+
+
+.left-card__course-items {
+	border-radius: 12px;
+	border: 1px solid rgba(185, 185, 185, 1);
+	padding: 15px 13px;
+	width: 100%;
+	min-width: 350px;
+	height: auto;
+	background-color: white;
+	box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.left-card__courses-name--h2{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+	line-clamp: 1; 
+  -webkit-box-orient: vertical;
+}
+
+.left-card__profile--title {
+	font-size: 1.5rem;
+	font: "inter";
+	font-weight: 350;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+	line-clamp: 1; 
+  -webkit-box-orient: vertical;
+  margin:0px;
+}
+
+.left-card__profile-text--title {
+	font: "inter";
+  margin:0px;
+  font-size: 1.5rem;
+}
+
+.left-card__profile--code {
+	font-family: "Inter";
+	color: rgba(108, 117, 125, 1);
+	font-size: 1.125rem;
+	font-weight: 400;
+}
+
+.left-card__profile-text--code {
+	margin: 0;
+  letter-spacing: 0.2px;
+
+}
+
+.left-card__profile--description {
+  line-height: 1.5rem;
+  height: 4.5rem;
+}
+
+.left-card__profile-text--description {
+  font-size: 1rem;
+  margin:0px;
+  font-weight: 300;
+  font: "Inter";
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+          line-clamp: 3; 
+  -webkit-box-orient: vertical;
+}
+
+.left-card__profile-post-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 1rem 0;
+  gap: 1rem;
+}
+
+.left-card__profile-post {
+  border-radius: 12px;
+  border: 1px solid rgba(185, 185, 185, 1);
+	padding: 15px 20px;
+  width: 100%;
+	min-width: 350px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  box-sizing: border-box;
+
+}
+
+
+.right-box {
+  background-color: #FFFFFF;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;	
+	align-items: center;
+  flex: 1;
+  padding: 2em;
+}
+
+/* .right_box_container {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+} */
+
+/* .profile-info {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+} */
+
+/* .profile-name {
+	font-family: "Inter";
+	color: rgba(33, 37, 41, 1);
+	font-size: 24px;
+	font-weight: 400;
+	font-size: 24px;
+	font-weight: 340;
+} */
+
+/* .profile-circle {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-color: #007bff;
+} */
+
+  /* Profile Component*/
+
+.right-card__profile-photo {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background-color: rgb(210, 206, 206);
+	margin: auto;
+}
+
+
+.right-card__profile-textbox--bio {
+	border-radius: 12px;
+	border: 1px solid rgba(185, 185, 185, 1);
+	padding: 20px;
+	width: 425px;
+	background-color: white;
+	word-wrap: break-word;
+	overflow: hidden;
+	color: #5A5A5A;
+	font-size: 16px;
+	min-height: 80px;
+  resize:none;
+
+}
+
+.right-card__profile-textbox--contact {
+	border-radius: 12px;
+	border: 1px solid rgba(185, 185, 185, 1);
+	padding: 20px;
+	width: 425px;
+	background-color: white;
+	word-wrap: break-word;
+	overflow: hidden;
+	color: #5A5A5A;
+	font-size: 16px;
+	min-height: 20px;
+}
+
+.right-card__sections{
+  display: flex;
+  flex-direction: column;
+  gap:.75rem;
+}
+
+.right-card__profile-title{
+	font-size: 20px;
+  margin: 10px 0px;
+}
+
+.right-card__profile-title--name{
+	font-size: 22px;
+  font-weight: bold;
+
+}
+
+.right-card__profile-bio-link {
+	color: #045BC0;
+	cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  background: none;
+  border: none
+}
+
+.right-card__form{
+  display: flex;
+  flex-direction: column;
+  gap:.75rem;
+}
+
+.right-card__logout-container{
+  margin-top: 10px;
+}
+
+.left-card__courses--h1 {
+  font-size: 24px;
+  font-weight: 590;
+}
+
+.left-card__courses--h2 {
+  font-size: 18px;
+  font-weight: 200;
+  font: "Inter";
+}
+
+@media (max-width:1400px) {
+	.flex-container{
+		flex-direction: column-reverse;
+	}
+}
+
+@media (max-width:1250px) {
+  .left-card__courses{
+    grid-template-columns: 1fr 1fr;
+
+  }
+  .left-card__profile-post-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width:850px) {
+  .left-card__courses{
+    grid-template-columns: 1fr;
+
+  }
+  .left-card__profile-post-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width:2000px) {
+  .left-card__courses{
+    grid-template-columns: 1fr 1fr 1fr;
+
+  }
+  .left-card__profile-post-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

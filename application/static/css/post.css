@@ -1,0 +1,171 @@
+/* Post Component */
+.post__border {
+	width: 300px;
+	background-color: #ffffff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	border-radius: 12px;
+	/* Shadow */
+	margin: 2%;
+	padding: 2rem;  
+	display: flex;
+	flex-direction: column;	
+  max-height: 550px;
+}
+
+.post__header{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.post__header--left{
+	display: flex;
+	flex-direction: row;
+  gap: 10px;
+
+}
+
+.post__header--right{
+	display: flex;
+	height: 100%;
+  position: relative;
+}
+
+.post__tags{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.post__info{
+	display: flex;
+	flex-direction: column;
+}
+
+.post__profile-info{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.post__user-name {
+  font-family: Inter;
+  color: black;
+  font-size: 16px;
+  margin: 0;
+  text-decoration: none;
+}
+.post__email {
+  font-family: Inter;
+  color: gray;
+  font-size: 12px;
+  clear: both;
+  margin: 0;
+
+}
+
+.post__star {
+  visibility: hidden;
+  cursor: pointer;
+	font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+}
+
+.post__star:before {
+  content: "\2605";
+  visibility: visible;
+}
+
+.post__star:checked:before {
+  content: "\2606";
+}
+
+.post__info--study-group {
+  font-family: Inter;
+  color: gray;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 1.5px;
+}
+
+.post__info--title{
+	margin: 6px 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+          line-clamp: 1; 
+  -webkit-box-orient: vertical;
+  font-size: 1.4rem;
+
+}
+
+.post__info--code{
+  font-family: Inter;
+  color: #5a5a5a;
+  font-size: 18px;
+  line-height: 21.78px;
+	font-weight: 400;
+	margin: 0;
+}
+
+.post__info--description {
+  font-family: Inter;
+  color: #4C5980;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  height: 4.5rem;
+  letter-spacing: 0.2px;
+	margin: 4px 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+          line-clamp: 3; 
+  -webkit-box-orient: vertical;
+
+}
+
+.post__info--date-room {
+  color: #2D3142;
+  line-height: 14px;
+  letter-spacing: 0.23px;
+  font-size: 16;
+}
+
+.post__info--time-address {
+  line-height: 17px;
+  letter-spacing: 0.2px;
+  line-height: 1.5rem;
+  height: 1.5rem;
+  font-size: 1rem;
+  color: #9C9EB9;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+          line-clamp: 1; 
+  -webkit-box-orient: vertical;
+}
+
+.post__profile-pic {
+  width: 60px;
+  /* Specify the width */
+  height: 60px;
+  /* Specify the height */
+  border-radius: 50%;
+  /* Make it a circle */
+}
+
+.post__profile-pic-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post__join-section{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}

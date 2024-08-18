@@ -11,10 +11,14 @@ def get_services():
 
 @application.app.route('/api/v1/posts/', methods=["GET"])
 def get_posts():
-    """Return specific number of posts."""
-    # TODO set username
-    
-    username = "test"
+    """Return specific number of posts."""    
+    username = flask.session.get('username')
+    if not username:
+        context = {
+            "message": "Not Found",
+            "status_code": 404
+        }
+        return flask.jsonify(**context), 404
     size = flask.request.args.get("size", default = 6, type=int)
     page = flask.request.args.get("page", default = 0, type=int)
     if (size <= 0) or (page < 0):
@@ -84,7 +88,7 @@ def get_specific_post(postid):
 @application.app.route('/api/v1/posts/', methods=['POST'])
 def create_post():
     data = flask.request.get_json()
-    print(data["course_code"])
+    print(data["course"])
     # model.create_post parameters
     # create_post(username, title, description, course_code, created, schedule_link, type)
     """
@@ -94,7 +98,7 @@ def create_post():
         }
        return flask.jsonify(**context), 404
     """
-    username = "test"
+    username = flask.session.get('username')
     title = data["title"]
     if title == '' or title == None:
         context = {
@@ -113,14 +117,14 @@ def create_post():
         return flask.jsonify(**context), 404
 
     # might need to check if the course is one of ther user's courses
-    course_code = data["course_code"]
+    course_code = data["course"]
     if course_code == '' or course_code == None:
         context = {
           "message": "Please enter a course code.",
           "status_code": 404
         }
         return flask.jsonify(**context), 404
-    schedule_link = data["schedule_link"]
+    schedule_link = data["scheduleLink"]
     if schedule_link == '' or schedule_link == None:
         context = {
           "message": "Please enter a schedule time.",
@@ -145,21 +149,19 @@ def create_post():
 
     # post = model.create_post(data["username"], data["title"], data["description"], data["course_code"], data["schedule_link"], data["type"])
     
-    post = model.create_post(username, data["title"], data["description"], data["course_code"], data["schedule_link"], data["location"] , data["type"])
+    post = model.create_post(username, data["title"], data["description"], data["course"], data["scheduleLink"], data["location"] , data["type"])
     #Blank quote is the placeholder for schedule link
     tags = data["tags"]
     context = {
         "post_id": post["post_id"],
-        "username": "test", #change to flask.session.get('username') later
+        "username": flask.session.get('username'), 
         "title": data["title"],
         "description": data["description"],
-        "course_code": data["course_code"],
+        "course": data["course"],
         "created": post["created"],
-        "schedule_link": data["schedule_link"],
+        "scheduleLink": data["scheduleLink"],
         "location": data["location"],
         "type": 1,
     }
     print(context)
     return flask.jsonify(**context), 201
-
-

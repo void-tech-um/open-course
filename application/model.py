@@ -83,6 +83,12 @@ def get_user(username):
         (username,)
     )
     user = cur.fetchone()
+
+    # The case where no user is found
+    if user is None:
+        print(f"No user found for username: {username}")
+        return None
+
     content = {
         "username" : user[0],
         "email" : user[1],
@@ -91,6 +97,18 @@ def get_user(username):
         "bio" : user[4]
     }
     return content
+
+# Insert user into database
+def add_user(username, email, phone_num, profile_picture, bio):
+    """Add a user to the database."""
+    conn = get_db()
+    cur = conn.cursor()
+    cur.execute(
+        "INSERT INTO users (username, email, phone_num, profile_picture, bio) "
+        "VALUES (%s, %s, %s, %s, %s)",
+        (username, email, phone_num, profile_picture, bio)
+    )
+    conn.commit()
 
 # POST RELATED DB CALLS --------------------------------------------------------------------------
 
@@ -352,14 +370,16 @@ def join_course(username, course_code):
     conn = get_db()
     cur = conn.cursor()
     
-    print("hello")
-    print(course_code)
-    cur.execute(
-        "INSERT INTO enrollments (username, course_code) "
-        "VALUES (%s, %s) ",
-        (username, course_code)
-    )
-    conn.commit()
+    check = check_course(username, course_code)
+    if(not check["is_joined"]):
+        cur.execute(
+            "INSERT INTO enrollments (username, course_code) "
+            "VALUES (%s, %s) ",
+            (username, course_code)
+        )
+        conn.commit()
+        return {"response" : "success"}
+    return {"response" : "error"}
 
 def get_all_courses_user(username):
     """Get all courses for user that have not been joined yet."""
@@ -368,11 +388,8 @@ def get_all_courses_user(username):
         '''
         SELECT u.course_code, u.course_name, EXISTS(
             SELECT 1
-            FROM
-            (SELECT course_code FROM enrollments
-            WHERE username = 'test'
-            ) e
-            WHERE e.course_code = u.course_code
+            FROM enrollments e
+            WHERE e.username = %s AND e.course_code = u.course_code
         ) AS user_in_course FROM courses u;
         ''',
         (username,)
@@ -385,15 +402,33 @@ def get_all_courses_user(username):
 
     return context
 
+def check_course(username, course_code):
+    conn = get_db()
+    cur = conn.cursor()
+    
+    cur.execute(
+        "SELECT 1 FROM enrollments WHERE username = %s AND course_code = %s",
+        (username, course_code)
+    )
+    
+    enrollment_exists = cur.fetchone()
+    return {"is_joined": enrollment_exists is not None}
+
+
 def drop_course(username, course_code):
     """Allow a user to drop a course."""
     conn = get_db()
     cur = conn.cursor()
-    cur.execute(
-        "DELETE FROM enrollments WHERE username = %s AND course_code = %s",
-        (username, course_code)
-    )
-    conn.commit()
+
+    check = check_course(username, course_code)
+    if(check["is_joined"]):
+        cur.execute(
+            "DELETE FROM enrollments WHERE username = %s AND course_code = %s",
+            (username, course_code)
+        )
+        conn.commit()
+        return {"response" : "success"}
+    return {"response" : "error"}
 
 class InvalidUsage(Exception):
     """Custom exception class for invalid usage of API."""
