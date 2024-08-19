@@ -110,6 +110,19 @@ def add_user(username, email, phone_num, profile_picture, bio):
     )
     conn.commit()
 
+# Update user bio
+def update_bio(bio, phone_num, username):
+    """Update a user's bio."""
+    conn = get_db()
+    cur = conn.cursor()
+    cur.execute(
+        "UPDATE users "
+        "SET bio = %s, phone_num = %s "
+        "WHERE username = %s",
+        (bio, phone_num, username)
+    )
+    conn.commit()
+
 # POST RELATED DB CALLS --------------------------------------------------------------------------
 
 def get_posts():
