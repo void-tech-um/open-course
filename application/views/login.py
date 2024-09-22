@@ -18,6 +18,7 @@ def show_privacy_policy():
 
 @application.app.route('/login')
 def login():
+    print(url_for('authorized', _external=True))
     return google.authorize(callback=url_for('authorized', _external=True))
 
 @application.app.route('/login/authorized')
