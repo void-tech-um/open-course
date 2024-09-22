@@ -11,6 +11,9 @@ def show_login():
 
 @application.app.route('/privacy-policy/')
 def show_privacy_policy():
+    error = request.args.get('error')
+    if error == 'oauth_canceled':
+        return "Sign-in was canceled. Please try again."
     return render_template('privacy-policy.html')
 
 @application.app.route('/login')
@@ -21,10 +24,8 @@ def login():
 def authorized():
     response = google.authorized_response()
     if response is None or response.get('access_token') is None:
-        return 'Access denied: reason={} error={}'.format(
-            request.args['error_reason'],
-            request.args['error_description']
-        )
+        return redirect(url_for('login', error='oauth_canceled'))
+
     session['google_token'] = (response['access_token'], '')
     user_info = google.get('userinfo')
 

@@ -60,6 +60,20 @@
   font-size: clamp(1.25rem,80%, 1.5rem);
 }
 
+.rounded-white-button {
+  height: 2.5rem;
+  background-color: white;
+  padding: 0px 20px;
+  color: #045BC0;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  text-align: center;
+}
+
+
 @media (max-width:800px) {
   .about__images{
     flex-direction: column;
