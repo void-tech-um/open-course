@@ -21,6 +21,9 @@ secret = os.environ.get('SECRET_KEY')
 app.secret_key = secret
 google_client_id = os.environ.get('GOOGLE_CLIENT_ID')
 
+print(secret)
+print(google_client_id)
+
 oauth = OAuth(app)
 google = oauth.register(
     name='google',
