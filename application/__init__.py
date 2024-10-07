@@ -1,7 +1,7 @@
 """application package initializer."""
 import flask
 import os
-from flask_oauthlib.client import OAuth
+from authlib.integrations.flask_client import OAuth
 from flask import Flask, redirect, url_for, session, request, jsonify
 # app is a single object used by all the code modules in this package
 app = flask.Flask(__name__)  # pylint: disable=invalid-name
@@ -18,27 +18,22 @@ app.config.from_object('application.config')
 app.config.from_envvar('APPLICATION_SETTINGS', silent=True)
 
 secret = os.environ.get('SECRET_KEY')
-app.config['SECRET_KEY'] = secret,
+app.secret_key = secret
 google_client_id = os.environ.get('GOOGLE_CLIENT_ID')
 
 oauth = OAuth(app)
-google = oauth.remote_app(
-    'google',
-    consumer_key=google_client_id,
-    consumer_secret=str(secret),
-    request_token_params={
-        'scope': 'email profile',
-    },
-    base_url='https://www.googleapis.com/oauth2/v1/',
-    request_token_url=None,
-    access_token_method='POST',
-    access_token_url='https://accounts.google.com/o/oauth2/token',
+google = oauth.register(
+    name='google',
+    client_id=google_client_id,
+    client_secret=secret,
     authorize_url='https://accounts.google.com/o/oauth2/auth',
+    authorize_params=None, 
+    access_token_url='https://accounts.google.com/o/oauth2/token',
+    access_token_params=None,
+    refresh_token_url=None,
+    client_kwargs={'scope': 'email profile'},
+    server_metadata_url= 'https://accounts.google.com/.well-known/openid-configuration'
 )
-
-@google.tokengetter
-def get_google_oauth_token():
-    return session.get('google_token')
 
 # Tell our app about views and model.  This is dangerously close to a
 # circular import, which is naughty, but Flask was designed that way.
