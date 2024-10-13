@@ -3,6 +3,7 @@ from flask_oauthlib.client import OAuth
 from application.model import get_user, add_user
 from .. import google, oauth
 import application
+import os
 
 
 @application.app.route('/show-login/')
@@ -20,8 +21,12 @@ def show_privacy_policy():
 def login():
     print(url_for('authorized', _external=True))
     #return google.authorize_redirect(url_for('authorized', _external=True, _scheme='https')) NEED TO RUN THIS IN DEPLOYMENT
-    return google.authorize_redirect(url_for('authorized', _external=True))
-
+    if os.getenv('FLASK_ENV') == 'production':
+        # Use HTTPS for production
+        return google.authorize_redirect(url_for('authorized', _external=True, _scheme='https'))
+    else:
+        # Use HTTP for local development
+        return google.authorize_redirect(url_for('authorized', _external=True))
 
 @application.app.route('/login/authorized')
 def authorized():

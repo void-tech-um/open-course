@@ -24,7 +24,16 @@ app.secret_key = secret
 google_client_id = os.environ.get('GOOGLE_CLIENT_ID')
 
 if(os.environ.get('FLASK_ENV') == 'production'):
-    Talisman(app)
+    Talisman(app, 
+             force_https=True,
+             content_security_policy={
+                 'default-src': ["'self'"],
+             },
+             frame_options='DENY',  # Prevents clickjacking
+             x_content_type_options='nosniff',  # Prevents MIME sniffing
+             x_xss_protection='1; mode=block',  # Cross-site scripting protection
+             strict_transport_security={'max-age': 31536000, 'includeSubDomains': True}
+    )
 
 oauth = OAuth(app)
 google = oauth.register(
