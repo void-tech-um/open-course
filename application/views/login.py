@@ -19,6 +19,7 @@ def show_privacy_policy():
 @application.app.route('/login')
 def login():
     print(url_for('authorized', _external=True))
+    #return google.authorize_redirect(url_for('authorized', _external=True, _scheme='https')) NEED TO RUN THIS IN DEPLOYMENT
     return google.authorize_redirect(url_for('authorized', _external=True))
 
 @application.app.route('/login/authorized')
