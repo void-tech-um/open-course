@@ -1,5 +1,7 @@
 """application package initializer."""
 import flask
+from flask_talisman import Talisman
+
 import os
 from authlib.integrations.flask_client import OAuth
 from flask import Flask, redirect, url_for, session, request, jsonify
@@ -20,6 +22,9 @@ app.config.from_envvar('APPLICATION_SETTINGS', silent=True)
 secret = os.environ.get('SECRET_KEY')
 app.secret_key = secret
 google_client_id = os.environ.get('GOOGLE_CLIENT_ID')
+
+if(os.environ.get('FLASK_ENV') == 'production'):
+    Talisman(app)
 
 oauth = OAuth(app)
 google = oauth.register(
