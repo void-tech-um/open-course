@@ -17,8 +17,10 @@ RUN pip install --upgrade setuptools
 COPY requirements.txt ./
 
 # Install dependencies
-RUN apt-get update && apt-get install -y libpq-dev gcc
-
+RUN apt-get update && \
+    apt-get install -y libpq-dev gcc && \
+    rm -rf /var/lib/apt/lists/*
+    
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
 RUN pip install python-dotenv
@@ -29,7 +31,7 @@ COPY . ./
 # Make port 8000 available to the world outside this container
 EXPOSE 8000
 
-ENV FLASK_ENV=development
+# ENV FLASK_ENV=development
 
 RUN pip install gunicorn
 # Run website inside the container using gunicorn
