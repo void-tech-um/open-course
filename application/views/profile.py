@@ -1,6 +1,5 @@
 import flask, application
 from flask import render_template, url_for
-from .. import google
 
 @application.app.route("/profile/<username>/")
 def show_profile(username):
