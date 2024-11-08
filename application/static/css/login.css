@@ -60,10 +60,6 @@
 
 }
 
-.login__text{
-
-}
-
 .login__text--description{
   margin:0;
 }
@@ -79,4 +75,24 @@
 
 .login__text--error{
   color: red; 
+}
+
+@media (max-width:1150px) {
+    .login__left {
+      width: 95%;
+    }
+    .login__right {
+      width: 100%;
+      padding-left: 10px;
+      padding-right: 50px;
+    }
+}
+
+@media (max-width: 550px) {
+    .login-container {
+      flex-direction: column-reverse;
+    }
+    .login__right {
+      padding-right: 0px;
+    }
 }
