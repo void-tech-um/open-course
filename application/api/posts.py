@@ -165,3 +165,27 @@ def create_post():
     }
     print(context)
     return flask.jsonify(**context), 201
+
+@application.app.route('/api/v1/posts/join/<int:postid>/', methods=['POST'])
+def join_post(postid):
+    username = flask.session.get('username')
+    if not username:
+        context = {
+            "message": "Not Found",
+            "status_code": 404
+        }
+        return flask.jsonify(**context), 404
+    
+    post = model.join_post(postid)
+    if not post:
+        context = {
+            "message": "Not Found",
+            "status_code": 404
+        }
+        return flask.jsonify(**context), 404
+    
+    context = {
+        "message": "Success",
+        "status_code": 200
+    }
+    return flask.jsonify(**context), 200

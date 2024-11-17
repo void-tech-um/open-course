@@ -2,6 +2,9 @@
 Repository for the Open Course project team within VOID Tech at the University of Michigan
 
 ### Getting Started
+
+```sudo apt install postgresql``` to install PostgreSQL, this is needed for the next step.
+
 ```./bin/install``` to create a python virtual environment and install the related project dependencies.
 
 ### Running the Application

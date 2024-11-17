@@ -20,13 +20,8 @@ def show_privacy_policy():
 @application.app.route('/login')
 def login():
     print(url_for('authorized', _external=True))
-    if os.getenv('FLASK_ENV') == 'production':
-        # Use HTTPS for production
-        return google.authorize_redirect(url_for('authorized', _external=True, _scheme='https'))
-    else:
-        # Use HTTP for local development
-        return google.authorize_redirect(url_for('authorized', _external=True))
-
+    #return google.authorize_redirect(url_for('authorized', _external=True, _scheme='https')) NEED TO RUN THIS IN DEPLOYMENT
+    return google.authorize_redirect(url_for('authorized', _external=True))
 
 @application.app.route('/login/authorized')
 def authorized():
@@ -54,7 +49,7 @@ def authorized():
 
         # Check if the user is in the database
         if get_user(username) is None:
-            add_user(username, email, "123-456-7890", user_info['picture'], "None")
+            add_user(username, email, None, user_info['picture'], None)
             print("User added to database")
         else:
             print("User already in database")

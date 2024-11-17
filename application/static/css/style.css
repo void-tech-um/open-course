@@ -199,3 +199,24 @@ h4 {
   justify-content: center;
 }
 
+.post__join-section {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: flex-end;
+}
+
+.post__message {
+  background-color: grey;
+  color: white;
+  padding: 5px 10px; /* Reduced padding */
+  border-radius: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+  position: absolute;
+  top: -75px; /* Adjusted to move closer to the button */
+  left: 80%;
+  transform: translateX(-50%);
+  width: auto; /* Adjusted width */
+  font-size: 12px; /* Reduced font size */
+}

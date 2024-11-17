@@ -254,6 +254,19 @@ def create_post(username, title, description, course_code, schedule_link, locati
                "created" : created}
     return content
 
+def join_post(post_id):
+    """Join a post."""
+    conn = get_db()
+    cur = conn.cursor()
+    cur.execute(
+        "SELECT username FROM posts WHERE post_id = %s",
+        (post_id,)
+    )
+    username = cur.fetchone()
+    conn.commit()
+
+    content = {"username": username[0]}
+    return content
 
 # Get all posts for a specific user for their profile page
 def get_users_posts(username):
