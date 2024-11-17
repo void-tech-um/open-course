@@ -84,10 +84,9 @@
                     <div class = "right-card__sections">
                         <p class = "right-card__profile-title">Bio</p>
                         {% if is_own_profile %}
-                        <textarea class="right-card__profile-textbox--bio" type="submit" name="bio" value="bio">{{bio}}</textarea>
+                            <textarea class="right-card__profile-textbox--bio" name="bio" placeholder="Describe yourself here...">{{bio}}</textarea>
                         {% else %}
-                        <div class="right-card__profile-textbox--bio" type="submit" name="bio" value="bio">{{bio}}</div>
-
+                            <div class="right-card__profile-textbox--bio">{{bio}}</div>
                         {% endif %}
 
                     </div>
@@ -95,7 +94,7 @@
                         <p class = "right-card__profile-title">Preferred Contact Info</p>
                         <div class="right-card__profile-textbox--contact">{{email}}</div>
                         {% if is_own_profile %}
-                        <input type="tel" class="right-card__profile-textbox--contact" name="phone-num"  value="{{phone_num}}">
+                        <input type="tel" class="right-card__profile-textbox--contact" name="phone-num"  placeholder="Preferred phone-number..." value="{{phone_num}}">
                         {% endif %}
                     </div>
                     {% if is_own_profile %}
