@@ -44,7 +44,7 @@ def authorized():
 
     # Check if the user is in the database
     if get_user(username) is None:
-        add_user(username, email, "123-456-7890", user_info.data['picture'], "None")
+        add_user(username, email, None, user_info.data['picture'], None)
         print("User added to database")
     else:
         print("User already in database")
