@@ -62,7 +62,12 @@
   margin-right: 10px;
 }
 
-
+.footer-logo {
+  display: inline;
+  vertical-align: middle;
+  text-decoration: none;
+  width: 35px;
+}
 
 @media (max-width:870px) {
   .first-footer{
